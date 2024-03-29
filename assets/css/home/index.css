@@ -21,8 +21,8 @@ body h1 {
     /* background: rgba(0, 0, 0, 0.2); */
     /* background: linear-gradient(180deg, #e3e3e3 0%, #01283c 100%); */
     /* background: linear-gradient(243deg, rgba(3, 4, 4, 0.80) -15.6%, rgba(30, 30, 30, 0.10) 100%); */
-    background: rgb(255,255,255);
-    background: linear-gradient(29deg, rgba(255,255,255,0.5046218316428134) 0%, rgba(0,0,0,0.16288513696494222) 0%, rgba(0,0,0,1) 66%, rgba(0,0,0,1) 66%); 
+    background: rgb(255, 255, 255);
+    background: linear-gradient(29deg, rgba(255, 255, 255, 0.5046218316428134) 0%, rgba(0, 0, 0, 0.16288513696494222) 0%, rgba(0, 0, 0, 1) 66%, rgba(0, 0, 0, 1) 66%);
     opacity: 0.3;
     z-index: 1;
 }
@@ -82,7 +82,6 @@ body h1 {
 
 
 
-
 .navbar {
     background: transparent;
     transition: all 0.7s;
@@ -97,4 +96,10 @@ body h1 {
     /* background: #01283C; */
     background: #FFF;
     color: #FFF;
+}
+
+.headline {
+    width: 576px;
+    height: 320px;
+    flex-shrink: 0;
 }
