@@ -9,6 +9,10 @@ class Auth extends CI_Controller
 
     public function index()
     {
-        $this->load->view('auth/index.php');
+        $data['judul'] = "Masuk";
+
+        $this->load->view("templates/auth_header", $data);
+        $this->load->view("auth/login", $data);
+        // $this->load->view("templates/auth_footer");
     }
 }
