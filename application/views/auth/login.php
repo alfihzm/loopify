@@ -8,32 +8,32 @@
                             <div class="card-header">
                                 <h3 class="text-center font-weight-light my-4">Login</h3>
                             </div>
+
+                            <div class="flash_data">
+                                <?= $this->session->flashdata('message'); ?>
+                            </div>
+
                             <div class="card-body">
-                                <form>
+                                <form method="post" action="<?= base_url('auth'); ?>">
                                     <div class="form-floating mb-3">
-                                        <input class="form-control" id="inputEmail" type="email"
+                                        <input class="form-control" id="username" name="username" type="text"
                                             placeholder="name@example.com" />
-                                        <label for="inputEmail">Email address</label>
+                                        <label for="username">Username</label>
+                                        <?= form_error('username', '<small class="text-danger pl-4">', '</small>'); ?>
                                     </div>
                                     <div class="form-floating mb-3">
-                                        <input class="form-control" id="inputPassword" type="password"
+                                        <input class="form-control" id="password" name="password" type="password"
                                             placeholder="Password" />
-                                        <label for="inputPassword">Password</label>
+                                        <label for="password">Password</label>
+                                        <?= form_error('password', '<small class="text-danger pl-4">', '</small>'); ?>
                                     </div>
-                                    <div class="form-check mb-3">
-                                        <input class="form-check-input" id="inputRememberPassword" type="checkbox"
-                                            value="" />
-                                        <label class="form-check-label" for="inputRememberPassword">Remember
-                                            Password</label>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                        <a class="small" href="password.html">Forgot Password?</a>
-                                        <a class="btn btn-primary" href="index.html">Login</a>
-                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-user btn-block">
+                                        Login
+                                    </button>
                                 </form>
                             </div>
                             <div class="card-footer text-center py-3">
-                                <div class="small"><a href="register.html">Need an account? Sign up!</a></div>
+                                <div class="small"><a href="<?= base_url('auth/register'); ?>">Register</a></div>
                             </div>
                         </div>
                     </div>
@@ -41,7 +41,7 @@
             </div>
         </main>
     </div>
-    <div id="layoutAuthentication_footer">
+    <!-- <div id="layoutAuthentication_footer">
         <footer class="py-4 bg-light mt-auto">
             <div class="container-fluid px-4">
                 <div class="d-flex align-items-center justify-content-between small">
@@ -54,4 +54,4 @@
                 </div>
             </div>
         </footer>
-    </div>
+    </div> -->

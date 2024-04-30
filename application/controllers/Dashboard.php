@@ -17,4 +17,11 @@ class Dashboard extends CI_Controller
         $this->load->view("dashboard/index", $data);
         $this->load->view("dashboard/footer");
     }
+
+    public function my_profile()
+    {
+        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+
+        echo 'Selamat Datang ' . $data['user']['name'];
+    }
 }
