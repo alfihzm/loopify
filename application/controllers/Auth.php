@@ -43,7 +43,13 @@ class Auth extends CI_Controller
 
                     $this->session->set_userdata($data);
 
-                    redirect('dashboard');
+                    if ($user['role_id'] == 1) {
+                        redirect('admin');
+                    } elseif ($user['role_id'] == 2) {
+                        redirect('staff');
+                    } else {
+                        redirect('home');
+                    }
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> Password yang anda masukkan salah. </div>');
 
@@ -79,7 +85,7 @@ class Auth extends CI_Controller
             $this->load->view('templates/auth_footer');
         } else {
             $data = [
-                'name' => htmlspecialchars($this->input->post('name', true)),
+                'nama' => htmlspecialchars($this->input->post('name', true)),
                 'email' => htmlspecialchars($this->input->post('email', true)),
                 'username' => $this->input->post('username'),
                 'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
