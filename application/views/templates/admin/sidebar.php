@@ -3,49 +3,7 @@
     <div class="sidebar-wrapper scrollbar scrollbar-inner">
         <div class="sidebar-content">
             <!-- User Info & Collapse -->
-            <div class="user">
-                <!-- User Info -->
-                <div class="info">
-                    <!-- Username and Role -->
-                    <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
-                        <span>
-                            <?= $user['username']; ?>
-                            <span class="user-level">
-                                <?php
-                                if ($user['role_id'] == 1) {
-                                    echo 'Admin';
-                                } else {
-                                    echo 'Member';
-                                }
-                                ?>
-                            </span>
-                            <span class="caret"></span>
-                        </span>
-                    </a>
-                    <div class="clearfix"></div>
 
-                    <!-- User Dropdown Menu -->
-                    <div class="collapse in" id="collapseExample">
-                        <ul class="nav">
-                            <li>
-                                <a href="<?= base_url('dashboard/my_profile'); ?>">
-                                    <span class="link-collapse">Profil Saya</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#edit">
-                                    <span class="link-collapse">Ubah Profil</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#settings">
-                                    <span class="link-collapse">Ubah Password</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
             <!-- End User Info & Collapse -->
 
             <!-- Dynamic Menu from Database -->
@@ -83,6 +41,8 @@
                         $subMenu = $this->db->query($querySubMenu)->result_array();
                         ?>
 
+                    <hr class="sidebar-divider" style="background: #292F42; width: 92%; height: 1px">
+
                     <?php foreach ($subMenu as $sm) : ?>
                     <?php if ($judul == $sm['id']) : ?>
                 <li class="nav-item">
@@ -94,6 +54,7 @@
                         <p> <?= $sm['title']; ?> </p>
                     </a>
                 </li>
+
                 <?php endforeach ?>
 
                 <?php endforeach; ?>

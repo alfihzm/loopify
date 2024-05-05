@@ -19,7 +19,7 @@
                     </li>
                     <li class="nav-item">
                         <a style="margin-right: 50px; font-size: 18px; font-weight: 400; font-family: Poppins;"
-                            class="nav-link" href="statistik">Layanan</a>
+                            class="nav-link" href="<?= base_url('layanan'); ?>">Layanan</a>
                     </li>
                     <li class="nav-item">
                         <a style="margin-right: 50px; font-size: 18px; font-weight: 400; font-family: Poppins;"
@@ -39,19 +39,19 @@
     </nav>
     <section class="content">
         <div class="cover">
-                <div style="width: 100%; height: 100%; position: relative">
-                    <a class="head2" href="#">
-                        Tukar Poin
-                    </a>
-                    <a class="head3" href="#">
-                        Daftar
-                    </a>
-                    <div class="head">
-                        <div class="p3"> Lestarikan alam dengan mengurangi angka dengan limbah</div>
-                    </div>
-                    <div class="sapa"> Hai, Selamat Datang</div>
-                    <div class="p2"> Tukarkan sampah dengan tunai</div>
+            <div style="width: 100%; height: 100%; position: relative">
+                <a class="head2" href="#">
+                    Tukar Poin
+                </a>
+                <a class="head3" href="#">
+                    Daftar
+                </a>
+                <div class="head">
+                    <div class="p3"> Lestarikan alam dengan mengurangi angka dengan limbah</div>
                 </div>
+                <div class="sapa"> Hai, Selamat Datang</div>
+                <div class="p2"> Tukarkan sampah dengan tunai</div>
+            </div>
         </div>
         <img class="bg-image" src="assets/images/background/recyloopbg.jpeg" alt="background">
     </section>

@@ -1,25 +1,6 @@
-<style>
-.fa-eye {
-    width: 1.25em;
-}
-
-.fa-eye-slash {
-    font-size: 1em;
-}
-</style>
-
 <div class="main-panel" style="font-family: quicksand;">
     <div class="content">
         <div class="page-inner">
-            <div class="page-header">
-                <h4 class="page-title"><?= $judul; ?></h4>
-            </div>
-
-            <div class="row">
-                <div class="col-lg-6">
-                    <?= $this->session->flashdata('message') ?>
-                </div>
-            </div>
 
             <div class="container-fluid col-md-8">
 
@@ -27,45 +8,40 @@
                     <div class="card-body">
                         <h5 style="text-align: center;" class="card-title mt-1"><?= $judul; ?></h5>
                         <hr>
-                        <form action="<?= base_url('admin/add_staff') ?>" method="POST">
+                        <form action="<?= base_url('admin/staff_edit/') . $user['id']; ?>" method="POST">
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="idstaff">ID Staff</label>
-                                        <input type="text" class="form-control" id="idstaff" name="idstaff"
-                                            autocomplete="off">
+                                        <input style="color: #000;" type="text" class="form-control" id="idstaff" name="idstaff" autocomplete="off" value="<?= $user['id_staff'] ?>" readonly>
                                         <?= form_error('idstaff', '<small class="text-danger">', '</small>'); ?>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="nama">Nama Lengkap</label>
-                                        <input type="text" class="form-control" id="nama" name="nama"
-                                            autocomplete="off">
+                                        <input type="text" class="form-control" id="nama" name="nama" value="<?= $user['nama'] ?>" autocomplete="off">
                                         <?= form_error('nama', '<small class="text-danger">', '</small>'); ?>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="lahir">Tanggal Lahir</label>
-                                        <input type="date" class="form-control" id="lahir" name="lahir"
-                                            autocomplete="off">
+                                        <input style="color: #000;" type="date" class="form-control" id="lahir" name="lahir" value="<?= $user['lahir'] ?>" autocomplete="off" readonly>
                                         <?= form_error('lahir', '<small class="text-danger">', '</small>'); ?>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="email">Email</label>
-                                        <input type="text" class="form-control" id="email" name="email"
-                                            autocomplete="off">
+                                        <input type="text" class="form-control" id="email" name="email" value="<?= $user['email'] ?>" autocomplete="off">
                                         <?= form_error('email', '<small class="text-danger">', '</small>'); ?>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="username">Username</label>
-                                        <input type="text" class="form-control" id="username" name="username"
-                                            autocomplete="off">
+                                        <input style="color: #000;" type="text" class="form-control" id="username" name="username" value="<?= $user['username'] ?>" autocomplete="off" readonly>
                                         <?= form_error('username', '<small class="text-danger">', '</small>'); ?>
                                     </div>
                                 </div>
@@ -73,8 +49,7 @@
                                     <div class="form-group">
                                         <label for="password">Password</label>
                                         <div class="input-group">
-                                            <input type="password" class="form-control" id="password" name="password"
-                                                autocomplete="off">
+                                            <input style="color: #000;" type="password" class="form-control" id="password" name="password" value="password" autocomplete="off" readonly>
                                             <div class="input-group-append">
                                                 <span class="input-group-text">
                                                     <i class="fas fa-eye-slash" id="togglePassword"></i>
@@ -87,23 +62,20 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="no_telp">No. Telepon</label>
-                                        <input type="text" class="form-control" id="no_telp" name="no_telp"
-                                            autocomplete="off">
+                                        <input type="text" class="form-control" id="no_telp" name="no_telp" value="<?= $user['no_telp'] ?>" autocomplete="off">
                                         <?= form_error('no_telp', '<small class="text-danger">', '</small>'); ?>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="alamat">Alamat</label>
-                                        <input type="text" class="form-control" id="alamat" name="alamat"
-                                            autocomplete="off">
+                                        <input type="text" class="form-control" id="alamat" name="alamat" value="<?= $user['alamat'] ?>" autocomplete="off">
                                         <?= form_error('alamat', '<small class="text-danger">', '</small>'); ?>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-12"
-                                style="display: flex; justify-content: space-evenly; align-items: center; margin-top: 10px">
-                                <button type="submit" class="btn btn-primary">Tambah</button>
+                            <div class="col-sm-12" style="display: flex; justify-content: space-evenly; align-items: center; margin-top: 10px">
+                                <button type="submit" class="btn btn-danger">Simpan</button>
                                 <a style="width: 100px;" href="<?= base_url('admin/staff'); ?>" class="btn btn-warning">
                                     Batal </a>
                             </div>
@@ -112,22 +84,7 @@
                 </div>
 
             </div>
+
         </div>
     </div>
-
-    <script>
-    document.getElementById('togglePassword').addEventListener('click', function() {
-        var passwordInput = document.getElementById('password');
-        var icon = document.getElementById('togglePassword');
-
-        if (passwordInput.getAttribute('type') === 'password') {
-            passwordInput.setAttribute('type', 'text');
-            icon.classList.remove('fa-eye-slash');
-            icon.classList.add('fa-eye');
-        } else {
-            passwordInput.setAttribute('type', 'password');
-            icon.classList.remove('fa-eye');
-            icon.classList.add('fa-eye-slash');
-        }
-    });
-    </script>
+</div>

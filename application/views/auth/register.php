@@ -29,25 +29,21 @@
                                         <div class="row mb-3">
                                             <div class="col-md-12">
                                                 <div class="form-floating mb-3 mb-md-0">
-                                                    <input class="form-control" id="name" name="name" type="text"
-                                                        placeholder="Masukkan nama" value="<?= set_value('name'); ?>" />
+                                                    <input class="form-control" id="name" name="name" type="text" placeholder="Masukkan nama" value="<?= set_value('name'); ?>" />
                                                     <label for="name">Nama</label>
                                                     <?= form_error('name', '<small class="text-danger pl-4">', '</small>'); ?>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="form-floating mb-3">
-                                            <input class="form-control" id="email" name="email" type="email"
-                                                placeholder="name@example.com" value="<?= set_value('email'); ?>" />
+                                            <input class="form-control" id="email" name="email" type="email" placeholder="name@example.com" value="<?= set_value('email'); ?>" />
                                             <label for=" email">Email address</label>
                                             <?= form_error('email', '<small class="text-danger pl-4">', '</small>'); ?>
                                         </div>
                                         <div class="row mb-3">
                                             <div class="col-md-12">
                                                 <div class="form-floating mb-3 mb-md-0">
-                                                    <input class="form-control" id="username" name="username"
-                                                        type="text" placeholder="Username?"
-                                                        value="<?= set_value('username'); ?>" />
+                                                    <input class="form-control" id="username" name="username" type="text" placeholder="Username?" value="<?= set_value('username'); ?>" />
                                                     <label for="inputPassword">Username</label>
                                                     <?= form_error('username', '<small class="text-danger pl-4">', '</small>'); ?>
                                                 </div>
@@ -56,8 +52,7 @@
                                         <div class="row mb-3">
                                             <div class="col-md-12">
                                                 <div class="form-floating mb-3 mb-md-0">
-                                                    <input class="form-control" id="password" name="password"
-                                                        type="password" placeholder="Create a password" />
+                                                    <input class="form-control" id="password" name="password" type="password" placeholder="Create a password" />
                                                     <label for="inputPassword">Password</label>
                                                     <?= form_error('password', '<small class="text-danger pl-4">', '</small>'); ?>
                                                 </div>
@@ -66,8 +61,7 @@
                                         <div class="row mb-3">
                                             <div class="col-md-12">
                                                 <div class="form-floating mb-3 mb-md-0">
-                                                    <input class="form-control" id="notelp" name="notelp" type="tel"
-                                                        placeholder="Create a password" />
+                                                    <input class="form-control" id="notelp" name="notelp" type="tel" placeholder="Create a password" />
                                                     <label for="inputPassword">No. Telp</label>
                                                     <?= form_error('notelp', '<small class="text-danger pl-4">', '</small>'); ?>
                                                 </div>
