@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 06, 2024 at 08:23 AM
+-- Generation Time: May 06, 2024 at 10:07 AM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -86,6 +86,7 @@ CREATE TABLE `poin` (
 
 CREATE TABLE `sampah` (
   `id` int(11) NOT NULL,
+  `no` int(11) NOT NULL,
   `jenis_sampah` varchar(64) NOT NULL,
   `nilai_tukar` int(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -94,11 +95,11 @@ CREATE TABLE `sampah` (
 -- Dumping data for table `sampah`
 --
 
-INSERT INTO `sampah` (`id`, `jenis_sampah`, `nilai_tukar`) VALUES
-(1, 'Kantong Plastik', 100),
-(2, 'Botol Kaca', 500),
-(4, 'Botol Plastik', 150),
-(5, 'Sampah Daun', 50);
+INSERT INTO `sampah` (`id`, `no`, `jenis_sampah`, `nilai_tukar`) VALUES
+(1, 1, 'Kantong Plastik', 100),
+(2, 2, 'Botol Kaca', 500),
+(4, 3, 'Botol Plastik', 250),
+(5, 4, 'Sampah Daun', 50);
 
 -- --------------------------------------------------------
 
@@ -265,7 +266,7 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active
 (6, 4, 'Informasi Anggota', 'staff/informasi-anggota', 'fas fa-fw fa-users', 1),
 (7, 4, 'Tambah Anggota', 'staff/add_member', 'fas fa-fw fa-person-circle-plus', 1),
 (8, 5, 'Manajamen Sampah', 'admin/sampah', 'fas fa-fw fa-trash-can', 1),
-(9, 6, 'Manajemen Cinderamata', 'admin/manajemen_cinderamata', 'fas fa-fw fa-gift', 1);
+(9, 6, 'Manajemen Cinderamata', 'admin/cinderamata', 'fas fa-fw fa-gift', 1);
 
 --
 -- Indexes for dumped tables
