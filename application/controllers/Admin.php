@@ -5,7 +5,7 @@ class Admin extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('StaffModel', 'SampahModel');
+        $this->load->model('StaffModel', 'SampahModel', 'GiftModel');
         is_login();
         $this->load->language('form_validation', 'indonesian');
     }
@@ -361,6 +361,114 @@ class Admin extends CI_Controller
             redirect('admin/sampah');
         } else {
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Anggota gagal dihapus!</div>');
+        }
+    }
+
+    public function cinderamata()
+    {
+        $data = [
+            'judul' => 'Manajemen Cinderamata',
+            'cinderamata' => $this->GiftModel->getGift(),
+            'user'  => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
+        ];
+
+        $this->load->view("templates/admin/header", $data);
+        $this->load->view("templates/admin/sidebar", $data);
+        $this->load->view("templates/admin/topbar", $data);
+        $this->load->view('admin/cinderamata/cinderamata', $data);
+        $this->load->view("templates/admin/footer");
+    }
+
+    public function tambah_gift()
+    {
+        $this->form_validation->set_rules('nama_gift', 'Nama Cinderamata', 'required', [
+            'required' => 'Masukkan Nama Cinderamata dengan benar',
+        ]);
+        $this->form_validation->set_rules('harga', 'Harga', 'required|integer', [
+            'required' => 'Masukkan Harga Cinderamata dengan benar',
+            'integer'  => 'Harga Cinderamata hanya bernilai angka',
+        ]);
+        $this->form_validation->set_rules('deskripsi', 'Deskripsi Cinderamata', 'required', [
+            'required' => 'Masukkan Deskripsi Cinderamata dengan benar',
+        ]);
+
+        if ($this->form_validation->run() == false) {
+            $data = [
+                'judul' => 'Tambah Cinderamata',
+                'user'  => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
+            ];
+
+            $this->load->view("templates/admin/header", $data);
+            $this->load->view("templates/admin/sidebar", $data);
+            $this->load->view("templates/admin/topbar", $data);
+            $this->load->view('admin/cinderamata/tambah_gift', $data);
+            $this->load->view("templates/admin/footer");
+        } else {
+            $dataGift = [
+                'nama_gift' => $this->input->post('nama_gift'),
+                'harga'  => $this->input->post('harga'),
+                'deskripsi'  => $this->input->post('deskripsi')
+            ];
+
+            $this->load->model('GiftModel');
+            $this->GiftModel->tambahGift($dataGift);
+
+            $this->session->set_flashdata('message', '<div style="color: #FFF; background: #1f283E;" class="alert alert-success" role="alert">Cinderamata Berhasil Ditambahkan</div>');
+            redirect('admin/cinderamata');
+        }
+    }
+
+    public function ubah_gift($id)
+    {
+        $data['cinderamata'] = $this->GiftModel->getGiftById($id);
+
+        $data = array_merge($data, [
+            'user'  => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
+            'judul' => 'Ubah Informasi Cinderamata'
+        ]);
+
+        $this->form_validation->set_rules('nama_gift', 'Nama Cinderamata', 'required', [
+            'required' => 'Masukkan Nama Cinderamata dengan benar',
+        ]);
+        $this->form_validation->set_rules('harga', 'Harga', 'required|integer', [
+            'required' => 'Masukkan Harga Cinderamata dengan benar',
+            'integer'  => 'Harga Cinderamata hanya bernilai angka',
+        ]);
+        $this->form_validation->set_rules('deskripsi', 'Deskripsi Cinderamata', 'required', [
+            'required' => 'Masukkan Deskripsi Cinderamata dengan benar',
+        ]);
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view("templates/admin/header", $data);
+            $this->load->view("templates/admin/sidebar", $data);
+            $this->load->view("templates/admin/topbar", $data);
+            $this->load->view('admin/cinderamata/ubah_gift', $data);
+            $this->load->view("templates/admin/footer");
+        } else {
+            $dataGift = [
+                'nama_gift' => $this->input->post('nama_gift'),
+                'harga'  => $this->input->post('harga'),
+                'deskripsi'  => $this->input->post('deskripsi')
+            ];
+
+            $this->GiftModel->editGift($id, $dataGift);
+
+            $this->session->set_flashdata('message', '<div style="color: #FFF; background: #1f283E;" class="alert alert-success" role="alert">Informasi Cinderamata telah diubah</div>');
+            redirect('admin/cinderamata');
+        }
+    }
+
+    public function hapus_gift($id)
+    {
+        $gift = $this->db->get_where('cinderamata', ['id' => $id])->row_array();
+
+        if ($gift) {
+            $this->db->delete('cinderamata', ['id' => $id]);
+
+            $this->session->set_flashdata('message', '<div style="color: #FFF; background: #1f283E;" class="alert alert-success" role="alert">Cinderamata berhasil dihapus</div>');
+            redirect('admin/cinderamata');
+        } else {
+            $this->session->set_flashdata('message', '<div style="color: #FFF; background: #1f283E;" class="alert alert-danger" role="alert">Cinderamata gagal dihapus!</div>');
         }
     }
 }

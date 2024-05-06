@@ -5,7 +5,7 @@
                 <h4 class="page-title"><?= $judul; ?></h4>
             </div>
 
-            <a href=" <?= base_url('admin/tambah_sampah'); ?>" class="btn btn-secondary mb-3"> Tambah Jenis Sampah
+            <a href=" <?= base_url('admin/tambah_gift'); ?>" class="btn btn-secondary mb-3"> Tambah Cinderamata
             </a>
 
             <div class="row">
@@ -19,19 +19,21 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col" style="width: 100px;">Jenis Sampah</th>
-                            <th scope="col" style="width: 100px;">Nilai Tukar</th>
-                            <th scope="col" style="width: 100px;">Aksi</th>
+                            <th scope="col" style="width: 100px;">Nama</th>
+                            <th scope="col" style="width: 100px;">Harga</th>
+                            <th scope="col" style="width: 200px;">Deskripsi</th>
+                            <th scope="col" style="width: 150px;">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($sampah as $s) : ?>
+                        <?php foreach ($cinderamata as $c) : ?>
                             <tr>
-                                <td><?= $s['jenis_sampah']; ?></td>
-                                <td>Rp<?= $s['nilai_tukar']; ?>/kg</td>
+                                <td><?= $c['nama_gift']; ?></td>
+                                <td><?= $c['harga']; ?> poin</td>
+                                <td><?= $c['deskripsi']; ?></td>
                                 <td>
-                                    <a href="<?= base_url('admin/ubah_sampah/'   . $s['id']); ?>" class="btn btn-success btn-sm"><i style="color: #000;" class="fa-solid fa-pencil"></i></a>
-                                    <a href="<?= base_url('admin/hapus_sampah/' . $s['id']); ?>" class="btn btn-danger btn-sm"><i style="color: #000;" class="fa-solid fa-trash"></i></a>
+                                    <a href="<?= base_url('admin/ubah_gift/'   . $c['id']); ?>" class="btn btn-success btn-sm"><i style="color: #000;" class="fa-solid fa-pencil"></i></a>
+                                    <a href="<?= base_url('admin/hapus_gift/' . $c['id']); ?>" class="btn btn-danger btn-sm"><i style="color: #000;" class="fa-solid fa-trash"></i></a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
