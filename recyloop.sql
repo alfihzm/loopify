@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 06, 2024 at 10:07 AM
+-- Generation Time: May 06, 2024 at 05:20 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -28,10 +28,17 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `cinderamata` (
   `id` int(11) NOT NULL,
-  `nama` varchar(64) NOT NULL,
+  `nama_gift` varchar(64) NOT NULL,
   `harga` int(64) NOT NULL,
-  `deskripsi` varchar(256) NOT NULL
+  `deskripsi` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cinderamata`
+--
+
+INSERT INTO `cinderamata` (`id`, `nama_gift`, `harga`, `deskripsi`) VALUES
+(1, 'Tote Bag', 500, 'Tote Bag serbaguna ramah lingkungan, membawa perlengkapan anda saat bepergian. Tersedia dengan berbagai ukuran.');
 
 -- --------------------------------------------------------
 
@@ -346,7 +353,7 @@ ALTER TABLE `user_sub_menu`
 -- AUTO_INCREMENT for table `cinderamata`
 --
 ALTER TABLE `cinderamata`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `company`
 --
