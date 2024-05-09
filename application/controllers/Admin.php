@@ -20,7 +20,7 @@ class Admin extends CI_Controller
         $this->load->view("templates/admin/header", $data);
         $this->load->view("templates/admin/sidebar", $data);
         $this->load->view("templates/admin/topbar", $data);
-        $this->load->view("admin/index", $data);
+        $this->load->view("admin/dashboard/index", $data);
         $this->load->view("templates/admin/footer");
     }
 
@@ -35,7 +35,7 @@ class Admin extends CI_Controller
         $this->load->view("templates/admin/header", $data);
         $this->load->view("templates/admin/sidebar", $data);
         $this->load->view("templates/admin/topbar", $data);
-        $this->load->view('admin/my_profile', $data);
+        $this->load->view('admin/konfigurasi_admin/my_profile', $data);
         $this->load->view("templates/admin/footer");
     }
 
@@ -53,7 +53,7 @@ class Admin extends CI_Controller
             $this->load->view("templates/admin/header", $data);
             $this->load->view("templates/admin/sidebar", $data);
             $this->load->view("templates/admin/topbar", $data);
-            $this->load->view('admin/edit_profile', $data);
+            $this->load->view('admin/konfigurasi_admin/edit_profile', $data);
             $this->load->view("templates/admin/footer");
         } else {
             $nama = $this->input->post('nama', true);
@@ -102,11 +102,10 @@ class Admin extends CI_Controller
         $this->form_validation->set_rules('new_password2', 'Konfirmasi Password Baru', 'required|trim|min_length[5]|matches[new_password1]');
 
         if ($this->form_validation->run() == false) {
-            // Tampilkan form ubah password
             $this->load->view('templates/admin/header', $data);
             $this->load->view('templates/admin/sidebar', $data);
             $this->load->view('templates/admin/topbar', $data);
-            $this->load->view('admin/ubah_password', $data);
+            $this->load->view('admin/konfigurasi_admin/ubah_password', $data);
             $this->load->view('templates/admin/footer');
         } else {
             $current_password = $this->input->post('current_password');
@@ -119,7 +118,6 @@ class Admin extends CI_Controller
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password baru tidak boleh sama dengan password saat ini</div>');
                     redirect('admin/ubah_password');
                 } else {
-                    // Password is valid, update password
                     $password_hash = password_hash($new_password, PASSWORD_DEFAULT);
                     $this->db->set('password', $password_hash);
                     $this->db->where('username', $this->session->userdata('username'));
@@ -132,6 +130,7 @@ class Admin extends CI_Controller
         }
     }
 
+    // -> ! LIST STAFF ! <-
     // INFORMASI TABEL STAFF
     public function staff()
     {
@@ -144,7 +143,7 @@ class Admin extends CI_Controller
         $this->load->view("templates/admin/header", $data);
         $this->load->view("templates/admin/sidebar", $data);
         $this->load->view("templates/admin/topbar", $data);
-        $this->load->view('admin/staff', $data);
+        $this->load->view('admin/staff/staff', $data);
         $this->load->view("templates/admin/footer");
     }
 
@@ -152,7 +151,7 @@ class Admin extends CI_Controller
     public function add_staff()
     {
         // ID Staff
-        $this->form_validation->set_rules('idstaff', 'ID Staff', 'required|trim|max_length[16]|is_unique[staff.id_staff]|integer', [
+        $this->form_validation->set_rules('idstaff', 'ID Staff', 'required|trim|max_length[16]|is_unique[user.id_staff]|integer', [
             'required'    => 'Masukkan ID Staff dengan Benar!',
             'max_length'  => 'Maksimal 16 Karakter',
             'is_unique'   => 'ID Staff sudah ada di dalam database',
@@ -194,7 +193,7 @@ class Admin extends CI_Controller
             $this->load->view('templates/admin/header', $data);
             $this->load->view('templates/admin/sidebar', $data);
             $this->load->view('templates/admin/topbar', $data);
-            $this->load->view('admin/add_staff', $data);
+            $this->load->view('admin/staff/add_staff', $data);
             $this->load->view('templates/admin/footer');
         } else {
             $dataUser = [
@@ -256,7 +255,7 @@ class Admin extends CI_Controller
         $this->load->view("templates/admin/header", $data);
         $this->load->view("templates/admin/sidebar", $data);
         $this->load->view("templates/admin/topbar", $data);
-        $this->load->view('admin/staff_info', $data);
+        $this->load->view('admin/staff/staff_info', $data);
         $this->load->view("templates/admin/footer");
     }
     public function staff_edit($id)
@@ -273,7 +272,7 @@ class Admin extends CI_Controller
             $this->load->view("templates/admin/header", $data);
             $this->load->view("templates/admin/sidebar", $data);
             $this->load->view("templates/admin/topbar", $data);
-            $this->load->view('admin/staff_edit', $data);
+            $this->load->view('admin/staff/staff_edit', $data);
             $this->load->view("templates/admin/footer");
         } else {
             $userData = [
@@ -302,6 +301,134 @@ class Admin extends CI_Controller
         }
     }
 
+    // -> ! LIST MEMBER ! <-
+    // INFORMASI TABEL MEMBER
+    public function member()
+    {
+        $data = [
+            'judul' => 'Manajemen Member',
+            'members' => $this->UserModel->getUserByRole(3),
+            'user' => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array()
+        ];
+
+        $this->load->view("templates/admin/header", $data);
+        $this->load->view("templates/admin/sidebar", $data);
+        $this->load->view("templates/admin/topbar", $data);
+        $this->load->view('admin/member/member', $data);
+        $this->load->view("templates/admin/footer");
+    }
+
+    // TAMBAH STAFF
+    public function add_member()
+    {
+        // ID Staff
+        $this->form_validation->set_rules('idmember', 'ID Member', 'required|trim|max_length[16]|is_unique[user.id_member]|integer', [
+            'required'    => 'Masukkan ID Member dengan Benar!',
+            'max_length'  => 'Maksimal 16 Karakter',
+            'is_unique'   => 'ID Member sudah ada di dalam database',
+            'integer'     => 'ID Member hanya berisi angka'
+        ]);
+        // Nama
+        $this->form_validation->set_rules('nama', 'Nama', 'required', [
+            'required'    => 'Masukkan Nama Lengkap Member dengan Benar',
+        ]);
+        // Tanggal Lahir
+        $this->form_validation->set_rules('lahir', 'Tanggal Lahir', 'required', [
+            'required'    => 'Masukkan Tanggal Lahir Member dengan Benar'
+        ]);
+        // Email
+        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email', [
+            'required'    => 'Masukkan Email Member dengan Benar!',
+            'valid_email' => 'Masukkan Email Member dengan Sesuai'
+        ]);
+        // Username
+        $this->form_validation->set_rules('username', 'Username', 'required', [
+            'required'    => 'Masukkan Username Member dengan Benar'
+        ]);
+        // No_telp
+        $this->form_validation->set_rules('no_telp', 'No. Telp', 'required|integer', [
+            'required'    => 'Masukkan No. Telp Member dengan Benar',
+            'integer'     => 'Nomor Telepon hanya berisi angka'
+        ]);
+        // Alamat
+        $this->form_validation->set_rules('alamat', 'Alamat', 'required', [
+            'required'    => 'Masukkan Alamat Member dengan Benar',
+        ]);
+
+        if ($this->form_validation->run() == false) {
+            $data = [
+                'judul' => 'Tambah Member',
+                'user' => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array()
+            ];
+
+            $this->load->view('templates/admin/header', $data);
+            $this->load->view('templates/admin/sidebar', $data);
+            $this->load->view('templates/admin/topbar', $data);
+            $this->load->view('admin/member/add_member', $data);
+            $this->load->view('templates/admin/footer');
+        } else {
+            $dataUser = [
+                'id_member'    => htmlspecialchars($this->input->post('idmember')),
+                'nama'         => htmlspecialchars($this->input->post('nama')),
+                'lahir'        => date('Y-m-d', strtotime($this->input->post('lahir'))),
+                'email'        => htmlspecialchars($this->input->post('email')),
+                'username'     => htmlspecialchars($this->input->post('username')),
+                'password'     => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+                'role_id'      => 3,
+                'photo'        => 'default.jpg',
+                'no_telp'      => htmlspecialchars($this->input->post('no_telp')),
+                'alamat'       => htmlspecialchars($this->input->post('alamat')),
+                'total_sampah' => 0,
+                'level'        => 1,
+                'poin'         => 0,
+                'date_created' => time(),
+                'is_active'    => 1,
+            ];
+
+            $this->load->model('UserModel');
+            $userSaved = $this->UserModel->tambahUser($dataUser);
+
+            if ($userSaved) {
+                $this->session->set_flashdata('message', '<div style="color: #FFF; background: #1f283E;" class="alert alert-success" role="alert">Member Berhasil Ditambahkan</div>');
+                redirect('admin/member');
+            } else {
+                $this->db->trans_rollback();
+                $this->session->set_flashdata('message', '<div style="color: #FFF; background: #1f283E;" class="alert alert-danger" role="alert">Gagal menambahkan Member</div>');
+                redirect('admin/add_member');
+            }
+        }
+    }
+
+    public function member_info($id)
+    {
+        $data = [
+            'judul' => 'Informasi Member',
+            'user' => $this->db->get_where('user', ['id_member' => $id])->row_array()
+        ];
+
+        $this->load->view("templates/admin/header", $data);
+        $this->load->view("templates/admin/sidebar", $data);
+        $this->load->view("templates/admin/topbar", $data);
+        $this->load->view('admin/member/member_info', $data);
+        $this->load->view("templates/admin/footer");
+    }
+
+    public function member_delete($id)
+    {
+        $user = $this->db->get_where('user', ['id_member' => $id])->row_array();
+
+        if ($user) {
+            $this->db->delete('user', ['id_member' => $id]);
+
+            $this->session->set_flashdata('message', '<div class="alert alert-success" background: #1f283E;" role="alert">Member berhasil dihapus</div>');
+            redirect('admin/member');
+        } else {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" background: #1f283E;" role="alert">Member gagal dihapus!</div>');
+        }
+    }
+
+    // -> ! LIST SAMPAH ! <-
+    // INFORMASI TABEL MEMBER
     public function sampah()
     {
         $data = [
