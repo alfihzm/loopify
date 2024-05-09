@@ -22,6 +22,7 @@
                             <th scope="col" style="width: 100px;">Nama</th>
                             <th scope="col" style="width: 100px;">Harga</th>
                             <th scope="col" style="width: 200px;">Deskripsi</th>
+                            <th scope="col" style="width: 100px;">Foto</th>
                             <th scope="col" style="width: 150px;">Aksi</th>
                         </tr>
                     </thead>
@@ -31,6 +32,9 @@
                                 <td><?= $c['nama_gift']; ?></td>
                                 <td><?= $c['harga']; ?> poin</td>
                                 <td><?= $c['deskripsi']; ?></td>
+                                <td>
+                                    <img class="mb-2 mt-2" style="border: 1px solid #FFF; border-radius: 5px;" src="<?= base_url('assets/images/cinderamata/' . $c['photo']); ?>" alt="Gambar" width="85" height="85">
+                                </td>
                                 <td>
                                     <a href="<?= base_url('admin/ubah_gift/'   . $c['id']); ?>" class="btn btn-success btn-sm"><i style="color: #000;" class="fa-solid fa-pencil"></i></a>
                                     <a href="<?= base_url('admin/hapus_gift/' . $c['id']); ?>" class="btn btn-danger btn-sm"><i style="color: #000;" class="fa-solid fa-trash"></i></a>

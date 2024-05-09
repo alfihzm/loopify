@@ -14,9 +14,6 @@
 <div class="main-panel" style="font-family: quicksand;">
     <div class="content">
         <div class="page-inner">
-            <div class="page-header">
-                <h4 class="page-title"><?= $judul; ?></h4>
-            </div>
 
             <div class="row">
                 <div class="col-lg-6">
@@ -30,7 +27,7 @@
                     <div class="card-body">
                         <h5 style="text-align: center;" class="card-title mt-1"><?= $judul; ?></h5>
                         <hr>
-                        <form action="<?= base_url('admin/ubah_gift/') . $cinderamata['id']; ?>" method="POST">
+                        <form action="<?= base_url('admin/ubah_gift/') . $cinderamata['id']; ?>" method="POST" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
@@ -46,6 +43,28 @@
                                         <?= form_error('harga', '<small class="text-danger">', '</small>'); ?>
                                     </div>
                                 </div>
+                                <div class="col-sm-12 mb-3">
+                                    <div class="form-group">
+                                        <label for="photo" class="col-form-label">Foto Cinderamata</label>
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <?php if (!empty($cinderamata['photo'])) : ?>
+                                                    <img src="<?= base_url('assets/images/cinderamata/') . $cinderamata['photo']; ?>" class="img-thumbnail border-0">
+                                                <?php else : ?>
+                                                    <img src="<?= base_url('assets/images/default_gift.jpg'); ?>" class="img-thumbnail">
+                                                <?php endif; ?>
+                                            </div>
+                                        </div>
+                                        <div class="custom-file mt-3">
+                                            <input type="file" class="custom-file-input" id="photo" name="photo">
+                                            <label class="custom-file-label" for="photo" style="background: #1A2035;">Pilih
+                                                gambar</label>
+                                        </div>
+
+                                        <?= form_error('photo', '<small class="text-danger">', '</small>'); ?>
+                                    </div>
+                                </div>
+
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <label for="deskripsi">Deskripsi</label>

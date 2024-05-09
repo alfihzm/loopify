@@ -92,6 +92,46 @@ class Admin extends CI_Controller
         }
     }
 
+    public function ubah_password()
+    {
+        $data['judul'] = 'Ubah Password';
+        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+
+        $this->form_validation->set_rules('current_password', 'Password Saat Ini', 'required|trim');
+        $this->form_validation->set_rules('new_password1', 'Password Baru', 'required|trim|min_length[5]|matches[new_password2]');
+        $this->form_validation->set_rules('new_password2', 'Konfirmasi Password Baru', 'required|trim|min_length[5]|matches[new_password1]');
+
+        if ($this->form_validation->run() == false) {
+            // Tampilkan form ubah password
+            $this->load->view('templates/admin/header', $data);
+            $this->load->view('templates/admin/sidebar', $data);
+            $this->load->view('templates/admin/topbar', $data);
+            $this->load->view('admin/ubah_password', $data);
+            $this->load->view('templates/admin/footer');
+        } else {
+            $current_password = $this->input->post('current_password');
+            $new_password = $this->input->post('new_password1');
+            if (!password_verify($current_password, $data['user']['password'])) {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password saat ini salah.</div>');
+                redirect('user/ubah_password');
+            } else {
+                if ($current_password == $new_password) {
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password baru tidak boleh sama dengan password saat ini</div>');
+                    redirect('admin/ubah_password');
+                } else {
+                    // Password is valid, update password
+                    $password_hash = password_hash($new_password, PASSWORD_DEFAULT);
+                    $this->db->set('password', $password_hash);
+                    $this->db->where('username', $this->session->userdata('username'));
+                    $this->db->update('user');
+
+                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Password berhasil diubah!</div>');
+                    redirect('admin/my_profile');
+                }
+            }
+        }
+    }
+
     // INFORMASI TABEL STAFF
     public function staff()
     {
@@ -405,9 +445,10 @@ class Admin extends CI_Controller
             $this->load->view("templates/admin/footer");
         } else {
             $dataGift = [
-                'nama_gift' => $this->input->post('nama_gift'),
-                'harga'  => $this->input->post('harga'),
-                'deskripsi'  => $this->input->post('deskripsi')
+                'nama_gift' => htmlspecialchars($this->input->post('nama_gift')),
+                'harga'     => htmlspecialchars($this->input->post('harga')),
+                'photo'     => 'default_gift.jpg',
+                'deskripsi' => htmlspecialchars($this->input->post('deskripsi'))
             ];
 
             $this->load->model('GiftModel');
@@ -418,6 +459,7 @@ class Admin extends CI_Controller
         }
     }
 
+    // UBAH CINDERAMATA
     public function ubah_gift($id)
     {
         $data['cinderamata'] = $this->GiftModel->getGiftById($id);
@@ -427,16 +469,9 @@ class Admin extends CI_Controller
             'judul' => 'Ubah Informasi Cinderamata'
         ]);
 
-        $this->form_validation->set_rules('nama_gift', 'Nama Cinderamata', 'required', [
-            'required' => 'Masukkan Nama Cinderamata dengan benar',
-        ]);
-        $this->form_validation->set_rules('harga', 'Harga', 'required|integer', [
-            'required' => 'Masukkan Harga Cinderamata dengan benar',
-            'integer'  => 'Harga Cinderamata hanya bernilai angka',
-        ]);
-        $this->form_validation->set_rules('deskripsi', 'Deskripsi Cinderamata', 'required', [
-            'required' => 'Masukkan Deskripsi Cinderamata dengan benar',
-        ]);
+        $this->form_validation->set_rules('nama_gift', 'Nama Cinderamata', 'required');
+        $this->form_validation->set_rules('harga', 'Harga', 'required|integer');
+        $this->form_validation->set_rules('deskripsi', 'Deskripsi Cinderamata', 'required');
 
         if ($this->form_validation->run() == false) {
             $this->load->view("templates/admin/header", $data);
@@ -445,18 +480,46 @@ class Admin extends CI_Controller
             $this->load->view('admin/cinderamata/ubah_gift', $data);
             $this->load->view("templates/admin/footer");
         } else {
+            $nama_gift = $this->input->post('nama_gift');
+            $harga = $this->input->post('harga');
+            $deskripsi = $this->input->post('deskripsi');
+
             $dataGift = [
-                'nama_gift' => $this->input->post('nama_gift'),
-                'harga'  => $this->input->post('harga'),
-                'deskripsi'  => $this->input->post('deskripsi')
+                'nama_gift' => $nama_gift,
+                'harga' => $harga,
+                'deskripsi' => $deskripsi
             ];
+
+            if (!empty($_FILES['photo']['name'])) {
+                $config['upload_path'] = './assets/images/cinderamata/';
+                $config['allowed_types'] = 'jpg|jpeg|png';
+                $config['max_size'] = 10240;
+
+                $this->load->library('upload', $config);
+
+                if ($this->upload->do_upload('photo')) {
+                    if ($data['cinderamata']['photo'] != 'default_gift.jpg') {
+                        unlink('./assets/images/cinderamata/' . $data['cinderamata']['photo']);
+                    }
+
+                    $gambarGiftBaru = $this->upload->data('file_name');
+                    $dataGift['photo'] = $gambarGiftBaru;
+                } else {
+                    $upload_error = $this->upload->display_errors();
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">' . $upload_error . '</div>');
+                    redirect('admin/ubah_gift/' . $id);
+                }
+            }
 
             $this->GiftModel->editGift($id, $dataGift);
 
-            $this->session->set_flashdata('message', '<div style="color: #FFF; background: #1f283E;" class="alert alert-success" role="alert">Informasi Cinderamata telah diubah</div>');
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Informasi Cinderamata telah diubah</div>');
+
             redirect('admin/cinderamata');
         }
     }
+
+
 
     public function hapus_gift($id)
     {
