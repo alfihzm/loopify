@@ -30,7 +30,7 @@
                     <div class="card-body">
                         <h5 style="text-align: center;" class="card-title mt-1"><?= $judul; ?></h5>
                         <hr>
-                        <form action="<?= base_url('admin/tambah_gift') ?>" method="POST">
+                        <form action="<?= base_url('admin/tambah_gift') ?>" method="POST" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
@@ -53,11 +53,11 @@
                                         <?= form_error('deskripsi', '<small class="text-danger">', '</small>'); ?>
                                     </div>
                                 </div>
-                                <div class="col-sm-12" style="display: flex; justify-content: space-evenly; align-items: center; margin-top: 10px">
+                                <div class="col-sm-12" style="display: flex; justify-content: space-evenly; align-items: center; margin-top: 10px;">
                                     <button type="submit" class="btn btn-primary">Tambah</button>
-                                    <a style="width: 100px;" href="<?= base_url('admin/sampah'); ?>" class="btn btn-warning">
-                                        Batal </a>
+                                    <a href="<?= base_url('admin/cinderamata'); ?>" class="btn btn-warning" style="width: 100px;">Batal</a>
                                 </div>
+                            </div>
                         </form>
                     </div>
                 </div>
