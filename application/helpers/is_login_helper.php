@@ -1,23 +1,20 @@
 <?php
-
 function is_login()
 {
-    $var = get_instance();
+    $CI = get_instance();
 
-    if (!$var->session->userdata('username')) {
+    if (!$CI->session->userdata('username')) {
         redirect('auth');
-    } else {
-        $role_id = $var->session->userdata('role_id');
-        $menu = $var->uri->segment(1);
+    }
 
-        $queryMenu = $var->db->get_where('user_menu', ['menu' => $menu])->row_array();
-        $menu_id = $queryMenu;
+    $role_id = $CI->session->userdata('role_id');
+    $menu = $CI->uri->segment(1);
 
-        if ($role_id == 1) {
-            return;
-        }
+    $queryMenu = $CI->db->get_where('user_menu', ['menu' => $menu])->row_array();
+    if ($queryMenu) {
+        $menu_id = $queryMenu['id'];
 
-        $userAccess = $var->db->get_where('user_access_menu', [
+        $userAccess = $CI->db->get_where('user_access_menu', [
             'role_id' => $role_id,
             'menu_id' => $menu_id
         ]);

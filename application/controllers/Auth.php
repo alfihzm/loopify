@@ -5,13 +5,21 @@ class Auth extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-
         $this->load->library('form_validation');
-        // $this->load->language('form_validation', 'english');
     }
 
     public function index()
     {
+        if ($this->is_already_login()) {
+            if ($this->session->userdata('role_id') == 1) {
+                redirect('admin');
+            } elseif ($this->session->userdata('role_id') == 2) {
+                redirect('staff');
+            } else {
+                redirect('home');
+            }
+        }
+
         $this->form_validation->set_rules('username', 'Username', 'trim|required');
         $this->form_validation->set_rules('password', 'Password', 'trim|required');
 
@@ -20,10 +28,14 @@ class Auth extends CI_Controller
 
             $this->load->view('templates/auth_header', $data);
             $this->load->view('auth/login', $data);
-            // $this->load->view("templates/auth_footer");
         } else {
             $this->_login();
         }
+    }
+
+    public function is_already_login()
+    {
+        return $this->session->userdata('username');
     }
 
     private function _login()
@@ -39,10 +51,12 @@ class Auth extends CI_Controller
                     $data = [
                         'username' => $user['username'],
                         'role_id' => $user['role_id'],
+                        // Tambahkan data sesuai kebutuhan
                     ];
 
                     $this->session->set_userdata($data);
 
+                    // Redirect sesuai role_id
                     if ($user['role_id'] == 1) {
                         redirect('admin');
                     } elseif ($user['role_id'] == 2) {
@@ -51,18 +65,15 @@ class Auth extends CI_Controller
                         redirect('home');
                     }
                 } else {
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> Password yang anda masukkan salah. </div>');
-
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password yang Anda masukkan salah.</div>');
                     redirect('auth');
                 }
             } else {
-                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> Akun ini belum diaktifkan. </div>');
-
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Akun belum diaktifkan.</div>');
                 redirect('auth');
             }
         } else {
-            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> Username tidak ditemukan </div>');
-
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Username tidak ditemukan.</div>');
             redirect('auth');
         }
     }
