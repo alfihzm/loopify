@@ -8,14 +8,15 @@
                     <div class="card-body">
                         <h5 style="text-align: center;" class="card-title mt-1"><?= $judul; ?></h5>
                         <hr>
-                        <form action="<?= base_url('admin/staff_edit/') . $user['id']; ?>" method="POST">
+                        <form action="<?= base_url('admin/member_edit/') . $user['id']; ?>" method="POST">
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="idstaff">ID Staff</label>
-                                        <input style="color: #000;" type="text" class="form-control" id="idstaff"
-                                            name="idstaff" autocomplete="off" value="<?= $user['id_staff'] ?>" readonly>
-                                        <?= form_error('idstaff', '<small class="text-danger">', '</small>'); ?>
+                                        <label for="idmember">ID Member</label>
+                                        <input style="color: #000;" type="text" class="form-control" id="idmember"
+                                            name="idmember" autocomplete="off" value="<?= $user['id_member'] ?>"
+                                            readonly>
+                                        <?= form_error('idmember', '<small class="text-danger">', '</small>'); ?>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
@@ -87,7 +88,8 @@
                             <div class="col-sm-12"
                                 style="display: flex; justify-content: space-evenly; align-items: center; margin-top: 10px">
                                 <button type="submit" class="btn btn-danger">Simpan</button>
-                                <a style="width: 100px;" href="<?= base_url('admin/staff'); ?>" class="btn btn-warning">
+                                <a style="width: 100px;" href="<?= base_url('admin/member'); ?>"
+                                    class="btn btn-warning">
                                     Batal </a>
                             </div>
                         </form>

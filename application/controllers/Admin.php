@@ -260,7 +260,7 @@ class Admin extends CI_Controller
     }
     public function staff_edit($id)
     {
-        $data['user'] = $this->UserModel->getUserById($id);
+        $data['user'] = $this->UserModel->getStaffById($id);
         $data['judul'] = 'Ubah Informasi Staff';
 
         $this->form_validation->set_rules('nama', 'Nama', 'required');
@@ -411,6 +411,35 @@ class Admin extends CI_Controller
         $this->load->view("templates/admin/topbar", $data);
         $this->load->view('admin/member/member_info', $data);
         $this->load->view("templates/admin/footer");
+    }
+
+    public function member_edit($id)
+    {
+        $data['user'] = $this->UserModel->getMemberById($id);
+        $data['judul'] = 'Ubah Informasi Member';
+
+        $this->form_validation->set_rules('nama', 'Nama', 'required');
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+        $this->form_validation->set_rules('no_telp', 'No. Telepon', 'required');
+        $this->form_validation->set_rules('alamat', 'Alamat', 'required');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view("templates/admin/header", $data);
+            $this->load->view("templates/admin/sidebar", $data);
+            // $this->load->view("templates/admin/topbar", $data);
+            $this->load->view('admin/member/member_edit', $data);
+            $this->load->view("templates/admin/footer");
+        } else {
+            $userData = [
+                'nama' => htmlspecialchars($this->input->post('nama')),
+                'email' => htmlspecialchars($this->input->post('email'))
+            ];
+
+            $this->UserModel->editUser($id, $userData);
+
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Profil Member telah Diubah</div>');
+            redirect('admin/member');
+        }
     }
 
     public function member_delete($id)

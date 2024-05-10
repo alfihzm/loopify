@@ -32,9 +32,15 @@ class UserModel extends CI_Model
         return $this->db->update('user', $data);
     }
 
-    public function getUserById($id)
+    public function getStaffById($id)
     {
         $query = $this->db->get_where('user', ['id_staff' => $id]);
+        return $query->row_array();
+    }
+
+    public function getMemberById($id)
+    {
+        $query = $this->db->get_where('user', ['id_member' => $id]);
         return $query->row_array();
     }
 }
