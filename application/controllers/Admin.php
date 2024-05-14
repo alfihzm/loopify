@@ -28,10 +28,28 @@ class Admin extends CI_Controller
     // INFORMASI TABEL STAFF
     public function staff()
     {
+        //Ini code lama coeggg
+        // $data = [
+        //     'judul' => 'Manajemen Staff',
+        //     'members' => $this->UserModel->getUserByRole(2),
+        //     'user' => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array()
+        // ];
+
+        $user = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+        if (!$user) {
+            redirect('home');
+            return;
+        }
+
+        if ($user['role_id'] == 2) {
+            redirect('staff'); 
+            return; 
+        }
+
         $data = [
             'judul' => 'Manajemen Staff',
             'members' => $this->UserModel->getUserByRole(2),
-            'user' => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array()
+            'user' => $user
         ];
 
         $this->load->view("templates/admin/header", $data);
