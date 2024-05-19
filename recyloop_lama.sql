@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 19, 2024 at 03:02 PM
+-- Generation Time: May 11, 2024 at 11:13 AM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -134,7 +134,6 @@ CREATE TABLE `staff` (
 --
 
 INSERT INTO `staff` (`id_staff`, `nama`, `email`, `username`, `alamat`, `no_telp`, `photo`, `role_id`, `is_active`) VALUES
-(0, 'Makarim', 'RI26@gmail.com', 'RI26', 'BSD ', '085858584040', 'default.jpg', 2, 1),
 (10240001, 'Derby Markus', 'derbymarkus@gmail.com', 'derby', 'Bandung', '082173958206', 'default.jpg', 2, 1),
 (10240002, 'Derby Fransiskus', 'derby@gmail.com', 'derby', 'Bandung', '082173958206', 'default.jpg', 2, 1),
 (10240004, 'Dendi Rahmat', 'dendi@gmail.com', 'dendi', 'Lebak', '082175927592', 'default.jpg', 2, 1),
@@ -142,29 +141,7 @@ INSERT INTO `staff` (`id_staff`, `nama`, `email`, `username`, `alamat`, `no_telp
 (10240006, 'Agus Susanto', 'agus@gmail.com', 'agus', 'Pandeglang', '082173952058', 'default.jpg', 2, 1),
 (10240007, 'Damar Aji', 'damar@gmail.com', 'damar', 'Sukabumi', '082186729673', 'default.jpg', 2, 1),
 (10240011, 'Budi Pamungkas', 'budipm@gmail.com', 'budipm', 'Nganjuk', '082174927593', 'default.jpg', 2, 1),
-(10240012, 'Mohammad Hamzah', 'mohamzah@gmail.com', 'hamzah', 'Kabupaten Tangerang', '082161872392', 'default.jpg', 2, 1),
-(74574387, 'Maaruf', 'RI2@gmail.com', 'RI2', 'BSD', '0858585858', 'default.jpg', 2, 1),
-(2147483647, 'Makarim', 'RI26@gmail.com', 'RI26', 'BSDQ', '085858584040', 'default.jpg', 2, 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `transaction`
---
-
-CREATE TABLE `transaction` (
-  `id` int(11) NOT NULL,
-  `id_member` int(11) NOT NULL,
-  `nama` varchar(128) NOT NULL,
-  `tanggal` date NOT NULL,
-  `jumlah_botol` int(11) NOT NULL,
-  `jumlah_kaleng` int(11) NOT NULL,
-  `jumlah_kardus` int(11) NOT NULL,
-  `lokasi` varchar(128) NOT NULL,
-  `catatan` varchar(128) DEFAULT NULL,
-  `status` varchar(16) NOT NULL,
-  `tgl_validasi` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+(10240012, 'Mohammad Hamzah', 'mohamzah@gmail.com', 'hamzah', 'Kabupaten Tangerang', '082161872392', 'default.jpg', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -187,9 +164,8 @@ CREATE TABLE `user` (
   `no_telp` varchar(13) NOT NULL,
   `alamat` varchar(256) NOT NULL,
   `total_sampah` int(11) DEFAULT NULL,
-  `total_koin` int(32) NOT NULL,
   `level` int(11) NOT NULL,
-  `koin` int(11) NOT NULL,
+  `poin` int(11) NOT NULL,
   `komentar` varchar(256) DEFAULT NULL,
   `date_created` int(11) NOT NULL,
   `is_active` int(1) NOT NULL
@@ -199,17 +175,16 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `id_admin`, `id_staff`, `id_member`, `nama`, `lahir`, `email`, `username`, `password`, `role_id`, `photo`, `no_telp`, `alamat`, `total_sampah`, `total_koin`, `level`, `koin`, `komentar`, `date_created`, `is_active`) VALUES
-(1, NULL, NULL, 10480001, 'Betara', '1999-01-01', 'betara@gmail.com', 'betara', '$2y$10$FLuzN7X92R2TQFttbmiQDOacjuIKMV8NnqPrjLrGdU.ow1DNxVEhu', 3, 'default.jpg', '082161872392', 'Jakarta Selatan', 0, 0, 1, 0, NULL, 1712325370, 1),
-(2, 19220821, NULL, NULL, 'Mohammad Alfi Hamzami', '1999-11-29', 'alfihzm@gmail.com', 'alfihzm', '$2y$10$D5MOyBMj5CDPCrew38NFT.8yOiEygBprrxhQs009pHmlBCnLyQ55O', 1, 'user_Mohammad_Alfi_Hamzami1.jpg', '082161872392', 'Kabupaten Tangerang', NULL, 0, 1, 0, NULL, 1712465510, 1),
-(6, NULL, 10240001, NULL, 'Derby Hendrawan', '2005-05-11', 'derby@gmail.com', 'derby', '$2y$10$o1uWEO7QFLgEyQ3wqSbCAu1kAwjxfYa9/RJ3MJosDtN5NrZmCEX6C', 2, 'default.jpg', '082173958206', 'Bandung', NULL, 0, 1, 0, NULL, 1714830415, 1),
-(7, NULL, 10240004, NULL, 'Dendi Rahmat', '2006-11-04', 'dendi@gmail.com', 'dendi', '$2y$10$lQlCdblquou221pGTm3MDudqMSSENy17VBjUvcr7MTgrDFqCDUeUu', 2, 'default.jpg', '082175927592', 'Lebak', NULL, 0, 1, 0, NULL, 1714840913, 1),
-(8, NULL, 10240005, NULL, 'Adam Warlock', '2004-04-04', 'adam@gmail.com', 'adam', '$2y$10$PsSx5kVJY/otqt2CNtqiCeV.cyEJSbzGVzDo2OQF0vJLjHe9VAHLq', 2, 'default.jpg', '082174927592', 'Manchester', NULL, 0, 1, 0, NULL, 1714841969, 1),
-(9, NULL, 10240006, NULL, 'Agus Susanto', '2004-04-24', 'agus@gmail.com', 'agus', '$2y$10$tgW2yVQhnKz9scSIv1QcC..v0UZa7nQvgCPmXzJtnckuqbm0uKbdG', 2, 'default.jpg', '082173952058', 'Pandeglang', NULL, 0, 1, 0, NULL, 1714842198, 1),
-(10, NULL, 10240011, NULL, 'Budi Pamungkas', '2001-01-01', 'budipm@gmail.com', 'budipm', '$2y$10$YPHbJNkobDpANAQMG43cSOWfw19uCnW/oxQCIRYT8bzhrsxP2oaSi', 2, 'default.jpg', '082174927593', 'Nganjuk', NULL, 0, 1, 0, NULL, 1715140720, 1),
-(12, NULL, NULL, 10480002, 'Supriyadi', '1982-02-03', 'supri@gmail.com', 'supriyadi', '$2y$10$LIWTv1QQF6/gxHAB8lE.h.wD/eNkra5CMojoYePCPGfC8c1wAXJ7K', 3, 'default.jpg', '082174937285', 'Tangerang', 0, 0, 1, 0, NULL, 1715286102, 1),
-(13, NULL, 10240012, NULL, 'Mohammad Hamzah', '1999-11-29', 'mohamzah@gmail.com', 'hamzah', '$2y$10$/PlvahgZlEILDRSvuGQc1eL0OsDMSpyT/N4Gaz0mylskekcdgay2u', 2, 'user_Mohammad_Hamzah.jpg', '082161872392', 'Kabupaten Tangerang', NULL, 0, 1, 0, NULL, 1715412654, 1),
-(14, NULL, 56002616, NULL, 'Maaruf', '2024-05-19', 'RI2@gmail.com', 'RI2', '$2y$10$6SyqSbx68Rw97TI4eiCMCexPW2sA3hA0ZhmMyTyF2aV9bP4vRm/vC', 2, 'default.jpg', '0858585858', 'BSD', NULL, 0, 1, 0, NULL, 1716102567, 1);
+INSERT INTO `user` (`id`, `id_admin`, `id_staff`, `id_member`, `nama`, `lahir`, `email`, `username`, `password`, `role_id`, `photo`, `no_telp`, `alamat`, `total_sampah`, `level`, `poin`, `komentar`, `date_created`, `is_active`) VALUES
+(1, NULL, NULL, 10480001, 'Betara', '1999-01-01', 'betara@gmail.com', 'betara', '$2y$10$FLuzN7X92R2TQFttbmiQDOacjuIKMV8NnqPrjLrGdU.ow1DNxVEhu', 3, 'default.jpg', '082161872392', 'Jakarta Selatan', 0, 1, 0, NULL, 1712325370, 1),
+(2, 19220821, NULL, NULL, 'Mohammad Alfi Hamzami', '1999-11-29', 'alfihzm@gmail.com', 'alfihzm', '$2y$10$D5MOyBMj5CDPCrew38NFT.8yOiEygBprrxhQs009pHmlBCnLyQ55O', 1, 'user_Mohammad_Alfi_Hamzami1.jpg', '082161872392', 'Kabupaten Tangerang', NULL, 1, 0, NULL, 1712465510, 1),
+(6, NULL, 10240001, NULL, 'Derby Hendrawan', '2005-05-11', 'derby@gmail.com', 'derby', '$2y$10$o1uWEO7QFLgEyQ3wqSbCAu1kAwjxfYa9/RJ3MJosDtN5NrZmCEX6C', 2, 'default.jpg', '082173958206', 'Bandung', NULL, 1, 0, NULL, 1714830415, 1),
+(7, NULL, 10240004, NULL, 'Dendi Rahmat', '2006-11-04', 'dendi@gmail.com', 'dendi', '$2y$10$lQlCdblquou221pGTm3MDudqMSSENy17VBjUvcr7MTgrDFqCDUeUu', 2, 'default.jpg', '082175927592', 'Lebak', NULL, 1, 0, NULL, 1714840913, 1),
+(8, NULL, 10240005, NULL, 'Adam Warlock', '2004-04-04', 'adam@gmail.com', 'adam', '$2y$10$PsSx5kVJY/otqt2CNtqiCeV.cyEJSbzGVzDo2OQF0vJLjHe9VAHLq', 2, 'default.jpg', '082174927592', 'Manchester', NULL, 1, 0, NULL, 1714841969, 1),
+(9, NULL, 10240006, NULL, 'Agus Susanto', '2004-04-24', 'agus@gmail.com', 'agus', '$2y$10$tgW2yVQhnKz9scSIv1QcC..v0UZa7nQvgCPmXzJtnckuqbm0uKbdG', 2, 'default.jpg', '082173952058', 'Pandeglang', NULL, 1, 0, NULL, 1714842198, 1),
+(10, NULL, 10240011, NULL, 'Budi Pamungkas', '2001-01-01', 'budipm@gmail.com', 'budipm', '$2y$10$YPHbJNkobDpANAQMG43cSOWfw19uCnW/oxQCIRYT8bzhrsxP2oaSi', 2, 'default.jpg', '082174927593', 'Nganjuk', NULL, 1, 0, NULL, 1715140720, 1),
+(12, NULL, NULL, 10480002, 'Supriyadi', '1982-02-03', 'supri@gmail.com', 'supriyadi', '$2y$10$LIWTv1QQF6/gxHAB8lE.h.wD/eNkra5CMojoYePCPGfC8c1wAXJ7K', 3, 'default.jpg', '082174937285', 'Tangerang', 0, 1, 0, NULL, 1715286102, 1),
+(13, NULL, 10240012, NULL, 'Mohammad Hamzah', '1999-11-29', 'mohamzah@gmail.com', 'hamzah', '$2y$10$/PlvahgZlEILDRSvuGQc1eL0OsDMSpyT/N4Gaz0mylskekcdgay2u', 2, 'user_Mohammad_Hamzah.jpg', '082161872392', 'Kabupaten Tangerang', NULL, 1, 0, NULL, 1715412654, 1);
 
 -- --------------------------------------------------------
 
@@ -234,9 +209,7 @@ INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
 (4, 1, 6),
 (6, 2, 2),
 (7, 2, 3),
-(8, 2, 5),
-(10, 2, 8),
-(11, 1, 8);
+(8, 2, 5);
 
 -- --------------------------------------------------------
 
@@ -260,8 +233,7 @@ INSERT INTO `user_menu` (`id`, `menu`) VALUES
 (4, 'Manajemen Anggota'),
 (5, 'Manajemen Sampah'),
 (6, 'Manajemen Cinderamata'),
-(7, 'Dashboard'),
-(8, 'Transaksi');
+(7, 'Dashboard');
 
 -- --------------------------------------------------------
 
@@ -279,8 +251,8 @@ CREATE TABLE `user_role` (
 --
 
 INSERT INTO `user_role` (`id`, `role`) VALUES
-(1, 'Admin'),
-(2, 'Staff'),
+(1, 'Operator'),
+(2, 'Pegawai'),
 (3, 'Member');
 
 -- --------------------------------------------------------
@@ -312,8 +284,7 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active
 (7, 4, 'Manajemen Member', 'admin/member', 'fas fa-fw fa-users', 1),
 (8, 6, 'Manajemen Sampah', 'admin/sampah', 'fas fa-fw fa-trash-can', 1),
 (9, 6, 'Manajemen Cinderamata', 'admin/cinderamata', '	\r\nfas fa-fw fa-gift', 1),
-(10, 5, 'Informasi Member', 'staff/member', 'fas fa-fw fa-users', 1),
-(12, 8, 'Manajemen Transaksi', 'transaction', 'fa-solid fa-money-bill-transfer', 1);
+(10, 5, 'Informasi Member', 'staff/member', 'fas fa-fw fa-users', 1);
 
 --
 -- Indexes for dumped tables
@@ -354,12 +325,6 @@ ALTER TABLE `sampah`
 --
 ALTER TABLE `staff`
   ADD PRIMARY KEY (`id_staff`);
-
---
--- Indexes for table `transaction`
---
-ALTER TABLE `transaction`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `user`
@@ -423,31 +388,25 @@ ALTER TABLE `poin`
 -- AUTO_INCREMENT for table `sampah`
 --
 ALTER TABLE `sampah`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT for table `transaction`
---
-ALTER TABLE `transaction`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `user_access_menu`
 --
 ALTER TABLE `user_access_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `user_menu`
 --
 ALTER TABLE `user_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `user_role`
@@ -459,7 +418,7 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT for table `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
