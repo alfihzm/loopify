@@ -59,16 +59,30 @@ class Admin extends CI_Controller
         $this->load->view("templates/admin/footer");
     }
 
+    // public function generateUniqueIdStaff() {
+    //     $this->load->database();
+    //     do {
+    //         // Generate a unique 11-digit staff ID
+    //         $id_staff = str_pad(mt_rand(0, 99999999999), 11, '0', STR_PAD_LEFT);
+
+    //         // Check if the generated ID already exists in the database
+    //         $this->db->where('id_staff', $id_staff);
+    //         $query = $this->db->get('staff');
+    //     } while ($query->num_rows() > 0);
+
+    //     return $id_staff;
+    // } 
+
     // TAMBAH STAFF
     public function add_staff()
     {
         // ID Staff
-        $this->form_validation->set_rules('idstaff', 'ID Staff', 'required|trim|max_length[16]|is_unique[user.id_staff]|integer', [
-            'required'    => 'Masukkan ID Staff dengan Benar!',
-            'max_length'  => 'Maksimal 16 Karakter',
-            'is_unique'   => 'ID Staff sudah ada di dalam database',
-            'integer'     => 'ID Staff hanya berisi angka'
-        ]);
+        // $this->form_validation->set_rules('idstaff', 'ID Staff', 'required|trim|max_length[16]|is_unique[user.id_staff]|integer', [
+        //     'required'    => 'Masukkan ID Staff dengan Benar!',
+        //     'max_length'  => 'Maksimal 16 Karakter',
+        //     'is_unique'   => 'ID Staff sudah ada di dalam database',
+        //     'integer'     => 'ID Staff hanya berisi angka'
+        // ]);
         // Nama
         $this->form_validation->set_rules('nama', 'Nama', 'required', [
             'required'    => 'Masukkan Nama Lengkap dengan Benar',
@@ -108,8 +122,10 @@ class Admin extends CI_Controller
             $this->load->view('admin/staff/add_staff', $data);
             $this->load->view('templates/admin/footer');
         } else {
+            $id_staff = str_pad(random_int(0, 99999999), 8, '0', STR_PAD_LEFT);
             $dataUser = [
-                'id_staff'  => htmlspecialchars($this->input->post('idstaff')),
+                // 'id_staff'  => htmlspecialchars($this->input->post('idstaff')),
+                'id_staff'  => htmlspecialchars($id_staff),
                 'nama'      => htmlspecialchars($this->input->post('nama')),
                 'lahir'     => date('Y-m-d', strtotime($this->input->post('lahir'))),
                 'email'     => htmlspecialchars($this->input->post('email')),
@@ -120,13 +136,14 @@ class Admin extends CI_Controller
                 'no_telp'   => htmlspecialchars($this->input->post('no_telp')),
                 'alamat'    => htmlspecialchars($this->input->post('alamat')),
                 'level'     => 1,
-                'poin'      => 0,
+                'koin'      => 0,
                 'date_created'  => time(),
                 'is_active' => 1,
             ];
 
+            $id_staff = str_pad(random_int(0, 99999999), 8, '0', STR_PAD_LEFT);
             $dataStaff = [
-                'id_staff' => htmlspecialchars($this->input->post('idstaff')),
+                'id_staff'  => htmlspecialchars($id_staff),
                 'nama' => htmlspecialchars($this->input->post('nama')),
                 'email' => htmlspecialchars($this->input->post('email')),
                 'username' => htmlspecialchars($this->input->post('username')),

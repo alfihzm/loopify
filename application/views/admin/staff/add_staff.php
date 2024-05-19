@@ -31,17 +31,14 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="idstaff">ID Staff</label>
-                                        <input type="text" class="form-control" id="idstaff" name="idstaff"
-                                            autocomplete="off">
-                                        <?= form_error('idstaff', '<small class="text-danger">', '</small>'); ?>
+                                        <label for="">ID Staff</label> 
+                                        <input type="text" class="form-control" id="" name="" autocomplete="off" readonly>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="nama">Nama Lengkap</label>
-                                        <input type="text" class="form-control" id="nama" name="nama"
-                                            autocomplete="off">
+                                        <input type="text" class="form-control" id="nama" name="nama" autocomplete="off">
                                         <?= form_error('nama', '<small class="text-danger">', '</small>'); ?>
                                     </div>
                                 </div>
