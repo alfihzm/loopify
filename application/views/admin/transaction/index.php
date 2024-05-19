@@ -1,9 +1,3 @@
-<style>
-    .formGroupExampleInput {
-        color: #1A2035 !important;
-    }
-</style>
-
 <div class="main-panel" style="font-family: quicksand;">
     <div class="content">
         <div class="page-inner">
@@ -12,7 +6,8 @@
             </div>
             <!-- <a href=" <?= base_url('admin/tambah_sampah'); ?>" class="btn btn-secondary mb-3"> Tambah Jenis Sampah
             </a> -->
-            <a href="" data-toggle="modal" data-target="#newTransactionModal" class="btn btn-secondary mb-3">Tambah Transaksi</a>
+            <a href="" data-toggle="modal" data-target="#newTransactionModal" class="btn btn-secondary mb-3">Tambah
+                Transaksi</a>
 
             <div class="row">
                 <div class="col-lg-6">
@@ -49,21 +44,25 @@
                     </thead>
                     <tbody>
                         <?php foreach ($transaksi as $t) : ?>
-                            <tr>
-                                <td>MEM-<?= $t['id_member']; ?></td>
-                                <td><?= $t['nama']; ?></td>
-                                <td><?= $t['tanggal']; ?></td>
-                                <td><?= $t['jumlah_botol'], $t['jumlah_kaleng'], $t['jumlah_kardus']; ?></td>
-                                <!-- <td><?= $t['jumlah_kaleng']; ?></td>
+                        <tr>
+                            <td>MEM-<?= $t['id_member']; ?></td>
+                            <td><?= $t['nama']; ?></td>
+                            <td><?= $t['tanggal']; ?></td>
+                            <td><?= $t['jumlah_botol'], $t['jumlah_kaleng'], $t['jumlah_kardus']; ?></td>
+                            <!-- <td><?= $t['jumlah_kaleng']; ?></td>
                                 <!-- <td><?= $t['jumlah_kardus']; ?></td> --> -->
-                                <td><?= $t['lokasi']; ?></td>
-                                <td><?= $t['catatan']; ?></td>
-                                <td><?= $t['status']; ?></td>
-                                <td>
-                                    <a href="<?= base_url('admin/ubah_sampah/'   . $t['id']); ?>" class="btn btn-success btn-sm"><i style="color: #000;" class="fa-solid fa-pencil"></i></a>
-                                    <a href="<?= base_url('admin/hapus_sampah/' . $t['id']); ?>" class="btn btn-danger btn-sm"><i style="color: #000;" class="fa-solid fa-trash"></i></a>
-                                </td>
-                            </tr>
+                            <td><?= $t['lokasi']; ?></td>
+                            <td><?= $t['catatan']; ?></td>
+                            <td><?= $t['status']; ?></td>
+                            <td>
+                                <a href="<?= base_url('admin/ubah_sampah/'   . $t['id']); ?>"
+                                    class="btn btn-success btn-sm"><i style="color: #000;"
+                                        class="fa-solid fa-pencil"></i></a>
+                                <a href="<?= base_url('admin/hapus_sampah/' . $t['id']); ?>"
+                                    class="btn btn-danger btn-sm"><i style="color: #000;"
+                                        class="fa-solid fa-trash"></i></a>
+                            </td>
+                        </tr>
                         <?php endforeach; ?>
                     </tbody>
                 </table>
@@ -75,9 +74,10 @@
     </div>
 
     <!-- Modal Tambah Announcement -->
-    <div class="modal fade" id="newTransactionModal" tabindex="-1" aria-labelledby="newTransactionModalLabel" aria-hidden="true">
-        <div class="modal-dialog" style="background-color: #add8e6;">
-            <div class="modal-content" style="background-color: #add8e6;">
+    <div class="modal fade" id="newTransactionModal" tabindex="-1" aria-labelledby="newTransactionModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" style="background-color: #1A2035; border-radius: 10px;">
+            <div class="modal-content" style="background-color: #1A2035;">
                 <div class="modal-header">
                     <h4 class="modal-title text-white" id="newTransactionModalLabel"><b>Transaksi Baru</b></h2>
                         <button type="button" class="btn btn-close" data-dismiss="modal" aria-label="Close">
@@ -86,21 +86,26 @@
                 </div>
                 <form action="<?= base_url('transaction') ?>" method="POST">
                     <div class="modal-body">
-                        <div class="form-group text-darker" style="color: #1A2035;">
-                            <label for="formGroupExampleInput" ">ID Member</label>
-                            <input type="text" class="form-control" id="id_member" name="id_member" placeholder="Ketik ID milik member">
+                        <div class="form-group">
+                            <label style="color: #01E7f4 !important;" for="formGroupExampleInput">ID Member</label>
+                            <input style="background: #01E7f4; color: #1A2035; font-weight: 600;" type="text"
+                                class="form-control" id="id_member" name="id_member"
+                                placeholder="Ketik ID milik member">
                         </div>
                         <div class="form-group">
                             <label for="formGroupExampleInput">Botol Plastik</label>
-                            <input type="text" class="form-control" id="jumlah_botol" name="jumlah_botol" placeholder="Ketik jumlah botol yang ditukar">
+                            <input type="text" class="form-control" id="jumlah_botol" name="jumlah_botol"
+                                placeholder="Ketik jumlah botol yang ditukar">
                         </div>
                         <div class="form-group">
                             <label for="formGroupExampleInput">Kaleng Alumunium</label>
-                            <input type="text" class="form-control" id="jumlah_kaleng" name="jumlah_kaleng" placeholder="Ketik jumlah kaleng yang ditukar">
+                            <input type="text" class="form-control" id="jumlah_kaleng" name="jumlah_kaleng"
+                                placeholder="Ketik jumlah kaleng yang ditukar">
                         </div>
                         <div class="form-group">
                             <label for="formGroupExampleInput">Kertas Kardus </label>
-                            <input type="text" class="form-control" id="jumlah_kardus" name="jumlah_kardus" placeholder="Ketik kardus kaleng yang ditukar">
+                            <input type="text" class="form-control" id="jumlah_kardus" name="jumlah_kardus"
+                                placeholder="Ketik kardus kaleng yang ditukar">
                         </div>
                         <div class="form-group">
                             <label for="formGroupExampleInput2">Tanggal Penukaran</label>
@@ -126,9 +131,9 @@
 
 
     <script type="text/javascript">
-        window.setTimeout(function() {
-            $(".col-lg-6").fadeTo(500, 0).slideUp(500, function() {
-                $(this).remove();
-            });
-        }, 2000);
+    window.setTimeout(function() {
+        $(".col-lg-6").fadeTo(500, 0).slideUp(500, function() {
+            $(this).remove();
+        });
+    }, 2000);
     </script>
