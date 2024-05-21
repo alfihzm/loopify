@@ -21,6 +21,30 @@ class UserModel extends CI_Model
         return $query->result_array();
     }
 
+    public function getUser()
+    {
+        return $this->db->get('user')->result_array();
+    }
+
+    public function getSomeUser($role_id, $limit, $start)
+    {
+        $this->db->where('role_id', $role_id);
+        $this->db->limit($limit, $start);
+        return $this->db->get('user')->result_array();
+    }
+
+    public function countAllStaff($role_id)
+    {
+        $this->db->where('role_id', $role_id);
+        return $this->db->get('user')->num_rows();
+    }
+
+    public function countAllMember($role_id)
+    {
+        $this->db->where('role_id', $role_id);
+        return $this->db->get('user')->num_rows();
+    }
+    
     public function tambahUser($data)
     {
         return $this->db->insert('user', $data);

@@ -7,6 +7,7 @@ class Admin extends CI_Controller
         parent::__construct();
         $this->load->model('StaffModel', 'SampahModel', 'GiftModel');
         is_login();
+        role_id();
         $this->load->language('form_validation', 'indonesian');
     }
 
@@ -41,17 +42,46 @@ class Admin extends CI_Controller
             return;
         }
 
-        if ($user['role_id'] == 2) {
-            redirect('staff'); 
-            return; 
-        }
+        $config['base_url'] = 'http://localhost/recyloop/admin/staff/staff';
+        $config['total_rows'] = $this->UserModel->countAllStaff(2);
+        $config['per_page'] = 5;
+        $start = $this->uri->segment(4);
+
+        // STYLING PAGINATION
+        $config['full_tag_open']  = '<nav><ul class="pagination">';
+        $config['full_tag_close'] = '</ul></nav>';
+
+        $config['first_link'] = 'First';
+        $config['first_tag_open'] = '<li class="page-item">';
+        $config['first_tag_close'] = '</li>';
+
+        $config['last_link'] = 'Last';
+        $config['last_tag_open'] = '<li class="page-item">';
+        $config['last_tag_close'] = '</li>';
+
+        $config['next_link'] = '&raquo;';
+        $config['next_tag_open'] = '<li class="page-item">';
+        $config['next_tag_close'] = '</li>';
+
+        $config['prev_link'] = '&laquo;';
+        $config['prev_tag_open'] = '<li class="page-item">';
+        $config['prev_tag_close'] = '</li>';
+
+        $config['cur_tag_open'] = '<li class="page-item active"><a class="page-link" href="#">';
+        $config['cur_tag_close'] = '</a></li>';
+
+        $config['num_tag_open'] = '<li class="page-item">';
+        $config['num_tag_close'] = '</li>';
+
+        $config['attributes'] = array('class' => 'page-link');
 
         $data = [
             'judul' => 'Manajemen Staff',
-            'members' => $this->UserModel->getUserByRole(2),
+            // 'members' => $this->UserModel->getUserByRole(2),
+            'staff' => $this->UserModel->getSomeUser(2, $config['per_page'], $start),
             'user' => $user
         ];
-
+        $this->pagination->initialize($config);
         $this->load->view("templates/admin/header", $data);
         $this->load->view("templates/admin/sidebar", $data);
         $this->load->view("templates/admin/topbar", $data);
@@ -234,11 +264,45 @@ class Admin extends CI_Controller
     // INFORMASI TABEL MEMBER
     public function member()
     {
+        $config['base_url'] = 'http://localhost/recyloop/admin/member/member';
+        $config['total_rows'] = $this->UserModel->countAllMember(3);
+        $config['per_page'] = 5;
+        $start = $this->uri->segment(4);
+
         $data = [
             'judul' => 'Manajemen Member',
-            'members' => $this->UserModel->getUserByRole(3),
+            'members' => $this->UserModel->getSomeUser(3, $config['per_page'], $start),
             'user' => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array()
         ];
+
+ $config['full_tag_open']  = '<nav><ul class="pagination">';
+        $config['full_tag_close'] = '</ul></nav>';
+
+        $config['first_link'] = 'First';
+        $config['first_tag_open'] = '<li class="page-item">';
+        $config['first_tag_close'] = '</li>';
+
+        $config['last_link'] = 'Last';
+        $config['last_tag_open'] = '<li class="page-item">';
+        $config['last_tag_close'] = '</li>';
+
+        $config['next_link'] = '&raquo;';
+        $config['next_tag_open'] = '<li class="page-item">';
+        $config['next_tag_close'] = '</li>';
+
+        $config['prev_link'] = '&laquo;';
+        $config['prev_tag_open'] = '<li class="page-item">';
+        $config['prev_tag_close'] = '</li>';
+
+        $config['cur_tag_open'] = '<li class="page-item active"><a class="page-link" href="#">';
+        $config['cur_tag_close'] = '</a></li>';
+
+        $config['num_tag_open'] = '<li class="page-item">';
+        $config['num_tag_close'] = '</li>';
+
+        $config['attributes'] = array('class' => 'page-link');
+
+        $this->pagination->initialize($config);
 
         $this->load->view("templates/admin/header", $data);
         $this->load->view("templates/admin/sidebar", $data);
@@ -309,7 +373,7 @@ class Admin extends CI_Controller
                 'alamat'       => htmlspecialchars($this->input->post('alamat')),
                 'total_sampah' => 0,
                 'level'        => 1,
-                'poin'         => 0,
+                'koin'         => 0,
                 'date_created' => time(),
                 'is_active'    => 1,
             ];

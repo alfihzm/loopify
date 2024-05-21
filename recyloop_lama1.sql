@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 21, 2024 at 02:51 PM
+-- Generation Time: May 19, 2024 at 03:02 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -61,29 +61,6 @@ CREATE TABLE `company` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `finance`
---
-
-CREATE TABLE `finance` (
-  `id` int(11) NOT NULL,
-  `rekening` varchar(128) NOT NULL,
-  `saldo` int(32) NOT NULL,
-  `tgl_update` date NOT NULL,
-  `jam_update` varchar(11) NOT NULL,
-  `username` varchar(128) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `finance`
---
-
-INSERT INTO `finance` (`id`, `rekening`, `saldo`, `tgl_update`, `jam_update`, `username`) VALUES
-(1, 'modal', 5250000, '2024-05-21', '18:23:14', 'alfihzm'),
-(2, 'aruskas', 8500000, '2024-05-21', '18:36:12', 'alfihzm');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `member`
 --
 
@@ -121,7 +98,6 @@ CREATE TABLE `sampah` (
   `id` int(11) NOT NULL,
   `no` int(11) NOT NULL,
   `jenis_sampah` varchar(64) NOT NULL,
-  `kode` varchar(11) NOT NULL,
   `nilai_tukar` int(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
@@ -129,10 +105,11 @@ CREATE TABLE `sampah` (
 -- Dumping data for table `sampah`
 --
 
-INSERT INTO `sampah` (`id`, `no`, `jenis_sampah`, `kode`, `nilai_tukar`) VALUES
-(1, 1, 'Botol Plastik', '', 1100),
-(2, 2, 'Kaleng Alumunium', '', 13300),
-(3, 3, 'Botol Plastik', '', 2500);
+INSERT INTO `sampah` (`id`, `no`, `jenis_sampah`, `nilai_tukar`) VALUES
+(1, 1, 'Kantong Plastik', 100),
+(2, 2, 'Botol Kaca', 500),
+(4, 3, 'Botol Plastik', 250),
+(5, 4, 'Sampah Daun', 50);
 
 -- --------------------------------------------------------
 
@@ -178,28 +155,16 @@ INSERT INTO `staff` (`id_staff`, `nama`, `email`, `username`, `alamat`, `no_telp
 CREATE TABLE `transaction` (
   `id` int(11) NOT NULL,
   `id_member` int(11) NOT NULL,
-  `username` varchar(128) NOT NULL,
+  `nama` varchar(128) NOT NULL,
   `tanggal` date NOT NULL,
   `jumlah_botol` int(11) NOT NULL,
   `jumlah_kaleng` int(11) NOT NULL,
   `jumlah_kardus` int(11) NOT NULL,
-  `total` int(11) NOT NULL,
-  `totalkoin` int(16) NOT NULL,
-  `totalkonversi` int(16) NOT NULL,
   `lokasi` varchar(128) NOT NULL,
   `catatan` varchar(128) DEFAULT NULL,
-  `status` varchar(32) NOT NULL,
+  `status` varchar(16) NOT NULL,
   `tgl_validasi` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `transaction`
---
-
-INSERT INTO `transaction` (`id`, `id_member`, `username`, `tanggal`, `jumlah_botol`, `jumlah_kaleng`, `jumlah_kardus`, `total`, `totalkoin`, `totalkonversi`, `lokasi`, `catatan`, `status`, `tgl_validasi`) VALUES
-(4, 123455, '', '2024-05-20', 1, 0, 1, 0, 0, 0, 'Tenant Official', NULL, 'Sudah dikonfirmasi', '0000-00-00'),
-(8, 12345689, '', '2024-05-20', 2, 1, 2, 0, 0, 0, 'Tenant Official', NULL, 'Sudah dikonfirmasi', '0000-00-00'),
-(15, 10480001, 'betara', '2024-05-20', 1, 1, 0, 2, 14400, 0, 'Tenant Official', '', 'Sudah dikonfirmasi', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -348,27 +313,7 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active
 (8, 6, 'Manajemen Sampah', 'admin/sampah', 'fas fa-fw fa-trash-can', 1),
 (9, 6, 'Manajemen Cinderamata', 'admin/cinderamata', '	\r\nfas fa-fw fa-gift', 1),
 (10, 5, 'Informasi Member', 'staff/member', 'fas fa-fw fa-users', 1),
-(12, 8, 'Manajemen Transaksi', 'transaction', 'fa-solid fa-money-bill-transfer', 1),
-(13, 8, 'Manajemen Keuangan', 'finance', 'fa-solid fa-wallet\r\n', 1),
-(14, 8, 'Manajemen Tarik Tunai', 'withdraw', 'fa-solid fa-money-bill-1', 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `withdraw`
---
-
-CREATE TABLE `withdraw` (
-  `id` int(11) NOT NULL,
-  `id_member` int(11) NOT NULL,
-  `username` varchar(128) NOT NULL,
-  `tanggal` date NOT NULL,
-  `jam` varchar(11) NOT NULL,
-  `tariktunai` int(16) NOT NULL,
-  `metode` varchar(128) NOT NULL,
-  `norek` varchar(128) NOT NULL,
-  `status` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+(12, 8, 'Manajemen Transaksi', 'transaction', 'fa-solid fa-money-bill-transfer', 1);
 
 --
 -- Indexes for dumped tables
@@ -384,12 +329,6 @@ ALTER TABLE `cinderamata`
 -- Indexes for table `company`
 --
 ALTER TABLE `company`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `finance`
---
-ALTER TABLE `finance`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -453,12 +392,6 @@ ALTER TABLE `user_sub_menu`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `withdraw`
---
-ALTER TABLE `withdraw`
-  ADD PRIMARY KEY (`id`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -473,12 +406,6 @@ ALTER TABLE `cinderamata`
 --
 ALTER TABLE `company`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `finance`
---
-ALTER TABLE `finance`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `member`
@@ -502,7 +429,7 @@ ALTER TABLE `sampah`
 -- AUTO_INCREMENT for table `transaction`
 --
 ALTER TABLE `transaction`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user`
@@ -532,13 +459,7 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT for table `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
-
---
--- AUTO_INCREMENT for table `withdraw`
---
-ALTER TABLE `withdraw`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
