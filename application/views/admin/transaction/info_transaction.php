@@ -13,27 +13,25 @@
             </div>
 
             <div class="container-fluid col-md-8">
+
                 <div class="card border border-secondary">
                     <div class="card-body">
                         <h5 style="text-align: center;" class="card-title mt-1"><?= $judul; ?></h5>
                         <hr>
                         <form action="<?= base_url('transaction/edit_transaction/') . $transaction['id']; ?>" method="POST">
                             <div class="row">
-                                <div class="col">
+                                <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="idstaff">ID Member</label>
-                                        <input type="text" class="form-control" id="id_member" name="id_member" autocomplete="off" value="<?= $transaction['id_member']; ?>">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="idstaff">Username</label>
-                                        <input type="text" class="form-control" id="username" name="username" autocomplete="off" value="<?= $transaction['username']; ?>">
+                                        <input type="text" class="form-control" id="jenis_sampah" name="jenis_sampah" autocomplete="off" value="<?= $transaction['id_member']; ?>" readonly style="color: black;">
+                                        <!-- <?= form_error('jenis_sampah', '<small class="text-danger">', '</small>'); ?> -->
                                     </div>
                                 </div>
-                                <div class="col-sm-12" style="display: flex; justify-content: space-evenly; align-items: center; margin-top: 10px">
+                                <!-- <div class="col-sm-12" style="display: flex; justify-content: space-evenly; align-items: center; margin-top: 10px">
                                     <button type="submit" class="btn btn-danger">Simpan</button>
-                                    <a style="width: 100px;" href="<?= base_url('transaction'); ?>" class="btn btn-warning">
+                                    <a style="width: 100px;" href="<?= base_url('admin/transaction'); ?>" class="btn btn-warning">
                                         Batal </a>
-                                </div>
+                                </div> -->
                         </form>
                     </div>
                 </div>

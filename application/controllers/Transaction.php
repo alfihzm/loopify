@@ -55,7 +55,6 @@ class Transaction extends CI_Controller
                 'status' => 'Belum dikonfirmasi',
             ];
 
-
             $this->load->model('TransactionModel');
             $this->TransactionModel->newTransaction($dataTransaction);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Transaksi pengguna telah berhasil ditambahkan!</div>');
@@ -100,35 +99,75 @@ class Transaction extends CI_Controller
 
     public function edit_transaction($id)
     {
-        $data['transaction'] = $this->TransactionModel->getTransactionById($id);
-        $user = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+    $transaction = $this->TransactionModel->getTransactionById($id);
 
-        $data = array_merge($data, [
-            'user'  => $user,
-            'judul' => 'Edit Transaksi milik ' . $user['username']
-        ]);
+    if (!$transaction) {
+        redirect('transaction');
+    }
 
-        // $this->form_validation->set_rules('jenis_sampah', 'Jenis Sampah', 'required', [
-        //     'required' => 'Masukkan Jenis Sampah dengan benar',
-        // ]);
-        // $this->form_validation->set_rules('nilai_tukar', 'Nilai Tukar', 'required|integer', [
-        //     'required' => 'Masukkan Nilai Tukar dengan benar',
-        //     'integer'  => 'Nilai Tukar Sampah hanya bernilai angka',
-        // ]);
+    $username = $transaction['username'];
 
-        if ($this->form_validation->run() == false) {
+    $judul = 'Edit Transaksi milik ' . $username;
+
+    $data = [
+        'transaction' => $transaction,
+        'user'  => $this->db->get_where('user', ['username' => $username])->row_array(),
+        'judul' => $judul
+    ];
+
+    // Validasi form jika sudah disubmit
+    $this->form_validation->set_rules('id_member', 'ID Member', 'required');
+    $this->form_validation->set_rules('username', 'Username', 'required');
+
+    if ($this->form_validation->run() == false) {
+        $this->load->view("templates/admin/header", $data);
+        $this->load->view("templates/admin/sidebar", $data);
+        $this->load->view("templates/admin/topbar", $data);
+        $this->load->view('admin/transaction/edit_transaction', $data);
+        $this->load->view("templates/admin/footer");
+    } else {
+        $transactionData = [
+            'id_member' => htmlspecialchars($this->input->post('id_member')),
+            'username' => htmlspecialchars($this->input->post('username'))
+        ];
+        
+        $this->TransactionModel->editTransaction($id, $transactionData);
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data transaksi telah diubah</div>');
+        redirect('transaction');
+    }
+
+
+    }
+
+    public function info_transaction($id)
+    {
+        $transaction = $this->TransactionModel->getTransactionById($id);
+
+        if ($transaction) {
+            // Dapatkan username dari transaksi
+            $username = $transaction['username'];
+
+            // Buat judul menggunakan username dari transaksi
+            $judul = 'Detail Transaksi milik ' . $username;
+
+            $data = [
+                'transaction' => $transaction,
+                'user'  => $this->db->get_where('user', ['username' => $username])->row_array(),
+                'judul' => $judul
+            ];
+
             $this->load->view("templates/admin/header", $data);
             $this->load->view("templates/admin/sidebar", $data);
             $this->load->view("templates/admin/topbar", $data);
-            $this->load->view('admin/transaction/edit_transaction', $data);
+            $this->load->view('admin/transaction/info_transaction', $data);
             $this->load->view("templates/admin/footer");
         } else {
-            $transactionData = [
-                'jenis_sampah' => htmlspecialchars($this->input->post('jenis_sampah')),
-                'nilai_tukar' => htmlspecialchars($this->input->post('nilai_tukar'))
-            ];
-            $this->TransactionModel->editTransaction($id, $transactionData);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data transaksi telah diubah</div>');
+            // $transactionData = [
+            //     'jenis_sampah' => htmlspecialchars($this->input->post('jenis_sampah')),
+            //     'nilai_tukar' => htmlspecialchars($this->input->post('nilai_tukar'))
+            // ];
+            // $this->TransactionModel->editTransaction($id, $transactionData);
+            // $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data transaksi telah diubah</div>');
             redirect('transaction');
         }
     }
