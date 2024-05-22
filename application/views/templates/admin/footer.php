@@ -67,14 +67,17 @@
 <script src="<?= base_url('assets/') ?>js/atlantis.min.js"></script>
 
 <script>
-    $(document).ready(function() {
-        $('.custom-file-input').on('change', function() {
-            let fileName = $(this).val().split('\\').pop();
-            $(this).next('.custom-file-label').addClass("selected").html(fileName);
-        });
+$(document).ready(function() {
+    $('.custom-file-input').on('change', function() {
+        let fileName = $(this).val().split('\\').pop();
+        $(this).next('.custom-file-label').addClass("selected").html(fileName);
     });
+});
 </script>
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="<?= base_url(); ?>assets/sweetAlert/sweetalert2.all.min.js"></script>
+<script src="<?= base_url(); ?>assets/js/admin/admin.js"></script>
 
 </body>
 

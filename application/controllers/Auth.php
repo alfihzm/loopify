@@ -80,13 +80,28 @@ class Auth extends CI_Controller
 
     public function register()
     {
-        $this->form_validation->set_rules('name', 'Nama', 'required|trim');
-        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[user.email]');
-        $this->form_validation->set_rules('username', 'Username', 'required|trim');
+        $this->form_validation->set_rules('nama', 'Nama', 'required', [
+            'required' => 'Masukkan nama dengan benar.'
+        ]);
+        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[user.email]', [
+            'required' => 'Masukkan email dengan benar.',
+            'valid_email' => 'Masukkan format email dengan benar',
+            'is_unique' => 'Email sudah dipakai, mohon gunakan email yang lain.'
+        ]);
+        $this->form_validation->set_rules('username', 'Username', 'required|trim', [
+            'required' => 'Masukkan username dengan benar.',
+        ]);
         $this->form_validation->set_rules('password', 'Password', 'required|trim|min_length[3]', [
+            'required' => 'Masukkan password dengan benar.',
             'min_length' => 'Password terlalu pendek.'
         ]);
-        $this->form_validation->set_rules('notelp', 'No. Telp', 'required|trim|integer');
+        $this->form_validation->set_rules('lahir', 'Tanggal Lahir', 'required|trim', [
+            'required'    => 'Masukkan Tanggal Lahir Member dengan Benar'
+        ]);
+        $this->form_validation->set_rules('notelp', 'No. Telp', 'required|trim|integer', [
+            'required'    => 'Masukkan No. Telp Member dengan Benar',
+            'integer'     => 'Nomor Telepon hanya berisi angka'
+        ]);
 
         if ($this->form_validation->run() == FALSE) {
             $data['judul'] = 'Register';
@@ -95,20 +110,26 @@ class Auth extends CI_Controller
             $this->load->view('auth/register', $data);
             $this->load->view('templates/auth_footer');
         } else {
+            $id_member = str_pad(random_int(0, 99999999), 8, '0', STR_PAD_LEFT);
             $data = [
-                'nama' => htmlspecialchars($this->input->post('name', true)),
-                'email' => htmlspecialchars($this->input->post('email', true)),
-                'username' => $this->input->post('username'),
-                'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
-                'role_id' => 3,
-                'photo' => 'default.jpg',
-                'no_telp' => $this->input->post('notelp'),
+                'id_member'    => htmlspecialchars($id_member),
+                'nama'         => htmlspecialchars($this->input->post('nama', true)),
+                'lahir'        => date('Y-m-d', strtotime($this->input->post('lahir'))),
+                'email'        => htmlspecialchars($this->input->post('email', true)),
+                'username'     => htmlspecialchars($this->input->post('username')),
+                'password'     => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+                'role_id'      => 3,
+                'photo'        => 'default.jpg',
+                'no_telp'      => $this->input->post('notelp'),
+                'alamat'       => $this->input->post('alamat'),
+                'total_sampah' => 0,
+                'total_koin'   => 0,
                 'date_created' => time(),
-                'is_active' => 1,
+                'is_active'    => 1,
             ];
 
             $this->db->insert('user', $data);
-
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Berhasil registrasi, silahkan login. </div>');
             redirect('auth');
         }
     }

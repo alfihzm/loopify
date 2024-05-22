@@ -1,90 +1,192 @@
-<!DOCTYPE html>
-<html lang="en">
+<style>
+    .row {
+        opacity: 0;
+        filter: blur(5px);
+        transform: translateX(-10%);
+        transition: all 1s;
+    }
 
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title><?= $judul; ?></title>
-    <link href="<?= base_url('assets/') ?>css/styles.css" rel="stylesheet" />
-    <link rel="stylesheet" href="<?= base_url('assets/'); ?>css/auth/register.css">
-    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-</head>
+    .show {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateX(0);
+    }
 
-<body class="bg-primary">
-    <div id="layoutAuthentication">
-        <div id="layoutAuthentication_content">
-            <main>
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-5 mb-5">
-                            <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                <div class="card-header">
-                                    <h3 class="text-center font-weight-light my-4">Create Account</h3>
+    @media(prefers-reduced-motion) {
+        .hidden {
+            transition: none;
+        }
+    }
+</style>
+
+<div class="container">
+
+    <!-- Outer Row -->
+    <div class="row justify-content-center">
+
+
+        <div class="container col-lg-8" style="margin-top: 7vh; margin-bottom: 7vh; opacity: 94%;">
+            <div class="row">
+                <div class="col-lg">
+                    <div class="p-5" style="background: #1D243C; border-radius: 10px; box-shadow: 0px 0px 15px 0px rgba(28,39,66,0.75);">
+                        <div class="text-center">
+                            <h1 style="color: #FFF;" class="h4 mb-4"> <?= $judul; ?> </h1>
+                        </div>
+
+                        <div class="flash_data">
+                            <?= $this->session->flashdata('message'); ?>
+                        </div>
+
+                        <form class="user" method="post" action="<?= base_url('auth/register'); ?>" autocomplete="off">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <p> Nama Lengkap </p>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group" style="width: 50px; display: flex; justify-content: center; align-items: center; background: #2d3a67; border-radius: 6px 0px 0px 6px">
+                                                    <i class="fas fa-solid fa-id-card" style="font-size: 18px;"></i>
+                                                </span>
+                                            </div>
+                                            <input style="border-radius: 0px 5px 5px 0px; border: 0px; background: #262E49; color: #23C78D;" type="text" class="form-control form-control-user" id="nama" name="nama" placeholder="Masukkan Nama Lengkap" value="<?= set_value('nama') ?>">
+                                        </div>
+                                        <?= form_error('nama', '<small class="text-danger">', '</small'); ?>
+                                    </div>
                                 </div>
-                                <div class="card-body">
-                                    <form class="user" method="post" action="<?= base_url('auth/register'); ?>">
-                                        <div class="row mb-3">
-                                            <div class="col-md-12">
-                                                <div class="form-floating mb-3 mb-md-0">
-                                                    <input class="form-control" id="name" name="name" type="text" placeholder="Masukkan nama" value="<?= set_value('name'); ?>" />
-                                                    <label for="name">Nama</label>
-                                                    <?= form_error('name', '<small class="text-danger pl-4">', '</small>'); ?>
-                                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <p> Email </p>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group" style="width: 50px; display: flex; justify-content: center; align-items: center; background: #2d3a67; border-radius: 6px 0px 0px 6px">
+                                                    <i class="fas fa-solid fa-envelope" style="font-size: 18px;"></i>
+                                                </span>
                                             </div>
+                                            <input style="border-radius: 0px 5px 5px 0px; border: 0px; background: #262E49; color: #23C78D;" type="text" class="form-control form-control-user" id="email" name="email" placeholder="Masukkan Email" value="<?= set_value('email') ?>">
                                         </div>
-                                        <div class="form-floating mb-3">
-                                            <input class="form-control" id="email" name="email" type="email" placeholder="name@example.com" value="<?= set_value('email'); ?>" />
-                                            <label for=" email">Email address</label>
-                                            <?= form_error('email', '<small class="text-danger pl-4">', '</small>'); ?>
-                                        </div>
-                                        <div class="row mb-3">
-                                            <div class="col-md-12">
-                                                <div class="form-floating mb-3 mb-md-0">
-                                                    <input class="form-control" id="username" name="username" type="text" placeholder="Username?" value="<?= set_value('username'); ?>" />
-                                                    <label for="inputPassword">Username</label>
-                                                    <?= form_error('username', '<small class="text-danger pl-4">', '</small>'); ?>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-3">
-                                            <div class="col-md-12">
-                                                <div class="form-floating mb-3 mb-md-0">
-                                                    <input class="form-control" id="password" name="password" type="password" placeholder="Create a password" />
-                                                    <label for="inputPassword">Password</label>
-                                                    <?= form_error('password', '<small class="text-danger pl-4">', '</small>'); ?>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-3">
-                                            <div class="col-md-12">
-                                                <div class="form-floating mb-3 mb-md-0">
-                                                    <input class="form-control" id="notelp" name="notelp" type="tel" placeholder="Create a password" />
-                                                    <label for="inputPassword">No. Telp</label>
-                                                    <?= form_error('notelp', '<small class="text-danger pl-4">', '</small>'); ?>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <button type="submit" class="btn btn-primary btn-user btn-block">
-                                            Buat Sekarang
-                                        </button>
-                                    </form>
+                                        <?= form_error('email', '<small class="text-danger">', '</small'); ?>
+                                    </div>
                                 </div>
-                                <div class="card-footer text-center py-3">
-                                    <div class="small"><a href="<?= base_url('auth') ?>">Login sekarang</a></div>
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <p> Username </p>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group" style="width: 50px; display: flex; justify-content: center; align-items: center; background: #2d3a67; border-radius: 6px 0px 0px 6px">
+                                                    <i class="fas fa-solid fa-signature" style="font-size: 18px;"></i>
+                                                </span>
+                                            </div>
+                                            <input style="border-radius: 0px 5px 5px 0px; border: 0px; background: #262E49; color: #23C78D;" type="text" class="form-control form-control-user" id="username" name="username" placeholder="Masukkan Username" value="<?= set_value('username') ?>">
+                                        </div>
+                                        <?= form_error('username', '<small class="text-danger">', '</small'); ?>
+                                    </div>
                                 </div>
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <p> Password </p>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group" style="width: 50px; display: flex; justify-content: center; align-items: center; background: #2d3a67; border-radius: 6px 0px 0px 6px">
+                                                    <i class=" fas fa-solid fa-key" style="font-size: 18px;"></i>
+                                                </span>
+                                            </div>
+                                            <input style="border-radius: 0px 5px 5px 0px; border: 0px; background: #262E49; color: #23C78D;" type="password" class="form-control form-control-user" id="password" name="password" placeholder="Masukkan Password">
+                                        </div>
+                                        <?= form_error('password', '<small class="text-danger">', '</small'); ?>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <p> Tanggal Lahir </p>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group" style="width: 50px; display: flex; justify-content: center; align-items: center; background: #2d3a67; border-radius: 6px 0px 0px 6px">
+                                                    <i class="fas fa-solid fa-calendar" style="font-size: 18px;"></i>
+                                                </span>
+                                            </div>
+                                            <input style="border-radius: 0px 5px 5px 0px; border: 0px; background: #262E49; color: #23C78D;" type="date" class="form-control form-control-user" id="lahir" name="lahir" placeholder="Masukkan Tanggal Lahir" value="<?= set_value('lahir') ?>">
+                                        </div>
+                                        <?= form_error('lahir', '<small class="text-danger">', '</small'); ?>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <p> No. Telp </p>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group" style="width: 50px; display: flex; justify-content: center; align-items: center; background: #2d3a67; border-radius: 6px 0px 0px 6px">
+                                                    <i class="fas fa-solid fa-phone" style="font-size: 18px;"></i>
+                                                </span>
+                                            </div>
+                                            <input style="border-radius: 0px 5px 5px 0px; border: 0px; background: #262E49; color: #23C78D;" type="text" class="form-control form-control-user" id="notelp" name="notelp" placeholder="Masukkan No. Telp" value="<?= set_value('notelp') ?>">
+                                        </div>
+                                        <?= form_error('notelp', '<small class="text-danger">', '</small'); ?>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <p> Alamat </p>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group" style="width: 50px; display: flex; justify-content: center; align-items: center; background: #2d3a67; border-radius: 6px 0px 0px 6px">
+                                                    <i class="fas fa-solid fa-address-book" style="font-size: 18px;"></i>
+                                                </span>
+                                            </div>
+                                            <input style="border-radius: 0px 5px 5px 0px; border: 0px; background: #262E49; color: #23C78D;" type="text" class="form-control form-control-user" id="alamat" name="alamat" placeholder="Masukkan Alamat" value="<?= set_value('alamat') ?>">
+                                        </div>
+                                        <?= form_error('alamat', '<small class="text-danger">', '</small'); ?>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-success btn-user mt-3 btn-block">
+                                Register
+                            </button>
+                        </form>
+                        <hr>
+                        <div class="rows" style="display: flex; justify-content: center">
+                            <div class="text-center m-2">
+                                <a style="text-decoration: none;" class="small" href="<?= base_url('auth'); ?>">
+                                    Login </a>
+                            </div>
+                            <div class="text-center m-2">
+                                <a style="text-decoration: none;" class="small" href="<?= base_url('home'); ?>">
+                                    Kembali </a>
                             </div>
                         </div>
                     </div>
                 </div>
-            </main>
+            </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
-    </script>
-    <script src="<?= base_url('assets/') ?>js/scripts.js"></script>
-</body>
+</div>
 
-</html>
+<script type="text/javascript">
+    window.setTimeout(function() {
+        $(".flash_data").fadeTo(500, 0).slideUp(500, function() {
+            $(this).remove();
+        });
+    }, 2000);
+</script>
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            console.info(entry);
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+            } else {
+                entry.target.classList.remove('show');
+            }
+        });
+    });
+
+    const hiddenElements = document.querySelectorAll('.row');
+    hiddenElements.forEach((el) => observer.observe(el));
+</script>

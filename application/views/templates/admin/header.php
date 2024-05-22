@@ -13,24 +13,25 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- Fonts and icons -->
     <script src="<?= base_url('assets/') ?>js/plugin/webfont/webfont.min.js"></script>
     <script>
-        WebFont.load({
-            google: {
-                "families": ["Lato:300,400,700,900"]
-            },
-            custom: {
-                "families": ["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands",
-                    "simple-line-icons"
-                ],
-                urls: ['<?= base_url('assets/') ?>css/fonts.min.css']
-            },
-            active: function() {
-                sessionStorage.fonts = true;
-            }
-        });
+    WebFont.load({
+        google: {
+            "families": ["Lato:300,400,700,900"]
+        },
+        custom: {
+            "families": ["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands",
+                "simple-line-icons"
+            ],
+            urls: ['<?= base_url('assets/') ?>css/fonts.min.css']
+        },
+        active: function() {
+            sessionStorage.fonts = true;
+        }
+    });
     </script>
 
     <!-- CSS Files -->

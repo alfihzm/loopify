@@ -155,32 +155,32 @@ class Admin extends CI_Controller
             $id_staff = str_pad(random_int(0, 99999999), 8, '0', STR_PAD_LEFT);
             $dataUser = [
                 // 'id_staff'  => htmlspecialchars($this->input->post('idstaff')),
-                'id_staff'  => htmlspecialchars($id_staff),
-                'nama'      => htmlspecialchars($this->input->post('nama')),
-                'lahir'     => date('Y-m-d', strtotime($this->input->post('lahir'))),
-                'email'     => htmlspecialchars($this->input->post('email')),
-                'username'  => htmlspecialchars($this->input->post('username')),
-                'password'  => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
-                'role_id'   => 2,
-                'photo'     => 'default.jpg',
-                'no_telp'   => htmlspecialchars($this->input->post('no_telp')),
-                'alamat'    => htmlspecialchars($this->input->post('alamat')),
-                'level'     => 1,
-                'koin'      => 0,
+                'id_staff'      => htmlspecialchars($id_staff),
+                'nama'          => htmlspecialchars($this->input->post('nama')),
+                'lahir'         => date('Y-m-d', strtotime($this->input->post('lahir'))),
+                'email'         => htmlspecialchars($this->input->post('email')),
+                'username'      => htmlspecialchars($this->input->post('username')),
+                'password'      => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+                'role_id'       => 2,
+                'photo'         => 'default.jpg',
+                'no_telp'       => htmlspecialchars($this->input->post('no_telp')),
+                'alamat'        => htmlspecialchars($this->input->post('alamat')),
+                'level'         => 1,
+                'koin'          => 0,
                 'date_created'  => time(),
-                'is_active' => 1,
+                'is_active'     => 1,
             ];
 
             $id_staff = str_pad(random_int(0, 99999999), 8, '0', STR_PAD_LEFT);
             $dataStaff = [
                 'id_staff'  => htmlspecialchars($id_staff),
-                'nama' => htmlspecialchars($this->input->post('nama')),
-                'email' => htmlspecialchars($this->input->post('email')),
-                'username' => htmlspecialchars($this->input->post('username')),
-                'alamat' => htmlspecialchars($this->input->post('alamat')),
-                'no_telp' => htmlspecialchars($this->input->post('no_telp')),
-                'photo' => 'default.jpg',
-                'role_id' => 2,
+                'nama'      => htmlspecialchars($this->input->post('nama')),
+                'email'     => htmlspecialchars($this->input->post('email')),
+                'username'  => htmlspecialchars($this->input->post('username')),
+                'alamat'    => htmlspecialchars($this->input->post('alamat')),
+                'no_telp'   => htmlspecialchars($this->input->post('no_telp')),
+                'photo'     => 'default.jpg',
+                'role_id'   => 2,
                 'is_active' => 1,
             ];
 
@@ -275,7 +275,7 @@ class Admin extends CI_Controller
             'user' => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array()
         ];
 
- $config['full_tag_open']  = '<nav><ul class="pagination">';
+        $config['full_tag_open']  = '<nav><ul class="pagination">';
         $config['full_tag_close'] = '</ul></nav>';
 
         $config['first_link'] = 'First';

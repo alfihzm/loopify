@@ -1,11 +1,11 @@
 <style>
-.fa-eye {
-    width: 1.25em;
-}
+    .fa-eye {
+        width: 1.25em;
+    }
 
-.fa-eye-slash {
-    font-size: 1em;
-}
+    .fa-eye-slash {
+        font-size: 1em;
+    }
 </style>
 
 <div class="main-panel" style="font-family: quicksand;">
@@ -31,7 +31,7 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="">ID Staff</label> 
+                                        <label for="">ID Staff</label>
                                         <input type="text" class="form-control" id="" name="" autocomplete="off" readonly>
                                     </div>
                                 </div>
@@ -45,24 +45,21 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="lahir">Tanggal Lahir</label>
-                                        <input type="date" class="form-control" id="lahir" name="lahir"
-                                            autocomplete="off">
+                                        <input type="date" class="form-control" id="lahir" name="lahir" autocomplete="off">
                                         <?= form_error('lahir', '<small class="text-danger">', '</small>'); ?>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="email">Email</label>
-                                        <input type="text" class="form-control" id="email" name="email"
-                                            autocomplete="off">
+                                        <input type="text" class="form-control" id="email" name="email" autocomplete="off">
                                         <?= form_error('email', '<small class="text-danger">', '</small>'); ?>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="username">Username</label>
-                                        <input type="text" class="form-control" id="username" name="username"
-                                            autocomplete="off">
+                                        <input type="text" class="form-control" id="username" name="username" autocomplete="off">
                                         <?= form_error('username', '<small class="text-danger">', '</small>'); ?>
                                     </div>
                                 </div>
@@ -70,8 +67,7 @@
                                     <div class="form-group">
                                         <label for="password">Password</label>
                                         <div class="input-group">
-                                            <input type="password" class="form-control" id="password" name="password"
-                                                autocomplete="off">
+                                            <input type="password" class="form-control" id="password" name="password" autocomplete="off">
                                             <div class="input-group-append">
                                                 <span class="input-group-text">
                                                     <i class="fas fa-eye-slash" id="togglePassword"></i>
@@ -84,22 +80,19 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="no_telp">No. Telepon</label>
-                                        <input type="text" class="form-control" id="no_telp" name="no_telp"
-                                            autocomplete="off">
+                                        <input type="text" class="form-control" id="no_telp" name="no_telp" autocomplete="off">
                                         <?= form_error('no_telp', '<small class="text-danger">', '</small>'); ?>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="alamat">Alamat</label>
-                                        <input type="text" class="form-control" id="alamat" name="alamat"
-                                            autocomplete="off">
+                                        <input type="text" class="form-control" id="alamat" name="alamat" autocomplete="off">
                                         <?= form_error('alamat', '<small class="text-danger">', '</small>'); ?>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-12"
-                                style="display: flex; justify-content: space-evenly; align-items: center; margin-top: 10px">
+                            <div class="col-sm-12" style="display: flex; justify-content: space-evenly; align-items: center; margin-top: 10px">
                                 <button type="submit" class="btn btn-primary">Tambah</button>
                                 <a style="width: 100px;" href="<?= base_url('admin/staff'); ?>" class="btn btn-warning">
                                     Batal </a>
@@ -113,18 +106,18 @@
     </div>
 
     <script>
-    document.getElementById('togglePassword').addEventListener('click', function() {
-        var passwordInput = document.getElementById('password');
-        var icon = document.getElementById('togglePassword');
+        document.getElementById('togglePassword').addEventListener('click', function() {
+            var passwordInput = document.getElementById('password');
+            var icon = document.getElementById('togglePassword');
 
-        if (passwordInput.getAttribute('type') === 'password') {
-            passwordInput.setAttribute('type', 'text');
-            icon.classList.remove('fa-eye-slash');
-            icon.classList.add('fa-eye');
-        } else {
-            passwordInput.setAttribute('type', 'password');
-            icon.classList.remove('fa-eye');
-            icon.classList.add('fa-eye-slash');
-        }
-    });
+            if (passwordInput.getAttribute('type') === 'password') {
+                passwordInput.setAttribute('type', 'text');
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            } else {
+                passwordInput.setAttribute('type', 'password');
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            }
+        });
     </script>
