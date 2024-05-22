@@ -37,37 +37,19 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-                    <h4 class="text-white">Layanan</h4>
+                    <h4 class="text-white">Tentang Kami</h4>
                     <ul class="list-unstyled footer-icon">
-                        <li class="list-item mb-2"><a href="register-domain.html" class="footer-link">Tukar Botol
-                                Plastik</a></li>
-                        <li class="list-item mb-2"><a href="register-domain.html" class="footer-link">Tukar Kaleng</a>
+                        <li class="list-item mb-2"><a href="<?= base_url('about#about'); ?>" class="footer-link">Siapa kita ?</a></li>
+                        <li class="list-item mb-2"><a href="<?= base_url('about#tech'); ?>" class="footer-link">Technical Support</a>
                         </li>
-                        <li class="list-item mb-2"><a href="premium-domains.html" class="footer-link">Tukar Kardus</a>
+                        <li class="list-item mb-2"><a href="<?= base_url('about#team'); ?>" class="footer-link">Tim Kami </a>
                         </li>
-                        <li class="list-item mb-2"><a href="domain-transfer.html" class="footer-link">Tata Cara
-                                Tukar</a></li>
-                        <li class="list-item mb-2"><a href="domain-transfer.html" class="footer-link">Lokasi</a></li>
+                        <li class="list-item mb-2"><a href="<?= base_url('about#faq'); ?>" class="footer-link">Frequently Asked Questions</a></li>
+                        <li class="list-item mb-2"><a href="<?= base_url('about#rev'); ?>" class="footer-link">Reviews</a></li>
                     </ul>
                 </div>
-                <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-                    <h4 class="text-white">Produk</h4>
-                    <ul class="list-unstyled footer-icon">
-                        <li class="list-item mb-2"><a href="linux-shared-hosting.html"
-                                class="footer-link">Merhendise</a></li>
-                    </ul>
-                </div>
+
                 <div class="col-lg-3 col-sm-6 mb-4 mb-lg-0">
-                    <h4 class="text-white">Get in Touch With Us</h4>
-                    <form action="javascript:void(0);" class="form mb-4">
-                        <div class="form-group custom-form-group">
-                            <input type="text" class="form-control rounded-pill border-0"
-                                placeholder="Enter Your Email...">
-                            <button
-                                class="custom-form-btn btn-icon btn btn-primary bg-primary-gradient rounded-circle border-0 right-0 me-1 py-2 px-2 shadow-none"
-                                type="button"><i class="fe fe-arrow-right"></i></button>
-                        </div>
-                    </form>
                     <h4 class="text-white">Support</h4>
                     <ul class="list-unstyled footer-icon">
                         <li class="list-item mb-2"><a href="blog.html" class="footer-link">Our Blog</a></li>
@@ -142,11 +124,11 @@
             <span class="tx-14 op-8">
                 Copyright &#169;
                 <span id="year"></span>
-                <a href="index.html" class="text-white">Hostma.</a>
+                <a href="index.html" class="text-white">Recyloop.</a>
                 Designed with
                 <span class="fa fa-heart tx-danger"></span>
                 by
-                <a href="javascript:void(0);" class="text-white">Spruko</a>
+                <a href="javascript:void(0);" class="text-white">Andrian Fakih</a>
                 All Rights Reserved
             </span>
         </div>
