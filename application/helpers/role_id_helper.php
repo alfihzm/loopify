@@ -9,5 +9,8 @@ function role_id()
     if ($user['role_id'] == 2) {
         redirect('staff');
         return;
+    } else if ($user['role_id'] == 3) {
+        redirect('member');
+        return;
     }
 }

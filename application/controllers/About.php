@@ -12,7 +12,7 @@ class About extends CI_Controller
         $data['judul'] = 'Recyloop.id';
 
         $this->load->view('templates/home_header', $data);
-        $this->load->view('home/about/about.php', $data);
+        $this->load->view('home/about/about', $data);
         $this->load->view('templates/home_footer');
     }
 }

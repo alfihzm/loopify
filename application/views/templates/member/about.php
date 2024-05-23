@@ -29,7 +29,7 @@
                             </div>
                             <!-- End::header-element -->
                             <a href="index.php" class="brand-main">
-                                <img src="assets/images/brand/branding-logo.png" alt="img" class="desktop-logo logo-dark">
+                                <img src="<?= base_url('assets/') ?>images/brand/branding-logo.png" alt="img" class="desktop-logo logo-dark">
                             </a>
 
                             <ul class="categories-dropdowns">
@@ -79,8 +79,8 @@
                         </div>
                         <!-- End::header-element -->
                         <a href="index.html" class="brand-main">
-                            <img src="assets/images/brand/logo-white.png" alt="img" class="desktop-logo logo-dark">
-                            <img src="assets/images/brand/logo-color.png" alt="img" class="desktop-logo logo-color">
+                            <img src="<?= base_url('assets/') ?>images/brand/logo-white.png" alt="img" class="desktop-logo logo-dark">
+                            <img src="<?= base_url('assets/') ?>images/brand/logo-color.png" alt="img" class="desktop-logo logo-color">
                         </a>
                     </div>
 
@@ -93,7 +93,7 @@
 
                                 <!-- Start::slide -->
                                 <li class="slide has-sub">
-                                    <a href="index.php" class="side-menu__item">
+                                    <a href="<?= base_url('member') ?>" class="side-menu__item">
                                         <span class="side-menu__label">Beranda</span>
                                         <i class="fe fe-chevron-down side-menu__angle"></i>
                                     </a>
@@ -104,7 +104,7 @@
 
                                 <!-- Start::slide -->
                                 <li class="slide has-sub">
-                                    <a href="<?= base_url('about'); ?>" class="side-menu__item">
+                                    <a href="<?= base_url('member/about'); ?>" class="side-menu__item">
                                         <span class="side-menu__label">Tentang Kami</span>
                                         <i class="fe fe-chevron-down side-menu__angle"></i>
                                     </a>
@@ -115,7 +115,7 @@
 
                                 <!-- Start::slide -->
                                 <li class="slide has-sub">
-                                    <a href="<?= base_url('about#faq'); ?>" class="side-menu__item">
+                                    <a href="<?= base_url('member/about#faq'); ?>" class="side-menu__item">
                                         <span class="side-menu__label">FAQ</span>
                                         <i class="fe fe-chevron-down side-menu__angle"></i>
                                     </a>
@@ -125,7 +125,7 @@
                                 <!-- End::slide -->
                             </ul>
                             <div class="d-xl-flex d-lg-none d-grid gap-2 text-center">
-                                <a href="<?= base_url('auth'); ?>" class="btn btn-secondary min-w-fit-content">Masuk</a>
+                                <a href="<?= base_url('auth/logout'); ?>" class="btn btn-secondary min-w-fit-content">Keluar</a>
                             </div>
                         </nav>
                         <!-- End::nav -->
@@ -155,7 +155,7 @@
                             </div>
                             <div class="col-lg-5">
                                 <div class="banner-bg about-image mt-5 mt-lg-0">
-                                    <img src="assets/images/png/26.png" class="reseller-img img-fluid" alt="img">
+                                    <img src="<?= base_url('assets/') ?>images/png/26.png" class="reseller-img img-fluid" alt="img">
                                 </div>
                             </div>
                         </div>
@@ -164,7 +164,7 @@
             </section>
 
             <section class="section bg-pattern-1 bg-gray-100 overflow-hidden" id="about">
-                <img src="assets/images/patterns/9.png" alt="img" class="patterns-8 sub-pattern-1 filter-invert sub-pattern-1 op-1">
+                <img src="<?= base_url('assets/') ?>images/patterns/9.png" alt="img" class="patterns-8 sub-pattern-1 filter-invert sub-pattern-1 op-1">
                 <div class="container">
                     <div class="heading-section">
                         <div class="heading-subtitle"><span class="tx-primary tx-16 fw-semibold">Tentang</span></div>
@@ -187,15 +187,15 @@
                                 semakin tinggi.</p>
                         </div>
                         <div class="col-lg-6 text-center">
-                            <img src="assets/images/png/63.png" class="img-fluid" alt="img" width="450">
+                            <img src="<?= base_url('assets/') ?>images/png/63.png" class="img-fluid" alt="img" width="450">
                         </div>
                     </div>
                 </div>
             </section>
 
             <section id="tech" class="section blob-bg-sec banner-pd-3">
-                <img src="assets/images/patterns/18.png" alt="img" class="patterns-5 transform-rotate-180 height-inherit bottom-0 op-1">
-                <img src="assets/images/patterns/18.png" alt="img" class="patterns-7 height-inherit bottom-0">
+                <img src="<?= base_url('assets/') ?>images/patterns/18.png" alt="img" class="patterns-5 transform-rotate-180 height-inherit bottom-0 op-1">
+                <img src="<?= base_url('assets/') ?>images/patterns/18.png" alt="img" class="patterns-7 height-inherit bottom-0">
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-lg-7">
@@ -210,7 +210,7 @@
                         </div>
                         <div class="col-lg-5">
                             <div class="text-center mt-5 mt-lg-0">
-                                <img src="assets/images/png/57.png" alt="img" class="img-fluid">
+                                <img src="<?= base_url('assets/') ?>images/png/57.png" alt="img" class="img-fluid">
                             </div>
                         </div>
                     </div>
@@ -232,7 +232,7 @@
                             <div class="card mb-lg-0">
                                 <div class="card-body">
                                     <div class="d-flex align-items-center mb-4">
-                                        <img src="assets/images/profile/8.jpg" class="avatar avatar-lg rounded-circle me-3" alt="...">
+                                        <img src="<?= base_url('assets/') ?>images/profile/8.jpg" class="avatar avatar-lg rounded-circle me-3" alt="...">
                                         <div>
                                             <h5 class="mb-1">Andrian Fakih</h5>
                                             <p class="tx-14 mb-0">Web designer</p>
@@ -247,7 +247,7 @@
                             <div class="card mb-lg-0">
                                 <div class="card-body">
                                     <div class="d-flex align-items-center mb-4">
-                                        <img src="assets/images/profile/4.jpg" class="avatar avatar-lg rounded-circle me-3" alt="...">
+                                        <img src="<?= base_url('assets/') ?>images/profile/4.jpg" class="avatar avatar-lg rounded-circle me-3" alt="...">
                                         <div>
                                             <h5 class="mb-1">Muhammad Alfi Hamzami</h5>
                                             <p class="tx-14 mb-0">Java Developer</p>
@@ -262,7 +262,7 @@
                             <div class="card mb-lg-0">
                                 <div class="card-body">
                                     <div class="d-flex align-items-center mb-4">
-                                        <img src="assets/images/profile/3.jpg" class="avatar avatar-lg rounded-circle me-3" alt="...">
+                                        <img src="<?= base_url('assets/') ?>images/profile/3.jpg" class="avatar avatar-lg rounded-circle me-3" alt="...">
                                         <div>
                                             <h5 class="mb-1">Muhammad Raihan Hadianto</h5>
                                             <p class="tx-14 mb-0">Angular Developer</p>
@@ -277,7 +277,7 @@
                             <div class="card mb-lg-0">
                                 <div class="card-body">
                                     <div class="d-flex align-items-center mb-4">
-                                        <img src="assets/images/profile/1.jpg" class="avatar avatar-lg rounded-circle me-3" alt="...">
+                                        <img src="<?= base_url('assets/') ?>images/profile/1.jpg" class="avatar avatar-lg rounded-circle me-3" alt="...">
                                         <div>
                                             <h5 class="mb-1">Dwi Salzabila</h5>
                                             <p class="tx-14 mb-0">React Developer</p>
@@ -397,14 +397,14 @@
                         </div>
                         <div class="col-xl-9">
                             <div class="bg-client position-relative">
-                                <img src="assets/images/patterns/9.png" alt="img" class="patterns-11 z-index-0 filter-invert op-2">
+                                <img src="<?= base_url('assets/') ?>images/patterns/9.png" alt="img" class="patterns-11 z-index-0 filter-invert op-2">
                                 <div class="swiper testimonialSwiper">
                                     <div class="swiper-wrapper">
                                         <div class="swiper-slide">
                                             <div class="card shadow-none mb-0">
                                                 <div class="card-body">
                                                     <div class="d-flex align-items-center">
-                                                        <img src="assets/images/profile/1.jpg" alt="img" class="avatar avatar-lg rounded-circle me-2">
+                                                        <img src="<?= base_url('assets/') ?>images/profile/1.jpg" alt="img" class="avatar avatar-lg rounded-circle me-2">
                                                         <div class="flex-grow-1">
                                                             <h6 class="mb-0 text-white">Dhaval Patel</h6>
                                                             <span class="tx-11">12 Aug, 2022</span>
@@ -423,7 +423,7 @@
                                             <div class="card shadow-none mb-0">
                                                 <div class="card-body">
                                                     <div class="d-flex align-items-center">
-                                                        <img src="assets/images/profile/3.jpg" alt="img" class="avatar avatar-lg rounded-circle me-2">
+                                                        <img src="<?= base_url('assets/') ?>images/profile/3.jpg" alt="img" class="avatar avatar-lg rounded-circle me-2">
                                                         <div class="flex-grow-1">
                                                             <h6 class="mb-0 text-white">Navin Telsko</h6>
                                                             <span class="tx-11">11 Nov, 2022</span>
@@ -442,7 +442,7 @@
                                             <div class="card shadow-none mb-0">
                                                 <div class="card-body">
                                                     <div class="d-flex align-items-center">
-                                                        <img src="assets/images/profile/2.jpg" alt="img" class="avatar avatar-lg rounded-circle me-2">
+                                                        <img src="<?= base_url('assets/') ?>images/profile/2.jpg" alt="img" class="avatar avatar-lg rounded-circle me-2">
                                                         <div class="flex-grow-1">
                                                             <h6 class="mb-0 text-white">Mosh</h6>
                                                             <span class="tx-11">16 Apr, 2022</span>
@@ -461,7 +461,7 @@
                                             <div class="card shadow-none mb-0">
                                                 <div class="card-body">
                                                     <div class="d-flex align-items-center">
-                                                        <img src="assets/images/profile/1.jpg" alt="img" class="avatar avatar-lg rounded-circle me-2">
+                                                        <img src="<?= base_url('assets/') ?>images/profile/1.jpg" alt="img" class="avatar avatar-lg rounded-circle me-2">
                                                         <div class="flex-grow-1">
                                                             <h6 class="mb-0 text-white">Dhaval Patel</h6>
                                                             <span class="tx-11">12 Aug, 2022</span>
@@ -480,7 +480,7 @@
                                             <div class="card shadow-none mb-0">
                                                 <div class="card-body">
                                                     <div class="d-flex align-items-center">
-                                                        <img src="assets/images/profile/1.jpg" alt="img" class="avatar avatar-lg rounded-circle me-2">
+                                                        <img src="<?= base_url('assets/') ?>images/profile/1.jpg" alt="img" class="avatar avatar-lg rounded-circle me-2">
                                                         <div class="flex-grow-1">
                                                             <h6 class="mb-0 text-white">Dhaval Patel</h6>
                                                             <span class="tx-11">12 Aug, 2022</span>
@@ -499,7 +499,7 @@
                                             <div class="card shadow-none mb-0">
                                                 <div class="card-body">
                                                     <div class="d-flex align-items-center">
-                                                        <img src="assets/images/profile/1.jpg" alt="img" class="avatar avatar-lg rounded-circle me-2">
+                                                        <img src="<?= base_url('assets/') ?>images/profile/1.jpg" alt="img" class="avatar avatar-lg rounded-circle me-2">
                                                         <div class="flex-grow-1">
                                                             <h6 class="mb-0 text-white">Dhaval Patel</h6>
                                                             <span class="tx-11">12 Aug, 2022</span>
@@ -530,40 +530,40 @@
     <!-- SCRIPTS -->
 
     <!-- BOOTSTRAP JS -->
-    <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="<?= base_url('assets/') ?>libs/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- POPPER JS -->
-    <script src="assets/libs/popperjs/core/umd/popper.min.js"></script>
+    <script src="<?= base_url('assets/') ?>libs/popperjs/core/umd/popper.min.js"></script>
 
     <!-- DEFAULTMENU JS -->
-    <script src="assets/js/defaultmenu.js"></script>
+    <script src="<?= base_url('assets/') ?>js/defaultmenu.js"></script>
 
     <!-- CATEGORYMENU JS -->
-    <script src="assets/js/category-menu.js"></script>
+    <script src="<?= base_url('assets/') ?>js/category-menu.js"></script>
 
     <!-- ACCEPT-COOKIE JS -->
-    <script src="assets/js/cookies.js"></script>
+    <script src="<?= base_url('assets/') ?>js/cookies.js"></script>
 
     <!-- SIMONWEP-PICKER JS -->
-    <script src="assets/libs/simonwep/pickr/pickr.es5.min.js"></script>
-    <script src="assets/js/picker.js"></script>
+    <script src="<?= base_url('assets/') ?>libs/simonwep/pickr/pickr.es5.min.js"></script>
+    <script src="<?= base_url('assets/') ?>js/picker.js"></script>
 
     <!-- Live Chat -->
-    <script src="assets/js/live-chat.js"></script>
+    <script src="<?= base_url('assets/') ?>js/live-chat.js"></script>
     <script src="../../../code.tidio.co_443/ejjaylsnuydywf5a0sqc1gvcus5orpml.js" async></script>
 
     <!-- STICKY JS -->
-    <script src="assets/js/sticky.js"></script>
+    <script src="<?= base_url('assets/') ?>js/sticky.js"></script>
 
     <!-- CUSTOM JS -->
-    <script src="assets/js/custom.js"></script>
+    <script src="<?= base_url('assets/') ?>js/custom.js"></script>
 
     <!-- CUSTOM-SWITCHER JS -->
-    <script src="assets/js/custom-switcher.js"></script>
+    <script src="<?= base_url('assets/') ?>js/custom-switcher.js"></script>
 
     <!-- SWIPER JS -->
-    <script src="assets/libs/swiper/swiper-bundle.min.js"></script>
-    <script src="assets/js/swiper.js"></script>
+    <script src="<?= base_url('assets/') ?>libs/swiper/swiper-bundle.min.js"></script>
+    <script src="<?= base_url('assets/') ?>js/swiper.js"></script>
 
     <!-- END SCRIPTS -->
 

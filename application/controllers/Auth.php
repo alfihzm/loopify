@@ -16,7 +16,7 @@ class Auth extends CI_Controller
             } elseif ($this->session->userdata('role_id') == 2) {
                 redirect('staff');
             } else {
-                redirect('home');
+                redirect('member');
             }
         }
 
@@ -62,7 +62,7 @@ class Auth extends CI_Controller
                     } elseif ($user['role_id'] == 2) {
                         redirect('staff');
                     } else {
-                        redirect('home');
+                        redirect('member');
                     }
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password yang Anda masukkan salah.</div>');

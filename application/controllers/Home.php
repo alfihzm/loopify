@@ -5,6 +5,7 @@ class Home extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        role_id();
     }
 
     public function index()
@@ -12,7 +13,7 @@ class Home extends CI_Controller
         $data['judul'] = 'Recyloop.id';
 
         $this->load->view('templates/home_header', $data);
-        $this->load->view('home/index.php', $data);
+        $this->load->view('home/index', $data);
         $this->load->view('templates/home_footer');
     }
 }

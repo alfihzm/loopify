@@ -26,8 +26,8 @@
                             <!-- End::header-link -->
                         </div>
                         <!-- End::header-element -->
-                        <a href="index.php" class="brand-main">
-                            <img src="assets/images/brand/branding-logo.png" alt="img" class="desktop-logo logo-dark">
+                        <a href="<?= base_url('member'); ?>" class="brand-main">
+                            <img src="<?= base_url('assets/') ?>images/brand/branding-logo.png" alt="img" class="desktop-logo logo-dark">
                         </a>
 
                         <ul class="categories-dropdowns">
@@ -38,7 +38,9 @@
                     <ul class="nav list-unstyled align-items-center">
                         <li class="d-flex align-items-center position-relative me-md-4 me-2">
                             <a href="tel:+1236789657" class="stretched-link"></a>
-                            <span class="avatar bg-white-1 border rounded-circle tx-15 border-white-2 me-2"><i class="bi bi-telephone text-white"></i></span>
+                            <span class="avatar bg-white-1 border rounded-circle tx-15 border-white-2 me-2">
+                                <i class="bi bi-telephone text-white"></i>
+                            </span>
                             <div class="d-none d-md-block">
                                 <a href="javascript:void(0);" class="nav-link tx-15 p-0">Call to Us</a>
                                 <a href="tel:+1236789657" class="mb-0 nav-link p-0 tx-13 op-8 lh-sm">+123 678 9657</a>
@@ -46,7 +48,9 @@
                         </li>
                         <li class="d-flex align-items-center position-relative">
                             <a id="live-chat" href="javascript:void(0);" class="stretched-link"></a>
-                            <span class="avatar bg-white-1 border rounded-circle tx-15 border-white-2 me-2"><i class="bi bi-chat-text text-white"></i></span>
+                            <span class="avatar bg-white-1 border rounded-circle tx-15 border-white-2 me-2">
+                                <i class="bi bi-chat-text text-white"></i>
+                            </span>
                             <div class="d-none d-md-block">
                                 <a href="javascript:void(0);" class="nav-link tx-15 p-0">Live Chat</a>
                                 <p class="mb-0 nav-link p-0 tx-13 op-8 lh-sm">Chat With Us</p>
@@ -75,8 +79,8 @@
                         <!-- End::header-link -->
                     </div>
                     <!-- End::header-element -->
-                    <a href="index.html" class="brand-main">
-                        <img src="assets/images/brand/logo-white.png" alt="img" class="desktop-logo logo-dark">
+                    <a href="<?= base_url('member'); ?>" class="brand-main">
+                        <img src="<?= base_url('assets/') ?>images/brand/logo-white.png" alt="img" class="desktop-logo logo-dark">
                     </a>
                 </div>
 
@@ -89,7 +93,7 @@
 
                             <!-- Start::slide -->
                             <li class="slide has-sub">
-                                <a href="index.php" class="side-menu__item">
+                                <a href="<?= base_url('member'); ?>" class="side-menu__item">
                                     <span class="side-menu__label">Beranda</span>
                                     <i class="fe fe-chevron-down side-menu__angle"></i>
                                 </a>
@@ -100,7 +104,7 @@
 
                             <!-- Start::slide -->
                             <li class="slide has-sub">
-                                <a href="<?= base_url('about'); ?>" class="side-menu__item">
+                                <a href="<?= base_url('member/about'); ?>" class="side-menu__item">
                                     <span class="side-menu__label">Tentang Kami</span>
                                     <i class="fe fe-chevron-down side-menu__angle"></i>
 
@@ -112,7 +116,7 @@
 
                             <!-- Start::slide -->
                             <li class="slide has-sub">
-                                <a href="<?= base_url('about#faq'); ?>" class="side-menu__item">
+                                <a href="<?= base_url('member/about#faq'); ?>" class="side-menu__item">
                                     <span class="side-menu__label">FAQ</span>
                                     <i class="fe fe-chevron-down side-menu__angle"></i>
                                 </a>
@@ -123,7 +127,7 @@
 
                         </ul>
                         <div class="d-xl-flex d-lg-none d-grid gap-2 text-center">
-                            <a href="<?= base_url('auth'); ?>" class="btn btn-secondary min-w-fit-content">Masuk</a>
+                            <a href="<?= base_url('auth/logout'); ?>" class="btn btn-secondary min-w-fit-content">Keluar</a>
                         </div>
 
                     </nav>
@@ -141,11 +145,11 @@
 
     <div class="main-content app-content">
         <section class="banner-section section banner-1">
-            <img src="assets/images/patterns/1.png" alt="img" class="patterns-2">
-            <img src="assets/images/patterns/4.png" alt="img" class="patterns-3">
-            <img src="assets/images/patterns/6.png" alt="img" class="patterns-4">
-            <img src="assets/images/patterns/6.png" alt="img" class="patterns-6">
-            <img src="assets/images/patterns/10.png" alt="img" class="patterns-8 op-2">
+            <img src="<?= base_url('assets/') ?>images/patterns/1.png" alt="img" class="patterns-2">
+            <img src="<?= base_url('assets/') ?>images/patterns/4.png" alt="img" class="patterns-3">
+            <img src="<?= base_url('assets/') ?>images/patterns/6.png" alt="img" class="patterns-4">
+            <img src="<?= base_url('assets/') ?>images/patterns/6.png" alt="img" class="patterns-6">
+            <img src="<?= base_url('assets/') ?>images/patterns/10.png" alt="img" class="patterns-8 op-2">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-7">
@@ -156,7 +160,7 @@
                     </div>
                     <div class="col-lg-5">
                         <div class="text-lg-end text-center mt-4 mt-lg-0">
-                            <img src="assets/images/png/1.png" class="img-fluid" alt="img">
+                            <img src="<?= base_url('assets/') ?>images/png/1.png" class="img-fluid" alt="img">
                         </div>
                     </div>
                 </div>
@@ -164,9 +168,9 @@
         </section>
 
         <section class="section bg-pattern-1">
-            <img src="assets/images/patterns/7.png" alt="img" class="patterns-7">
-            <img src="assets/images/patterns/2.png" alt="img" class="patterns-1 op-1">
-            <img src="assets/images/patterns/9.png" alt="img" class="patterns-3 filter-invert sub-pattern-2 op-2">
+            <img src="<?= base_url('assets/') ?>images/patterns/7.png" alt="img" class="patterns-7">
+            <img src="<?= base_url('assets/') ?>images/patterns/2.png" alt="img" class="patterns-1 op-1">
+            <img src="<?= base_url('assets/') ?>images/patterns/9.png" alt="img" class="patterns-3 filter-invert sub-pattern-2 op-2">
             <div class="container">
                 <div class="heading-section">
                     <div class="heading-subtitle"><span class="tx-primary tx-16 fw-semibold">Tukar</span></div>
@@ -236,11 +240,11 @@
         </section>
 
         <section class="banner-pd-1 blob-bg-sec">
-            <img src="assets/images/patterns/10.png" alt="img" class="patterns-8 op-1">
-            <img src="assets/images/patterns/4.png" alt="img" class="patterns-3">
-            <img src="assets/images/patterns/6.png" alt="img" class="patterns-4">
-            <img src="assets/images/patterns/9.png" alt="img" class="patterns-9">
-            <img src="assets/images/patterns/9.png" alt="img" class="patterns-9 sub-pattern-1">
+            <img src="<?= base_url('assets/') ?>images/patterns/10.png" alt="img" class="patterns-8 op-1">
+            <img src="<?= base_url('assets/') ?>images/patterns/4.png" alt="img" class="patterns-3">
+            <img src="<?= base_url('assets/') ?>images/patterns/6.png" alt="img" class="patterns-4">
+            <img src="<?= base_url('assets/') ?>images/patterns/9.png" alt="img" class="patterns-9">
+            <img src="<?= base_url('assets/') ?>images/patterns/9.png" alt="img" class="patterns-9 sub-pattern-1">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-6 reveal">
@@ -253,15 +257,15 @@
                         <a href="#domain" class="btn btn-lg btn-secondary">Get Started</a>
                     </div>
                     <div class="col-lg-6 text-lg-end text-center mt-5 mt-lg-0">
-                        <img src="assets/images/png/69.png" alt="img" class="build-img reveal img-fluid">
+                        <img src="<?= base_url('assets/') ?>images/png/69.png" alt="img" class="build-img reveal img-fluid">
                     </div>
                 </div>
             </div>
         </section>
 
         <section class="section">
-            <img src="assets/images/patterns/12.png" alt="img" class="patterns-8 sub-pattern-1 z-index-0 op-1">
-            <img src="assets/images/patterns/11.png" alt="img" class="patterns-3 z-index-0">
+            <img src="<?= base_url('assets/') ?>images/patterns/12.png" alt="img" class="patterns-8 sub-pattern-1 z-index-0 op-1">
+            <img src="<?= base_url('assets/') ?>images/patterns/11.png" alt="img" class="patterns-3 z-index-0">
             <div class="container">
                 <div class="heading-section">
                     <div class="heading-subtitle"><span class="tx-primary tx-16 fw-semibold">Tata Cara</span></div>
@@ -432,7 +436,7 @@
                         <div class="card mb-lg-0">
                             <div class="position-relative">
                                 <a href="blog-details.html">
-                                    <img class="card-img-top" src="assets/images/blog/3.jpg" alt="blog-image">
+                                    <img class="card-img-top" src="<?= base_url('assets/') ?>images/blog/3.jpg" alt="blog-image">
                                 </a>
                             </div>
                             <div class="card-body d-flex flex-column">
@@ -449,7 +453,7 @@
                         <div class="card mb-lg-0">
                             <div class="position-relative">
                                 <a href="blog-details.html">
-                                    <img class="card-img-top" src="assets/images/blog/6.jpg" alt="blog-image">
+                                    <img class="card-img-top" src="<?= base_url('assets/') ?>images/blog/6.jpg" alt="blog-image">
                                 </a>
                             </div>
                             <div class="card-body d-flex flex-column">
@@ -464,7 +468,7 @@
                         <div class="card mb-lg-0">
                             <div class="position-relative">
                                 <a href="blog-details.html">
-                                    <img class="card-img-top" src="assets/images/blog/5.jpg" alt="blog-image">
+                                    <img class="card-img-top" src="<?= base_url('assets/') ?>images/blog/5.jpg" alt="blog-image">
                                 </a>
                             </div>
                             <div class="card-body d-flex flex-column">
@@ -487,43 +491,43 @@
 <!-- SCRIPTS -->
 
 <!-- BOOTSTRAP JS -->
-<script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="<?= base_url('assets/') ?>libs/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <!-- POPPER JS -->
-<script src="assets/libs/popperjs/core/umd/popper.min.js"></script>
+<script src="<?= base_url('assets/') ?>libs/popperjs/core/umd/popper.min.js"></script>
 
 <!-- DEFAULTMENU JS -->
-<script src="assets/js/defaultmenu.js"></script>
+<script src="<?= base_url('assets/') ?>js/defaultmenu.js"></script>
 
 <!-- CATEGORYMENU JS -->
-<script src="assets/js/category-menu.js"></script>
+<script src="<?= base_url('assets/') ?>js/category-menu.js"></script>
 
 <!-- ACCEPT-COOKIE JS -->
-<script src="assets/js/cookies.js"></script>
+<script src="<?= base_url('assets/') ?>js/cookies.js"></script>
 
 <!-- SIMONWEP-PICKER JS -->
-<script src="assets/libs/simonwep/pickr/pickr.es5.min.js"></script>
-<script src="assets/js/picker.js"></script>
+<script src="<?= base_url('assets/') ?>libs/simonwep/pickr/pickr.es5.min.js"></script>
+<script src="<?= base_url('assets/') ?>js/picker.js"></script>
 
 <!-- Live Chat -->
-<script src="assets/js/live-chat.js"></script>
+<script src="<?= base_url('assets/') ?>js/live-chat.js"></script>
 <script src="../../../code.tidio.co_443/ejjaylsnuydywf5a0sqc1gvcus5orpml.js" async></script>
 
 <!-- STICKY JS -->
-<script src="assets/js/sticky.js"></script>
+<script src="<?= base_url('assets/') ?>js/sticky.js"></script>
 
 <!-- CUSTOM JS -->
-<script src="assets/js/custom.js"></script>
+<script src="<?= base_url('assets/') ?>js/custom.js"></script>
 
 <!-- CUSTOM-SWITCHER JS -->
-<script src="assets/js/custom-switcher.js"></script>
+<script src="<?= base_url('assets/') ?>js/custom-switcher.js"></script>
 
 <!-- SWIPER JS -->
-<script src="assets/libs/swiper/swiper-bundle.min.js"></script>
-<script src="assets/js/swiper.js"></script>
+<script src="<?= base_url('assets/') ?>libs/swiper/swiper-bundle.min.js"></script>
+<script src="<?= base_url('assets/') ?>js/swiper.js"></script>
 
 <!-- COUNTDOWN JS -->
-<script src="assets/js/countdown.js"></script>
+<script src="<?= base_url('assets/') ?>js/countdown.js"></script>
 
 <!-- END SCRIPTS -->
 
