@@ -175,53 +175,23 @@
                 <div class="container">
                     <div class="heading-section">
                         <div class="heading-subtitle"><span class="tx-primary tx-16 fw-semibold">Tentang</span></div>
-                        <div class="heading-title">Siapa <span class="tx-primary">Kita ?</span></div>
-                        <div class="heading-description">Et et dolore aliquyam sed eos ut eos accusam erat, ipsum
-                            consetetur</div>
+                        <div class="heading-title">Tentang <span class="tx-primary">Kami</span></div>
+                        <div class="heading-description">Mengenal lebih dalam tentang kami.</div>
                     </div>
                     <div class="row align-items-center">
                         <div class="col-lg-6 feature-client-bg">
                             <h4 class="mb-3">
-                                <span>Kenapa Memilih Kami ?</span>
+                                <span>Apa Recana Kami ?</span>
                             </h4>
                             <p class="mb-4">Kami bangga dengan sejarah kami, namun yang terpenting, kami bangga dengan
                                 kepuasan pelanggan kami. Setiap hari kami meningkatkan posisi situs pelanggan kami
                                 semakin tinggi.</p>
-                            <div class="d-flex align-items-start mb-4">
-                                <div class="me-3">
-                                    <span class="avatar text-bg-primary rounded-circle tx-20"><i
-                                            class="bi bi-display"></i></span>
-                                </div>
-                                <div class="flex-grow-1">
-                                    <h6 class="mb-1">Working Process</h6>
-                                    <p class="mb-0 tx-14">Justo aliquyam duo vero clita aliquyam vero eirmod stet amet.
-                                        Dolores est eos et est kasd, invidunt aliquyam no sadipscing.</p>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-start mb-4">
-                                <div class="me-3">
-                                    <span class="avatar text-bg-secondary rounded-circle tx-20"><i
-                                            class="bi bi-person"></i></span>
-                                </div>
-                                <div class="flex-grow-1">
-                                    <h6 class="mb-1">Dedicated Team</h6>
-                                    <p class="mb-0 tx-14">At vero eos et accusamus et iusto odio dignissimos ducimus qui
-                                        blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas.
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-start">
-                                <div class="me-3">
-                                    <span class="avatar text-bg-success rounded-circle tx-20"><i
-                                            class="bi bi-headset"></i></span>
-                                </div>
-                                <div class="flex-grow-1">
-                                    <h6 class="mb-1">24/7 Hours Support</h6>
-                                    <p class="mb-0 tx-14">Molestias excepturi sint occaecati cupiditate non provident,
-                                        similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et
-                                        dolorum fuga.</p>
-                                </div>
-                            </div>
+                            <h4 class="mb-3">
+                                <span>Mengapa Memilih Kami ?</span>
+                            </h4>
+                            <p class="mb-4">Kami bangga dengan sejarah kami, namun yang terpenting, kami bangga dengan
+                                kepuasan pelanggan kami. Setiap hari kami meningkatkan posisi situs pelanggan kami
+                                semakin tinggi.</p>
                         </div>
                         <div class="col-lg-6 text-center">
                             <img src="assets/images/png/63.png" class="img-fluid" alt="img" width="450">
@@ -239,11 +209,9 @@
                         <div class="col-lg-7">
                             <div class="heading-section text-start mb-4">
                                 <div class="heading-title text-white">Technical Support 24/7</div>
-                                <div class="heading-description text-white op-8">Dukungan dan Bimbingan</div>
+                                <div class="heading-description text-white op-8">Guide & Support</div>
                             </div>
-                            <p class="mb-3 op-8">Est amet sit vero sanctus labore no sed ipsum ipsum nonumy. Sit ipsum
-                                sanctus ea magna est. Aliquyam sed amet. Kasd diam rebum sit ipsum ipsum erat et kasd,
-                                sed et et erat elitr consetetur et aliquyam. Et lorem ipsum Sit ipsum sanctus ea.</p>
+                            <p class="mb-3 op-8">Jika anda memiliki masalah atau kendala yang tidak anda pahami, anda dapat menghubungi kami.</p>
                             <p class="tx-20 fw-500">Hubungi kami : <a href="tel:123-789-7854"
                                     class="text-white me-1">0813-2800-0052</a> (Atau) <a href="contact-us.html"
                                     class="text-white ms-1">Chat Now</a></p>
@@ -282,9 +250,6 @@
                                     </div>
                                     <p>Greet customers and make them feel warm welcome by creating a supportive and
                                         friendly environment</p>
-                                    <a href="#"
-                                        class="btn btn-primary-transparent rounded-circle avatar avatar-sm px-2"><i
-                                            class="bi bi-arrow-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -301,9 +266,6 @@
                                     </div>
                                     <p>Communicate with the customers and make them feel comfortable and knowing their
                                         needs to manage.</p>
-                                    <a href="#"
-                                        class="btn btn-primary-transparent rounded-circle avatar avatar-sm px-2"><i
-                                            class="bi bi-arrow-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -320,9 +282,6 @@
                                     </div>
                                     <p>Deliver products pricing accurately with high reliable performance without any
                                         risks and technical issues.</p>
-                                    <a href="#"
-                                        class="btn btn-primary-transparent rounded-circle avatar avatar-sm px-2"><i
-                                            class="bi bi-arrow-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -339,9 +298,6 @@
                                     </div>
                                     <p>Maintains all the necessary documents that are needed for products pricing with
                                         more privacy.</p>
-                                    <a href="#"
-                                        class="btn btn-primary-transparent rounded-circle avatar avatar-sm px-2"><i
-                                            class="bi bi-arrow-right"></i></a>
                                 </div>
                             </div>
                         </div>
