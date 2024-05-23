@@ -13,17 +13,17 @@ class Member extends CI_Controller
             'judul' => 'Recyloop - Penukaran Limbah Daur Ulang'
         ];
 
-        $this->load->view('templates/member/home_header', $data);
-        $this->load->view('templates/member/member', $data);
-        $this->load->view('templates/member/home_footer');
+        $this->load->view('member/home_header', $data);
+        $this->load->view('member/member', $data);
+        $this->load->view('member/home_footer');
     }
 
     public function about()
     {
         $data['judul'] = 'Recyloop.id';
 
-        $this->load->view('templates/member/home_header', $data);
-        $this->load->view('templates/member/about', $data);
-        $this->load->view('templates/member/home_footer');
+        $this->load->view('member/home_header', $data);
+        $this->load->view('member/about', $data);
+        $this->load->view('member/home_footer');
     }
 }
