@@ -19,14 +19,17 @@
                 <table class="table">
                     <thead>
                         <tr>
+                            <th scope="col" style="width: 50px;">No.</th>
                             <th scope="col" style="width: 100px;">Jenis Sampah</th>
                             <th scope="col" style="width: 100px;">Nilai Tukar</th>
                             <th scope="col" style="width: 100px;">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($sampah as $s) : ?>
+                        <?php $i = 1;
+                        foreach ($sampah as $s) : ?>
                             <tr>
+                                <td><?= $i++; ?></td>
                                 <td><?= $s['jenis_sampah']; ?></td>
                                 <td>Rp<?= $s['nilai_tukar']; ?>/kg</td>
                                 <td>

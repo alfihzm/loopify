@@ -6,13 +6,15 @@ class Member extends CI_Controller
     {
         parent::__construct();
         checkLogin();
+        $this->load->model('LimbahModel');
     }
 
     public function index()
     {
         $data = [
-            'judul' => 'Recyloop - Penukaran Limbah Daur Ulang',
-            'user' => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array()
+            'judul'  => 'Recyloop - Penukaran Limbah Daur Ulang',
+            'user'   => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
+            'limbah' => $this->LimbahModel->getLimbah()
         ];
 
         $this->load->view('templates/member/header', $data);
