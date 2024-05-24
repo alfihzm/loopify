@@ -19,9 +19,7 @@
                     </div>
                     <!-- End::header-element -->
                     <a href="<?= base_url('member'); ?>" class="brand-main">
-                        <img style="width: 30vh; margin-left: 10px; height: auto;"
-                            src="<?= base_url('assets/') ?>images/brand/branding-logo.png" alt="img"
-                            class="desktop-logo logo-dark">
+                        <img style="width: 30vh; margin-left: 10px; height: auto;" src="<?= base_url('assets/') ?>images/brand/branding-logo.png" alt="img" class="desktop-logo logo-dark">
                     </a>
 
                     <ul class="categories-dropdowns">
@@ -32,6 +30,15 @@
                 <ul class="nav list-unstyled align-items-center">
                     <li class="d-flex align-items-center position-relative me-md-4 me-2">
                         <span class="avatar bg-white-1 border rounded-circle tx-15 border-white-2 me-2">
+                            <i style="color: #FFF;" class="fa-regular fa-trash-can"></i>
+                        </span>
+                        <div class="d-none d-md-block">
+                            <a class="nav-link tx-15 p-0">Total Sampah</a>
+                            <a class="mb-0 nav-link p-0 tx-13 op-8 lh-sm"><?= $user['total_sampah']; ?> kg</a>
+                        </div>
+                    </li>
+                    <li class="d-flex align-items-center position-relative me-md-4 me-2">
+                        <span class="avatar bg-white-1 border rounded-circle tx-15 border-white-2 me-2">
                             <i class="bi bi-coin text-white"></i>
                         </span>
                         <div class="d-none d-md-block">
@@ -39,14 +46,8 @@
                             <a class="mb-0 nav-link p-0 tx-13 op-8 lh-sm"><?= $user['koin']; ?> koin</a>
                         </div>
                     </li>
-                    <li class="d-flex align-items-center position-relative me-md-4 me-2">
-                        <span class="avatar bg-white-1 border rounded-circle tx-15 border-white-2 me-2">
-                            <i style="color: #FFF;" class="fa-regular fa-trash-can"></i>
-                        </span>
-                        <div class="d-none d-md-block">
-                            <a class="nav-link tx-15 p-0">Total Sampah</a>
-                            <a class="mb-0 nav-link p-0 tx-13 op-8 lh-sm"><?= $user['total_sampah']; ?> kg</a>
-                        </div>
+                    <li class="d-flex align-items-center position-relative">
+                        <img style="width: 43px; height: auto;" src="<?= base_url('assets/images/user/profile/') . $user['photo']; ?>" alt="user" class="avatar-img rounded-circle">
                     </li>
                 </ul>
             </div>
@@ -72,8 +73,7 @@
                 </div>
                 <!-- End::header-element -->
                 <a href="<?= base_url('member'); ?>" class="brand-main">
-                    <img src="<?= base_url('assets/') ?>images/brand/logo-white.png" alt="img"
-                        class="desktop-logo logo-dark">
+                    <img src="<?= base_url('assets/') ?>images/brand/logo-white.png" alt="img" class="desktop-logo logo-dark">
                 </a>
             </div>
 
@@ -130,13 +130,14 @@
                         <!-- End::slide -->
 
                     </ul>
-                    <div class="d-xl-flex d-lg-none d-grid gap-2 text-center">
-                        <img style="width: 40px; height: auto; border-radius: 100%;"
-                            src="<?= base_url('assets/images/user/profile/') . $user['photo']; ?>" alt="$user['nama']">
 
-                        <!-- <a href="<?= base_url('auth/logout'); ?>" class="btn btn-secondary min-w-fit-content">
-                                Keluar
-                            </a> -->
+                    <div class="d-xl-flex d-lg-none d-grid gap-2 text-center" style="margin: 0px 10px 0px 10px;">
+                        <a id="userGreet" style="color: #FFF; margin-right: 5px; pointer-events: none; cursor: default; font-size: 15px;" class="btn">
+                            <span id="pesanSelamat"></span> <?= $user['nama']; ?>
+                        </a>
+                        <a href="<?= base_url('auth/logout'); ?>" class="btn btn-danger min-w-fit-content">
+                            Keluar
+                        </a>
                     </div>
 
                 </nav>

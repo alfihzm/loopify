@@ -28,7 +28,10 @@ class Member extends CI_Controller
 
     public function about()
     {
-        $data['judul'] = 'Recyloop.id';
+        $data = [
+            'judul' => 'Recyloop - Penukaran Limbah Daur Ulang',
+            'user' => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array()
+        ];
 
         $this->load->view('templates/member/header', $data);
         $this->load->view('templates/member/sidebar', $data);

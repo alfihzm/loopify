@@ -157,4 +157,43 @@
             </span>
         </div>
     </div>
+
+    <!-- Script untuk Ucapan selamat pagi, siang, malam  -->
+    <script type="text/javascript">
+        window.onload = function() {
+            // Ambil waktu klien
+            let waktuSekarang = new Date();
+            let jam = waktuSekarang.getHours();
+
+            // Update pesan selamat sesuai dengan waktu
+            let pesanSelamat = '';
+
+            if (jam >= 5 && jam < 10.59) {
+                pesanSelamat = 'Selamat Pagi,';
+            } else if (jam >= 11 && jam < 14.59) {
+                pesanSelamat = 'Selamat Siang,';
+            } else if (jam >= 14.59 && jam < 18) {
+                pesanSelamat = 'Selamat Sore,';
+            } else {
+                pesanSelamat = 'Selamat Malam,';
+            }
+
+            // Tampilkan pesan selamat pada tampilan
+            let pesanSelamatElement = document.getElementById("pesanSelamat");
+            if (pesanSelamatElement) {
+                pesanSelamatElement.textContent = pesanSelamat;
+            }
+        };
+    </script>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            var myButton = document.getElementById('userGreet');
+            if (window.scrollY > 0) {
+                myButton.style.color = '#828292';
+            } else {
+                myButton.style.color = '#FFF';
+            }
+        });
+    </script>
 </footer>
