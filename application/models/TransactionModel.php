@@ -13,11 +13,16 @@ class TransactionModel extends CI_Model
         return $this->db->insert('transaction', $data);
     }
 
-    public function updatetransaction($id, $status)
+    public function updatetransaction($id, $status, $tgl_validasi)
     {
+        $data = [
+            'status' => $status,
+            'tgl_validasi' => $tgl_validasi
+        ];
         $this->db->where('id', $id);
-        $this->db->update('transaction', array('status' => $status));
+        $this->db->update('transaction', $data);
     }
+
 
     public function delete_transaction($id)
     {
@@ -25,9 +30,9 @@ class TransactionModel extends CI_Model
         if ($transaction) {
             $this->db->where('id', $id);
             $this->db->delete('transaction');
-            return true; 
+            return true;
         } else {
-            return false; 
+            return false;
         }
     }
 

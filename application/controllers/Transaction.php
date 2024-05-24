@@ -7,6 +7,7 @@ class Transaction extends CI_Controller
         is_login();
         $this->load->model('TransactionModel');
         $this->load->language('form_validation', 'indonesian');
+        date_default_timezone_set('Asia/Jakarta');
     }
 
     public function index()
@@ -79,8 +80,9 @@ class Transaction extends CI_Controller
     public function updatetransaction($id)
     {
         $status = 'Sudah dikonfirmasi';
+        $tgl_validasi = date('Y-m-d');
         $this->load->model('TransactionModel');
-        $this->TransactionModel->updatetransaction($id, $status);
+        $this->TransactionModel->updatetransaction($id, $status, $tgl_validasi);
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Penyerahan sudah terkonfirmasi!</div>');
         redirect('transaction');
     }
@@ -99,44 +101,42 @@ class Transaction extends CI_Controller
 
     public function edit_transaction($id)
     {
-    $transaction = $this->TransactionModel->getTransactionById($id);
+        $transaction = $this->TransactionModel->getTransactionById($id);
 
-    if (!$transaction) {
-        redirect('transaction');
-    }
+        if (!$transaction) {
+            redirect('transaction');
+        }
 
-    $username = $transaction['username'];
+        $username = $transaction['username'];
 
-    $judul = 'Edit Transaksi milik ' . $username;
-
-    $data = [
-        'transaction' => $transaction,
-        'user'  => $this->db->get_where('user', ['username' => $username])->row_array(),
-        'judul' => $judul
-    ];
-
-    // Validasi form jika sudah disubmit
-    $this->form_validation->set_rules('id_member', 'ID Member', 'required');
-    $this->form_validation->set_rules('username', 'Username', 'required');
-
-    if ($this->form_validation->run() == false) {
-        $this->load->view("templates/admin/header", $data);
-        $this->load->view("templates/admin/sidebar", $data);
-        $this->load->view("templates/admin/topbar", $data);
-        $this->load->view('admin/transaction/edit_transaction', $data);
-        $this->load->view("templates/admin/footer");
-    } else {
-        $transactionData = [
-            'id_member' => htmlspecialchars($this->input->post('id_member')),
-            'username' => htmlspecialchars($this->input->post('username'))
+        $judul = 'Edit Transaksi milik ' . $username;
+        $data = [
+            'transaction' => $transaction,
+            'user'  => $this->db->get_where('user', ['username' => $username])->row_array(),
+            'user'  => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
+            'judul' => $judul
         ];
-        
-        $this->TransactionModel->editTransaction($id, $transactionData);
-        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data transaksi telah diubah</div>');
-        redirect('transaction');
-    }
 
+        // Validasi form jika sudah disubmit
+        $this->form_validation->set_rules('id_member', 'ID Member', 'required');
+        $this->form_validation->set_rules('username', 'Username', 'required');
 
+        if ($this->form_validation->run() == false) {
+            $this->load->view("templates/admin/header", $data);
+            $this->load->view("templates/admin/sidebar", $data);
+            $this->load->view("templates/admin/topbar", $data);
+            $this->load->view('admin/transaction/edit_transaction', $data);
+            $this->load->view("templates/admin/footer");
+        } else {
+            $transactionData = [
+                'id_member' => htmlspecialchars($this->input->post('id_member')),
+                'username' => htmlspecialchars($this->input->post('username'))
+            ];
+
+            $this->TransactionModel->editTransaction($id, $transactionData);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data transaksi telah diubah</div>');
+            redirect('transaction');
+        }
     }
 
     public function info_transaction($id)
