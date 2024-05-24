@@ -4,7 +4,6 @@ function role_id()
 {
     $var = get_instance();
 
-    // Ini meriksa user login pokoknya
     if ($var->session->userdata('username')) {
         $user = $var->db->get_where('user', ['username' => $var->session->userdata('username')])->row_array();
 
@@ -18,5 +17,13 @@ function role_id()
             }
         }
     }
-    // Klo pengguna belum login, gausah ngecek
+}
+
+function checkLogin()
+{
+    $var = get_instance();
+
+    if (!$var->session->userdata('username')) {
+        redirect('auth');
+    }
 }
