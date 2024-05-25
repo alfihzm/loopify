@@ -20,6 +20,7 @@
                     <thead>
                         <tr>
                             <th scope="col" style="width: 50px;">No.</th>
+                            <th scope="col" style="width: 50px;">Ikon</th>
                             <th scope="col" style="width: 100px;">Jenis Sampah</th>
                             <th scope="col" style="width: 100px;">Nilai Tukar</th>
                             <th scope="col" style="width: 100px;">Aksi</th>
@@ -30,6 +31,9 @@
                         foreach ($sampah as $s) : ?>
                             <tr>
                                 <td><?= $i++; ?></td>
+                                <td>
+                                    <img class="img-thumbnail border-0" style="width: 45px; height: auto;" src="<?= base_url('assets/images/svg/member-section2/' . $s['icon']); ?>" alt="Gambar" width="85" height="85">
+                                </td>
                                 <td><?= $s['jenis_sampah']; ?></td>
                                 <td>Rp<?= $s['nilai_tukar']; ?>/kg</td>
                                 <td>

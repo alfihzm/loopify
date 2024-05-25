@@ -490,6 +490,7 @@ class Admin extends CI_Controller
             $this->load->view("templates/admin/footer");
         } else {
             $dataSampah = [
+                'icon'         => 'waste.png',
                 'jenis_sampah' => $this->input->post('jenis_sampah'),
                 'nilai_tukar'  => $this->input->post('nilai_tukar'),
             ];
@@ -529,8 +530,29 @@ class Admin extends CI_Controller
         } else {
             $sampahData = [
                 'jenis_sampah' => htmlspecialchars($this->input->post('jenis_sampah')),
-                'nilai_tukar' => htmlspecialchars($this->input->post('nilai_tukar'))
+                'nilai_tukar'  => htmlspecialchars($this->input->post('nilai_tukar'))
             ];
+
+            if (!empty($_FILES['icon']['name'])) {
+                $config['upload_path'] = './assets/images/svg/member-section2/';
+                $config['allowed_types'] = 'jpg|jpeg|png';
+                $config['max_size'] = 10240;
+
+                $this->load->library('upload', $config);
+
+                if ($this->upload->do_upload('icon')) {
+                    if ($data['sampah']['icon'] != 'default_gift.jpg') {
+                        unlink('./assets/images/svg/member-section2/' . $data['sampah']['icon']);
+                    }
+
+                    $gambarGiftBaru = $this->upload->data('file_name');
+                    $sampahData['icon'] = $gambarGiftBaru;
+                } else {
+                    $upload_error = $this->upload->display_errors();
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">' . $upload_error . '</div>');
+                    redirect('admin/ubah_gift/' . $id);
+                }
+            }
 
             $this->SampahModel->editSampah($id, $sampahData);
 

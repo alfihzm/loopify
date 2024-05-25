@@ -30,8 +30,29 @@
                     <div class="card-body">
                         <h5 style="text-align: center;" class="card-title mt-1"><?= $judul; ?></h5>
                         <hr>
-                        <form action="<?= base_url('admin/ubah_sampah/') . $sampah['id']; ?>" method="POST">
+                        <form action="<?= base_url('admin/ubah_sampah/') . $sampah['id']; ?>" method="POST" enctype="multipart/form-data">
                             <div class="row">
+                                <div class="col-sm-12 mb-3">
+                                    <div class="form-group">
+                                        <label for="icon" class="col-form-label">Ikon Limbah</label>
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <?php if (!empty($sampah['icon'])) : ?>
+                                                    <img src="<?= base_url('assets/images/svg/member-section2/') . $sampah['icon']; ?>" class="img-thumbnail border-0" style="width: 50px; height: 50px;">
+                                                <?php else : ?>
+                                                    <img src="<?= base_url('assets/images/svg/member-section2/waste.png'); ?>" class="img-thumbnail" style="width: 50px; height: 50px;">
+                                                <?php endif; ?>
+                                            </div>
+                                        </div>
+                                        <div class="custom-file mt-3">
+                                            <input type="file" class="custom-file-input" id="icon" name="icon">
+                                            <label class="custom-file-label" for="icon" style="background: #1A2035;">Pilih
+                                                gambar</label>
+                                        </div>
+
+                                        <?= form_error('photo', '<small class="text-danger">', '</small>'); ?>
+                                    </div>
+                                </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="idstaff">Jenis Sampah</label>
