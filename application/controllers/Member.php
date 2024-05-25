@@ -19,12 +19,12 @@ class Member extends CI_Controller
 
         $this->load->view('templates/member/header', $data);
         $this->load->view('templates/member/sidebar', $data);
-        $this->load->view('member/member-section1', $data);
-        $this->load->view('member/member-section2', $data);
-        $this->load->view('member/member-section3', $data);
-        $this->load->view('member/member-section4', $data);
-        $this->load->view('member/member-section5', $data);
-        $this->load->view('member/member-section6', $data);
+        $this->load->view('member/index/member-section1', $data);
+        $this->load->view('member/index/member-section2', $data);
+        $this->load->view('member/index/member-section3', $data);
+        $this->load->view('member/index/member-section4', $data);
+        $this->load->view('member/index/member-section5', $data);
+        $this->load->view('member/index/member-section6', $data);
         $this->load->view('templates/member/footer');
     }
 
