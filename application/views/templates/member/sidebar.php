@@ -132,7 +132,7 @@
                     </ul>
 
                     <div class="d-xl-flex d-lg-none d-grid gap-2 text-center" style="margin: 0px 10px 0px 10px;">
-                        <a id="userGreet" style="color: #FFF; margin-right: 5px; pointer-events: none; cursor: default; font-size: 15px;" class="btn">
+                        <a id="userGreet" style="color: #FFF; margin-right: 5px; pointer-events: none; cursor: default; font-size: 15px; font-weight: 400" class="btn">
                             <span id="pesanSelamat"></span> <?= $user['nama']; ?>
                         </a>
                         <a href="<?= base_url('auth/logout'); ?>" class="btn btn-danger min-w-fit-content">
