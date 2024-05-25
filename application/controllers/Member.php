@@ -37,7 +37,13 @@ class Member extends CI_Controller
 
         $this->load->view('templates/member/header', $data);
         $this->load->view('templates/member/sidebar', $data);
-        $this->load->view('member/about', $data);
+        $this->load->view('member/about/about-section1', $data);
+        $this->load->view('member/about/about-section2', $data);
+        $this->load->view('member/about/about-section3', $data);
+        $this->load->view('member/about/about-section4', $data);
+        $this->load->view('member/about/about-section5', $data);
+        $this->load->view('member/about/about-section6', $data);
+        $this->load->view('member/about/about-footer');
         $this->load->view('templates/member/footer');
     }
 }
