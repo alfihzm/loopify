@@ -15,15 +15,21 @@
                 <div class="card pricing-card border mb-lg-4">
                     <div class="card-body">
                         <div class="d-flex align-items-center mb-4">
+                            <span class="avatar br-7 me-3">
+                                <img style="width: 45px; height: auto;"
+                                    src="<?= base_url('assets/images/svg/member-section2/') . $l['icon'] ?>">
+                            </span>
                             <div class="flex-grow-1">
                                 <h4 class="mb-0"><?= $l['jenis_sampah']; ?></h4>
                             </div>
                         </div>
                         <p class="mb-1 tx-muted">Harga</p>
-                        <h2 class="mb-3">Rp<?= $l['nilai_tukar']; ?><span
-                                class="tx-14 op-7 tx-muted">/<?= $l['jenis_sampah']; ?></span>
+                        <h2 class="mb-3">Rp<?= $l['nilai_tukar']; ?>
+                            <span class="tx-14 op-7 tx-muted">
+                                /<?= $l['jenis_sampah']; ?>
+                            </span>
                         </h2>
-                        <p class="mb-4">Menerima berbagi jenis <?= strtolower($l['jenis_sampah']); ?> yang ada miliki.
+                        <p class="mb-4">Menerima berbagi jenis <?= strtolower($l['jenis_sampah']); ?> yang anda miliki.
                         </p>
                     </div>
                 </div>
