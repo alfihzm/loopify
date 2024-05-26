@@ -51,12 +51,10 @@ class Auth extends CI_Controller
                     $data = [
                         'username' => $user['username'],
                         'role_id' => $user['role_id'],
-                        // Tambahkan data sesuai kebutuhan
                     ];
 
                     $this->session->set_userdata($data);
 
-                    // Redirect sesuai role_id
                     if ($user['role_id'] == 1) {
                         redirect('admin');
                     } elseif ($user['role_id'] == 2) {
@@ -69,7 +67,7 @@ class Auth extends CI_Controller
                     redirect('auth');
                 }
             } else {
-                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Akun belum diaktifkan.</div>');
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Akun anda terkena blokir.</div>');
                 redirect('auth');
             }
         } else {

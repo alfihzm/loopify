@@ -259,6 +259,58 @@ class Admin extends CI_Controller
         }
     }
 
+    public function blokir($id)
+    {
+        $data['user'] = $this->UserModel->getStaffById($id);
+        $data['judul'] = 'Blokir';
+
+        $this->form_validation->set_rules('alasan', 'Alasan', 'required', [
+            'required'    => 'Masukkan Username Staff dengan Benar'
+        ]);
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view("templates/admin/header", $data);
+            $this->load->view("templates/admin/sidebar", $data);
+            $this->load->view("templates/admin/topbar", $data);
+            $this->load->view('admin/staff/ban', $data);
+            $this->load->view("templates/admin/footer");
+        } else {
+            $userData = [
+                'is_active'  => 0,
+                'alasan_ban' => htmlspecialchars($this->input->post('alasan'))
+            ];
+
+            $this->UserModel->editUser($id, $userData);
+
+            $this->session->set_flashdata('message', '<div style="color: #FFF; background: #1f283E;" class="alert alert-warning" role="alert">Pemblokiran Staff Berhasil.</div>');
+            redirect('admin/staff');
+        }
+    }
+
+    public function lepas_blokir($id)
+    {
+        $user = $this->db->get_where('user', ['id_staff' => $id])->row_array();
+
+        if ($user) {
+            $userData = [
+                'is_active'     => 1,
+                'alasan_ban'    => null
+            ];
+
+            $this->db->where('id_staff', $id);
+            $this->db->update('user', $userData);
+
+            $this->session->set_flashdata('message', '<div style="color: #FFF; background: #1f283E;" class="alert alert-success" role="alert">Berhasil melepas pemblokiran Staff.</div>');
+
+            redirect('admin/staff');
+        } else {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Gagal melepas pemblokiran.</div>');
+            redirect('admin/staff');
+        }
+    }
+
+
+
     // -> ! LIST MEMBER ! <-
     // INFORMASI TABEL MEMBER
     public function member()
