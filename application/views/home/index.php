@@ -259,9 +259,9 @@
             </div>
         </section>
 
-        <section class="section">
-            <img src="assets/images/patterns/12.png" alt="img" class="patterns-8 sub-pattern-1 z-index-0 op-1">
-            <img src="assets/images/patterns/11.png" alt="img" class="patterns-3 z-index-0">
+            <section class="section">
+            <img src="<?= base_url('assets/') ?>images/patterns/12.png" alt="img" class="patterns-8 sub-pattern-1 z-index-0 op-1">
+            <img src="<?= base_url('assets/') ?>images/patterns/11.png" alt="img" class="patterns-3 z-index-0">
             <div class="container">
                 <div class="heading-section">
                     <div class="heading-subtitle"><span class="tx-primary tx-16 fw-semibold">Tata Cara</span></div>
@@ -275,13 +275,12 @@
                             <div class="card-body">
                                 <div class="mb-2 d-flex align-items-center">
                                     <span class="tx-primary addons tx-28">
-                                        <i class="bi bi-envelope-paper outline fade-in"></i>
-                                        <i class="bi bi-envelope-paper-fill filled fade-in"></i>
+                                        <i class="fas fa-regular fa-1"></i>
                                     </span>
-                                    <h5 class="flex-grow-1 mb-0 ms-3">Free Email Forwarding</h5>
+                                    <h5 class="flex-grow-1 mb-0 ms-3">Kumpulkan Limbah.</h5>
                                 </div>
-                                <p class="mb-0">Amet ipsum justo no dolores lorem tempor clita elitr et ut, amet
-                                    aliquyam et sed invidunt at kasd accusam, dolor.</p>
+                                <p class="mb-0">Limbah yang anda kumpulkan bisa berupa apa saja sesuai dengan daftar limbah yang
+                                    dapat kami terima.</p>
                             </div>
                         </div>
                     </div>
@@ -290,13 +289,13 @@
                             <div class="card-body">
                                 <div class="mb-2 d-flex align-items-center">
                                     <span class="tx-primary addons tx-28">
-                                        <i class="bi bi-nut outline fade-in"></i>
-                                        <i class="bi bi-nut-fill filled fade-in"></i>
+                                        <i class="fas fa-regular fa-2"></i>
                                     </span>
-                                    <h5 class="flex-grow-1 mb-0 ms-3">Bulk Tools</h5>
+                                    <h5 class="flex-grow-1 mb-0 ms-3">Pergi ke Collecting Point</h5>
                                 </div>
-                                <p class="mb-0">Et harum quidem rerum facilis est et expedita distinctio. Nam libero
-                                    tempore, cum soluta nobis est eligendi optio cumque.</p>
+                                <p class="mb-0">Berikan limbah kepada petugas kami yang berada di
+                                    lokasi CP, petugas kami akan menimbang berat limbah yang telah anda kumpulkan.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -305,58 +304,12 @@
                             <div class="card-body">
                                 <div class="mb-2 d-flex align-items-center">
                                     <span class="tx-primary addons tx-28">
-                                        <i class="bi bi-cpu outline fade-in"></i>
-                                        <i class="bi bi-cpu-fill filled fade-in"></i>
+                                        <i class="fas fa-regular fa-3"></i>
                                     </span>
-                                    <h5 class="flex-grow-1 mb-0 ms-3">DNS Management</h5>
+                                    <h5 class="flex-grow-1 mb-0 ms-3">Pembayaran</h5>
                                 </div>
-                                <p class="mb-0">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut
-                                    fugit, sed quia consequuntur magni dolores eos.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="card feature-card reveal">
-                            <div class="card-body">
-                                <div class="mb-2 d-flex align-items-center">
-                                    <span class="tx-primary addons tx-28">
-                                        <i class="bi bi-menu-app outline fade-in"></i>
-                                        <i class="bi bi-menu-app-fill filled fade-in"></i>
-                                    </span>
-                                    <h5 class="flex-grow-1 mb-0 ms-3">Easy To Use Control Panel</h5>
-                                </div>
-                                <p class="mb-0">Ut enim ad minima veniam, quis nostrum exercitationem corporis suscipit
-                                    laboriosam, nisi ut aliquid commodi consequatur.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="card feature-card reveal">
-                            <div class="card-body">
-                                <div class="mb-2 d-flex align-items-center">
-                                    <span class="tx-primary addons tx-28">
-                                        <i class="bi bi-shield-exclamation outline fade-in"></i>
-                                        <i class="bi bi-shield-fill-exclamation filled fade-in"></i>
-                                    </span>
-                                    <h5 class="flex-grow-1 mb-0 ms-3">Domain Theft Protection</h5>
-                                </div>
-                                <p class="mb-0">Nam libero tempore, nobis est eligendi optio cumque nihil impedit quo
-                                    minus id quod maxime placeat facere possimus, omnis voluptas est.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="card feature-card reveal">
-                            <div class="card-body">
-                                <div class="mb-2 d-flex align-items-center">
-                                    <span class="tx-primary addons tx-28">
-                                        <i class="bi bi-skip-forward outline fade-in"></i>
-                                        <i class="bi bi-skip-forward-fill filled fade-in"></i>
-                                    </span>
-                                    <h5 class="flex-grow-1 mb-0 ms-3">Domain Forwarding</h5>
-                                </div>
-                                <p class="mb-0">At vero eos et accusamus et iusto odio dignissimos ducimus qui
-                                    blanditiis praesentium voluptatum deleniti atque corrupti dolores.</p>
+                                <p class="mb-0">Jika limbah yang anda kumpulkan sesuai dengan daftar yang dapat kami terima,
+                                    anda akan mendapatkan Recyloop Coin.</p>
                             </div>
                         </div>
                     </div>
