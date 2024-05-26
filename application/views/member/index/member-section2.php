@@ -27,7 +27,7 @@
                                     /<?= $l['jenis_sampah']; ?>
                                 </span>
                             </h2>
-                            <p class="mb-4">Menerima berbagi jenis <?= strtolower($l['jenis_sampah']); ?> yang anda miliki.
+                            <p class="mb-4">Menerima berbagai jenis <?= strtolower($l['jenis_sampah']); ?> yang anda miliki.
                             </p>
                         </div>
                     </div>
