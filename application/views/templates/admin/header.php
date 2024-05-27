@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title><?= $judul; ?></title>
     <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
-    <link rel="icon" href="<?= base_url('assets/') ?>img/icon.ico" type="image/x-icon" />
+    <link rel="icon" href="<?= base_url('assets/') ?>images/brand/recyloop.ico" type="image/x-icon">
     <link href="<?= base_url('assets/'); ?>vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link rel="stylesheet" href="<?= base_url('assets/') ?>css/atlantis.css">
