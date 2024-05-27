@@ -40,18 +40,18 @@
                             <a href="tel:+1236789657" class="stretched-link"></a>
                             <span class="avatar bg-white-1 border rounded-circle tx-15 border-white-2 me-2"><i class="bi bi-telephone text-white"></i></span>
                             <div class="d-none d-md-block">
-                                <a href="javascript:void(0);" class="nav-link tx-15 p-0">Call to Us</a>
-                                <a href="tel:+1236789657" class="mb-0 nav-link p-0 tx-13 op-8 lh-sm">+123 678 9657</a>
+                                <a href="javascript:void(0);" class="nav-link tx-15 p-0">Kontak Recyloop</a>
+                                <a href="tel:+1236789657" class="mb-0 nav-link p-0 tx-13 op-8 lh-sm">0858 9272 6913</a>
                             </div>
                         </li>
-                        <li class="d-flex align-items-center position-relative">
+                        <!-- <li class="d-flex align-items-center position-relative">
                             <a id="live-chat" href="javascript:void(0);" class="stretched-link"></a>
                             <span class="avatar bg-white-1 border rounded-circle tx-15 border-white-2 me-2"><i class="bi bi-chat-text text-white"></i></span>
                             <div class="d-none d-md-block">
                                 <a href="javascript:void(0);" class="nav-link tx-15 p-0">Live Chat</a>
                                 <p class="mb-0 nav-link p-0 tx-13 op-8 lh-sm">Chat With Us</p>
                             </div>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
             </div>
@@ -155,7 +155,7 @@
                         </div>
                     </div>
                     <div class="col-lg-5">
-                        <div class="text-lg-end text-center mt-4 mt-lg-0">
+                        <div class="text-lg-end text-center mt-4 mt-lg-0" >
                             <img src="assets/images/png/1.png" class="img-fluid" alt="img">
                         </div>
                     </div>
@@ -214,10 +214,10 @@
                         <h2 class="mb-1 text-white">Bergabung Bersama Kami</h2>
                         <p class="mb-4 op-7 tx-15">Mari Lestarikan alam bersama.</p>
                         <p class="mb-4">
-                            Tukar limbah rumah tangga Anda untuk di daur ulang agar limbah tidak berujung menjadi sampah
+                            Tukar limbah rumah tangga Anda untuk didaur ulang agar limbah tidak berujung menumpuk
                             di Tempat Pembuangan Akhir!.
                         </p>
-                        <a href="#domain" class="btn btn-lg btn-secondary">Get Started</a>
+                        <a href="auth/register" class="btn btn-lg btn-secondary">Daftar Sekarang!</a>
                     </div>
                     <div class="col-lg-6 text-lg-end text-center mt-5 mt-lg-0">
                         <img src="assets/images/png/69.png" alt="img" class="build-img reveal img-fluid">
@@ -352,12 +352,12 @@
                         <div class="card mb-lg-0">
                             <div class="position-relative">
                                 <a href="blog-details.html">
-                                    <img class="card-img-top" src="assets/images/blog/3.jpg" alt="blog-image">
+                                    <img class="card-img-top" src="assets/images/blog/pulp_recyloop.jpg" alt="blog-image">
                                 </a>
                             </div>
                             <div class="card-body d-flex flex-column">
                                 <h5><a href="blog-details.html" class="tx-color-default">Pulp</a></h5>
-                                <div class="tx-muted">Pulp atau bubur kertas adalah hasil dari daur ulang kembali buku dan dapat di gunakan kembali menjadi kertas.</div>
+                                <div class="tx-muted">Pulp merupakan bubur serat yang didaur ulang dari kertas dan kardus untuk diproduksi kembali menjadi produk kertas.</div>
                             </div>
                         </div>
                         <!-- COL-END -->
@@ -367,12 +367,12 @@
                         <div class="card mb-lg-0">
                             <div class="position-relative">
                                 <a href="blog-details.html">
-                                    <img class="card-img-top" src="assets/images/blog/6.jpg" alt="blog-image">
+                                    <img class="card-img-top" src="assets/images/blog/alumunium_recyloop.jpg" alt="blog-image">
                                 </a>
                             </div>
                             <div class="card-body d-flex flex-column">
-                                <h5><a href="blog-details.html" class="tx-color-default">Alumunium Murni</a></h5>
-                                <div class="tx-muted">Merupakan produk hasil dari daur ulang kaleng yang dapat di gunakan menjadi minuman kaleng atau bisa menjadi handphone.</div>
+                                <h5><a href="blog-details.html" class="tx-color-default">Alumunium Oksida</a></h5>
+                                <div class="tx-muted">Alumunium Oksida merupakan lembar alumunium murni yang didaur ulang dari kaleng untuk diproduksi menjadi alat dapur.</div>
                             </div>
                         </div>
                     </div>
@@ -380,13 +380,13 @@
                         <div class="card mb-lg-0">
                             <div class="position-relative">
                                 <a href="blog-details.html">
-                                    <img class="card-img-top" src="assets/images/blog/5.jpg" alt="blog-image">
+                                    <img class="card-img-top" src="assets/images/blog/paving_recyloop.jpg" alt="blog-image">
                                 </a>
                             </div>
                             <div class="card-body d-flex flex-column">
-                                <h5><a href="blog-details.html" class="tx-color-default"> Ecobrick
+                                <h5><a href="blog-details.html" class="tx-color-default">Paving Blocks
                                     </a></h5>
-                                <div class="tx-muted">Merupakan produk hasil dari daur ulang plastik dengan menggantikan batu bata konvensional dengan bahan plastik yang dipadatkan hingga benar-benar mengeras.</div>
+                                <div class="tx-muted">Paving merupakan blok plastik yang didaur ulang dari botol untuk diproduksi kembali menjadi bahan bangunan.</div>
                             </div>
                         </div>
                     </div>

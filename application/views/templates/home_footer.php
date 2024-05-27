@@ -11,12 +11,11 @@
                     <a href="index.html" class="d-inline-block mb-3"><img src="assets/images/brand/branding-logo.png"
                             alt="img"></a>
                     <p class="mb-4 op-8 fw-light">
-                        At dolor clita amet erat takimata sed tempor invidunt lorem.
-                        Justo sea nonumy.
+                        Hygiene is part of faith, save earth save future
                     </p>
                     <ul class="list-unstyled mb-0">
                         <li class="list-item mb-2"><a href="register-domain.html" class="footer-link"><i
-                                    class="bi bi-telephone me-3 tx-18"></i>+6281328000052</a></li>
+                                    class="bi bi-telephone me-3 tx-18"></i>0858 9272 6913</a></li>
                         <li class="list-item mb-2"><a href="register-domain.html" class="footer-link"><i
                                     class="bi bi-envelope-plus me-3 tx-18"></i>recyloop@company.com</a></li>
                         <li class="list-item"><a href="register-domain.html" class="footer-link"><i
@@ -72,7 +71,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-7">
                     <div class="d-md-flex align-items-center">
-                        <p class="mb-0 me-3 text-white">Payments We Accept :</p>
+                        <p class="mb-0 me-3 text-white">Penukaran dapat menggunakan :</p>
                         <div class="mt-3 mt-md-0">
                             <svg xmlns="http://www.w3.org/2000/svg" class="me-2 mb-2 mb-sm-0 payment-cards" width="80"
                                 height="50" enable-background="new 0 0 48 48" viewBox="0 0 48 48">

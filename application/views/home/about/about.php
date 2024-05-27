@@ -42,19 +42,18 @@
                                 <a href="tel:+1236789657" class="stretched-link"></a>
                                 <span class="avatar bg-white-1 border rounded-circle tx-15 border-white-2 me-2"><i class="bi bi-telephone text-white"></i></span>
                                 <div class="d-none d-md-block">
-                                    <a href="javascript:void(0);" class="nav-link tx-15 p-0">Call to Us</a>
-                                    <a href="tel:+1236789657" class="mb-0 nav-link p-0 tx-13 op-8 lh-sm">+123 678
-                                        9657</a>
+                                    <a href="javascript:void(0);" class="nav-link tx-15 p-0">Kontak Recyloop</a>
+                                    <a href="tel:+1236789657" class="mb-0 nav-link p-0 tx-13 op-8 lh-sm">0858 9272 6913</a>
                                 </div>
                             </li>
-                            <li class="d-flex align-items-center position-relative">
+                            <!-- <li class="d-flex align-items-center position-relative">
                                 <a id="live-chat" href="javascript:void(0);" class="stretched-link"></a>
                                 <span class="avatar bg-white-1 border rounded-circle tx-15 border-white-2 me-2"><i class="bi bi-chat-text text-white"></i></span>
                                 <div class="d-none d-md-block">
                                     <a href="javascript:void(0);" class="nav-link tx-15 p-0">Live Chat</a>
                                     <p class="mb-0 nav-link p-0 tx-13 op-8 lh-sm">Chat With Us</p>
                                 </div>
-                            </li>
+                            </li> -->
                         </ul>
                     </div>
                 </div>

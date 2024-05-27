@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 25, 2024 at 07:57 PM
--- Server version: 10.4.10-MariaDB
--- PHP Version: 7.1.33
+-- Generation Time: May 21, 2024 at 02:51 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -34,7 +33,7 @@ CREATE TABLE `cinderamata` (
   `harga` int(64) NOT NULL,
   `photo` varchar(128) DEFAULT NULL,
   `deskripsi` varchar(128) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `cinderamata`
@@ -57,7 +56,7 @@ CREATE TABLE `company` (
   `tagline` varchar(128) NOT NULL,
   `lokasi` varchar(256) NOT NULL,
   `deskripsi` varchar(256) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -72,35 +71,15 @@ CREATE TABLE `finance` (
   `tgl_update` date NOT NULL,
   `jam_update` varchar(11) NOT NULL,
   `username` varchar(128) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `finance`
 --
 
 INSERT INTO `finance` (`id`, `rekening`, `saldo`, `tgl_update`, `jam_update`, `username`) VALUES
-(1, 'modal', 0, '2024-05-22', '13:11:46', 'alfihzm'),
+(1, 'modal', 5250000, '2024-05-21', '18:23:14', 'alfihzm'),
 (2, 'aruskas', 8500000, '2024-05-21', '18:36:12', 'alfihzm');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `kelompok_1`
---
-
-CREATE TABLE `kelompok_1` (
-  `id` int(11) NOT NULL,
-  `nama` varchar(64) NOT NULL,
-  `pekerjaan` varchar(32) NOT NULL,
-  `deskripsi` varchar(128) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `kelompok_1`
---
-
-INSERT INTO `kelompok_1` (`id`, `nama`, `pekerjaan`, `deskripsi`) VALUES
-(1, 'Mohammad Alfi Hamzami', 'Mahasiswa', 'Kalo pusing, sedih kerjanya cuma makan doang.');
 
 -- --------------------------------------------------------
 
@@ -118,7 +97,7 @@ CREATE TABLE `member` (
   `level` int(1) NOT NULL,
   `is_active` int(1) NOT NULL,
   `role` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -130,7 +109,7 @@ CREATE TABLE `poin` (
   `id` int(11) NOT NULL,
   `nama` varchar(128) NOT NULL,
   `total` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -140,21 +119,20 @@ CREATE TABLE `poin` (
 
 CREATE TABLE `sampah` (
   `id` int(11) NOT NULL,
-  `icon` varchar(16384) DEFAULT NULL,
+  `no` int(11) NOT NULL,
   `jenis_sampah` varchar(64) NOT NULL,
-  `kode` varchar(11) DEFAULT NULL,
+  `kode` varchar(11) NOT NULL,
   `nilai_tukar` int(64) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `sampah`
 --
 
-INSERT INTO `sampah` (`id`, `icon`, `jenis_sampah`, `kode`, `nilai_tukar`) VALUES
-(1, 'plastic-bottle.png', 'Botol Plastik', NULL, 1500),
-(2, 'tin-can.png', 'Kaleng', NULL, 1500),
-(3, 'zinc.png', 'Limbah Seng', NULL, 2500),
-(14, 'book.png', 'Buku', NULL, 2500);
+INSERT INTO `sampah` (`id`, `no`, `jenis_sampah`, `kode`, `nilai_tukar`) VALUES
+(1, 1, 'Botol Plastik', '', 1100),
+(2, 2, 'Kaleng Alumunium', '', 13300),
+(3, 3, 'Botol Plastik', '', 2500);
 
 -- --------------------------------------------------------
 
@@ -172,7 +150,7 @@ CREATE TABLE `staff` (
   `photo` varchar(128) NOT NULL,
   `role_id` int(1) NOT NULL,
   `is_active` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `staff`
@@ -180,7 +158,6 @@ CREATE TABLE `staff` (
 
 INSERT INTO `staff` (`id_staff`, `nama`, `email`, `username`, `alamat`, `no_telp`, `photo`, `role_id`, `is_active`) VALUES
 (0, 'Makarim', 'RI26@gmail.com', 'RI26', 'BSD ', '085858584040', 'default.jpg', 2, 1),
-(6899477, 'Lumia Ferdinand', 'lumia@gmail.com', 'lumia', 'Bekasi', '087492749173', 'default.jpg', 2, 1),
 (10240001, 'Derby Markus', 'derbymarkus@gmail.com', 'derby', 'Bandung', '082173958206', 'default.jpg', 2, 1),
 (10240002, 'Derby Fransiskus', 'derby@gmail.com', 'derby', 'Bandung', '082173958206', 'default.jpg', 2, 1),
 (10240004, 'Dendi Rahmat', 'dendi@gmail.com', 'dendi', 'Lebak', '082175927592', 'default.jpg', 2, 1),
@@ -189,12 +166,7 @@ INSERT INTO `staff` (`id_staff`, `nama`, `email`, `username`, `alamat`, `no_telp
 (10240007, 'Damar Aji', 'damar@gmail.com', 'damar', 'Sukabumi', '082186729673', 'default.jpg', 2, 1),
 (10240011, 'Budi Pamungkas', 'budipm@gmail.com', 'budipm', 'Nganjuk', '082174927593', 'default.jpg', 2, 1),
 (10240012, 'Mohammad Hamzah', 'mohamzah@gmail.com', 'hamzah', 'Kabupaten Tangerang', '082161872392', 'default.jpg', 2, 1),
-(29880611, 'Lumia Ferdinand', 'lumia@gmail.com', 'lumia', 'Bekasi', '082174582373', 'default.jpg', 2, 1),
-(30634981, 'Lumia Ferdinand', 'lumia@gmail.com', 'lumia', 'Tangerang', '087528572958', 'default.jpg', 2, 1),
-(58831092, 'Lumia Ferdinand', 'lumia@gmail.com', 'lumia', 'Bekasi', '087827492194', 'default.jpg', 2, 1),
 (74574387, 'Maaruf', 'RI2@gmail.com', 'RI2', 'BSD', '0858585858', 'default.jpg', 2, 1),
-(74928261, 'Lumia Ferdian', 'lumia@gmail.com', 'lumia', 'Bekasi', '087832851184', 'default.jpg', 2, 1),
-(93000703, 'Lumia Ferdinand', 'lumia@gmail.com', 'lumia', 'Bekasi', '087472972138', 'default.jpg', 2, 1),
 (2147483647, 'Makarim', 'RI26@gmail.com', 'RI26', 'BSDQ', '085858584040', 'default.jpg', 2, 1);
 
 -- --------------------------------------------------------
@@ -218,7 +190,7 @@ CREATE TABLE `transaction` (
   `catatan` varchar(128) DEFAULT NULL,
   `status` varchar(32) NOT NULL,
   `tgl_validasi` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `transaction`
@@ -245,37 +217,34 @@ CREATE TABLE `user` (
   `email` varchar(128) NOT NULL,
   `username` varchar(16) NOT NULL,
   `password` varchar(256) NOT NULL,
-  `role_id` int(11) DEFAULT NULL,
+  `role_id` int(11) NOT NULL,
   `photo` varchar(128) NOT NULL,
   `no_telp` varchar(13) NOT NULL,
   `alamat` varchar(256) NOT NULL,
-  `total_sampah` float DEFAULT NULL,
+  `total_sampah` int(11) DEFAULT NULL,
   `total_koin` int(32) NOT NULL,
+  `level` int(11) NOT NULL,
   `koin` int(11) NOT NULL,
   `komentar` varchar(256) DEFAULT NULL,
   `date_created` int(11) NOT NULL,
   `is_active` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `id_admin`, `id_staff`, `id_member`, `nama`, `lahir`, `email`, `username`, `password`, `role_id`, `photo`, `no_telp`, `alamat`, `total_sampah`, `total_koin`, `koin`, `komentar`, `date_created`, `is_active`) VALUES
-(1, NULL, NULL, 10480001, 'Betara', '1999-01-01', 'betara@gmail.com', 'betara', '$2y$10$FLuzN7X92R2TQFttbmiQDOacjuIKMV8NnqPrjLrGdU.ow1DNxVEhu', 3, 'default.jpg', '082161872392', 'Jakarta Selatan', 0, 0, 0, NULL, 1712325370, 1),
-(2, 19220821, NULL, NULL, 'Mohammad Alfi Hamzami', '1999-11-29', 'alfihzm@gmail.com', 'alfihzm', '$2y$10$D5MOyBMj5CDPCrew38NFT.8yOiEygBprrxhQs009pHmlBCnLyQ55O', 1, 'user_Mohammad_Alfi_Hamzami1.jpg', '082161872392', 'Kabupaten Tangerang', NULL, 0, 0, NULL, 1712465510, 1),
-(6, NULL, 10240001, NULL, 'Derby Hendrawan', '2005-05-11', 'derby@gmail.com', 'derby', '$2y$10$o1uWEO7QFLgEyQ3wqSbCAu1kAwjxfYa9/RJ3MJosDtN5NrZmCEX6C', 2, 'default.jpg', '082173958206', 'Bandung', NULL, 0, 0, NULL, 1714830415, 1),
-(7, NULL, 10240004, NULL, 'Dendi Rahmat', '2006-11-04', 'dendi@gmail.com', 'dendi', '$2y$10$lQlCdblquou221pGTm3MDudqMSSENy17VBjUvcr7MTgrDFqCDUeUu', 2, 'default.jpg', '082175927592', 'Lebak', NULL, 0, 0, NULL, 1714840913, 1),
-(8, NULL, 10240005, NULL, 'Adam Warlock', '2004-04-04', 'adam@gmail.com', 'adam', '$2y$10$PsSx5kVJY/otqt2CNtqiCeV.cyEJSbzGVzDo2OQF0vJLjHe9VAHLq', 2, 'default.jpg', '082174927592', 'Manchester', NULL, 0, 0, NULL, 1714841969, 1),
-(9, NULL, 10240006, NULL, 'Agus Sumanto', '2004-04-24', 'agus@gmail.com', 'agus', '$2y$10$tgW2yVQhnKz9scSIv1QcC..v0UZa7nQvgCPmXzJtnckuqbm0uKbdG', 2, 'default.jpg', '082173952058', 'Pandeglang', NULL, 0, 0, NULL, 1714842198, 1),
-(12, NULL, NULL, 10480002, 'Supriyadi', '1982-02-03', 'supri@gmail.com', 'supriyadi', '$2y$10$LIWTv1QQF6/gxHAB8lE.h.wD/eNkra5CMojoYePCPGfC8c1wAXJ7K', 3, 'default.jpg', '082174937285', 'Tangerang', 0, 0, 0, NULL, 1715286102, 1),
-(13, NULL, 10240012, NULL, 'Mohammad Hamzah', '1999-11-29', 'mohamzah@gmail.com', 'hamzah', '$2y$10$/PlvahgZlEILDRSvuGQc1eL0OsDMSpyT/N4Gaz0mylskekcdgay2u', 2, 'user_Mohammad_Hamzah.jpg', '082161872392', 'Kabupaten Tangerang', NULL, 0, 0, NULL, 1715412654, 1),
-(14, NULL, 56002616, NULL, 'Maaruf', '2024-05-19', 'RI2@gmail.com', 'RI2', '$2y$10$6SyqSbx68Rw97TI4eiCMCexPW2sA3hA0ZhmMyTyF2aV9bP4vRm/vC', 2, 'default.jpg', '0858585858', 'BSD', NULL, 0, 0, NULL, 1716102567, 1),
-(20, NULL, 83541679, NULL, 'Lumia Ferdinand', '2001-11-11', 'lumia@gmail.com', 'lumia', '$2y$10$MDdGhWQvsJEDpok7z8mgJOEz93HYA2TZaMLUWrPNrH0ANKDRZGlpm', 2, 'default.jpg', '082174582373', 'Bekasi', NULL, 0, 0, NULL, 1716345882, 1),
-(21, NULL, NULL, 89922433, 'Vania Cassandra', '2005-03-11', 'vania@gmail.com', 'vaniacas', '$2y$10$kCBGdjju6rypvMNQJhNUJ.QdTOFHhCVZHh2tQNGWlDBbi2j/y/T/G', 3, 'default.jpg', '087839173927', 'Depok', NULL, 0, 0, NULL, 1716385605, 1),
-(22, NULL, NULL, 33104308, 'Tanya Degurechaff', '1999-11-29', 'tanya@gmail.com', 'tanya', '$2y$10$Q9Gfiaw5tIMX40SgWBis0O7ZMCl4.wXu.liygUbsC3fLKFRZSluJi', 3, 'default.jpg', '082161872392', 'Uni Soviet', 2.51, 0, 100, NULL, 1716385883, 1),
-(23, NULL, NULL, 36769235, 'Izumi Sagiri', '2007-12-10', 'sagiri@gmail.com', 'sagiri', '$2y$10$gkkRBANQBv5V.5m7YiYtUObwP.wjeiGRhZvUCQL8432/XdR2dczgm', 3, 'default.jpg', '082161872392', 'Japan', 0, 0, 0, NULL, 1716387567, 1),
-(24, NULL, NULL, 22786747, 'Danu Setiawan', '2001-11-29', 'danu@gmail.com', 'danuset', '$2y$10$xhVw902BGWYMGTGoQOoQRekf0PIBib8arphkpCbbq99NOR3CbuZau', 3, 'default.jpg', '087827491133', 'Bekasi', 0, 0, 0, NULL, 1716561279, 1);
+INSERT INTO `user` (`id`, `id_admin`, `id_staff`, `id_member`, `nama`, `lahir`, `email`, `username`, `password`, `role_id`, `photo`, `no_telp`, `alamat`, `total_sampah`, `total_koin`, `level`, `koin`, `komentar`, `date_created`, `is_active`) VALUES
+(1, NULL, NULL, 10480001, 'Betara', '1999-01-01', 'betara@gmail.com', 'betara', '$2y$10$FLuzN7X92R2TQFttbmiQDOacjuIKMV8NnqPrjLrGdU.ow1DNxVEhu', 3, 'default.jpg', '082161872392', 'Jakarta Selatan', 0, 0, 1, 0, NULL, 1712325370, 1),
+(2, 19220821, NULL, NULL, 'Mohammad Alfi Hamzami', '1999-11-29', 'alfihzm@gmail.com', 'alfihzm', '$2y$10$D5MOyBMj5CDPCrew38NFT.8yOiEygBprrxhQs009pHmlBCnLyQ55O', 1, 'user_Mohammad_Alfi_Hamzami1.jpg', '082161872392', 'Kabupaten Tangerang', NULL, 0, 1, 0, NULL, 1712465510, 1),
+(6, NULL, 10240001, NULL, 'Derby Hendrawan', '2005-05-11', 'derby@gmail.com', 'derby', '$2y$10$o1uWEO7QFLgEyQ3wqSbCAu1kAwjxfYa9/RJ3MJosDtN5NrZmCEX6C', 2, 'default.jpg', '082173958206', 'Bandung', NULL, 0, 1, 0, NULL, 1714830415, 1),
+(7, NULL, 10240004, NULL, 'Dendi Rahmat', '2006-11-04', 'dendi@gmail.com', 'dendi', '$2y$10$lQlCdblquou221pGTm3MDudqMSSENy17VBjUvcr7MTgrDFqCDUeUu', 2, 'default.jpg', '082175927592', 'Lebak', NULL, 0, 1, 0, NULL, 1714840913, 1),
+(8, NULL, 10240005, NULL, 'Adam Warlock', '2004-04-04', 'adam@gmail.com', 'adam', '$2y$10$PsSx5kVJY/otqt2CNtqiCeV.cyEJSbzGVzDo2OQF0vJLjHe9VAHLq', 2, 'default.jpg', '082174927592', 'Manchester', NULL, 0, 1, 0, NULL, 1714841969, 1),
+(9, NULL, 10240006, NULL, 'Agus Susanto', '2004-04-24', 'agus@gmail.com', 'agus', '$2y$10$tgW2yVQhnKz9scSIv1QcC..v0UZa7nQvgCPmXzJtnckuqbm0uKbdG', 2, 'default.jpg', '082173952058', 'Pandeglang', NULL, 0, 1, 0, NULL, 1714842198, 1),
+(10, NULL, 10240011, NULL, 'Budi Pamungkas', '2001-01-01', 'budipm@gmail.com', 'budipm', '$2y$10$YPHbJNkobDpANAQMG43cSOWfw19uCnW/oxQCIRYT8bzhrsxP2oaSi', 2, 'default.jpg', '082174927593', 'Nganjuk', NULL, 0, 1, 0, NULL, 1715140720, 1),
+(12, NULL, NULL, 10480002, 'Supriyadi', '1982-02-03', 'supri@gmail.com', 'supriyadi', '$2y$10$LIWTv1QQF6/gxHAB8lE.h.wD/eNkra5CMojoYePCPGfC8c1wAXJ7K', 3, 'default.jpg', '082174937285', 'Tangerang', 0, 0, 1, 0, NULL, 1715286102, 1),
+(13, NULL, 10240012, NULL, 'Mohammad Hamzah', '1999-11-29', 'mohamzah@gmail.com', 'hamzah', '$2y$10$/PlvahgZlEILDRSvuGQc1eL0OsDMSpyT/N4Gaz0mylskekcdgay2u', 2, 'user_Mohammad_Hamzah.jpg', '082161872392', 'Kabupaten Tangerang', NULL, 0, 1, 0, NULL, 1715412654, 1),
+(14, NULL, 56002616, NULL, 'Maaruf', '2024-05-19', 'RI2@gmail.com', 'RI2', '$2y$10$6SyqSbx68Rw97TI4eiCMCexPW2sA3hA0ZhmMyTyF2aV9bP4vRm/vC', 2, 'default.jpg', '0858585858', 'BSD', NULL, 0, 1, 0, NULL, 1716102567, 1);
 
 -- --------------------------------------------------------
 
@@ -287,7 +256,7 @@ CREATE TABLE `user_access_menu` (
   `id` int(11) NOT NULL,
   `role_id` int(11) NOT NULL,
   `menu_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `user_access_menu`
@@ -313,7 +282,7 @@ INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
 CREATE TABLE `user_menu` (
   `id` int(11) NOT NULL,
   `menu` varchar(128) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `user_menu`
@@ -338,7 +307,7 @@ INSERT INTO `user_menu` (`id`, `menu`) VALUES
 CREATE TABLE `user_role` (
   `id` int(11) NOT NULL,
   `role` varchar(128) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `user_role`
@@ -362,7 +331,7 @@ CREATE TABLE `user_sub_menu` (
   `url` varchar(128) NOT NULL,
   `icon` varchar(128) NOT NULL,
   `is_active` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `user_sub_menu`
@@ -399,7 +368,7 @@ CREATE TABLE `withdraw` (
   `metode` varchar(128) NOT NULL,
   `norek` varchar(128) NOT NULL,
   `status` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Indexes for dumped tables
@@ -421,12 +390,6 @@ ALTER TABLE `company`
 -- Indexes for table `finance`
 --
 ALTER TABLE `finance`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `kelompok_1`
---
-ALTER TABLE `kelompok_1`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -518,12 +481,6 @@ ALTER TABLE `finance`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `kelompok_1`
---
-ALTER TABLE `kelompok_1`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
 -- AUTO_INCREMENT for table `member`
 --
 ALTER TABLE `member`
@@ -539,7 +496,7 @@ ALTER TABLE `poin`
 -- AUTO_INCREMENT for table `sampah`
 --
 ALTER TABLE `sampah`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `transaction`
@@ -551,7 +508,7 @@ ALTER TABLE `transaction`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `user_access_menu`

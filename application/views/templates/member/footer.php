@@ -55,8 +55,7 @@
                 <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
                     <a href="<?= base_url() ?>index.html" class="d-inline-block mb-3"><img src="<?= base_url() ?>assets/images/brand/branding-logo.png" alt="img"></a>
                     <p class="mb-4 op-8 fw-light">
-                        At dolor clita amet erat takimata sed tempor invidunt lorem.
-                        Justo sea nonumy.
+                        Hygiene is part of faith, save earth save future.
                     </p>
                     <ul class="list-unstyled mb-0">
                         <li class="list-item mb-2"><a href="register-domain.html" class="footer-link"><i class="bi bi-telephone me-3 tx-18"></i>+6281328000052</a></li>
