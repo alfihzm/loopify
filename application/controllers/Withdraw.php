@@ -35,10 +35,30 @@ class Withdraw extends CI_Controller
             $this->load->view("admin/withdraw/index", $data);
             $this->load->view("templates/admin/footer");
         } else {
+            $nominal = $this->input->post('nominal');
+            $id_member = $this->input->post('id_member');
+
+            // Mendapatkan data user berdasarkan ID Member
+            $userData = $this->db->get_where('user', ['id_member' => $id_member])->row_array();
+
+            // Mengurangi nilai koin sesuai dengan nominal yang diinput
+            $koinSekarang = $userData['koin'] - $nominal;
+
+            // Memastikan koin tidak kurang dari 0
+            if ($koinSekarang < 0) {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Koin tidak mencukupi untuk melakukan transaksi!</div>');
+                redirect('withdraw');
+            }
+
+            // Update nilai koin pada tabel user
+            $this->db->where('id_member', $id_member);
+            $this->db->update('user', ['koin' => $koinSekarang]);
+
+            // Menyiapkan data untuk transaksi penarikan tunai
             $dataWithdraw = [
-                'id_member' => $this->input->post('id_member'),
-                'username' => $this->input->post('username'),
-                'nominal' => $this->input->post('nominal'),
+                'id_member' => $id_member,
+                'username' => $this->session->userdata('username'),
+                'nominal' => $nominal,
                 'jam' => date('H:i:s'),
                 'tanggal' => date('Y-m-d'),
                 'metode'  => $this->input->post('metode'),
@@ -47,9 +67,11 @@ class Withdraw extends CI_Controller
                 'status' => 'Belum diproses'
             ];
 
-
+            // Memasukkan data transaksi penarikan tunai ke dalam database
             $this->load->model('WithdrawModel');
             $this->WithdrawModel->newWithdraw($dataWithdraw);
+
+            // Memberikan pesan sukses
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Transaksi tarik tunai telah berhasil ditambahkan!</div>');
             redirect('withdraw');
         }
