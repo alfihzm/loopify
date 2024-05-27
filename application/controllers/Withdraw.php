@@ -41,6 +41,9 @@ class Withdraw extends CI_Controller
             // Mendapatkan data user berdasarkan ID Member
             $userData = $this->db->get_where('user', ['id_member' => $id_member])->row_array();
 
+            // Mendapatkan data finance dengan id 2
+            $financeData = $this->db->get_where('finance', ['id' => 2])->row_array();
+
             // Mengurangi nilai koin sesuai dengan nominal yang diinput
             $koinSekarang = $userData['koin'] - $nominal;
 
@@ -50,14 +53,27 @@ class Withdraw extends CI_Controller
                 redirect('withdraw');
             }
 
+            // Memeriksa apakah saldo mencukupi untuk dikurangi
+            $saldoSekarang = $financeData['saldo'] - $nominal;
+            if ($saldoSekarang < 0) {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Saldo arus kas perusahaan tidak mencukupi untuk melakukan transaksi!</div>');
+                redirect('withdraw');
+            }
+
             // Update nilai koin pada tabel user
             $this->db->where('id_member', $id_member);
             $this->db->update('user', ['koin' => $koinSekarang]);
 
+            // Update nilai saldo pada tabel finance
+            $this->db->where('id', 2);
+            $this->db->update('finance', ['saldo' => $saldoSekarang]);
+
             // Menyiapkan data untuk transaksi penarikan tunai
             $dataWithdraw = [
-                'id_member' => $id_member,
-                'username' => $this->session->userdata('username'),
+                'id_member' => $this->input->post('id_member'),
+                'username' => $this->input->post('username'),
+                'koin1' => $userData['koin'],
+                'koin2' => $koinSekarang,
                 'nominal' => $nominal,
                 'jam' => date('H:i:s'),
                 'tanggal' => date('Y-m-d'),
@@ -85,7 +101,7 @@ class Withdraw extends CI_Controller
         if ($user) {
             echo json_encode([
                 'username' => $user['username'],
-                'koin' => $user['koin'] // tambahkan koin ke respon JSON
+                'koin' => $user['koin'] 
             ]);
         } else {
             echo json_encode(['username' => '', 'koin' => '']);

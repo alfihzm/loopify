@@ -56,12 +56,12 @@
                                         <td><?= $w['status']; ?></td>
                                         <td>
                                             <div style="display: inline-block; text-align: center; margin-bottom: 2px;">
-                                                <a href="<?= base_url('transaction/edit_transaction/'   . $t['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-pencil"></i></a>
-                                                <a href="<?= base_url('transaction/delete_transaksi/' . $t['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-trash"></i></a>
+                                                <a href="<?= base_url('transaction/edit_transaction/'   . $w['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-pencil"></i></a>
+                                                <a href="<?= base_url('transaction/delete_transaksi/' . $w['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-trash"></i></a>
                                             </div>
                                             <div style="display: inline-block; text-align: center;">
-                                                <a href="<?= base_url('transaction/updatetransaction/' . $t['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-check"></i></a>
-                                                <a href="<?= base_url('transaction/info_transaction/' . $t['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-info"></i></a>
+                                                <a href="<?= base_url('transaction/updatetransaction/' . $w['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-check"></i></a>
+                                                <a href="<?= base_url('transaction/info_transaction/' . $w['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-info"></i></a>
                                             </div>
                                         </td>
                                     </tr>
