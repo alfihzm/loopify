@@ -117,7 +117,15 @@ class Transaction extends CI_Controller
             'judul' => $judul
         ];
 
-        // Validasi form jika sudah disubmit
+        $jumlah_botol = $this->input->post('jumlah_botol');
+        $jumlah_kaleng = $this->input->post('jumlah_kaleng');
+        $jumlah_kardus = $this->input->post('jumlah_kardus');
+
+        $harga_botol = $this->db->get_where('sampah', ['id' => 1])->row()->nilai_tukar;
+        $harga_kaleng = $this->db->get_where('sampah', ['id' => 2])->row()->nilai_tukar;
+        $harga_kardus = $this->db->get_where('sampah', ['id' => 3])->row()->nilai_tukar;
+        $totalkoin = ($jumlah_botol * $harga_botol) + ($jumlah_kaleng * $harga_kaleng) + ($jumlah_kardus * $harga_kardus);
+
         $this->form_validation->set_rules('id_member', 'ID Member', 'required');
         $this->form_validation->set_rules('username', 'Username', 'required');
 
@@ -130,7 +138,15 @@ class Transaction extends CI_Controller
         } else {
             $transactionData = [
                 'id_member' => htmlspecialchars($this->input->post('id_member')),
-                'username' => htmlspecialchars($this->input->post('username'))
+                'username' => htmlspecialchars($this->input->post('username')),
+                'tanggal' => htmlspecialchars($this->input->post('tanggal')),
+                'jumlah_botol' => htmlspecialchars($this->input->post('jumlah_botol')),
+                'jumlah_kaleng' => htmlspecialchars($this->input->post('jumlah_kaleng')),
+                'jumlah_kardus' => htmlspecialchars($this->input->post('jumlah_kardus')),
+                'total' => $jumlah_botol + $jumlah_kaleng + $jumlah_kardus,
+                'totalkoin' => $totalkoin,
+                'lokasi' => $this->input->post('lokasi'),
+                'catatan' => $this->input->post('catatan')
             ];
 
             $this->TransactionModel->editTransaction($id, $transactionData);

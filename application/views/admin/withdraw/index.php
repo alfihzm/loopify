@@ -20,8 +20,7 @@
                 -->
                 <div class="alert alert-info" role="alert" style="margin-top: -15px; background: white; color: #1A2035; border-radius: 5px;">
                     <b>
-                        <li>Pastikan Anda secara aktif memeriksa antrian konfirmasi penyerahan sampah!</li>
-                        <li>Catatan: BP Botol Plastik | KA Kaleng Alumunium | KK Kertas Kardus</li>
+                        <li>Minta bantuan personel Administrator apabila penarikan tunai bermasalah pada saldo perusahaan!</li>
                     </b>
                 </div>
                 <a href="" data-toggle="modal" data-target="#newTransactionModal" class="btn btn-info mb-3" style="color:white;"><b>Tambah

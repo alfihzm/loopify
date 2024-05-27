@@ -187,7 +187,7 @@
                                         </div>
                                     </div>
                                     <p class="mb-1 tx-muted">Harga</p>
-                                    <h2 class="mb-3">Rp<?= $l['nilai_tukar']; ?>
+                                    <h2 class="mb-3">Rp <?= number_format($l['nilai_tukar'], 0, ',', '.') ?>
                                         <span class="tx-14 op-7 tx-muted">
                                             /<?= $l['jenis_sampah']; ?>
                                         </span>
