@@ -356,10 +356,8 @@
                                 </a>
                             </div>
                             <div class="card-body d-flex flex-column">
-                                <h5><a href="blog-details.html" class="tx-color-default">Starting a Web Hosting
-                                        Business</a></h5>
-                                <div class="tx-muted">To take a trivial example, which of us ever undertakes laborious
-                                    physical exerciser , except to obtain some advantage from it...</div>
+                                <h5><a href="blog-details.html" class="tx-color-default">Pulp</a></h5>
+                                <div class="tx-muted">Pulp atau bubur kertas adalah hasil dari daur ulang kembali buku dan dapat di gunakan kembali menjadi kertas.</div>
                             </div>
                         </div>
                         <!-- COL-END -->
@@ -373,10 +371,8 @@
                                 </a>
                             </div>
                             <div class="card-body d-flex flex-column">
-                                <h5><a href="blog-details.html" class="tx-color-default">Email Hosting For Your
-                                        Projects</a></h5>
-                                <div class="tx-muted">At vero eos et accusamus et iusto odio dignissimos ducimus qui
-                                    blanditiis praesentium voluptatum deleniti atque...</div>
+                                <h5><a href="blog-details.html" class="tx-color-default">Alumunium Murni</a></h5>
+                                <div class="tx-muted">Merupakan produk hasil dari daur ulang kaleng yang dapat di gunakan menjadi minuman kaleng atau bisa menjadi handphone.</div>
                             </div>
                         </div>
                     </div>
@@ -388,10 +384,9 @@
                                 </a>
                             </div>
                             <div class="card-body d-flex flex-column">
-                                <h5><a href="blog-details.html" class="tx-color-default"> Cloud Hosting growing faster
+                                <h5><a href="blog-details.html" class="tx-color-default"> Ecobrick
                                     </a></h5>
-                                <div class="tx-muted">Itaque earum rerum hic tenetur a sapiente delectus, ut aut
-                                    reiciendis voluptatibus maiores alias consequatur aut ..</div>
+                                <div class="tx-muted">Merupakan produk hasil dari daur ulang plastik dengan menggantikan batu bata konvensional dengan bahan plastik yang dipadatkan hingga benar-benar mengeras.</div>
                             </div>
                         </div>
                     </div>
