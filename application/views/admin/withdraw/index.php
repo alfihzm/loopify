@@ -15,17 +15,12 @@
                 <div class="page-header">
                     <h4 class="page-title"><?= $judul; ?></h4>
                 </div>
-                <!-- 
-                <a href=" <?= base_url('admin/tambah_sampah'); ?>" class="btn btn-secondary mb-3"> Tambah Jenis Sampah</a> 
-                -->
                 <div class="alert alert-info" role="alert" style="margin-top: -15px; background: white; color: #1A2035; border-radius: 5px;">
                     <b>
                         <li>Minta bantuan personel Administrator apabila penarikan tunai bermasalah pada saldo perusahaan!</li>
                     </b>
                 </div>
-                <a href="" data-toggle="modal" data-target="#newTransactionModal" class="btn btn-info mb-3" style="color:white;"><b>Tambah
-                        Transaksi</b></a>
-
+                <a href="" data-toggle="modal" data-target="#newWithdrawModal" class="btn btn-info mb-3" style="color:white;"><b>Tambah Tarik Tunai</b></a>
                 <div class="row">
                     <div class="col-lg-6">
                         <?= $this->session->flashdata('message') ?>
@@ -39,26 +34,26 @@
                                 <th scope="col">Kode Member</th>
                                 <th scope="col">User</th>
                                 <th scope="col">Tanggal</th>
-                                <th scope="col">BP</th>
-                                <th scope="col">KA</th>
-                                <th scope="col">KK</th>
+                                <th scope="col">Jam</th>
+                                <th scope="col">Nominal</th>
+                                <th scope="col">Metode</th>
                                 <th scope="col">Lokasi</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($transaksi as $t) : ?>
-                                <?php if ($t['status'] === 'Belum dikonfirmasi') : ?>
+                            <?php foreach ($withdraw as $w) : ?>
+                                <?php if ($w['status'] === 'Belum diproses') : ?>
                                     <tr>
-                                        <td><?= $t['id_member']; ?></td>
-                                        <td><?= $t['username']; ?></td>
-                                        <td><?= $t['tanggal']; ?></td>
-                                        <td><?= $t['jumlah_botol']; ?></td>
-                                        <td><?= $t['jumlah_kaleng']; ?></td>
-                                        <td><?= $t['jumlah_kardus']; ?></td>
-                                        <td><?= $t['lokasi']; ?></td>
-                                        <td><?= $t['status']; ?></td>
+                                        <td><?= $w['id_member']; ?></td>
+                                        <td><?= $w['username']; ?></td>
+                                        <td><?= $w['tanggal']; ?></td>
+                                        <td><?= $w['jam']; ?></td>
+                                        <td><?= $w['nominal']; ?></td>
+                                        <td><?= $w['metode']; ?></td>
+                                        <td><?= $w['lokasi']; ?></td>
+                                        <td><?= $w['status']; ?></td>
                                         <td>
                                             <div style="display: inline-block; text-align: center; margin-bottom: 2px;">
                                                 <a href="<?= base_url('transaction/edit_transaction/'   . $t['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-pencil"></i></a>
@@ -73,23 +68,22 @@
                                 <?php endif; ?>
                             <?php endforeach; ?>
                         </tbody>
-
                     </table>
                 </div>
             </div>
         </div>
 
-        <!-- Modal Tambah Transaksi Penyerahan  -->
-        <div class="modal fade" id="newTransactionModal" tabindex="-1" aria-labelledby="newTransactionModalLabel" aria-hidden="true">
+        <!-- Modal Tambah Transaksi Penarikan Saldo / Tarik Tunai  -->
+        <div class="modal fade" id="newWithdrawModal" tabindex="-1" aria-labelledby="newWithdrawModalLabel" aria-hidden="true">
             <div class="modal-dialog" style="background-color: #1A2035; border-radius: 10px;">
                 <div class="modal-content" style="background-color: #1A2035;">
                     <div class="modal-header">
-                        <h2 class="modal-title text-white" id="newTransactionModalLabel"><b>Transaksi Baru</b></h2>
+                        <h2 class="modal-title text-white" id="newWithdrawModalLabel"><b>Penarikan Saldo Baru</b></h2>
                         <button type="button" class="btn btn-close btn-small btn-cross" data-dismiss="modal" aria-label="Close">
                             <!-- &times; -->X
                         </button>
                     </div>
-                    <form action="<?= base_url('transaction') ?>" method="POST">
+                    <form action="<?= base_url('withdraw') ?>" method="POST">
                         <div class="modal-body">
                             <div class="form-group">
                                 <label style="color: #01E7f4 !important;" for="formGroupExampleInput">ID Member</label>
@@ -97,39 +91,40 @@
                                 <?= form_error('id_member', '<small class="text-light">', '</small>'); ?>
                             </div>
                             <div class="form-group">
-                                <label style="color: #01E7f4 !important;" for="formGroupExampleInput">User</label>
+                                <label style="color: #01E7f4 !important;" for="formGroupExampleInput">Username</label>
                                 <input style="background: #01E7f4; color: #1A2035; font-weight: 600;" type="text" class="form-control" id="username" name="username" placeholder="ID Member tidak ditemukan!">
                             </div>
                             <div class="form-group">
-                                <label style="color: #01E7f4 !important;" for="jumlah_botol">Botol Plastik</label>
-                                <input style="background: #01E7f4; color: #1A2035; font-weight: 600;" type="number" class="form-control" id="jumlah_botol" name="jumlah_botol" placeholder="Ketik jumlah botol yang ditukar" min="0" value="0">
+                                <label style="color: #01E7f4 !important;" for="formGroupExampleInput">Saldo Koin</label>
+                                <input style="background: #01E7f4; color: #1A2035; font-weight: 600;" type="text" class="form-control" id="koin" name="koin" placeholder="Koin member kosong!">
                             </div>
                             <div class="form-group">
-                                <label style="color: #01E7f4 !important;" for="jumlah_kaleng">Kaleng Alumunium</label>
-                                <input style="background: #01E7f4; color: #1A2035; font-weight: 600;" type="number" class="form-control" id="jumlah_kaleng" name="jumlah_kaleng" placeholder="Ketik jumlah kaleng yang ditukar" min="0" value="0">
+                                <label style="color: #01E7f4 !important;" for="jumlah_botol">Nominal</label>
+                                <input style="background: #01E7f4; color: #1A2035; font-weight: 600;" type="number" class="form-control" id="nominal" name="nominal" placeholder="Ketik jumlah saldo yang ingin ditarik" min="0" value="0">
+                                <?= form_error('nominal', '<small class="text-light">', '</small>'); ?>
                             </div>
                             <div class="form-group">
-                                <label style="color: #01E7f4 !important;" for="jumlah_kardus">Kertas Kardus</label>
-                                <input style="background: #01E7f4; color: #1A2035; font-weight: 600;" type="number" class="form-control" id="jumlah_kardus" name="jumlah_kardus" placeholder="Ketik kardus kaleng yang ditukar" min="0" value="0">
-                            </div>
-                            <input type="hidden" id="total" name="total">
-                            <input type="hidden" id="totalkoin" name="totalkoin">
-                            <input type="hidden" id="totalkonversi" name="totalkonversi">
-                            <div class="form-group">
-                                <label style="color: #01E7f4 !important;" for="formGroupExampleInput2">Tanggal Penukaran</label>
-                                <input style="background: #01E7f4; color: #1A2035; font-weight: 600;" type="date" class="form-control" id="tanggal" name="tanggal">
-                                <?= form_error('tanggal', '<small class="text-light">', '</small>'); ?>
+                                <label style="color: #01E7f4 !important;" for="metode">Metode tarik tunai</label>
+                                <select class="form-control" id="metode" name="metode" style="background: #01E7f4; color: #1A2035;">
+                                    <option value="" disabled selected>Pilih Metode</option>
+                                    <option value="Tunai">Tunai</option>
+                                    <option value="BCA">BCA</option>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label style="color: #01E7f4 !important;" for="lokasi">Lokasi</label>
                                 <select class="form-control" id="lokasi" name="lokasi" style="background: #01E7f4; color: #1A2035;">
                                     <option value="" disabled selected>Pilih lokasi</option>
-                                    <option value="Tenant Official">Tenant Official</option>
-                                    <option value="RW 001">RW 001</option>
+                                    <option value="Tenant Serpong">Tenant Official</option>
+                                    <option value="Tenant Serang">RW 001</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label style="color: #01E7f4 !important;" for="formGroupExampleInput">Komentar</label>
+                                <label style="color: #01E7f4 !important;" for="formGroupExampleInput">Nomor Rekening</label>
+                                <textarea style="background: #01E7f4; color: #1A2035; font-weight: 600;" class="form-control" id="norek" name="norek" placeholder="Tulis nomor rekening di sini"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label style="color: #01E7f4 !important;" for="formGroupExampleInput">Catatan</label>
                                 <textarea style="background: #01E7f4; color: #1A2035; font-weight: 600;" class="form-control" id="catatan" name="catatan" placeholder="Tulis komentar di sini"></textarea>
                             </div>
                         </div>
@@ -141,12 +136,33 @@
                 </div>
             </div>
         </div>
+    </div>
+    <script type="text/javascript">
+        window.setTimeout(function() {
+            $(".col-lg-6").fadeTo(500, 0).slideUp(500, function() {
+                $(this).remove();
+            });
+        }, 2000);
+    </script>
+    <script>
+        document.getElementById('id_member').addEventListener('input', function() {
+            var idMember = this.value;
 
-
-        <script type="text/javascript">
-            window.setTimeout(function() {
-                $(".col-lg-6").fadeTo(500, 0).slideUp(500, function() {
-                    $(this).remove();
-                });
-            }, 2000);
-        </script>
+            if (idMember) {
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', '<?= base_url("withdraw/getUserDataByIdMember"); ?>', true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                        var response = JSON.parse(xhr.responseText);
+                        document.getElementById('username').value = response.username;
+                        document.getElementById('koin').value = response.koin;
+                    }
+                };
+                xhr.send('id_member=' + idMember);
+            } else {
+                document.getElementById('username').value = '';
+                document.getElementById('koin').value = '';
+            }
+        });
+    </script>

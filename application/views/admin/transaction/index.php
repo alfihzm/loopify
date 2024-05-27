@@ -15,9 +15,6 @@
                 <div class="page-header">
                     <h4 class="page-title"><?= $judul; ?></h4>
                 </div>
-                <!-- 
-                <a href=" <?= base_url('admin/tambah_sampah'); ?>" class="btn btn-secondary mb-3"> Tambah Jenis Sampah</a> 
-                -->
                 <div class="alert alert-info" role="alert" style="margin-top: -15px; background: white; color: #1A2035; border-radius: 5px;">
                     <b>
                         <li>Pastikan Anda secara aktif memeriksa antrian konfirmasi penyerahan sampah!</li>
@@ -26,7 +23,6 @@
                 </div>
                 <a href="" data-toggle="modal" data-target="#newTransactionModal" class="btn btn-info mb-3" style="color:white;"><b>Tambah
                         Transaksi</b></a>
-
                 <div class="row">
                     <div class="col-lg-6">
                         <?= $this->session->flashdata('message') ?>

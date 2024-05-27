@@ -22,3 +22,4 @@ class FinanceModel extends CI_Model {
         return $this->db->update('finance');
     }
 }
+?>
