@@ -34,7 +34,7 @@
             </div>
 
             <div class="containers">
-
+                <input type="text" id="searchInput" class="form-control mb-3 col-sm-4" placeholder="Cari nama anggota">
                 <table class="table">
                     <thead>
                         <tr>
@@ -74,4 +74,26 @@
                 $(this).remove();
             });
         }, 2000);
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let searchInput = document.getElementById("searchInput");
+            searchInput.addEventListener("input", function() {
+                let filter = searchInput.value.toLowerCase();
+
+                let rows = document.querySelectorAll("tbody tr");
+
+                rows.forEach(function(row) {
+                    let nameColumn = row.querySelector(
+                        "td:nth-child(2)");
+                    let name = nameColumn.textContent.toLowerCase();
+
+                    if (name.includes(filter)) {
+                        row.style.display = "";
+                    } else {
+                        row.style.display = "none";
+                    }
+                });
+            });
+        });
     </script>

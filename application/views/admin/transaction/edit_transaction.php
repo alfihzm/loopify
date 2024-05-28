@@ -53,8 +53,8 @@
                                     <div class="form-group">
                                         <label for="lokasi">Lokasi</label>
                                         <select class="form-control" id="lokasi" name="lokasi">
-                                            <option value="Tenant Official" <?= $transaction['lokasi'] == "Tenant Official" ? 'selected' : '' ?>>Tenant Official</option>
-                                            <option value="RW 001" <?= $transaction['lokasi'] == "RW 001" ? 'selected' : '' ?>>RW 001</option>
+                                            <option value="Tenant Serpong" <?= $transaction['lokasi'] == "Tenant Serpong" ? 'selected' : '' ?>>Tenant Serpong</option>
+                                            <option value="Tenant Serang" <?= $transaction['lokasi'] == "Tenant Serang" ? 'selected' : '' ?>>Tenant Serang</option>
                                         </select>
                                     </div>
                                     <div class="form-group">

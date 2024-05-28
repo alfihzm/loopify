@@ -71,7 +71,7 @@
                                         <td><?= $w['status']; ?></td>
                                         <td>
                                                 <a href="<?= base_url('withdraw/delete_withdraw/' . $w['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-trash"></i></a>
-                                                <a href="<?= base_url('withdraw/updatewithdraw/' . $w['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-check"></i></a>
+                                                <a href="<?= base_url('withdraw/receipt/' . $w['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-check"></i></a>
                                                 <a href="<?= base_url('withdraw/info_withdraw/' . $w['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-info"></i></a>
                                         </td>
                                     </tr>
@@ -125,8 +125,8 @@
                                 <label style="color: #01E7f4 !important;" for="lokasi">Lokasi</label>
                                 <select class="form-control" id="lokasi" name="lokasi" style="background: #01E7f4; color: #1A2035;">
                                     <option value="" disabled selected>Pilih lokasi</option>
-                                    <option value="Tenant Serpong">Tenant Official</option>
-                                    <option value="Tenant Serang">RW 001</option>
+                                    <option value="Tenant Serpong">Tenant Serpong</option>
+                                    <option value="Tenant Serang">Tenant Serang</option>
                                 </select>
                             </div>
                             <div class="form-group">

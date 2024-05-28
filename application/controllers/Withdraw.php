@@ -148,5 +148,9 @@ class Withdraw extends CI_Controller
             // $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data transaksi telah diubah</div>');
             redirect('withdraw');
         }
+    
+    }
+    public function receipt() {
+            $this->load->view("admin/withdraw/receipt");
     }
 }
