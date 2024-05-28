@@ -62,6 +62,11 @@ class Transaction extends CI_Controller
             $harga_kardus = $this->db->get_where('sampah', ['id' => 3])->row()->nilai_tukar;
             $totalkoin = ($jumlah_botol * $harga_botol) + ($jumlah_kaleng * $harga_kaleng) + ($jumlah_kardus * $harga_kardus);
 
+            // Update nilai koin dalam tabel user
+            $this->db->where('id_member', $id_member);
+            $this->db->set('koin', 'koin+' . $totalkoin, FALSE); // Menambahkan nilai baru ke koin
+            $this->db->update('user');
+
             $dataTransaction = [
                 'id_member' => $id_member,
                 'tanggal'  => $this->input->post('tanggal'),
@@ -82,8 +87,6 @@ class Transaction extends CI_Controller
             redirect('transaction');
         }
     }
-
-
 
     public function getUsernameByIdMember()
     {

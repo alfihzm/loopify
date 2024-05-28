@@ -390,13 +390,13 @@ class Admin extends CI_Controller
     // TAMBAH STAFF
     public function add_member()
     {
-        // ID Staff
-        $this->form_validation->set_rules('idmember', 'ID Member', 'required|trim|max_length[16]|is_unique[user.id_member]|integer', [
-            'required'    => 'Masukkan ID Member dengan Benar!',
-            'max_length'  => 'Maksimal 16 Karakter',
-            'is_unique'   => 'ID Member sudah ada di dalam database',
-            'integer'     => 'ID Member hanya berisi angka'
-        ]);
+        // // ID Member
+        // $this->form_validation->set_rules('idmember', 'ID Member', 'required|trim|max_length[16]|is_unique[user.id_member]|integer', [
+        //     'required'    => 'Masukkan ID Member dengan Benar!',
+        //     'max_length'  => 'Maksimal 16 Karakter',
+        //     'is_unique'   => 'ID Member sudah ada di dalam database',
+        //     'integer'     => 'ID Member hanya berisi angka'
+        // ]);
         // Nama
         $this->form_validation->set_rules('nama', 'Nama', 'required', [
             'required'    => 'Masukkan Nama Lengkap Member dengan Benar',
