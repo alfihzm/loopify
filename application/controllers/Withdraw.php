@@ -101,10 +101,52 @@ class Withdraw extends CI_Controller
         if ($user) {
             echo json_encode([
                 'username' => $user['username'],
-                'koin' => $user['koin'] 
+                'koin' => $user['koin']
             ]);
         } else {
             echo json_encode(['username' => '', 'koin' => '']);
+        }
+    }
+
+    public function delete_withdraw($id)
+    {
+        $this->load->model('WithdrawModel');
+        $deleted = $this->WithdrawModel->delete_withdraw($id);
+        if ($deleted) {
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Transaksi berhasil dihilangkan</div>');
+        } else {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Transaksi gagal dihilangkan!</div>');
+        }
+        redirect('withdraw');
+    }
+
+    public function info_withdraw($id)
+    {
+        $withdraw = $this->WithdrawModel->getwithdrawById($id);
+
+        if ($withdraw) {
+            $username = $withdraw['username'];
+            $judul = 'Detail Transaksi milik ' . $username;
+
+            $data = [
+                'withdraw' => $withdraw,
+                'user'  => $this->db->get_where('user', ['username' => $username])->row_array(),
+                'judul' => $judul
+            ];
+
+            $this->load->view("templates/admin/header", $data);
+            $this->load->view("templates/admin/sidebar", $data);
+            $this->load->view("templates/admin/topbar", $data);
+            $this->load->view('admin/withdraw/info_withdraw', $data);
+            $this->load->view("templates/admin/footer");
+        } else {
+            // $withdrawData = [
+            //     'jenis_sampah' => htmlspecialchars($this->input->post('jenis_sampah')),
+            //     'nilai_tukar' => htmlspecialchars($this->input->post('nilai_tukar'))
+            // ];
+            // $this->withdrawModel->editwithdraw($id, $withdrawData);
+            // $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data transaksi telah diubah</div>');
+            redirect('withdraw');
         }
     }
 }

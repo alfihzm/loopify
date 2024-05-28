@@ -53,10 +53,8 @@
                                 <th scope="col">Kode Member</th>
                                 <th scope="col">User</th>
                                 <th scope="col">Tanggal</th>
-                                <th scope="col">Jam</th>
                                 <th scope="col">Nominal</th>
                                 <th scope="col">Metode</th>
-                                <th scope="col">Lokasi</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Aksi</th>
                             </tr>
@@ -68,20 +66,13 @@
                                         <td><?= $w['id_member']; ?></td>
                                         <td><?= $w['username']; ?></td>
                                         <td><?= $w['tanggal']; ?></td>
-                                        <td><?= $w['jam']; ?></td>
                                         <td><?= $w['nominal']; ?></td>
                                         <td><?= $w['metode']; ?></td>
-                                        <td><?= $w['lokasi']; ?></td>
                                         <td><?= $w['status']; ?></td>
                                         <td>
-                                            <div style="display: inline-block; text-align: center; margin-bottom: 2px;">
-                                                <a href="<?= base_url('transaction/edit_transaction/'   . $w['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-pencil"></i></a>
-                                                <a href="<?= base_url('transaction/delete_transaksi/' . $w['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-trash"></i></a>
-                                            </div>
-                                            <div style="display: inline-block; text-align: center;">
-                                                <a href="<?= base_url('transaction/updatetransaction/' . $w['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-check"></i></a>
-                                                <a href="<?= base_url('transaction/info_transaction/' . $w['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-info"></i></a>
-                                            </div>
+                                                <a href="<?= base_url('withdraw/delete_withdraw/' . $w['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-trash"></i></a>
+                                                <a href="<?= base_url('withdraw/updatewithdraw/' . $w['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-check"></i></a>
+                                                <a href="<?= base_url('withdraw/info_withdraw/' . $w['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-info"></i></a>
                                         </td>
                                     </tr>
                                 <?php endif; ?>

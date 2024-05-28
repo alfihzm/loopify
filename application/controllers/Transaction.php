@@ -160,10 +160,7 @@ class Transaction extends CI_Controller
         $transaction = $this->TransactionModel->getTransactionById($id);
 
         if ($transaction) {
-            // Dapatkan username dari transaksi
             $username = $transaction['username'];
-
-            // Buat judul menggunakan username dari transaksi
             $judul = 'Detail Transaksi milik ' . $username;
 
             $data = [
