@@ -14,8 +14,26 @@
             <div class="page-inner">
                 <div class="page-header">
                     <h4 class="page-title"><?= $judul; ?></h4>
+                    <ul class="breadcrumbs">
+                        <li class="nav-home">
+                            <a href="#">
+                                <i class="fa-solid fa-money-bill-transfer"></i> </a>
+                        </li>
+                        <li class="separator">
+                            <i class="flaticon-right-arrow"></i>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#">Transaksi Penyerahan</a>
+                        </li>
+                        <li class="separator">
+                            <i class="flaticon-right-arrow"></i>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#">Index</a>
+                        </li>
+                    </ul>
                 </div>
-                <div class="alert alert-info" role="alert" style="margin-top: -15px; background: white; color: #1A2035; border-radius: 5px;">
+                <div class="alert alert-info" role="alert" style="margin-top: 15px; background: white; color: #1A2035; border-radius: 5px;">
                     <b>
                         <li>Pastikan Anda secara aktif memeriksa antrian konfirmasi penyerahan sampah!</li>
                         <li>Catatan: BP Botol Plastik | KA Kaleng Alumunium | KK Kertas Kardus</li>

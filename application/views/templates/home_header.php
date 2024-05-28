@@ -37,5 +37,6 @@
 
     <!-- SWIPER CSS -->
     <link rel="stylesheet" href="assets/libs/swiper/swiper-bundle.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </head>

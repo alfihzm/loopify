@@ -3,19 +3,34 @@
         <div class="page-inner">
             <div class="page-header">
                 <h4 class="page-title"><?= $judul; ?></h4>
+                <ul class="breadcrumbs">
+                    <li class="nav-home">
+                        <a href="#">
+                            <i class="fa-solid fa-id-badge"></i>
+                        </a>
+                    </li>
+                    <li class="separator">
+                        <i class="flaticon-right-arrow"></i>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">Manajemen Staff</a>
+                    </li>
+                    <li class="separator">
+                        <i class="flaticon-right-arrow"></i>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">Index</a>
+                    </li>
+                </ul>
             </div>
-
-            <a href=" <?= base_url('admin/add_staff'); ?>" class="btn btn-secondary mb-3"> Tambah Staff
+            <a href=" <?= base_url('admin/add_staff'); ?>" class="btn btn-secondary mb-3">Tambah Staff
             </a>
-
             <div class="row">
                 <div class="col-lg-6">
                     <?= $this->session->flashdata('message') ?>
                 </div>
             </div>
-
             <div class="containers">
-
                 <table class="table">
                     <thead>
                         <tr>

@@ -14,6 +14,24 @@
          <div class="page-inner">
              <div class="page-header">
                  <h4 class="page-title"><?= $judul; ?></h4>
+                 <ul class="breadcrumbs">
+                     <li class="nav-home">
+                         <a href="#">
+                             <i class="fa-solid fa-paste"></i> </a>
+                     </li>
+                     <li class="separator">
+                         <i class="flaticon-right-arrow"></i>
+                     </li>
+                     <li class="nav-item">
+                         <a href="#">Manajemen Pengumuman</a>
+                     </li>
+                     <li class="separator">
+                         <i class="flaticon-right-arrow"></i>
+                     </li>
+                     <li class="nav-item">
+                         <a href="#">Index</a>
+                     </li>
+                 </ul>
              </div>
              <a href="" data-toggle="modal" data-target="#newAnnouncementModal" class="btn btn-primary mb-3"> Tambah Announcement</a>
              <div class="row">
@@ -80,7 +98,7 @@
                  </div>
                  <div class="modal-footer">
                      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-info">Add</button>
+                     <button type="submit" class="btn btn-info">Add</button>
                  </div>
              </form>
          </div>

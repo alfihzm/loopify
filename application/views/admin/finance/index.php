@@ -4,6 +4,25 @@
         <div class="page-inner">
             <div class="page-header" style="font-family: quicksand;">
                 <h4 class="page-title"><?= $judul; ?></h4>
+                <ul class="breadcrumbs">
+                    <li class="nav-home">
+                        <a href="#">
+                            <i class="fa-solid fa-wallet"></i>
+                        </a>
+                    </li>
+                    <li class="separator">
+                        <i class="flaticon-right-arrow"></i>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">Manajemen Keuangan</a>
+                    </li>
+                    <li class="separator">
+                        <i class="flaticon-right-arrow"></i>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">Index</a>
+                    </li>
+                </ul>
             </div>
             <div class="row">
                 <div class="col-lg-6">

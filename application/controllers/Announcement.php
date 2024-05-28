@@ -45,28 +45,29 @@ class Announcement extends CI_Controller
         $this->form_validation->set_rules('deskripsi', 'announcement', 'required');
 
         if ($this->form_validation->run() == false) {
-            $data['judul'] = "Edit Announcement";
-            $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+            $data = [
+                'judul' => "Edit Pengumuman Pegawai",
+                'user'  => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
+            ];
             $data['announcement'] = $this->db->get_where('announcement', ['id' => $ann_id])->row_array();
 
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/sidebar', $data);
-            $this->load->view('templates/topbar', $data);
-            $this->load->view('announcement/editAnnouncement', $data);
-            $this->load->view('templates/footer', $data);
+            $this->load->view("templates/admin/header", $data);
+            $this->load->view("templates/admin/sidebar", $data);
+            $this->load->view("templates/admin/topbar", $data);
+            $this->load->view("admin/announcement/editAnnouncement", $data);
+            $this->load->view("templates/admin/footer");
         } else {
             $data = [
                 'judul' => $this->input->post('judul'),
                 'tanggal' => $this->input->post('tanggal'),
                 'deskripsi' => $this->input->post('deskripsi'),
-                'date_created' => time()
             ];
 
             $this->db->where('id', $ann_id);
             $this->db->update('announcement', $data);
 
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Pengumuman Telah diperbarui!</div>');
-            redirect('announcement');
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Pengumuman telah diperbarui!</div>');
+            redirect('announcement/editAnnouncement');
         }
     }
 
