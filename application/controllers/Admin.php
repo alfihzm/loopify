@@ -436,8 +436,9 @@ class Admin extends CI_Controller
             $this->load->view('admin/member/add_member', $data);
             $this->load->view('templates/admin/footer');
         } else {
+            $id_staff = str_pad(random_int(0, 99999999), 8, '0', STR_PAD_LEFT);
             $dataUser = [
-                'id_member'    => htmlspecialchars($this->input->post('idmember')),
+                'id_member'    => htmlspecialchars($id_staff),
                 'nama'         => htmlspecialchars($this->input->post('nama')),
                 'lahir'        => date('Y-m-d', strtotime($this->input->post('lahir'))),
                 'email'        => htmlspecialchars($this->input->post('email')),

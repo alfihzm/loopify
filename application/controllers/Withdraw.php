@@ -38,6 +38,14 @@ class Withdraw extends CI_Controller
             $nominal = $this->input->post('nominal');
             $id_member = $this->input->post('id_member');
 
+            // Memeriksa apakah ID Member ada dalam tabel user
+            $userData = $this->db->get_where('user', ['id_member' => $id_member])->row_array();
+            if (!$userData) {
+                // Jika ID Member tidak ditemukan, tampilkan pesan kesalahan dan redirect kembali
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">ID Member tidak ditemukan! Periksa kembali ID Member!</div>');
+                redirect('withdraw');
+            }
+
             // Mendapatkan data user berdasarkan ID Member
             $userData = $this->db->get_where('user', ['id_member' => $id_member])->row_array();
 
@@ -148,9 +156,9 @@ class Withdraw extends CI_Controller
             // $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data transaksi telah diubah</div>');
             redirect('withdraw');
         }
-    
     }
-    public function receipt() {
-            $this->load->view("admin/withdraw/receipt");
+    public function receipt()
+    {
+        $this->load->view("admin/withdraw/receipt");
     }
 }

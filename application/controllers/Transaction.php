@@ -24,7 +24,18 @@ class Transaction extends CI_Controller
         $this->form_validation->set_rules('tanggal', 'Tanggal Penukaran', 'required', [
             'required' => 'Tanggal wajib diisi!',
         ]);
-
+        $this->form_validation->set_rules('jumlah_botol', 'Jumlah Botol', 'required|numeric', [
+            'required' => 'Jumlah botol wajib diisi!',
+            'numeric' => 'Jumlah botol harus berupa angka!',
+        ]);
+        $this->form_validation->set_rules('jumlah_kaleng', 'Jumlah Kaleng', 'required|numeric', [
+            'required' => 'Jumlah kaleng wajib diisi!',
+            'numeric' => 'Jumlah kaleng harus berupa angka!',
+        ]);
+        $this->form_validation->set_rules('jumlah_kardus', 'Jumlah Kardus', 'required|numeric', [
+            'required' => 'Jumlah kardus wajib diisi!',
+            'numeric' => 'Jumlah kardus harus berupa angka!',
+        ]);
 
         if ($this->form_validation->run() == false) {
             $this->load->view("templates/admin/header", $data);
@@ -33,6 +44,15 @@ class Transaction extends CI_Controller
             $this->load->view("admin/transaction/index", $data);
             $this->load->view("templates/admin/footer");
         } else {
+            // Memeriksa apakah ID Member ada dalam tabel user
+            $id_member = $this->input->post('id_member');
+            $userData = $this->db->get_where('user', ['id_member' => $id_member])->row_array();
+            if (!$userData) {
+                // Jika ID Member tidak ditemukan, tampilkan pesan kesalahan dan redirect kembali
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">ID Member tidak ditemukan! Periksa kembali ID Member!</div>');
+                redirect('transaction');
+            }
+
             $jumlah_botol = $this->input->post('jumlah_botol');
             $jumlah_kaleng = $this->input->post('jumlah_kaleng');
             $jumlah_kardus = $this->input->post('jumlah_kardus');
@@ -43,9 +63,9 @@ class Transaction extends CI_Controller
             $totalkoin = ($jumlah_botol * $harga_botol) + ($jumlah_kaleng * $harga_kaleng) + ($jumlah_kardus * $harga_kardus);
 
             $dataTransaction = [
-                'id_member' => $this->input->post('id_member'),
+                'id_member' => $id_member,
                 'tanggal'  => $this->input->post('tanggal'),
-                'username' => $this->input->post('username'),
+                'username' => $userData['username'], // Ambil username dari data user yang ditemukan
                 'jumlah_botol' => $jumlah_botol,
                 'jumlah_kaleng' => $jumlah_kaleng,
                 'jumlah_kardus' => $jumlah_kardus,
@@ -62,6 +82,7 @@ class Transaction extends CI_Controller
             redirect('transaction');
         }
     }
+
 
 
     public function getUsernameByIdMember()

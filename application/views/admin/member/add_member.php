@@ -57,7 +57,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="idstaff">ID Member</label>
-                                        <input type="text" class="form-control" id="idmember" name="idmember" autocomplete="off">
+                                        <input type="text" class="form-control" id="idmember" name="idmember" autocomplete="off" readonly>
                                         <?= form_error('idmember', '<small class="text-danger">', '</small>'); ?>
                                     </div>
                                 </div>
