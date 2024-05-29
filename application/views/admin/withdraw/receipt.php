@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,39 +12,59 @@
             margin: 0;
             padding: 20px;
         }
+
         .container {
             max-width: 900px;
             margin: 0 auto;
             background-color: #fff;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             padding: 20px;
         }
+
         h1 {
             text-align: center;
             color: #333;
         }
+
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
         }
-        th, td {
+
+        th,
+        td {
             padding: 10px;
             text-align: left;
             border-bottom: 1px solid #ddd;
         }
+
         th {
             background-color: #f2f2f2;
             color: #333;
         }
+
+        .logo {
+            width: 200px;
+        }
+
+        u {
+            background-color: #d3d3d3;
+            /* Light gray background color */
+        }
     </style>
 </head>
+
 <body>
+    <?php $selisih = $withdraw['koin1'] - $withdraw['koin2'] ?>
     <div class="container">
-        <h1>Receipt</h1>
-        Telah diterima sebesar XXX pada tanggal XXX pukul XXX dengan XXX dari saldo akun XXX
-        Petugas yang menyerahkan saldo sebesar XXX, saldo berkurang sebesar XXX - XXX
+        <h1 style="margin-bottom: -10px;">Receipt</h1>
+        ------------------------------------------------------------------------------------------------------------------------------------------------------------------------<br>
+
+        Telah diterima sebesar <u>Rp. <?= $withdraw['nominal']; ?> </u> pada tanggal <?= $withdraw['formatted_tanggal']; ?> dengan <u>Sdr. <?= $withdraw['username']; ?></u> dari saldo akun.
+        <br>
+        Petugas <?= $user['username']; ?> menyerahkan tunai sebesar <u>Rp. <?= $withdraw['nominal']; ?></u>, saldo koin berkurang sebesar <?= $selisih ?>.
         <table>
             <thead>
                 <tr>
@@ -61,32 +82,25 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>123456</td>
-                    <td>john_doe</td>
-                    <td>2024-05-28</td>
-                    <td>10:00</td>
-                    <td>Jakarta</td>
-                    <td>200000</td>
-                    <td>1234567890</td>
-                    <td>500</td>
-                    <td>300</td>
-                    <td>200000</td>
+                    <td><?= $withdraw['id_member']; ?></td>
+                    <td><?= $withdraw['username']; ?></td>
+                    <td><?= $withdraw['tanggal']; ?></td>
+                    <td><?= $withdraw['jam']; ?></td>
+                    <td><?= $withdraw['lokasi']; ?></td>
+                    <td><?= $withdraw['metode']; ?></td>
+                    <td><?= $withdraw['norek']; ?></td>
+                    <td><?= $withdraw['koin1']; ?></td>
+                    <td><?= $withdraw['koin2']; ?></td>
+                    <td><?= $withdraw['nominal']; ?></td>
                 </tr>
-                <tr>
-                    <td>654321</td>
-                    <td>jane_smith</td>
-                    <td>2024-05-28</td>
-                    <td>11:30</td>
-                    <td>Bandung</td>
-                    <td>150000</td>
-                    <td>0987654321</td>
-                    <td>800</td>
-                    <td>700</td>
-                    <td>150000</td>
-                </tr>
-                <!-- Data fiktif lainnya bisa ditambahkan di sini -->
             </tbody>
         </table>
+        <br>
+        <div style="text-align: center;">Data ini dimuat secara otomatis pada <b><?php echo date('d F Y, H:i:s'); ?></b></div>
+        <div style="text-align: center;">Security Print Key: <b><?php echo mt_rand(1000000000, 9999999999); ?></b></div>
+        ------------------------------------------------------------------------------------------------------------------------------------------------------------------------<br>
+
     </div>
 </body>
+
 </html>

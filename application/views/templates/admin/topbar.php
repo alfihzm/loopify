@@ -76,8 +76,26 @@
                         </div>
                     </ul>
                 </li>
+
             </ul>
         </div>
     </nav>
     <!-- End Navbar -->
 </div>
+<script>
+     fetch('https://api.openweathermap.org/data/2.5/weather?q=Jakarta&appid=71aeca16726bc04ff24b206ff2b2e688&units=metric')
+         .then(response => response.json())
+         .then(data => {
+             const weatherDiv = document.getElementById('weather-info');
+             let weatherDescription = data.weather[0].description;
+             // Mengganti "haze" dengan "kabut asap" dalam bahasa Indonesia
+             weatherDescription = weatherDescription.replace('haze', 'kabut asap');
+             const temperature = data.main.temp;
+             weatherDiv.innerHTML = `<p>Cuaca di Jakarta: ${weatherDescription}</p><p>Temperatur: ${temperature}°C</p>`;
+         })
+         .catch(error => {
+             console.error('Error fetching weather:', error);
+             const weatherDiv = document.getElementById('weather-info');
+             weatherDiv.innerHTML = 'Failed to fetch weather data.';
+         });
+ </script>

@@ -25,7 +25,7 @@ class WithdrawModel extends CI_Model
         }
     }
 
-        public function getWithdrawById($id)
+    public function getWithdrawById($id)
     {
         $query = $this->db->get_where('withdraw', ['id' => $id]);
         return $query->row_array();

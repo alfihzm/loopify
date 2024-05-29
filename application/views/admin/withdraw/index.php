@@ -71,7 +71,7 @@
                                         <td><?= $w['status']; ?></td>
                                         <td>
                                                 <a href="<?= base_url('withdraw/delete_withdraw/' . $w['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-trash"></i></a>
-                                                <a href="<?= base_url('withdraw/receipt/' . $w['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-check"></i></a>
+                                                <a href="<?= base_url('withdraw/receipt/' . $w['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-file-pdf"></i></a>
                                                 <a href="<?= base_url('withdraw/info_withdraw/' . $w['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-info"></i></a>
                                         </td>
                                     </tr>

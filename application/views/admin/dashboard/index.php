@@ -35,6 +35,32 @@
      .legend .red {
          background-color: red;
      }
+
+     .table-bordered {
+         border-collapse: separate;
+         border-spacing: 0;
+         border-radius: 10px;
+
+     }
+
+     .thead-light {
+         border-radius: 10px;
+     }
+
+     .weather-container {
+         background-color: #fff;
+         padding: 20px;
+         border-radius: 8px;
+         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+         text-align: center;
+     }
+
+     #weather-info div {
+         border: 1px solid white;
+         padding: 10px;
+         border-radius: 10px;
+
+     }
  </style>
  </style>
  <div class="main-panel">
@@ -63,14 +89,20 @@
                  </ul>
              </div>
              <div class="page-category">
+                 <h3 style="font-weight: bold; margin-top: 30px;">Beranda</h3>
+                 <div id="weather-info">
+                     <div>
+                         Loading weather...
+                     </div>
+                 </div>
                  <table class="table table-bordered">
                      <h3 style="font-weight: bold;">Pengumuman terbaru!</h3>
-                     <thead class="thead-light">
+                     <thead class="thead-light" style="border-radius: 10px;">
                          <tr>
-                             <th scope="col">No</th>
+                             <th scope="col" style="border-top-left-radius: 10px;">No</th>
                              <th scope="col">Judul</th>
                              <th scope="col">Tanggal</th>
-                             <th scope="col">Deskripsi</th>
+                             <th scope="col" style="border-top-right-radius: 10px;">Deskripsi</th>
                          </tr>
                      </thead>
                      <tbody>
@@ -90,8 +122,8 @@
              <h3 style="font-weight: bold;">Statistik Keanggotaan</h3>
              <div class="row">
                  <div class="col-lg-3">
-                     <div class=" card border border-dark" style=" height: 250px; margin-bottom: 20px;">
-                         <div class="card-header" style="background-color: #fff; color: black; text-align: center">
+                     <div class="card border border-dark" style="height: 250px; margin-bottom: 20px;">
+                         <div class="card-header" style="background-color: #fff; color: black; text-align: center; border-top-left-radius: 10px; border-top-right-radius: 10px;">
                              Jumlah Member
                          </div>
                          <i class="fas fa-solid fa-user" style="margin-top: 50px; text-align: center; font-size: 2.5em;"></i>
@@ -102,7 +134,7 @@
                  </div>
                  <div class="col-lg-3">
                      <div class=" card border border-dark" style=" height: 250px; margin-bottom: 20px;">
-                         <div class="card-header" style="background-color: #fff; color: black; text-align: center">
+                         <div class="card-header" style="background-color: #fff; color: black; text-align: center; border-top-left-radius: 10px; border-top-right-radius: 10px;">
                              Jumlah Staff
                          </div>
                          <i class="fas fa-solid fa-user" style="margin-top: 50px; text-align: center; font-size: 2.5em;"></i>
@@ -113,7 +145,7 @@
                  </div>
                  <div class="col-lg-3">
                      <div class=" card border border-dark" style=" height: 250px; margin-bottom: 20px;">
-                         <div class="card-header" style="background-color: #fff; color: black; text-align: center">
+                         <div class="card-header" style="background-color: #fff; color: black; text-align: center; border-top-left-radius: 10px; border-top-right-radius: 10px;">
                              Jumlah Admin
                          </div>
                          <i class="fas fa-solid fa-user" style="margin-top: 50px; text-align: center; font-size: 2.5em;"></i>
@@ -124,7 +156,7 @@
                  </div>
                  <div class="col-lg-3">
                      <div class=" card border border-dark" style=" height: 250px; margin-bottom: 20px;">
-                         <div class="card-header" style="background-color: #fff; color: black; text-align: center">
+                         <div class="card-header" style="background-color: #fff; color: black; text-align: center; border-top-left-radius: 10px; border-top-right-radius: 10px;">
                              Jumlah Akun terblokir
                          </div>
                          <i class="fas fa-solid fa-user" style="margin-top: 50px; text-align: center; font-size: 2.5em;"></i>
@@ -143,8 +175,8 @@
                      <table class="table table-bordered">
                          <thead class="thead-light">
                              <tr>
-                                 <th>ID</th>
-                                 <th>Saldo</th>
+                                 <th style="border-top-left-radius: 10px;">ID</th>
+                                 <th style="border-top-right-radius: 10px;">Saldo</th>
                              </tr>
                          </thead>
                          <tbody>
@@ -216,6 +248,12 @@
                          <?php endforeach; ?>
                      </tbody>
                  </table>
+             </div>
+             <h3 style="font-weight: bold; margin-top: 30px;">Proses bisnis</h3>
+             <div class="col-lg-12" style="text-align: center;">
+                 <div style="border: 1px solid white;">
+                     <img src="assets/images/png/ProsesBisnis.png" alt="img" class="desktop-logo logo-dark" style="width: 850px;">
+                 </div>
              </div>
          </div>
          <p>Bara bara bara bere bere bere</p>
@@ -307,3 +345,132 @@
          barConfig
      );
  </script>
+ <script>
+     //  function updateTime() {
+     //      const now = new Date();
+     //      const timeString = now.toLocaleTimeString();
+     //      const dateString = now.toLocaleDateString();
+     //      const fullDateTimeString = `${dateString} ${timeString}`;
+
+     //      document.getElementById('waktusekarang').textContent = fullDateTimeString;
+     //  }
+     function updateTime() {
+         const now = new Date();
+         const days = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
+         const months = [
+             "Januari", "Februari", "Maret", "April", "Mei", "Juni",
+             "Juli", "Agustus", "September", "Oktober", "November", "Desember"
+         ];
+
+         const dayName = days[now.getDay()];
+         const monthName = months[now.getMonth()];
+         const day = now.getDate();
+         const year = now.getFullYear();
+         const timeString = now.toLocaleTimeString();
+
+         const fullDateTimeString = `${dayName}, ${day} ${monthName} ${year} ${timeString}`;
+
+         let waktuSekarang = new Date();
+         let jam = waktuSekarang.getHours();
+
+         let pesanSelamat = '';
+
+         if (jam >= 5 && jam < 10.59) {
+             pesanSelamat = 'Selamat Pagi!';
+         } else if (jam >= 11 && jam < 14.59) {
+             pesanSelamat = 'Selamat Siang!';
+         } else if (jam >= 14.59 && jam < 18) {
+             pesanSelamat = 'Selamat Sore!';
+         } else {
+             pesanSelamat = 'Selamat Malam!';
+         }
+
+         let pesanSelamatElement = document.getElementById("pesanSelamat");
+         if (pesanSelamatElement) {
+             pesanSelamatElement.textContent = pesanSelamat;
+         }
+
+         document.getElementById('waktusekarang').textContent = fullDateTimeString;
+     }
+     setInterval(updateTime, 1000); // Update every second
+ </script>
+ <script>
+     fetch('https://api.openweathermap.org/data/2.5/weather?q=Jakarta&appid=71aeca16726bc04ff24b206ff2b2e688&units=metric')
+         .then(response => response.json())
+         .then(data => {
+             const weatherDiv = document.getElementById('weather-info');
+             let weatherDescription = data.weather[0].description;
+             const weatherTranslations = {
+                 'clear sky': 'langit cerah',
+                 'few clouds': 'sedikit awan',
+                 'scattered clouds': 'awan tersebar',
+                 'broken clouds': 'awan terputus',
+                 'shower rain': 'hujan ringan',
+                 'rain': 'hujan',
+                 'thunderstorm': 'badai petir',
+                 'snow': 'salju',
+                 'mist': 'kabut',
+                 'haze': 'kabut asap',
+                 'overcast clouds': 'awan mendung'
+             };
+
+             function ucfirst(str) {
+                 return str.charAt(0).toUpperCase() + str.slice(1);
+             }
+
+             weatherDescription = weatherTranslations[weatherDescription] || weatherDescription;
+             weatherDescription = ucfirst(weatherDescription);
+             const temperature = data.main.temp;
+             weatherDiv.innerHTML = `
+             <div class="card border border-dark weather-card" style="background-color: #fff;">
+                <div class="card-header">
+                    <h1 id="pesanSelamat" style="margin-bottom: -30px;"></h1><br>
+                    <span>Kamu login sebagai <?= $user['username']; ?></span>
+                    <table style="margin-top: -10px;">
+                        <tbody>
+                        <tr>
+                            <td><i class="fa-solid fa-cloud"></i></td>
+                            <td>&nbsp; </td>
+                            <td>Cuaca: ${weatherDescription}</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa-solid fa-temperature-low"></i></td>
+                            <td>&nbsp; </td>
+                            <td>Temperatur: ${temperature}°C</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa-solid fa-clock"></i></i></td>
+                            <td>&nbsp; </td>
+                            <td>Waktu sekarang: <span id="waktusekarang"</td>
+                        </tr>
+                        </tbody>    
+                <div class="weather-icon">
+                </div>
+            </div>`;
+         })
+         .catch(error => {
+             console.error('Error fetching weather:', error);
+             const weatherDiv = document.getElementById('weather-info');
+             weatherDiv.innerHTML = 'Failed to fetch weather data.';
+         });
+ </script>
+
+ <!-- <script>
+     fetch('https://api.openweathermap.org/data/2.5/weather?q=Jakarta&appid=71aeca16726bc04ff24b206ff2b2e688&units=metric')
+         .then(response => response.json())
+         .then(data => {
+             const weatherDiv = document.getElementById('weather-info');
+             const weatherDescription = data.weather[0].description;
+             weatherDescription = weatherDescription.replace('haze', 'Kabut asap');
+             const temperature = data.main.temp;
+             weatherDiv.innerHTML = `<p>Cuaca di Jakarta: ${weatherDescription}</p><p>Temperatur: ${temperature}°C</p>`;
+         })
+         .catch(error => {
+             console.error('Error fetching weather:', error);
+             const weatherDiv = document.getElementById('weather-info');
+             weatherDiv.innerHTML = 'Failed to fetch weather data.';
+         });
+ </script>
+ </body> -->
+
+ </html>

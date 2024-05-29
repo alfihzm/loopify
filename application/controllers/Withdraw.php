@@ -157,8 +157,34 @@ class Withdraw extends CI_Controller
             redirect('withdraw');
         }
     }
-    public function receipt()
+    public function receipt($id)
     {
-        $this->load->view("admin/withdraw/receipt");
+        $withdraw = $this->WithdrawModel->getwithdrawById($id);
+        $date = new DateTime($withdraw['tanggal']);
+        $withdraw['formatted_tanggal'] = $date->format('d F Y');
+
+        $data = [
+            'withdraw' => $withdraw,
+            'user'  => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
+        ];
+
+        $sroot = $_SERVER['DOCUMENT_ROOT'];
+        include $sroot . "/recyloop/application/third_party/dompdf/autoload.inc.php";
+        $dompdf = new Dompdf\Dompdf();
+
+        $html = $this->load->view('admin/withdraw/receipt', $data, TRUE);
+
+        $options = $dompdf->getOptions();
+        $options->set('isHtml5ParserEnabled', true);
+        $options->set('isRemoteEnabled', true);
+        $dompdf->setOptions($options);
+
+        $paper_size = 'A4';
+        $orientation = 'landscape';
+
+        $dompdf->set_paper($paper_size, $orientation);
+        $dompdf->load_html($html);
+        $dompdf->render();
+        $dompdf->stream("receipt-withdraw-{$withdraw['username']}.pdf", array('Attachment' => 0));
     }
 }
