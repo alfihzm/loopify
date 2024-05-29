@@ -1,3 +1,22 @@
+<style>
+    .btn-small {
+        transform: scale(0.5);
+        transform-origin: center;
+    }
+
+    .btn-cross {
+        margin-bottom: -20px;
+    }
+
+    .img-thumbnail {
+        transition: transform 0.25s ease;
+        cursor: pointer;
+    }
+
+    .zoomed {
+        transform: scale(2);
+    }
+</style>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
 <div class="main-panel">
     <div class="content">
@@ -61,11 +80,57 @@
                         </div>
                     </div>
                 </div>
-
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID Finance</th>
+                            <th>Metode</th>
+                            <th>Tanggal</th>
+                            <th>Gambar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php if (!empty($menu) && is_array($menu)) : ?>
+                            <?php foreach ($menu as $m) : ?>
+                                <tr>
+                                    <td>
+                                        <?php
+                                        if ($m['id_finance'] == 1) {
+                                            echo "Modal Awal";
+                                        } elseif ($m['id_finance'] == 2) {
+                                            echo "Arus Kas";
+                                        } else {
+                                            echo "Nilai Tidak Dikenal";
+                                        }
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <?= $m['metode'] ?>
+                                    </td>
+                                    <td>
+                                        <?= $m['tanggal'] ?>
+                                    </td>
+                                    <td>
+                                        <?php if (!empty($m['image'])) : ?>
+                                            <img src="<?= base_url('assets/finance/') . $m['image']; ?>" alt="Gambar" class="img-thumbnail" width="100" height="100" onclick="toggleZoom(this)">
+                                        <?php else : ?>
+                                            <span>Tidak ada gambar</span>
+                                        <?php endif; ?>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php else : ?>
+                            <tr>
+                                <td colspan="3">Tidak ada data deposit untuk arus kas dan modal awal.</td>
+                            </tr>
+                        <?php endif; ?>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
 </div>
+
 
 <!-- Modal Edit kolom saldo yang memiliki ID = 1  -->
 <div class="modal fade" id="newFinanceModal" tabindex="-1" aria-labelledby="newFinanceModalLabel" aria-hidden="true">
@@ -138,6 +203,14 @@
                         <label style="color: #01E7f4 !important;" for="jumlah">Jumlah Saldo Tambahan</label>
                         <input type="hidden" name="id" value="1">
                         <input style="background: #01E7f4; color: #1A2035; font-weight: 600;" type="number" class="form-control" id="jumlah" name="jumlah" placeholder="Masukkan jumlah saldo tambahan">
+                        <?= form_error('jumlah', '<small class="text-danger">', '</small>') ?>
+                        <label style="color: #01E7f4 !important;" for="metode">Metode</label>
+                        <select class="form-control" id="metode" name="metode" style="background: #01E7f4; color: #1A2035;">
+                            <option value="" disabled selected>Pilih metode</option>
+                            <option value="Tunai">Tunai</option>
+                            <option value="BCA">BCA</option>
+                        </select>
+                        <?= form_error('metode', '<small class="text-danger">', '</small>') ?>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -159,12 +232,26 @@
                     X
                 </button>
             </div>
-            <form action="<?= base_url('finance/tambahSaldo') ?>" method="post">
+            <form action="<?= base_url('finance/tambahSaldo') ?>" method="post" enctype="multipart/form-data">
                 <div class="modal-body">
                     <div class="form-group">
                         <label style="color: #01E7f4 !important;" for="jumlah">Jumlah Saldo Tambahan</label>
                         <input type="hidden" name="id" value="2">
                         <input style="background: #01E7f4; color: #1A2035; font-weight: 600;" type="number" class="form-control" id="jumlah" name="jumlah" placeholder="Masukkan jumlah saldo tambahan">
+                        <?= form_error('jumlah', '<small class="text-danger">', '</small>') ?>
+                    </div>
+                    <div class="form-group">
+                        <label style="color: #01E7f4 !important;" for="image">Upload Bukti Deposit</label>
+                        <input type="file" class="form-control" id="image" name="image" style="background: #01E7f4; color: #1a2035;">
+                    </div>
+                    <div class="form-group">
+                        <label style="color: #01E7f4 !important;" for="image">Pilih Metode Deposit</label>
+                        <select class="form-control" id="metode" name="metode" style="background: #01E7f4; color: #1A2035;">
+                            <option value="" disabled selected>Pilih metode</option>
+                            <option value="Tunai">Tunai</option>
+                            <option value="BCA">BCA</option>
+                        </select>
+                        <?= form_error('metode', '<small class="text-danger">', '</small>') ?>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -182,4 +269,9 @@
             $(this).remove();
         });
     }, 2000);
+</script>
+<script>
+    function toggleZoom(img) {
+        img.classList.toggle('zoomed');
+    }
 </script>
