@@ -82,7 +82,6 @@
                                 <a href="#" class="btn btn-info mb-3" data-toggle="modal" data-target="#tambahSaldoModal"><b>Tambah Saldo Modal</b></a>
                                 <br>Terakhir diperbarui oleh <?= $username_update1 ?> tanggal <?= $tgl_update1 ?> pukul <?= $jam_update1 ?>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -101,9 +100,6 @@
                         </div>
                     </div>
                 </div>
-                </tr>
-                <!-- <label for="dateInput"> Cari berdasarkan Tanggal:</label>
-                <input type="date" id="dateInput"> -->
                 <div class="filter-group">
                     <label for="searchSelect">Cari berdasarkan ID Finance:</label>
                     <select id="searchSelect">
