@@ -7,7 +7,6 @@ class Finance extends CI_Controller
         is_login();
         $this->load->model('FinanceModel');
         $this->load->language('form_validation', 'indonesian');
-        date_default_timezone_set('Asia/Jakarta');
     }
 
     public function index()
@@ -28,7 +27,7 @@ class Finance extends CI_Controller
         $data['tgl_update2'] = $finance2['tgl_update'];
         $data['jam_update2'] = $finance2['jam_update'];
         $data['username_update2'] = $finance2['username'];
-       
+
         $this->form_validation->set_rules('saldo', 'Saldo', 'required|trim');
 
         if ($this->form_validation->run() == false) {
@@ -58,7 +57,9 @@ class Finance extends CI_Controller
     public function tambahSaldo()
     {
         $this->form_validation->set_rules('jumlah', 'Jumlah', 'required', array('required' => 'Jumlah wajib diisi!'));
-        $this->form_validation->set_message('required', 'Jumlah wajib diisi!');
+        $this->form_validation->set_rules('metode', 'Metode', 'required', array('required' => 'Metode wajib diisi!'));
+        $this->form_validation->set_rules('sumber', 'Sumber', 'required', array('required' => 'Sumber wajib diisi!'));
+        // $this->form_validation->set_message('required', 'Jumlah wajib diisi!');
 
         if ($this->form_validation->run() == false) {
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">' . validation_errors() . '</div>');
@@ -69,6 +70,9 @@ class Finance extends CI_Controller
         $id = $this->input->post('id');
         $metode =  $this->input->post('metode');
         $jumlah = $this->input->post('jumlah');
+        $sumber = $this->input->post('sumber');
+        $tanggal = $this->input->post('tanggal');
+        // $tanggal_formatted = date('Y-m-d', strtotime(str_replace('-', '/', $tanggal)));
         $config['upload_path']   = 'assets/finance';
         $config['allowed_types'] = 'jpg|png|pdf|doc|docx';
         $config['max_size'] = 2048; // 2MB
@@ -86,7 +90,8 @@ class Finance extends CI_Controller
             $dataDeposit = [
                 'id_finance' => $id,
                 'metode' => $metode,
-                'tanggal' => date('Y-m-d'),
+                'tanggal' => $tanggal,
+                'sumber' => $sumber,
                 'image' => $new_file_name
             ];
 

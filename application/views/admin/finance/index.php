@@ -16,6 +16,27 @@
     .zoomed {
         transform: scale(2);
     }
+
+    .filter-group {
+        margin-bottom: 20px;
+    }
+
+    select,
+    input[type="date"] {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-right: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    select:focus,
+    input[type="date"]:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);
+        outline: none;
+    }
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
 <div class="main-panel">
@@ -80,12 +101,26 @@
                         </div>
                     </div>
                 </div>
-                <table class="table">
+                </tr>
+                <!-- <label for="dateInput"> Cari berdasarkan Tanggal:</label>
+                <input type="date" id="dateInput"> -->
+                <div class="filter-group">
+                    <label for="searchSelect">Cari berdasarkan ID Finance:</label>
+                    <select id="searchSelect">
+                        <option value="">Semua</option>
+                        <option value="Modal Awal">Modal Awal</option>
+                        <option value="Arus Kas">Arus Kas</option>
+                    </select>
+                    <label for="dateSearch">Cari berdasarkan Tanggal:</label>
+                    <input type="date" id="dateSearch">
+                </div>
+                <table class="table" id="dataTable">
                     <thead>
                         <tr>
                             <th>ID Finance</th>
                             <th>Metode</th>
                             <th>Tanggal</th>
+                            <th>Sumber</th>
                             <th>Gambar</th>
                         </tr>
                     </thead>
@@ -111,6 +146,9 @@
                                         <?= $m['tanggal'] ?>
                                     </td>
                                     <td>
+                                        <?= $m['sumber'] ?>
+                                    </td>
+                                    <td>
                                         <?php if (!empty($m['image'])) : ?>
                                             <img src="<?= base_url('assets/finance/') . $m['image']; ?>" alt="Gambar" class="img-thumbnail" width="100" height="100" onclick="toggleZoom(this)">
                                         <?php else : ?>
@@ -121,7 +159,7 @@
                             <?php endforeach; ?>
                         <?php else : ?>
                             <tr>
-                                <td colspan="3">Tidak ada data deposit untuk arus kas dan modal awal.</td>
+                                <td colspan="5">Tidak ada data deposit untuk arus kas dan modal awal.</td>
                             </tr>
                         <?php endif; ?>
                     </tbody>
@@ -204,22 +242,38 @@
                         <input type="hidden" name="id" value="1">
                         <input style="background: #01E7f4; color: #1A2035; font-weight: 600;" type="number" class="form-control" id="jumlah" name="jumlah" placeholder="Masukkan jumlah saldo tambahan">
                         <?= form_error('jumlah', '<small class="text-danger">', '</small>') ?>
-                        <label style="color: #01E7f4 !important;" for="metode">Metode</label>
+                    </div>
+                    <div class="form-group">
+                        <label style="color: #01E7f4 !important;" for="image">Upload Bukti Deposit</label>
+                        <input type="file" class="form-control" id="image" name="image" style="background: #01E7f4; color: #1a2035;">
+                    </div>
+                    <div class="form-group">
+                        <label style="color: #01E7f4 !important;" for="image">Pilih Metode Deposit</label>
                         <select class="form-control" id="metode" name="metode" style="background: #01E7f4; color: #1A2035;">
                             <option value="" disabled selected>Pilih metode</option>
                             <option value="Tunai">Tunai</option>
-                            <option value="BCA">BCA</option>
+                            <option value="Transfer Bank">Transfer Bank</option>
                         </select>
                         <?= form_error('metode', '<small class="text-danger">', '</small>') ?>
                     </div>
+                    <div class="form-group">
+                        <label style="color: #01E7f4 !important;" for="image">Pilih Sumber Deposit</label>
+                        <select class="form-control" id="sumber" name="sumber" style="background: #01E7f4; color: #1A2035;">
+                            <option value="" disabled selected>Pilih sumber</option>
+                            <option value="Donatur">Donatur</option>
+                            <option value="Sponsor">Sponsor</option>
+                            <?= form_error('sumber', '<small class="text-danger">', '</small>') ?>
+                        </select>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Tambah</button>
-                </div>
-            </form>
         </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Tambah</button>
+        </div>
+        </form>
     </div>
+</div>
 </div>
 
 <!-- Tambah arus kas berdasarkan nominal input -->
@@ -245,6 +299,10 @@
                         <input type="file" class="form-control" id="image" name="image" style="background: #01E7f4; color: #1a2035;">
                     </div>
                     <div class="form-group">
+                        <label style="color: #01E7f4 !important;" for="tanggal">Tanggal Deposit</label>
+                        <input type="date" class="form-control" id="tanggal" name="tanggal" style="background: #01E7f4; color: #1a2035;">
+                    </div>
+                    <div class="form-group">
                         <label style="color: #01E7f4 !important;" for="image">Pilih Metode Deposit</label>
                         <select class="form-control" id="metode" name="metode" style="background: #01E7f4; color: #1A2035;">
                             <option value="" disabled selected>Pilih metode</option>
@@ -252,6 +310,15 @@
                             <option value="BCA">BCA</option>
                         </select>
                         <?= form_error('metode', '<small class="text-danger">', '</small>') ?>
+                    </div>
+                    <div class="form-group">
+                        <label style="color: #01E7f4 !important;" for="image">Pilih Sumber Deposit</label>
+                        <select class="form-control" id="sumber" name="sumber" style="background: #01E7f4; color: #1A2035;">
+                            <option value="" disabled selected>Pilih sumber</option>
+                            <option value="Donatur">Donatur</option>
+                            <option value="Sponsor">Sponsor</option>
+                            <?= form_error('sumber', '<small class="text-danger">', '</small>') ?>
+                        </select>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -274,4 +341,44 @@
     function toggleZoom(img) {
         img.classList.toggle('zoomed');
     }
+</script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#searchSelect').change(function() {
+            var selectedValue = $(this).val().toLowerCase();
+            filterTable();
+        });
+
+        $('#dateSearch').on('input', function() {
+            filterTable();
+        });
+
+        function filterTable() {
+            var selectedValue = $('#searchSelect').val().toLowerCase();
+            var selectedDate = $('#dateSearch').val();
+
+            $('#dataTable tbody tr').each(function() {
+                var idFinance = $(this).find('td:first').text().trim().toLowerCase();
+                var date = $(this).find('td').eq(2).text().trim();
+
+                var showRow = true;
+
+                if (selectedValue !== "" && idFinance !== selectedValue) {
+                    showRow = false;
+                }
+
+                if (selectedDate !== "" && date !== selectedDate) {
+                    showRow = false;
+                }
+
+                if (showRow) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            });
+        }
+    });
 </script>

@@ -11,8 +11,7 @@
                     <div class="form-group row">
                         <label for="email" class="col-sm-3 col-form-label">Email</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="inputEmail13" name="email"
-                                value="<?= $user['email']; ?>">
+                            <input type="text" class="form-control" id="inputEmail13" name="email" value="<?= $user['email']; ?>">
                         </div>
                         <?= form_error('email', '<small class="text-danger">', '</small>'); ?>
                     </div>
@@ -28,14 +27,12 @@
                         <div class="col-sm-9">
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <img src="<?= base_url('assets/images/user/profile/') . $user['photo']; ?>"
-                                        class="img-thumbnail border border-0">
+                                    <img src="<?= base_url('assets/images/user/profile/') . $user['photo']; ?>" class="img-thumbnail border border-0">
                                 </div>
                                 <div class="col-sm-9">
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input" id="photo" name="photo">
-                                        <label class="custom-file-label" for="photo" style="background: #1A2035;">Pilih
-                                            gambar</label>
+                                        <label class="custom-file-label" for="photo" style="background: #1A2035;">Pilih gambar</label>
                                     </div>
                                 </div>
                             </div>
