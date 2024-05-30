@@ -190,6 +190,7 @@ class Transaction extends CI_Controller
             $data = [
                 'transaction' => $transaction,
                 'user'  => $this->db->get_where('user', ['username' => $username])->row_array(),
+                'user'  => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
                 'judul' => $judul
             ];
 
@@ -199,12 +200,6 @@ class Transaction extends CI_Controller
             $this->load->view('admin/transaction/info_transaction', $data);
             $this->load->view("templates/admin/footer");
         } else {
-            // $transactionData = [
-            //     'jenis_sampah' => htmlspecialchars($this->input->post('jenis_sampah')),
-            //     'nilai_tukar' => htmlspecialchars($this->input->post('nilai_tukar'))
-            // ];
-            // $this->TransactionModel->editTransaction($id, $transactionData);
-            // $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data transaksi telah diubah</div>');
             redirect('transaction');
         }
     }

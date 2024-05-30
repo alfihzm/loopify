@@ -48,7 +48,7 @@
                                 <td><?= $t['lokasi']; ?></td>
                                 <td>
                                     <div style="text-align: center;">
-                                        <a href="<?= base_url('transaction/info_transaction/' . $t['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-info"></i></a>
+                                        <a href="<?= base_url('log/info_transaction/' . $t['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-info"></i></a>
                                     </div>
                                 </td>
                             </tr>

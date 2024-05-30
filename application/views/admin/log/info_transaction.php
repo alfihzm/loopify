@@ -61,11 +61,11 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="idstaff">Jumlah Saldo Koin yang dapat ditukar</label>
-                                        <input type="text" class="form-control" id="totalkoin" name="totalkoin" autocomplete="off" value="Rp <?= number_format( $transaction['totalkoin'], 0, ',', '.') ?>" readonly style="color: black; font-weight: bold;">
+                                        <input type="text" class="form-control" id="totalkoin" name="totalkoin" autocomplete="off" value="Rp <?= number_format($transaction['totalkoin'], 0, ',', '.') ?>" readonly style="color: black; font-weight: bold;">
                                     </div>
                                 </div>
                                 <div class="col-sm-12" style="display: flex; justify-content: space-evenly; align-items: center; margin-top: 10px">
-                                    <a style="width: 100px;" href="<?= base_url('transaction'); ?>" class="btn btn-warning">Kembali</a>
+                                    <a style="width: 100px;" href="<?= base_url('log/transaction'); ?>" class="btn btn-warning">Kembali</a>
                                 </div>
                         </form>
                     </div>
