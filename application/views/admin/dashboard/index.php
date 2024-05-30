@@ -106,16 +106,22 @@
                          </tr>
                      </thead>
                      <tbody>
-                         <?php $i = 1; ?>
-                         <?php foreach ($menu as $m) : ?>
+                         <?php if (empty($menu)) : ?>
                              <tr>
-                                 <th scope="row"><?= $i; ?></th>
-                                 <td><?= $m['judul']; ?></td>
-                                 <td><?= $m['tanggal']; ?></td>
-                                 <td><?= $m['deskripsi']; ?></td>
+                                 <td colspan="4">Tidak ada pengumuman hari ini</td>
                              </tr>
-                             <?php $i++; ?>
-                         <?php endforeach; ?>
+                         <?php else : ?>
+                             <?php $i = 1; ?>
+                             <?php foreach ($menu as $m) : ?>
+                                 <tr>
+                                     <th scope="row"><?= $i; ?></th>
+                                     <td><?= $m['judul']; ?></td>
+                                     <td><?= $m['tanggal']; ?></td>
+                                     <td><?= $m['deskripsi']; ?></td>
+                                 </tr>
+                                 <?php $i++; ?>
+                             <?php endforeach; ?>
+                         <?php endif; ?>
                      </tbody>
                  </table>
              </div>

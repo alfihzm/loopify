@@ -12,12 +12,18 @@ class Log extends CI_Controller
     public function transaction()
     {
         $data = [
+            'judul' => "Log Transaksi Penyerahan Sampah",
+            'transaction' => $this->TransactionModel->getTransaction(),
             'withdraw' => $this->WithdrawModel->getWithdraw(),
             'user'  => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array()
         ];
 
-        $this->load->view("template/admin/header", $data);
+        $this->load->view("templates/admin/header", $data);
         $this->load->view("templates/admin/sidebar", $data);
         $this->load->view("templates/admin/topbar", $data);
+        $this->load->view("admin/log/transaction", $data);
+        $this->load->view("templates/admin/footer");
     }
+
+    
 }
