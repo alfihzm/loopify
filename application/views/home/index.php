@@ -344,8 +344,7 @@
                 <div class="heading-section">
                     <div class="heading-subtitle"><span class="tx-primary tx-16 fw-semibold">Produk Akhir</span></div>
                     <div class="heading-title">Produk <span class="tx-primary"> Daur Ulang </span> </div>
-                    <div class="heading-description">Dari limbah rumah tangga Anda, menjadi barang produksi yang bernilai 
-                        pakai.</div>
+                    <div class="heading-description">Dari limbah rumah tangga Anda, menjadi barang produksi yang bernilai pakai.</div>
                 </div>
                 <div class="row">
                     <div class="col-lg-4">
