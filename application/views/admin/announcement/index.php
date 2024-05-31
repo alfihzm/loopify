@@ -1,4 +1,4 @@
- <style>
+<style>
      .btn-small {
          transform: scale(0.5);
          transform-origin: center;

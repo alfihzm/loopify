@@ -71,45 +71,50 @@
             </div>
             <div class="row">
                 <div class="col-lg-6">
-                    <div class="card border border-info" style="border-radius: 10px; overflow: hidden;">
-                        <div class="card-header" style="background-color: #01E7f4; color: #1A2035; text-align: center; font-size: 24px; padding: 5px 0;">
+                    <div class="card border border-light" style="border-radius: 10px; overflow: hidden;">
+                        <div class="card-header" style="background-color: #fff; color: #1A2035; text-align: center; font-size: 24px; padding: 5px 0;">
                             <b>Modal Awal</b>
                         </div>
                         <div class="card-body" style="padding-bottom: 1px; background-color: #1A2035;">
                             <div style="text-align: center; font-family: Montserrat;">
                                 <h1 style="color: #fff;">Rp. <?= number_format($saldoModalAwal, 0, ',', '.') ?></h1>
-                                <a href="" data-toggle="modal" data-target="#newFinanceModal" class="btn btn-info mb-3" style="color:white;"><b>Perbarui Saldo Modal</b></a>
-                                <a href="#" class="btn btn-info mb-3" data-toggle="modal" data-target="#tambahSaldoModal"><b>Tambah Saldo Modal</b></a>
+                                <a href="" data-toggle="modal" data-target="#newFinanceModal" class="btn btn-secondary mb-3"><b>Perbarui Saldo Modal</b></a>
+                                <a href="#" class="btn btn-secondary mb-3" data-toggle="modal" data-target="#tambahSaldoModal"><b>Tambah Saldo Modal</b></a>
                                 <br>Terakhir diperbarui oleh <?= $username_update1 ?> tanggal <?= $tgl_update1 ?> pukul <?= $jam_update1 ?>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <div class="card border border-info" style="border-radius: 10px; overflow: hidden;">
-                        <div class="card-header" style="background-color: #01E7f4; color: #1A2035; text-align: center; font-size: 24px; padding: 5px 0;">
+                    <div class="card border border-light" style="border-radius: 10px; overflow: hidden;">
+                        <div class="card-header" style="background-color: #fff; color: #1A2035; text-align: center; font-size: 24px; padding: 5px 0;">
                             <b>Kas Saat ini</b>
                         </div>
                         <div class="card-body" style="padding-bottom: 1px; background-color: #1A2035;">
                             <div style="text-align: center; font-family: Montserrat;">
                                 <h1 style="color: #fff;">Rp. <?= number_format($saldoKasSaatIni, 0, ',', '.') ?></h1>
-                                <a href="" data-toggle="modal" data-target="#newFinanceModal2" class="btn btn-info mb-3" style="color:white;"><b>Perbarui Saldo Kas</b></a>
-                                <a href="#" class="btn btn-info mb-3" data-toggle="modal" data-target="#tambahSaldoArusKas"><b>Tambah Saldo Kas</b></a>
+                                <a href="" data-toggle="modal" data-target="#newFinanceModal2" class="btn btn-secondary mb-3"><b>Perbarui Saldo Kas</b></a>
+                                <a href="#" class="btn btn-secondary mb-3" data-toggle="modal" data-target="#tambahSaldoArusKas"><b>Tambah Saldo Kas</b></a>
                                 <br>Terakhir diperbarui oleh <?= $username_update2 ?> tanggal <?= $tgl_update2 ?> pukul <?= $jam_update2 ?>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="filter-group">
-                    <label for="searchSelect">Cari berdasarkan ID Finance:</label>
-                    <select id="searchSelect">
-                        <option value="">Semua</option>
-                        <option value="Modal Awal">Modal Awal</option>
-                        <option value="Arus Kas">Arus Kas</option>
-                    </select>
-                    <label for="dateSearch">Cari berdasarkan Tanggal:</label>
-                    <input type="date" id="dateSearch">
+                <div class="filter-group" style="display: flex; gap: 10px;">
+                    <div class="filter-item" style="display: flex; flex-direction: column;">
+                        <label for="searchSelect">Cari berdasarkan ID Finance:</label>
+                        <select id="searchSelect" class="form-control" style="height: 38px; padding: 7px;">
+                            <option value="">Semua</option>
+                            <option value="Modal Awal">Modal Awal</option>
+                            <option value="Arus Kas">Arus Kas</option>
+                        </select>
+                    </div>
+                    <div class="filter-item" style="display: flex; flex-direction: column;">
+                        <label for="dateSearch">Cari berdasarkan Tanggal:</label>
+                        <input type="date" id="dateSearch" class="form-control" style="height: 38px; padding: 5px;">
+                    </div>
                 </div>
+
                 <table class="table" id="dataTable">
                     <thead>
                         <tr>

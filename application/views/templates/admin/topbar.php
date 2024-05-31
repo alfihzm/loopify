@@ -2,7 +2,7 @@
     <!-- Logo Header -->
     <div class="logo-header" data-background-color="dark2">
 
-        <a href="<?= base_url('dashboard'); ?>" class="logo">
+        <a href="<?= base_url('admin'); ?>" class="logo">
             <img style="margin-left: 15px; max-width: 135px; max-height: 360px;" src="
                 <?= base_url('assets/') ?>images/logo/branding-logo.png" alt="navbar brand" class="navbar-brand">
         </a>

@@ -91,4 +91,40 @@ class Log extends CI_Controller
             redirect('log/withdraw');
         }
     }
+
+    public function reports()
+    {
+        $data = [
+            'judul' => "Log Laporan Masalah",
+            'user'  => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
+            'menu' => $this->db->get('reports')->result_array()
+        ];
+
+        $this->load->view("templates/admin/header", $data);
+        $this->load->view("templates/admin/sidebar", $data);
+        $this->load->view("templates/admin/topbar", $data);
+        $this->load->view("admin/log/reports", $data);
+        $this->load->view("templates/admin/footer");
+    }
+
+    public function info_reports()
+    {
+        $laporan_id = $this->input->get('id');
+        $data = [
+            'judul' => "Informasi Laporan Pegawai",
+            'user'  => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
+            'menu' => $this->db->get('reports')->result_array()
+        ];
+
+        if ($laporan_id) {
+            $data['laporan'] = $this->db->get_where('reports', ['id' => $laporan_id])->row_array();
+        } else {
+            $data['laporan'] = $this->db->get('reports')->result_array();
+        }
+        $this->load->view("templates/admin/header", $data);
+        $this->load->view("templates/admin/sidebar", $data);
+        $this->load->view("templates/admin/topbar", $data);
+        $this->load->view("admin/log/info_reports", $data);
+        $this->load->view("templates/admin/footer");
+    }
 }

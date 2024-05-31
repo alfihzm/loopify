@@ -7,6 +7,7 @@
                     <li class="nav-home">
                         <a href="">
                             <i class="fa-solid fa-file-lines"></i>
+                        </a>
                     </li>
                     <li class="separator">
                         <i class="flaticon-right-arrow"></i>

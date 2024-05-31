@@ -23,8 +23,7 @@
                     </li>
                 </ul>
             </div>
-            <a href=" <?= base_url('admin/add_staff'); ?>" class="btn btn-secondary mb-3">Tambah Staff
-            </a>
+            <a href=" <?= base_url('admin/add_staff'); ?>" class="btn btn-secondary mb-3">Tambah Staff</a>
             <div class="row">
                 <div class="col-lg-6">
                     <?= $this->session->flashdata('message') ?>

@@ -17,7 +17,22 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src='https://cdn.tiny.cloud/1/mlvvrqzvo7nqpxb7wsk8zjvq1stubfl8y3ti5dm6sgj29zvg/tinymce/6/tinymce.min.js' referrerpolicy="origin">
+    </script>
+    <script>
+        tinymce.init({
+            selector: '#myTextarea'
+        });
+        document.getElementById('toggleKomentar').addEventListener('change', function() {
+        var kolomInput = document.getElementById('kolomInput');
+        kolomInput.classList.toggle('hidden', !this.checked);
 
+        // Bersihkan nilai textarea jika checkbox tidak dicentang
+        if (!this.checked) {
+            document.getElementById('komentar').value = '';
+        }
+    });
+    </script>
     <!-- Fonts and icons -->
     <script src="<?= base_url('assets/') ?>js/plugin/webfont/webfont.min.js"></script>
     <script>
