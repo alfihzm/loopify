@@ -57,6 +57,18 @@ class Transaction extends CI_Controller
             $jumlah_kaleng = $this->input->post('jumlah_kaleng');
             $jumlah_kardus = $this->input->post('jumlah_kardus');
 
+            // Ambil kapasitas penyimpanan dari database
+            $kapasitas_botol = $this->db->get_where('sampah', ['id' => 1])->row()->kapasitas;
+            $kapasitas_kaleng = $this->db->get_where('sampah', ['id' => 2])->row()->kapasitas;
+            $kapasitas_kardus = $this->db->get_where('sampah', ['id' => 3])->row()->kapasitas;
+
+            // Cek apakah jumlah input melebihi kapasitas
+            if ($jumlah_botol > $kapasitas_botol || $jumlah_kaleng > $kapasitas_kaleng || $jumlah_kardus > $kapasitas_kardus) {
+                // Jika melebihi kapasitas, tampilkan pesan kesalahan dan redirect kembali
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Gagal transaksi, jumlah melebihi kapasitas gudang!</div>');
+                redirect('transaction');
+            }
+
             $harga_botol = $this->db->get_where('sampah', ['id' => 1])->row()->nilai_tukar;
             $harga_kaleng = $this->db->get_where('sampah', ['id' => 2])->row()->nilai_tukar;
             $harga_kardus = $this->db->get_where('sampah', ['id' => 3])->row()->nilai_tukar;
@@ -87,6 +99,7 @@ class Transaction extends CI_Controller
             redirect('transaction');
         }
     }
+
 
     public function getUsernameByIdMember()
     {

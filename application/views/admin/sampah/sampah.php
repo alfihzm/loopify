@@ -23,9 +23,66 @@
                     </li>
                 </ul>
             </div>
-            <a href=" <?= base_url('admin/tambah_sampah'); ?>" class="btn btn-secondary mb-3"> Tambah Jenis Sampah
-            </a>
-
+            <a href=" <?= base_url('admin/tambah_sampah'); ?>" class="btn btn-secondary mb-3"> Tambah Jenis Sampah</a>
+            <div class="row align-content-center justify-content-center">
+                <div class="col-lg-3 counter">
+                    <div class="card border border-dark weather-card" style="background-color: #fff;">
+                        <div class="card-header">
+                            <div class="card-header" style="background-color: #fff; color: black; text-align: center; border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                                <b>Kapasitas Gudang Botol</b>
+                            </div>
+                            <h4 style="text-align: center; font-size: 1.5em; color: blue;">
+                                <?php $persentase_kepenuhan = ($botol['total_sampah'] / $botol['kapasitas']) * 100; ?>
+                                <?= $botol['total_sampah'] ?>/<b><?= $botol['kapasitas']; ?></b>
+                            </h4>
+                            <div style="text-align: center;">
+                                <span style="margin-top: 20px; text-align: center; color: black;">Tingkat Kepenuhan: </span>
+                            </div>
+                            <h4 style="margin-top: 2px; text-align: center; font-size: 1.5em; color: blue; font-weight: bold;">
+                                <?= number_format($persentase_kepenuhan, 2); ?>%
+                            </h4>
+                        </div>`;
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="card border border-dark weather-card" style="background-color: #fff;">
+                        <div class="card-header">
+                             <div class="card-header" style="background-color: #fff; color: black; text-align: center; border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                                <b>Kapasitas Gudang Kaleng</b>
+                            </div>
+                            <h4 style="text-align: center; font-size: 1.5em; color: red;">
+                                <?php $persentase_kepenuhan = ($kaleng['total_sampah'] / $kaleng['kapasitas']) * 100; ?>
+                                <?= $kaleng['total_sampah'] ?>/<b><?= $kaleng['kapasitas']; ?></b>
+                            </h4>
+                            <div style="text-align: center;">
+                                <span style="margin-top: 20px; text-align: center; color: black;">Tingkat Kepenuhan: </span>
+                            </div>
+                            <h4 style="margin-top: 2px; text-align: center; font-size: 1.5em; color: red; font-weight: bold;">
+                                <?= number_format($persentase_kepenuhan, 2); ?>%
+                            </h4>
+                        </div>`;
+                    </div>
+                </div>
+                <div class="col-lg-3" style="text-align: center;">
+                    <div class="card border border-dark weather-card" style="background-color: #fff;">
+                        <div class="card-header">
+                            <div class="card-header" style="background-color: #fff; color: black; text-align: center; border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                                <b>Kapasitas Gudang kardus</b>
+                            </div>
+                            <h4 style="text-align: center; font-size: 1.5em; color: green;">
+                                <?php $persentase_kepenuhan = ($kardus['total_sampah'] / $kardus['kapasitas']) * 100; ?>
+                                <?= $kardus['total_sampah'] ?>/<b><?= $kardus['kapasitas']; ?></b>
+                            </h4>
+                            <div style="text-align: center;">
+                                <span style="margin-top: 20px; text-align: center; color: black;">Tingkat Kepenuhan: </span>
+                            </div>
+                            <h4 style="margin-top: 2px; text-align: center; font-size: 1.5em; color: green; font-weight: bold;">
+                                <?= number_format($persentase_kepenuhan, 2); ?>%
+                            </h4>
+                        </div>`;
+                    </div>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-lg-6">
                     <?= $this->session->flashdata('message') ?>

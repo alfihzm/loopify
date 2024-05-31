@@ -59,10 +59,9 @@
          border: 1px solid white;
          padding: 10px;
          border-radius: 10px;
-
      }
  </style>
- </style>
+
  <div class="main-panel">
      <div class="content">
          <div class="page-inner">

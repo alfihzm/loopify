@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 31, 2024 at 08:40 AM
+-- Generation Time: May 31, 2024 at 05:20 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -184,8 +184,20 @@ CREATE TABLE `poin` (
 --
 
 CREATE TABLE `reports` (
-  `id` int(11) NOT NULL
+  `id` int(11) NOT NULL,
+  `id_account` varchar(16) NOT NULL,
+  `nama` varchar(128) NOT NULL,
+  `judul` varchar(128) NOT NULL,
+  `tanggal` date NOT NULL,
+  `deskripsi` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `reports`
+--
+
+INSERT INTO `reports` (`id`, `id_account`, `nama`, `judul`, `tanggal`, `deskripsi`) VALUES
+(1, '19220821', 'alfihzm', 'Kerja sama dengan PT. Kakatua Steel Alumunium', '2024-05-31', '&lt;p&gt;z&lt;/p&gt;');
 
 -- --------------------------------------------------------
 
@@ -209,9 +221,9 @@ CREATE TABLE `sampah` (
 --
 
 INSERT INTO `sampah` (`id`, `icon`, `jenis_sampah`, `kode`, `nilai_tukar`, `nilai_satuan`, `total_sampah`, `kapasitas`) VALUES
-(1, 'plastic-bottle.png', 'Botol Plastik', 'BP', 1500, 55, 6, 0),
-(2, 'tin-can.png', 'Kaleng', 'KA', 13300, 200, 16, 0),
-(3, 'book.png', 'Kardus', 'KK', 2500, 500, 3, 0);
+(1, 'plastic-bottle.png', 'Botol Plastik', 'BP', 1500, 55, 6, 200),
+(2, 'tin-can.png', 'Kaleng', 'KA', 13300, 200, 16, 200),
+(3, 'book.png', 'Kardus', 'KK', 2500, 500, 3, 200);
 
 -- --------------------------------------------------------
 
@@ -456,12 +468,13 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active
 (9, 6, 'Manajemen Cinderamata', 'admin/cinderamata', '	\r\nfas fa-fw fa-gift', 1),
 (10, 5, 'Informasi Member', 'staff/member', 'fas fa-fw fa-users', 1),
 (12, 8, 'Manajemen Transaksi', 'transaction', 'fa-solid fa-money-bill-transfer', 1),
-(13, 8, 'Manajemen Keuangan', 'finance', 'fa-solid fa-wallet\r\n', 1),
+(13, 8, 'Manajemen Keuangan', 'finance', 'fa-solid fa-money-bill\r\n', 1),
 (14, 8, 'Manajemen Tarik Tunai', 'withdraw', 'fa-solid fa-money-bill-1', 1),
 (15, 9, 'Manajemen Pengumuman', 'announcement', 'fa-solid fa-paste', 1),
-(16, 6, 'Manajemen Laporan', 'reports', 'fa-solid fa-file-pdf', 1),
+(16, 6, 'Manajemen Laporan', 'reports', 'fa-solid fa-file', 1),
 (17, 10, 'Log Transaksi', 'log/transaction', 'fa-solid fa-file-lines', 1),
-(18, 10, 'Log Tarik Tunai', 'log/withdraw', 'fa-solid fa-file-invoice-dollar', 1);
+(18, 10, 'Log Tarik Tunai', 'log/withdraw', 'fa-solid fa-file-invoice-dollar', 1),
+(19, 10, 'Log Laporan Masalah', 'log/reports', 'fa-solid fa-file-prescription', 1);
 
 -- --------------------------------------------------------
 
@@ -667,7 +680,7 @@ ALTER TABLE `poin`
 -- AUTO_INCREMENT for table `reports`
 --
 ALTER TABLE `reports`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `sampah`
@@ -715,7 +728,7 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT for table `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `withdraw`

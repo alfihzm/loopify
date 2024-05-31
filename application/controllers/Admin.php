@@ -529,11 +529,21 @@ class Admin extends CI_Controller
     // INFORMASI TABEL MEMBER
     public function sampah()
     {
+        $botol = $this->SampahModel->getSampahById(1);
+        $kaleng = $this->SampahModel->getSampahById(2);
+        $kardus = $this->SampahModel->getSampahById(3);
+
+
         $data = [
             'judul' => 'Manajemen Sampah',
             'sampah' => $this->SampahModel->getSampah(),
             'user'  => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
+            'botol' => $botol,
+            'kaleng' => $kaleng,
+            'kardus' => $kardus
+
         ];
+
 
         $this->load->view("templates/admin/header", $data);
         $this->load->view("templates/admin/sidebar", $data);
