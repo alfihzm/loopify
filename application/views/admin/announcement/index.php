@@ -8,7 +8,6 @@
          margin-bottom: -20px;
      }
  </style>
-
  <div class="main-panel" style="font-family: quicksand;">
      <div class="content">
          <div class="page-inner">
@@ -39,33 +38,35 @@
                      <?= $this->session->flashdata('message') ?>
                  </div>
              </div>
-             <table class="table table-hover table-striped">
-                 <thead>
-                     <tr>
-                         <th scope="col">No</th>
-                         <th scope="col">Judul</th>
-                         <th scope="col">Tanggal dibuat</th>
-                         <th scope="col">Isi pengumuman</th>
-                         <th scope="col"></th>
-                     </tr>
-                 </thead>
-                 <tbody>
-                     <?php $i = 1; ?>
-                     <?php foreach ($menu as $m) : ?>
+             <div class="container">
+                 <table class="table table-hover table-striped">
+                     <thead>
                          <tr>
-                             <th scope="row"><?= $i; ?></th>
-                             <td><?= $m['judul']; ?></td>
-                             <td><?= $m['tanggal']; ?></td>
-                             <td><?= $m['deskripsi']; ?></td>
-                             <td>
-                                 <a href="<?= base_url('announcement/update/' . $m['id']); ?>" class="btn btn-success"><i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></a>
-                                 <a href="<?= base_url('announcement/delete/' . $m['id']); ?>" class="btn btn-danger"><i class="fa-solid fa-trash" style="color: #ffffff;"></i></a>
-                             </td>
+                             <th scope="col">No</th>
+                             <th scope="col">Judul</th>
+                             <th scope="col">Tanggal dibuat</th>
+                             <th scope="col">Isi pengumuman</th>
+                             <th scope="col"></th>
                          </tr>
-                         <?php $i++; ?>
-                     <?php endforeach; ?>
-                 </tbody>
-             </table>
+                     </thead>
+                     <tbody>
+                         <?php $i = 1; ?>
+                         <?php foreach ($menu as $m) : ?>
+                             <tr>
+                                 <th scope="row"><?= $i; ?></th>
+                                 <td><?= $m['judul']; ?></td>
+                                 <td><?= $m['tanggal']; ?></td>
+                                 <td><?= $m['deskripsi']; ?></td>
+                                 <td>
+                                     <a href="<?= base_url('announcement/update/' . $m['id']); ?>" class="btn btn-success"><i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></a>
+                                     <a href="<?= base_url('announcement/delete/' . $m['id']); ?>" class="btn btn-danger"><i class="fa-solid fa-trash" style="color: #ffffff;"></i></a>
+                                 </td>
+                             </tr>
+                             <?php $i++; ?>
+                         <?php endforeach; ?>
+                     </tbody>
+                 </table>
+             </div>
          </div>
      </div>
  </div>
@@ -104,10 +105,9 @@
          </div>
      </div>
  </div>
-
  <script type="text/javascript">
      window.setTimeout(function() {
-         $(".flash_message").fadeTo(500, 0).slideUp(500, function() {
+         $(".col-lg-6").fadeTo(500, 0).slideUp(500, function() {
              $(this).remove();
          });
      }, 2000);

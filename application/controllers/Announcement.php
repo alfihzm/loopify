@@ -65,9 +65,8 @@ class Announcement extends CI_Controller
 
             $this->db->where('id', $ann_id);
             $this->db->update('announcement', $data);
-
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Pengumuman telah diperbarui!</div>');
-            redirect('announcement/editAnnouncement');
+            redirect('announcement');
         }
     }
 

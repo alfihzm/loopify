@@ -13,8 +13,14 @@ class Home extends CI_Controller
     {
         $data['judul'] = 'Recyloop.id';
         $data = [
-            'limbah' => $this->LimbahModel->getLimbah()
+            'limbah' => $this->LimbahModel->getLimbah(),
+            'bp' => $this->LimbahModel->getLimbahById(1),
+            'ka' => $this->LimbahModel->getLimbahById(2),
+            'kk' => $this->LimbahModel->getLimbahById(3)
         ];
+        // Menghitung total sampah
+        $data['total'] = $data['bp']['total_sampah'] + $data['ka']['total_sampah'] + $data['kk']['total_sampah'];
+
 
         $this->load->view('templates/home_header', $data);
         $this->load->view('home/index', $data);
