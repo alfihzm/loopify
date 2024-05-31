@@ -287,7 +287,7 @@
         <section class="section bg-pattern-2 bg-image2">
             <div class="container">
                 <div class="heading-section">
-                    <div class="heading-title text-white">Statistic</div>
+                    <div class="heading-title text-white">Statistik</div>
                     <div class="heading-description text-white op-8">Jumlah limbah yang di kumpulkan.</div>
                 </div>
                 <div class="row align-items-center">
@@ -344,7 +344,7 @@
                 <div class="heading-section">
                     <div class="heading-subtitle"><span class="tx-primary tx-16 fw-semibold">Produk Akhir</span></div>
                     <div class="heading-title">Produk <span class="tx-primary"> Daur Ulang </span> </div>
-                    <div class="heading-description">Dari limbah rumah tangga Anda, menjadi barang bernilai yang layak
+                    <div class="heading-description">Dari limbah rumah tangga Anda, menjadi barang produksi yang bernilai 
                         pakai.</div>
                 </div>
                 <div class="row">

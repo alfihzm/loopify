@@ -12,7 +12,7 @@
                         <i class="flaticon-right-arrow"></i>
                     </li>
                     <li class="nav-item">
-                        <a href="#">Log Transaksi Penyerahan</a>
+                        <a href="#">Log Tarik Tunai</a>
                     </li>
                     <li class="separator">
                         <i class="flaticon-right-arrow"></i>
@@ -29,31 +29,28 @@
                             <th scope="col">Kode Member</th>
                             <th scope="col">User</th>
                             <th scope="col">Tanggal</th>
-                            <th scope="col">BP</th>
-                            <th scope="col">KA</th>
-                            <th scope="col">KK</th>
-                            <th scope="col">Lokasi</th>
+                            <th scope="col">Nominal</th>
+                            <th scope="col">Metode</th>
+                            <th scope="col">Status</th>
                             <th scope="col">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($transaction as $t) : ?>
-                            <tr>
-                                <td><?= $t['id_member']; ?></td>
-                                <td><?= $t['username']; ?></td>
-                                <td><?= $t['tanggal']; ?></td>
-                                <td><?= $t['jumlah_botol']; ?></td>
-                                <td><?= $t['jumlah_kaleng']; ?></td>
-                                <td><?= $t['jumlah_kardus']; ?></td>
-                                <td><?= $t['lokasi']; ?></td>
-                                <td>
-                                    <div style="text-align: center;">
-                                        <a href="<?= base_url('log/info_transaction/' . $t['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-info"></i></a>
-                                    </div>
-                                </td>
-                            </tr>
+                        <?php foreach ($withdraw as $w) : ?>
+                            <?php if ($w['status'] === 'Belum diproses') : ?>
+                                <tr>
+                                    <td><?= $w['id_member']; ?></td>
+                                    <td><?= $w['username']; ?></td>
+                                    <td><?= $w['tanggal']; ?></td>
+                                    <td><?= $w['nominal']; ?></td>
+                                    <td><?= $w['metode']; ?></td>
+                                    <td><?= $w['status']; ?></td>
+                                    <td>
+                                        <a href="<?= base_url('log/info_withdraw/' . $w['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-info"></i></a>
+                                    </td>
+                                </tr>
+                            <?php endif; ?>
                         <?php endforeach; ?>
                     </tbody>
-
                 </table>
             </div>

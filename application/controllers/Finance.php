@@ -56,7 +56,11 @@ class Finance extends CI_Controller
 
     public function tambahSaldo()
     {
-        $this->form_validation->set_rules('jumlah', 'Jumlah', 'required', array('required' => 'Jumlah wajib diisi!'));
+        $this->form_validation->set_rules('jumlah', 'Jumlah', 'required|numeric|greater_than[0]', array(
+            'required' => 'Jumlah wajib diisi!',
+            'numeric' => 'Jumlah harus berupa angka!',
+            'greater_than' => 'Jumlah harus lebih dari 0!'
+        ));
         $this->form_validation->set_rules('metode', 'Metode', 'required', array('required' => 'Metode wajib diisi!'));
         $this->form_validation->set_rules('sumber', 'Sumber', 'required', array('required' => 'Sumber wajib diisi!'));
         // $this->form_validation->set_message('required', 'Jumlah wajib diisi!');

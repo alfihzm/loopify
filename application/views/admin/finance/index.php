@@ -221,7 +221,7 @@
         </div>
     </div>
 </div>
-<!-- Tambah saldo berdasarkan nominal input -->
+<!-- Tambah saldo berdasarkan nominal input 1 -->
 <div class="modal fade" id="tambahSaldoModal" tabindex="-1" aria-labelledby="tambahSaldoModalLabel" aria-hidden="true">
     <div class="modal-dialog" style="background-color: #1A2035; border-radius: 10px;">
         <div class="modal-content" style="background-color: #1A2035;">
@@ -242,6 +242,10 @@
                     <div class="form-group">
                         <label style="color: #01E7f4 !important;" for="image">Upload Bukti Deposit</label>
                         <input type="file" class="form-control" id="image" name="image" style="background: #01E7f4; color: #1a2035;">
+                    </div>
+                    <div class="form-group">
+                        <label style="color: #01E7f4 !important;" for="tanggal">Tanggal Deposit</label>
+                        <input type="date" class="form-control" id="tanggal" name="tanggal" style="background: #01E7f4; color: #1a2035;">
                     </div>
                     <div class="form-group">
                         <label style="color: #01E7f4 !important;" for="image">Pilih Metode Deposit</label>
@@ -272,7 +276,7 @@
 </div>
 </div>
 
-<!-- Tambah arus kas berdasarkan nominal input -->
+<!-- Tambah arus kas berdasarkan nominal input 2 -->
 <div class="modal fade" id="tambahSaldoArusKas" tabindex="-1" aria-labelledby="tambahSaldoArusKasLabel" aria-hidden="true">
     <div class="modal-dialog" style="background-color: #1A2035; border-radius: 10px;">
         <div class="modal-content" style="background-color: #1A2035;">
@@ -303,7 +307,7 @@
                         <select class="form-control" id="metode" name="metode" style="background: #01E7f4; color: #1A2035;">
                             <option value="" disabled selected>Pilih metode</option>
                             <option value="Tunai">Tunai</option>
-                            <option value="BCA">BCA</option>
+                            <option value="Transfer Bank">Transfer Bank</option>
                         </select>
                         <?= form_error('metode', '<small class="text-danger">', '</small>') ?>
                     </div>
