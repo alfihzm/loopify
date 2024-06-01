@@ -42,8 +42,6 @@ class Member extends CI_Controller
             'review' => $this->MemberModel->getReview()
         ];
 
-        
-
         $this->load->view('templates/member/header', $data);
         $this->load->view('templates/member/sidebar', $data);
         $this->load->view('member/about/about-section1', $data);
@@ -53,6 +51,44 @@ class Member extends CI_Controller
         $this->load->view('member/about/about-section5', $data);
         $this->load->view('member/about/about-section6', $data);
         $this->load->view('member/about/about-footer');
+        $this->load->view('templates/member/footer');
+    }
+
+    public function profil() {
+        $data = [
+            'judul' => 'Profil Saya',
+            'user' => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
+        ];
+
+        $this->load->view('templates/member/header', $data);
+        $this->load->view('templates/member/sidebar', $data);
+        $this->load->view('member/profil/index', $data);
+        $this->load->view('templates/member/footer');
+    }
+
+    public function histori() {
+        $data = [
+            'judul'           => 'Histori Saya',
+            'user'            => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
+            'detailTransaksi' => $this->db->get_where('transaction', ['username' => $this->session->userdata('username')])->result_array(),
+        ];
+                        
+        $this->load->view('templates/member/header', $data);
+        $this->load->view('templates/member/sidebar', $data);
+        $this->load->view('member/histori/index', $data);
+        $this->load->view('templates/member/footer');
+    }
+
+    public function withdraw() {
+        $data = [
+            'judul'           => 'Histori Saya',
+            'user'            => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
+            'detailWithdraw' => $this->db->get_where('withdraw', ['username' => $this->session->userdata('username')])->result_array(),
+        ];
+                        
+        $this->load->view('templates/member/header', $data);
+        $this->load->view('templates/member/sidebar', $data);
+        $this->load->view('member/histori/withdraw', $data);
         $this->load->view('templates/member/footer');
     }
 }
