@@ -2,8 +2,9 @@
 
 class MemberModel extends CI_Model
 {
-    public function getUser()
+    public function getReview()
     {
-        return $this->db->get('user')->result_array();
+        $query = $this->db->get('review');
+        return $query->result_array();
     }
 }
