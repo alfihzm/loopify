@@ -5,80 +5,51 @@
             <div class="heading-description text-white op-8">Frequently Asked Question</div>
         </div>
         <div class="row align-items-center">
-            <div class="col-lg-6">
-                <div class="card  tx-default shadow-none">
-                    <div class="card-body">
-                        <div class="d-flex align-items-start">
-                            <div class="me-4">
-                                <span class="avatar text-bg-primary rounded-circle tx-20"><i class="bi bi-hdd-network"></i></span>
-                            </div>
-                            <div class="flex-grow-1">
-                                <h5 class="mb-2">Apa itu Recyloop Coin ?</h5>
-                                <p class="mb-0">Recyloop Coin merupakan reward dari setiap penukaran botol
-                                    yang dapat digunakan untuk berbagai hal seperti Donasi, Redeem
-                                    OVO/DANA/LinkAja, Transfer Bank dengan puluhan mitra kami.</p>
-                            </div>
+            <!-- START DI SINI -->
+            <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            <strong>Apa itu Recyloop?</strong>
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <strong>Recyloop</strong> adalah sebuah proyek inovatif yang dirancang untuk
+                            meningkatkan kesadaran dan partisipasi masyarakat dalam menjaga kebersihan lingkungan.
+                            Proyek ini bertujuan untuk mengatasi masalah yang timbul
+                            akibat kurangnya kesadaran warga terhadap kebersihan, seperti pembuangan sampah sembarangan
+                            yang berdampak pada banjir, pencemaran lingkungan, dan kerusakan ekosistem.
                         </div>
                     </div>
                 </div>
-                <div class="card tx-default shadow-none">
-                    <div class="card-body">
-                        <div class="d-flex align-items-start">
-                            <div class="me-4">
-                                <span class="avatar text-bg-secondary rounded-circle tx-20"><i class="bi bi-hdd-network"></i></span>
-                            </div>
-                            <div class="flex-grow-1">
-                                <h5 class="mb-2">Cara Mendaftar Akun Recyloop ?</h5>
-                                <p class="mb-0">Untuk Mendaftar Akun Recyloop cukup dengan masuk ke halaman
-                                    website kemudian isi daftar data diri di form Mendaftar . Inget selalu
-                                    user dan password ya! Jangan sampai lupa ya.</p>
-                            </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <strong>Tujuan utama Recyloop?</strong>
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            Kami bertujuan untuk mengurangi dampak negatif sampah terhadap lingkungan dan kesehatan
+                            masyarakat melalui sistem informasi dan insentif.
                         </div>
                     </div>
                 </div>
-                <div class="card tx-default shadow-none">
-                    <div class="card-body">
-                        <div class="d-flex align-items-start">
-                            <div class="me-4">
-                                <span class="avatar text-bg-success rounded-circle tx-20"><i class="bi bi-hdd-network"></i></span>
-                            </div>
-                            <div class="flex-grow-1">
-                                <h5 class="mb-2">Apa itu Mini Collecting Point ?</h5>
-                                <p class="mb-0">Mini Collecting Point (MCP) Recyloop Merupakan alat
-                                    penukaran sampah botol plastik menjadi Recyloop Coin yang terbesar di
-                                    beberapa lokasi.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="card  tx-default shadow-none">
-                    <div class="card-body">
-                        <div class="d-flex align-items-start">
-                            <div class="me-4">
-                                <span class="avatar text-bg-danger rounded-circle tx-20"><i class="bi bi-hdd-network"></i></span>
-                            </div>
-                            <div class="flex-grow-1">
-                                <h5 class="mb-2">Apa itu Official Collecting Tenant ?</h5>
-                                <p class="mb-0">At vero eos et accusamus et iusto odio dignissimos ducimus
-                                    qui blanditiis praesentium voluptatum deleniti atque corrupti quos.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card tx-default shadow-none">
-                    <div class="card-body">
-                        <div class="d-flex align-items-start">
-                            <div class="me-4">
-                                <span class="avatar bg-pink text-white rounded-circle tx-20"><i class="bi bi-hdd-network"></i></span>
-                            </div>
-                            <div class="flex-grow-1">
-                                <h5 class="mb-2">Cara Redeem Recyloop Coin ?</h5>
-                                <p class="mb-0">Et harum quidem rerum facilis est et expedita distinctio.
-                                    Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil.
-                                </p>
-                            </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            <strong>Bagaimana cara kerja sistem penukaran sampah menjadi koin di Recyloop?</strong>
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            Sistem ini memungkinkan warga menukarkan sampah botol dan bahan daur ulang lainnya. Setiap
+                            penukaran akan diberikan koin yang bisa ditukarkan kembali sebagai insentif untuk mendorong
+                            warga lebih aktif dalam pengelolaan sampah.
                         </div>
                     </div>
                 </div>

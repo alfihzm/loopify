@@ -36,6 +36,8 @@
 <script src="<?= base_url('assets/') ?>libs/swiper/swiper-bundle.min.js"></script>
 <script src="<?= base_url('assets/') ?>js/swiper.js"></script>
 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
 <!-- END SCRIPTS -->
 
 </body>
