@@ -132,4 +132,4 @@ $autoload['language'] = array('indonesian');
 |
 |	$autoload['model'] = array('first_model' => 'first');
 */
-$autoload['model'] = array('StaffModel', 'UserModel', 'MemberModel', 'SampahModel', 'GiftModel', 'TransactionModel','FinanceModel','WithdrawModel');
+$autoload['model'] = array('StaffModel', 'UserModel', 'MemberModel', 'SampahModel', 'GiftModel', 'TransactionModel', 'FinanceModel', 'WithdrawModel', 'LimbahModel');
