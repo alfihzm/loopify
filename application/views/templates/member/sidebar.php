@@ -19,7 +19,9 @@
                     </div>
                     <!-- End::header-element -->
                     <a href="<?= base_url('member'); ?>" class="brand-main">
-                        <img style="width: 30vh; margin-left: 10px; height: auto;" src="<?= base_url('assets/') ?>images/brand/branding-logo.png" alt="img" class="desktop-logo logo-dark">
+                        <img style="width: 30vh; margin-left: 10px; height: auto;"
+                            src="<?= base_url('assets/') ?>images/brand/branding-logo.png" alt="img"
+                            class="desktop-logo logo-dark">
                     </a>
 
                     <ul class="categories-dropdowns">
@@ -47,7 +49,9 @@
                         </div>
                     </li>
                     <li class="d-flex align-items-center position-relative">
-                        <img style="width: 43px; height: auto;" src="<?= base_url('assets/images/user/profile/') . $user['photo']; ?>" alt="user" class="avatar-img rounded-circle">
+                        <img style="width: 43px; height: auto;"
+                            src="<?= base_url('assets/images/user/profile/') . $user['photo']; ?>" alt="user"
+                            class="avatar-img rounded-circle">
                     </li>
                 </ul>
             </div>
@@ -73,7 +77,8 @@
                 </div>
                 <!-- End::header-element -->
                 <a href="<?= base_url('member'); ?>" class="brand-main">
-                    <img src="<?= base_url('assets/') ?>images/brand/logo-white.png" alt="img" class="desktop-logo logo-dark">
+                    <img src="<?= base_url('assets/') ?>images/brand/logo-white.png" alt="img"
+                        class="desktop-logo logo-dark">
                 </a>
             </div>
 
@@ -108,9 +113,20 @@
                         <!-- End::slide -->
 
                         <!-- Start::slide -->
-                        <li class="slide has-sub">
+                        <!-- <li class="slide has-sub">
                             <a href="<?= base_url('member/about#faq'); ?>" class="side-menu__item">
                                 <span class="side-menu__label">FAQ</span>
+                                <i class="fe fe-chevron-down side-menu__angle"></i>
+                            </a>
+                            <ul>
+                            </ul>
+                        </li> -->
+                        <!-- End::slide -->
+
+                        <!-- Start::slide -->
+                        <li class="slide has-sub">
+                            <a href="<?= base_url('member/profil'); ?>" class="side-menu__item">
+                                <span class="side-menu__label">Profil Saya</span>
                                 <i class="fe fe-chevron-down side-menu__angle"></i>
                             </a>
                             <ul>
@@ -120,8 +136,8 @@
 
                         <!-- Start::slide -->
                         <li class="slide has-sub">
-                            <a href="<?= base_url('member/profile'); ?>" class="side-menu__item">
-                                <span class="side-menu__label">Profile Saya</span>
+                            <a href="<?= base_url('member/histori'); ?>" class="side-menu__item">
+                                <span class="side-menu__label">Histori</span>
                                 <i class="fe fe-chevron-down side-menu__angle"></i>
                             </a>
                             <ul>
@@ -132,7 +148,9 @@
                     </ul>
 
                     <div class="d-xl-flex d-lg-none d-grid gap-2 text-center" style="margin: 0px 10px 0px 10px;">
-                        <a id="userGreet" style="color: #FFF; margin-right: 5px; pointer-events: none; cursor: default; font-size: 15px; font-weight: 400" class="btn">
+                        <a id="userGreet"
+                            style="color: #FFF; margin-right: 5px; pointer-events: none; cursor: default; font-size: 15px; font-weight: 400"
+                            class="btn">
                             <span id="pesanSelamat"></span> <?= $user['nama']; ?>
                         </a>
                         <a href="<?= base_url('auth/logout'); ?>" class="btn btn-danger min-w-fit-content">
