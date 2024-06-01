@@ -72,6 +72,11 @@ $(document).ready(function() {
         let fileName = $(this).val().split('\\').pop();
         $(this).next('.custom-file-label').addClass("selected").html(fileName);
     });
+
+    $('.dropdown-toggle.profile-pic').on('click', function(e) {
+        e.preventDefault();
+        $(this).next('.dropdown-menu').toggleClass('show');
+    });
 });
 </script>
 
