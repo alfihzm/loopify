@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 29, 2024 at 06:25 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- Generation Time: Jun 01, 2024 at 08:00 AM
+-- Server version: 10.4.10-MariaDB
+-- PHP Version: 7.1.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -32,14 +33,14 @@ CREATE TABLE `announcement` (
   `judul` varchar(128) NOT NULL,
   `deskripsi` varchar(512) NOT NULL,
   `tanggal` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `announcement`
 --
 
 INSERT INTO `announcement` (`id`, `judul`, `deskripsi`, `tanggal`) VALUES
-(2, 'Kerja sama dengan PT. Kakatua Steel Alumunium', 'Kaleng kini dapat dikirim dan dijual ke PT. Kakatua Steel Alumunium', '2024-05-27');
+(2, 'Kerja sama dengan PT. Kakatua Steel Alumunium', 'Kaleng kini dapat dikirim dan dijual ke PT. Kakatua Steel Aluminium', '2024-05-27');
 
 -- --------------------------------------------------------
 
@@ -53,7 +54,7 @@ CREATE TABLE `cinderamata` (
   `harga` int(64) NOT NULL,
   `photo` varchar(128) DEFAULT NULL,
   `deskripsi` varchar(128) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `cinderamata`
@@ -76,7 +77,7 @@ CREATE TABLE `company` (
   `tagline` varchar(128) NOT NULL,
   `lokasi` varchar(256) NOT NULL,
   `deskripsi` varchar(256) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -89,18 +90,20 @@ CREATE TABLE `deposit` (
   `id_finance` int(11) NOT NULL,
   `metode` varchar(11) NOT NULL,
   `tanggal` date DEFAULT NULL,
+  `sumber` varchar(32) NOT NULL,
   `image` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `deposit`
 --
 
-INSERT INTO `deposit` (`id`, `id_finance`, `metode`, `tanggal`, `image`) VALUES
-(4, 2, 'BCA', NULL, 'logdeposit_002_Susunan-kabel-straight-214x300.jpg'),
-(5, 2, 'Tunai', NULL, 'logdeposit_003_Meme.png'),
-(6, 2, 'Tunai', NULL, 'logdeposit_004_Raihan-asset.png'),
-(7, 2, 'BCA', '2024-05-29', 'logdeposit_005_Meme.png');
+INSERT INTO `deposit` (`id`, `id_finance`, `metode`, `tanggal`, `sumber`, `image`) VALUES
+(1, 2, 'Tunai', '2024-05-30', 'Sponsor', 'logdeposit_001_Log.png'),
+(2, 2, 'Tunai', '2024-05-30', 'Donatur', 'logdeposit_002_Log.png'),
+(3, 2, 'BCA', '2024-05-31', 'Donatur', 'logdeposit_003_Log.png'),
+(4, 2, 'Tunai', '2024-05-31', 'Donatur', 'logdeposit_004_Log.png'),
+(5, 1, 'Tunai', '2024-05-31', 'Sponsor', 'logdeposit_005_Log.png');
 
 -- --------------------------------------------------------
 
@@ -115,15 +118,15 @@ CREATE TABLE `finance` (
   `tgl_update` date NOT NULL,
   `jam_update` varchar(11) NOT NULL,
   `username` varchar(128) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `finance`
 --
 
 INSERT INTO `finance` (`id`, `rekening`, `saldo`, `tgl_update`, `jam_update`, `username`) VALUES
-(1, 'modal', 1500, '2024-05-29', '22:59:00', 'alfihzm'),
-(2, 'aruskas', 25010, '2024-05-29', '22:37:44', 'alfihzm');
+(1, 'modal', 1500, '2024-05-31', '08:20:37', 'alfihzm'),
+(2, 'aruskas', 24551, '2024-05-29', '22:37:44', 'alfihzm');
 
 -- --------------------------------------------------------
 
@@ -136,7 +139,7 @@ CREATE TABLE `kelompok_1` (
   `nama` varchar(64) NOT NULL,
   `pekerjaan` varchar(32) NOT NULL,
   `deskripsi` varchar(128) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `kelompok_1`
@@ -161,7 +164,7 @@ CREATE TABLE `member` (
   `level` int(1) NOT NULL,
   `is_active` int(1) NOT NULL,
   `role` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -173,7 +176,7 @@ CREATE TABLE `poin` (
   `id` int(11) NOT NULL,
   `nama` varchar(128) NOT NULL,
   `total` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -182,8 +185,42 @@ CREATE TABLE `poin` (
 --
 
 CREATE TABLE `reports` (
-  `id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `id` int(11) NOT NULL,
+  `id_account` varchar(16) NOT NULL,
+  `nama` varchar(128) NOT NULL,
+  `judul` varchar(128) NOT NULL,
+  `tanggal` date NOT NULL,
+  `deskripsi` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `reports`
+--
+
+INSERT INTO `reports` (`id`, `id_account`, `nama`, `judul`, `tanggal`, `deskripsi`) VALUES
+(1, '19220821', 'alfihzm', 'Kerja sama dengan PT. Kakatua Steel Alumunium', '2024-05-31', '&lt;p&gt;z&lt;/p&gt;');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `review`
+--
+
+CREATE TABLE `review` (
+  `id` int(11) NOT NULL,
+  `id_member` int(11) NOT NULL,
+  `nama` varchar(128) NOT NULL,
+  `photo` varchar(128) NOT NULL,
+  `review` varchar(512) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `review`
+--
+
+INSERT INTO `review` (`id`, `id_member`, `nama`, `photo`, `review`) VALUES
+(1, 89922433, 'Vania Cassandra', 'default.jpg', 'Ide penukaran sampah dengan koin adalah inovatif dan efektif dalam meningkatkan partisipasi masyarakat dalam menjaga kebersihan lingkungan. Proyek ini jelas berpotensi membawa dampak positif yang besar.'),
+(2, 10480001, 'Betara', 'user_alfihzm.jpg', 'Proyek ini menunjukkan bagaimana inovasi bisa memecahkan masalah lingkungan dengan cara yang praktis dan bermanfaat. Sistem insentifnya pasti akan mendorong lebih banyak orang untuk terlibat dalam upaya menjaga kebersihan. Semoga Recyloop terus membawa perubahan positif!');
 
 -- --------------------------------------------------------
 
@@ -200,16 +237,16 @@ CREATE TABLE `sampah` (
   `nilai_satuan` int(11) NOT NULL,
   `total_sampah` int(11) NOT NULL,
   `kapasitas` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `sampah`
 --
 
 INSERT INTO `sampah` (`id`, `icon`, `jenis_sampah`, `kode`, `nilai_tukar`, `nilai_satuan`, `total_sampah`, `kapasitas`) VALUES
-(1, 'plastic-bottle.png', 'Botol Plastik', 'BP', 1500, 55, 6, 0),
-(2, 'tin-can.png', 'Kaleng', 'KA', 13300, 200, 16, 0),
-(3, 'book.png', 'Kardus', 'KK', 2500, 500, 3, 0);
+(1, 'plastic-bottle.png', 'Botol Plastik', 'BP', 1500, 55, 6, 200),
+(2, 'tin-can.png', 'Kaleng', 'KA', 13300, 200, 16, 200),
+(3, 'book.png', 'Kardus', 'KK', 2500, 500, 3, 200);
 
 -- --------------------------------------------------------
 
@@ -227,7 +264,7 @@ CREATE TABLE `staff` (
   `photo` varchar(128) NOT NULL,
   `role_id` int(1) NOT NULL,
   `is_active` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `staff`
@@ -260,7 +297,7 @@ INSERT INTO `staff` (`id_staff`, `nama`, `email`, `username`, `alamat`, `no_telp
 
 CREATE TABLE `surat_jalan` (
   `id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -283,7 +320,7 @@ CREATE TABLE `transaction` (
   `catatan` varchar(128) DEFAULT NULL,
   `status` varchar(32) NOT NULL,
   `tgl_validasi` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `transaction`
@@ -319,18 +356,18 @@ CREATE TABLE `user` (
   `total_sampah` float DEFAULT NULL,
   `total_koin` int(32) NOT NULL,
   `koin` int(11) NOT NULL,
-  `komentar` varchar(256) DEFAULT NULL,
+  `alasan_ban` varchar(256) DEFAULT NULL,
   `date_created` int(11) NOT NULL,
   `is_active` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `id_admin`, `id_staff`, `id_member`, `nama`, `lahir`, `email`, `username`, `password`, `role_id`, `photo`, `no_telp`, `alamat`, `total_sampah`, `total_koin`, `koin`, `komentar`, `date_created`, `is_active`) VALUES
-(1, NULL, NULL, 10480001, 'Betara', '1999-01-01', 'betara@gmail.com', 'betara', '$2y$10$FLuzN7X92R2TQFttbmiQDOacjuIKMV8NnqPrjLrGdU.ow1DNxVEhu', 3, 'default.jpg', '082161872392', 'Jakarta Selatan', 0, 0, 999989, NULL, 1712325370, 1),
-(2, 19220821, NULL, NULL, 'Mohammad Alfi Hamzami', '1999-11-29', 'alfihzm@gmail.com', 'alfihzm', '$2y$10$D5MOyBMj5CDPCrew38NFT.8yOiEygBprrxhQs009pHmlBCnLyQ55O', 1, 'user_Mohammad_Alfi_Hamzami1.jpg', '082161872392', 'Kabupaten Tangerang', NULL, 0, 0, NULL, 1712465510, 1),
+INSERT INTO `user` (`id`, `id_admin`, `id_staff`, `id_member`, `nama`, `lahir`, `email`, `username`, `password`, `role_id`, `photo`, `no_telp`, `alamat`, `total_sampah`, `total_koin`, `koin`, `alasan_ban`, `date_created`, `is_active`) VALUES
+(1, NULL, NULL, 10480001, 'Betara', '1999-01-01', 'betara@gmail.com', 'betara', '$2y$10$FLuzN7X92R2TQFttbmiQDOacjuIKMV8NnqPrjLrGdU.ow1DNxVEhu', 3, 'user_alfihzm.jpg', '082161872392', 'Jakarta Selatan', 0, 0, 999989, NULL, 1712325370, 1),
+(2, 19220821, NULL, NULL, 'Mohammad Alfi Hamzami', '1999-11-29', 'alfihzm@gmail.com', 'alfihzm', '$2y$10$D5MOyBMj5CDPCrew38NFT.8yOiEygBprrxhQs009pHmlBCnLyQ55O', 1, 'user_alfihzm.jpg', '082161872392', 'Kabupaten Tangerang', NULL, 0, 0, NULL, 1712465510, 1),
 (6, NULL, 10240001, NULL, 'Derby Hendrawan', '2005-05-11', 'derby@gmail.com', 'derby', '$2y$10$o1uWEO7QFLgEyQ3wqSbCAu1kAwjxfYa9/RJ3MJosDtN5NrZmCEX6C', 2, 'default.jpg', '082173958206', 'Bandung', NULL, 0, 0, NULL, 1714830415, 1),
 (7, NULL, 10240004, NULL, 'Dendi Rahmat', '2006-11-04', 'dendi@gmail.com', 'dendi', '$2y$10$lQlCdblquou221pGTm3MDudqMSSENy17VBjUvcr7MTgrDFqCDUeUu', 2, 'default.jpg', '082175927592', 'Lebak', NULL, 0, 0, NULL, 1714840913, 1),
 (8, NULL, 10240005, NULL, 'Adam Warlock', '2004-04-04', 'adam@gmail.com', 'adam', '$2y$10$PsSx5kVJY/otqt2CNtqiCeV.cyEJSbzGVzDo2OQF0vJLjHe9VAHLq', 2, 'default.jpg', '082174927592', 'Manchester', NULL, 0, 0, NULL, 1714841969, 1),
@@ -356,7 +393,7 @@ CREATE TABLE `user_access_menu` (
   `id` int(11) NOT NULL,
   `role_id` int(11) NOT NULL,
   `menu_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user_access_menu`
@@ -372,7 +409,8 @@ INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
 (8, 2, 5),
 (10, 2, 8),
 (11, 1, 8),
-(12, 1, 9);
+(12, 1, 9),
+(13, 1, 10);
 
 -- --------------------------------------------------------
 
@@ -383,7 +421,7 @@ INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
 CREATE TABLE `user_menu` (
   `id` int(11) NOT NULL,
   `menu` varchar(128) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user_menu`
@@ -410,7 +448,7 @@ INSERT INTO `user_menu` (`id`, `menu`) VALUES
 CREATE TABLE `user_role` (
   `id` int(11) NOT NULL,
   `role` varchar(128) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user_role`
@@ -434,7 +472,7 @@ CREATE TABLE `user_sub_menu` (
   `url` varchar(128) NOT NULL,
   `icon` varchar(128) NOT NULL,
   `is_active` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user_sub_menu`
@@ -452,10 +490,13 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active
 (9, 6, 'Manajemen Cinderamata', 'admin/cinderamata', '	\r\nfas fa-fw fa-gift', 1),
 (10, 5, 'Informasi Member', 'staff/member', 'fas fa-fw fa-users', 1),
 (12, 8, 'Manajemen Transaksi', 'transaction', 'fa-solid fa-money-bill-transfer', 1),
-(13, 8, 'Manajemen Keuangan', 'finance', 'fa-solid fa-wallet\r\n', 1),
+(13, 8, 'Manajemen Keuangan', 'finance', 'fa-solid fa-money-bill\r\n', 1),
 (14, 8, 'Manajemen Tarik Tunai', 'withdraw', 'fa-solid fa-money-bill-1', 1),
 (15, 9, 'Manajemen Pengumuman', 'announcement', 'fa-solid fa-paste', 1),
-(16, 6, 'Manajemen Laporan', 'reports', 'fa-solid fa-file-pdf', 1);
+(16, 6, 'Manajemen Laporan', 'reports', 'fa-solid fa-file', 1),
+(17, 10, 'Log Transaksi', 'log/transaction', 'fa-solid fa-file-lines', 1),
+(18, 10, 'Log Tarik Tunai', 'log/withdraw', 'fa-solid fa-file-invoice-dollar', 1),
+(19, 10, 'Log Laporan Masalah', 'log/reports', 'fa-solid fa-file-prescription', 1);
 
 -- --------------------------------------------------------
 
@@ -477,7 +518,7 @@ CREATE TABLE `withdraw` (
   `status` varchar(32) NOT NULL,
   `koin1` int(16) NOT NULL,
   `koin2` int(16) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `withdraw`
@@ -543,6 +584,12 @@ ALTER TABLE `poin`
 -- Indexes for table `reports`
 --
 ALTER TABLE `reports`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `review`
+--
+ALTER TABLE `review`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -631,7 +678,7 @@ ALTER TABLE `company`
 -- AUTO_INCREMENT for table `deposit`
 --
 ALTER TABLE `deposit`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `finance`
@@ -661,7 +708,13 @@ ALTER TABLE `poin`
 -- AUTO_INCREMENT for table `reports`
 --
 ALTER TABLE `reports`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `review`
+--
+ALTER TABLE `review`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `sampah`
@@ -691,7 +744,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `user_access_menu`
 --
 ALTER TABLE `user_access_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `user_menu`
@@ -709,7 +762,7 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT for table `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `withdraw`
