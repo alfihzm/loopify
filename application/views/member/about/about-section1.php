@@ -27,7 +27,7 @@
                             </div>
                             <div class="col-lg-5">
                                 <div class="banner-bg about-image mt-5 mt-lg-0">
-                                    <img src="<?= base_url('assets/') ?>images/png/26.png"
+                                    <img width="75%" src="<?= base_url('assets/') ?>images/logo/main-logo.png"
                                         class="reseller-img img-fluid" alt="img">
                                 </div>
                             </div>
