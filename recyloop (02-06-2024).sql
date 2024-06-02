@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 02, 2024 at 12:40 AM
+-- Generation Time: Jun 02, 2024 at 12:55 PM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.1.33
 
@@ -76,8 +76,17 @@ CREATE TABLE `company` (
   `img_logo` varchar(128) NOT NULL,
   `tagline` varchar(128) NOT NULL,
   `lokasi` varchar(256) NOT NULL,
-  `deskripsi` varchar(256) NOT NULL
+  `judul` varchar(128) NOT NULL,
+  `deskripsi` varchar(512) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `company`
+--
+
+INSERT INTO `company` (`id`, `nama`, `img_logo`, `tagline`, `lokasi`, `judul`, `deskripsi`) VALUES
+(1, 'Recyloop', 'main-logo.png', '#Recyloop', 'Krakatau', 'Apa Rencana Kami?', '<p>Kami bangga dengan sejarah kami, namun yang terpenting, kami bangga dengan kepuasan pelanggan kami. Setiap hari kami meningkatkan posisi situs pelanggan kami semakin tinggi.</p>'),
+(2, 'Recyloop', 'main-logo.png', '#Recyloop', 'Krakatau', 'Kenapa harus memilih kami?', '<p>Kami menyediakan solusi inovatif untuk masalah kebersihan dan pengelolaan sampah. Sistem informasi kami menggalang partisipasi masyarakat dan meningkatkan kesadaran akan lingkungan. Melalui insentif penukaran sampah menjadi koin, kami mendorong keterlibatan aktif dan peduli terhadap kebersihan.</p>');
 
 -- --------------------------------------------------------
 
@@ -497,7 +506,8 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active
 (16, 6, 'Manajemen Laporan', 'reports', 'fa-solid fa-file', 1),
 (17, 10, 'Log Transaksi', 'log/transaction', 'fa-solid fa-file-lines', 1),
 (18, 10, 'Log Tarik Tunai', 'log/withdraw', 'fa-solid fa-file-invoice-dollar', 1),
-(19, 10, 'Log Laporan Masalah', 'log/reports', 'fa-solid fa-file-prescription', 1);
+(19, 10, 'Log Laporan Masalah', 'log/reports', 'fa-solid fa-file-prescription', 1),
+(20, 6, 'Informasi Perusahaan', 'perusahaan', 'fas fa-fw fa-circle-info', 1);
 
 -- --------------------------------------------------------
 
@@ -674,7 +684,7 @@ ALTER TABLE `cinderamata`
 -- AUTO_INCREMENT for table `company`
 --
 ALTER TABLE `company`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `deposit`
@@ -764,7 +774,7 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT for table `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `withdraw`
