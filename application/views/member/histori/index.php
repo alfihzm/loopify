@@ -28,11 +28,11 @@
                                     style="color: #000; font-weight: 600;">Tarik
                                     Tunai</a>
                             </div>
-                            <?php if(empty($detailTransaksi)): ?>
+                            <?php if (empty($detailTransaksi)) : ?>
                             <img class="mb-4" style="width: 10%;"
                                 src="<?= base_url('assets/images/logo/sad-face.png') ?>">
                             <h3> Maaf Anda Belum Mempunyai Transaksi </h3>
-                            <?php else: ?>
+                            <?php else : ?>
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -44,11 +44,12 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php $i = 1; foreach($detailTransaksi as $dt): ?>
+                                    <?php $i = 1;
+                                        foreach ($detailTransaksi as $dt) : ?>
                                     <tr>
                                         <th scope="row"><?= $i++ ?></th>
                                         <td><?= $dt['tanggal']; ?></td>
-                                        <td><?= $dt['totalkoin']; ?> koin</td>
+                                        <td style="color: green;">+<?= $dt['totalkoin']; ?> koin</td>
                                         <td><?= $dt['lokasi']; ?></td>
                                         <td>
                                             <button type="button" class="btn btn-primary detail-btn" data-toggle="modal"
@@ -139,7 +140,11 @@
                     document.getElementById('modalJumlahBotol').innerText = jumlahBotol;
                     document.getElementById('modalJumlahKaleng').innerText = jumlahKaleng;
                     document.getElementById('modalJumlahKardus').innerText = jumlahKardus;
-                    document.getElementById('modalTotalkoin').innerText = totalkoin + " koin";
+
+                    const modalTotalkoinElement = document.getElementById('modalTotalkoin');
+                    modalTotalkoinElement.innerText = totalkoin + " koin";
+                    modalTotalkoinElement.style.color = 'green';
+
                     document.getElementById('modalLokasi').innerText = lokasi;
                 });
             });

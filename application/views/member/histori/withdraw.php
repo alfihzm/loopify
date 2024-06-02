@@ -24,44 +24,40 @@
                                     </span>
                                 </div>
                                 <a href="<?= base_url('member/histori'); ?>" class="btn btn-secondary">Pemberian</a>
-                                <a href="<?= base_url('member/withdraw'); ?>" class="btn btn-success"
-                                    style="color: #000; font-weight: 600;">Tarik
+                                <a href="<?= base_url('member/withdraw'); ?>" class="btn btn-success" style="color: #000; font-weight: 600;">Tarik
                                     Tunai</a>
                             </div>
-                            <?php if(empty($detailWithdraw)): ?>
-                            <img class="mb-4" style="width: 10%;"
-                                src="<?= base_url('assets/images/logo/sad-face.png') ?>">
-                            <h3> Maaf Anda Belum Mempunyai Transaksi </h3>
-                            <?php else: ?>
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col" style="width: 50px">No</th>
-                                        <th scope="col" style="width: 150px">Tanggal</th>
-                                        <th scope="col" style="width: 150px">Nominal</th>
-                                        <th scope="col" style="width: 150px">Lokasi Transaksi</th>
-                                        <th scope="col" style="width: 150px;">Detail Transaksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php $i = 1; foreach($detailWithdraw as $dw): ?>
-                                    <tr>
-                                        <th scope="row"><?= $i++ ?></th>
-                                        <td><?= $dw['tanggal']; ?></td>
-                                        <td><?= $dw['nominal']; ?> koin</td>
-                                        <td><?= $dw['lokasi']; ?></td>
-                                        <td>
-                                            <button type="button" class="btn btn-primary detail-btn" data-toggle="modal"
-                                                data-target="#detailModal" data-tanggal="<?= $dw['tanggal']; ?>"
-                                                data-nominal="<?= $dw['nominal']; ?>"
-                                                data-lokasi="<?= $dw['lokasi']; ?>">
-                                                Detail
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <?php endforeach; ?>
-                                </tbody>
-                            </table>
+                            <?php if (empty($detailWithdraw)) : ?>
+                                <img class="mb-4" style="width: 10%;" src="<?= base_url('assets/images/logo/sad-face.png') ?>">
+                                <h3> Maaf Anda Belum Mempunyai Transaksi </h3>
+                            <?php else : ?>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col" style="width: 50px">No</th>
+                                            <th scope="col" style="width: 150px">Tanggal</th>
+                                            <th scope="col" style="width: 150px">Nominal</th>
+                                            <th scope="col" style="width: 150px">Lokasi Transaksi</th>
+                                            <th scope="col" style="width: 150px;">Detail Transaksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php $i = 1;
+                                        foreach ($detailWithdraw as $dw) : ?>
+                                            <tr>
+                                                <th scope="row"><?= $i++ ?></th>
+                                                <td><?= $dw['tanggal']; ?></td>
+                                                <td style="color: red;">-<?= $dw['nominal']; ?> koin</td>
+                                                <td><?= $dw['lokasi']; ?></td>
+                                                <td>
+                                                    <button type="button" class="btn btn-primary detail-btn" data-toggle="modal" data-target="#detailModal" data-tanggal="<?= $dw['tanggal']; ?>" data-nominal="<?= $dw['nominal']; ?>" data-lokasi="<?= $dw['lokasi']; ?>">
+                                                        Detail
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                </table>
                             <?php endif; ?>
                         </div>
                     </div>
@@ -69,14 +65,12 @@
             </div>
 
             <!-- Modal -->
-            <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="detailModalLabel"
-                aria-hidden="true">
+            <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="detailModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="detailModalLabel">Detail Transaksi</h5>
-                            <button type="button" class="btn btn-close btn-small btn-cross" data-dismiss="modal"
-                                aria-label="Close">
+                            <button type="button" class="btn btn-close btn-small btn-cross" data-dismiss="modal" aria-label="Close">
                                 <i class="fas fa-regular fa-close"></i>
                             </button>
                         </div>
@@ -108,19 +102,25 @@
         </section>
 
         <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const detailButtons = document.querySelectorAll('.detail-btn');
+            document.addEventListener('DOMContentLoaded', function() {
+                const detailButtons = document.querySelectorAll('.detail-btn');
 
-            detailButtons.forEach(function(button) {
-                button.addEventListener('click', function() {
-                    const tanggal = button.getAttribute('data-tanggal');
-                    const nominal = button.getAttribute('data-nominal');
-                    const lokasi = button.getAttribute('data-lokasi');
+                detailButtons.forEach(function(button) {
+                    button.addEventListener('click', function() {
+                        const tanggal = button.getAttribute('data-tanggal');
+                        const nominal = button.getAttribute('data-nominal');
+                        const lokasi = button.getAttribute('data-lokasi');
 
-                    document.getElementById('modalTanggal').innerText = tanggal;
-                    document.getElementById('modalNominal').innerText = nominal + " koin";
-                    document.getElementById('modalLokasi').innerText = lokasi;
+                        document.getElementById('modalTanggal').innerText = tanggal;
+                        document.getElementById('modalNominal').innerText = nominal + " koin";
+                        document.getElementById('modalLokasi').innerText = lokasi;
+
+                        const modalNominalElement = document.getElementById('modalNominal');
+                        modalNominalElement.innerText = "-" + nominal + " koin";
+                        modalNominalElement.style.color = 'red';
+
+                        document.getElementById('modalLokasi').innerText = lokasi;
+                    });
                 });
             });
-        });
         </script>
