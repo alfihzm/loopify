@@ -39,6 +39,7 @@ class Member extends CI_Controller
         $data = [
             'judul' => 'Recyloop - Penukaran Limbah Daur Ulang',
             'user' => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
+            'company' => $this->db->get('company')->result_array(),
             'review' => $this->MemberModel->getReview()
         ];
 

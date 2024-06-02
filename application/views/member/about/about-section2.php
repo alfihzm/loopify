@@ -9,22 +9,19 @@
         </div>
         <div class="row align-items-center">
             <div class="col-lg-6 feature-client-bg">
-                <h4 class="mb-3">
-                    <span>Apa Rencana Kami ?</span>
+                <?php foreach($company as $c) : ?>
+                <h4 class="mb-2">
+                    <span><?= $c['judul']; ?></span>
                 </h4>
-                <p class="mb-4">Kami bangga dengan sejarah kami, namun yang terpenting, kami bangga dengan
-                    kepuasan pelanggan kami. Setiap hari kami meningkatkan posisi situs pelanggan kami
-                    semakin tinggi.</p>
-                <h4 class="mb-3">
-                    <span>Mengapa Memilih Kami ?</span>
-                </h4>
-                <p class="mb-4">Kami bangga dengan sejarah kami, namun yang terpenting, kami bangga dengan
-                    kepuasan pelanggan kami. Setiap hari kami meningkatkan posisi situs pelanggan kami
-                    semakin tinggi.</p>
+                <p class="mb-3">
+                    <?= $c['deskripsi']; ?>
+                </p>
+                <?php endforeach ?>
             </div>
             <div class="col-lg-6 text-center">
                 <img src="<?= base_url('assets/') ?>images/png/63.png" class="img-fluid" alt="img" width="450">
             </div>
         </div>
+    </div>
     </div>
 </section>
