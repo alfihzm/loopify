@@ -8,6 +8,7 @@ class Member extends CI_Controller
         checkLogin();
         $this->load->model('LimbahModel');
         $this->load->model('MemberModel');
+        $this->load->model('ReviewModel');
     }
 
     public function index()
@@ -55,7 +56,8 @@ class Member extends CI_Controller
         $this->load->view('templates/member/footer');
     }
 
-    public function profil() {
+    public function profil()
+    {
         $data = [
             'judul' => 'Profil Saya',
             'user' => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
@@ -67,29 +69,63 @@ class Member extends CI_Controller
         $this->load->view('templates/member/footer');
     }
 
-    public function histori() {
+    public function histori()
+    {
         $data = [
             'judul'           => 'Histori Saya',
             'user'            => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
             'detailTransaksi' => $this->db->get_where('transaction', ['username' => $this->session->userdata('username')])->result_array(),
         ];
-                        
+
         $this->load->view('templates/member/header', $data);
         $this->load->view('templates/member/sidebar', $data);
         $this->load->view('member/histori/index', $data);
         $this->load->view('templates/member/footer');
     }
 
-    public function withdraw() {
+    public function withdraw()
+    {
         $data = [
             'judul'           => 'Histori Saya',
             'user'            => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
             'detailWithdraw' => $this->db->get_where('withdraw', ['username' => $this->session->userdata('username')])->result_array(),
         ];
-                        
+
         $this->load->view('templates/member/header', $data);
         $this->load->view('templates/member/sidebar', $data);
         $this->load->view('member/histori/withdraw', $data);
         $this->load->view('templates/member/footer');
+    }
+
+    public function review()
+    {
+        $data = [
+            'judul' => 'Tambah Review',
+            'user'  => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
+        ];
+
+        $this->form_validation->set_rules('review', 'Review', 'required', [
+            'required' => 'Masukkan format ulasan dengan benar.'
+        ]);
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/member/header', $data);
+            $this->load->view('templates/member/sidebar', $data);
+            $this->load->view('member/review/index', $data);
+            $this->load->view('templates/member/footer');
+        } else {
+            $user = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+
+            $dataReview = [
+                'id_member' => $user['id_member'],
+                'nama' => $user['nama'],
+                'photo' => $user['photo'],
+                'tanggal' => date('Y-m-d'),
+                'review' => $this->input->post('review')
+            ];
+
+            $this->ReviewModel->tambahReview($dataReview);
+            redirect('member/about#rev');
+        }
     }
 }
