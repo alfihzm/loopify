@@ -57,6 +57,11 @@
                                 <td>
                                     <a href="<?= base_url('admin/member_info/'   . $u['id_member']); ?>" class="btn btn-primary btn-sm"><i style="color: #000;" class="fa-solid fa-circle-info"></i></a>
                                     <a href="<?= base_url('admin/member_edit/'   . $u['id_member']); ?>" class="btn btn-success btn-sm"><i style="color: #000;" class="fa-solid fa-pencil"></i></a>
+                                    <?php if ($u['is_active'] == 1) : ?>
+                                        <a href="<?= base_url('admin/blokirMember/' . $u['id_member']); ?>" class="btn btn-warning btn-sm"><i style="color: #000;" class="fa-solid fa-ban"></i></a>
+                                    <?php else : ?>
+                                        <a href="<?= base_url('admin/lepasBlokirMember/' . $u['id_member']); ?>" class="btn btn-secondary btn-sm"><i style="color: #000;" class="fa-solid fa-ban"></i></a>
+                                    <?php endif; ?>
                                     <a href="<?= base_url('admin/member_delete/' . $u['id_member']); ?>" class="btn btn-danger btn-sm"><i style="color: #000;" class="fa-solid fa-trash"></i></a>
                                 </td>
                             </tr>
