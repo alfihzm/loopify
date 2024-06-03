@@ -66,7 +66,7 @@
                                         <td><?= $w['id_member']; ?></td>
                                         <td><?= $w['username']; ?></td>
                                         <td><?= $w['tanggal']; ?></td>
-                                        <td><?= $w['nominal']; ?></td>
+                                        <td>Rp. <?= number_format($w['nominal'], 0, ',', '.') ?></td>
                                         <td><?= $w['metode']; ?></td>
                                         <td><?= $w['status']; ?></td>
                                         <td>
@@ -110,7 +110,7 @@
                             </div>
                             <div class="form-group">
                                 <label style="color: #01E7f4 !important;" for="jumlah_botol">Nominal</label>
-                                <input style="background: #01E7f4; color: #1A2035; font-weight: 600;" type="number" class="form-control" id="nominal" name="nominal" placeholder="Ketik jumlah saldo yang ingin ditarik" min="0" value="0">
+                                <input style="background: #01E7f4; color: #1A2035; font-weight: 600;" type="number" class="form-control" id="nominal" name="nominal" placeholder="Ketik jumlah saldo yang ingin ditarik" min="10000" value="0">
                                 <?= form_error('nominal', '<small class="text-light">', '</small>'); ?>
                             </div>
                             <div class="form-group">
@@ -118,7 +118,7 @@
                                 <select class="form-control" id="metode" name="metode" style="background: #01E7f4; color: #1A2035;">
                                     <option value="" disabled selected>Pilih Metode</option>
                                     <option value="Tunai">Tunai</option>
-                                    <option value="BCA">BCA</option>
+                                    <option value="Transfer Bank">Transfer Bank</option>
                                 </select>
                             </div>
                             <div class="form-group">

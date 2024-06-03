@@ -76,6 +76,16 @@ class Withdraw extends CI_Controller
             $this->db->where('id', 2);
             $this->db->update('finance', ['saldo' => $saldoSekarang]);
 
+            // Ini status
+            $metode = $this->input->post('metode');
+            $status = '';
+
+            if ($metode == 'Tunai') {
+                $status = 'Diberikan tunai';
+            } elseif ($metode == 'Transfer Bank') {
+                $status = 'Sudah ditransfer';
+            }
+
             // Menyiapkan data untuk transaksi penarikan tunai
             $dataWithdraw = [
                 'id_member' => $this->input->post('id_member'),
@@ -85,10 +95,10 @@ class Withdraw extends CI_Controller
                 'nominal' => $nominal,
                 'jam' => date('H:i:s'),
                 'tanggal' => date('Y-m-d'),
-                'metode'  => $this->input->post('metode'),
+                'metode'  => $metode,
                 'lokasi'  => $this->input->post('lokasi'),
                 'catatan'  => $this->input->post('catatan'),
-                'status' => 'Belum diproses'
+                'status' => $status
             ];
 
             // Memasukkan data transaksi penarikan tunai ke dalam database

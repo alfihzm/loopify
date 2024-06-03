@@ -94,9 +94,9 @@
                          Loading weather...
                      </div>
                  </div>
-                 <table class="table table-bordered">
+                 <table class="table table-bordered border-dark weather-card" style="background-color: #fff;">
                      <h3 style="font-weight: bold;">Pengumuman terbaru!</h3>
-                     <thead class="thead-light" style="border-radius: 10px;">
+                     <thead class="card-header thead" style="border-radius: 10px;">
                          <tr>
                              <th scope="col" style="border-top-left-radius: 10px;">No</th>
                              <th scope="col">Judul</th>

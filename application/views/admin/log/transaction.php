@@ -24,7 +24,25 @@
                 </ul>
             </div>
             <div class="containers">
-                <table class="table">
+                <button id="printPdfButton" class="btn btn-light mb-3">
+                    <b>
+                        <div class="printicon">
+                            <i class="fa-solid fa-print"></i>
+                            Cetak PDF
+                        </div>
+                    </b>
+                </button>
+                <div class="filter-group" style="display: flex; gap: 10px;">
+                    <div class="filter-item" style="display: flex; flex-direction: column;">
+                        <label for="searchName">Cari berdasarkan User</label>
+                        <input type="text" id="searchName" class="form-control" style="height: 38px; padding: 6px;" placeholder="Cari berdasarkan user">
+                    </div>
+                    <div class="filter-item" style="display: flex; flex-direction: column;">
+                        <label for="dateSearch">Cari berdasarkan Tanggal:</label>
+                        <input type="date" id="dateSearch" class="form-control" style="height: 38px; padding: 5px;">
+                    </div>
+                </div>
+                <table id="dataTable" class="table">
                     <thead>
                         <tr>
                             <th scope="col">Kode Member</th>
@@ -55,6 +73,56 @@
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
-
                 </table>
             </div>
+            <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+            <script>
+                $(document).ready(function() {
+                    const searchNameInput = $('#searchName');
+                    const dateSearchInput = $('#dateSearch');
+                    const rows = $('#dataTable tbody tr');
+                    const printPdfButton = $('#printPdfButton');
+
+                    searchNameInput.on('input', filterTable);
+                    dateSearchInput.on('input', filterTable);
+
+                    printPdfButton.on('click', function() {
+                        const searchNameValue = searchNameInput.val().toLowerCase();
+                        const dateSearchValue = dateSearchInput.val();
+                        let url = "pdf_transaction?";
+                        if (dateSearchValue) {
+                            url += "date=" + dateSearchValue;
+                        }
+                        if (searchNameValue) {
+                            if (dateSearchValue) {
+                                url += "&";
+                            }
+                            url += "user=" + searchNameValue;
+                        }
+                        window.location.href = url;
+                    });
+
+                    function filterTable() {
+                        const searchNameValue = searchNameInput.val().toLowerCase();
+                        const dateSearchValue = dateSearchInput.val();
+
+                        rows.each(function() {
+                            const cells = $(this).find('td');
+                            const userName = cells.eq(1).text().toLowerCase();
+                            const date = cells.eq(2).text();
+
+                            const nameMatch = !searchNameValue || userName.includes(searchNameValue);
+                            const dateMatch = !dateSearchValue || date === dateSearchValue;
+
+                            if (nameMatch && dateMatch) {
+                                $(this).show();
+                            } else {
+                                $(this).hide();
+                            }
+                        });
+                    }
+                });
+            </script>
+        </div>
+    </div>
+</div>

@@ -95,6 +95,7 @@ class Finance extends CI_Controller
                 'id_finance' => $id,
                 'metode' => $metode,
                 'tanggal' => $tanggal,
+                'jumlah' => $jumlah,
                 'sumber' => $sumber,
                 'image' => $new_file_name
             ];

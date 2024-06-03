@@ -8,6 +8,7 @@ class Log extends CI_Controller
         $this->load->model('WithdrawModel');
         $this->load->model('TransactionModel');
         date_default_timezone_set('Asia/Jakarta');
+        setlocale(LC_TIME, 'id_ID.UTF-8');
     }
 
     public function transaction()
@@ -126,5 +127,87 @@ class Log extends CI_Controller
         $this->load->view("templates/admin/topbar", $data);
         $this->load->view("admin/log/info_reports", $data);
         $this->load->view("templates/admin/footer");
+    }
+
+    public function pdf_withdraw()
+    {
+        $date = $this->input->get('date');
+        $user = $this->input->get('user');
+
+        if ($date) {
+            $this->db->where('DATE(tanggal)', $date);
+        }
+        if ($user) {
+            $this->db->like('username', $user);
+        }
+
+        $withdraw = $this->WithdrawModel->getWithdraw();
+
+        $data = [
+            'judul' => "Unduh Tarik Tunai",
+            'transaction' => $this->TransactionModel->getTransaction(),
+            'withdraw' => $withdraw,
+            'user' => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array()
+        ];
+
+        $sroot = $_SERVER['DOCUMENT_ROOT'];
+        include $sroot . "/recyloop/application/third_party/dompdf/autoload.inc.php";
+        $dompdf = new Dompdf\Dompdf();
+
+        $html = $this->load->view("admin/log/pdf_withdraw", $data, TRUE);
+
+        $options = $dompdf->getOptions();
+        $options->set('isHtml5ParserEnabled', true);
+        $options->set('isRemoteEnabled', true);
+        $dompdf->setOptions($options);
+
+        $paper_size = 'A4';
+        $orientation = 'landscape';
+
+        $dompdf->set_paper($paper_size, $orientation);
+        $dompdf->load_html($html);
+        $dompdf->render();
+        $dompdf->stream("withdraw-annual-report.pdf", array('Attachment' => 0));
+    }
+
+
+    public function pdf_transaction()
+    {
+        $date = $this->input->get('date');
+        $user = $this->input->get('user');
+
+        if ($date) {
+            $this->db->where('DATE(tanggal)', $date);
+        }
+        if ($user) {
+            $this->db->like('username', $user);
+        }
+
+        $transaction = $this->TransactionModel->getTransaction();
+
+        $data = [
+            'judul' => "Unduh Tarik Tunai",
+            'transaction' => $transaction,
+            'user' => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array()
+        ];
+
+        $sroot = $_SERVER['DOCUMENT_ROOT'];
+        include $sroot . "/recyloop/application/third_party/dompdf/autoload.inc.php";
+        $dompdf = new Dompdf\Dompdf();
+
+        $html = $this->load->view("admin/log/pdf_transaction", $data, TRUE);
+
+        $options = $dompdf->getOptions();
+        $options->set('isHtml5ParserEnabled', true);
+        $options->set('isRemoteEnabled', true);
+        $dompdf->setOptions($options);
+
+        $paper_size = 'A4';
+        $orientation = 'landscape';
+
+        $dompdf->set_paper($paper_size, $orientation);
+        $dompdf->load_html($html);
+        $dompdf->render();
+        $dompdf->stream("transaction-annual-report.pdf", array('Attachment' => 0));
     }
 }

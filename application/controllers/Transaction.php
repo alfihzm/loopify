@@ -95,6 +95,18 @@ class Transaction extends CI_Controller
 
             $this->load->model('TransactionModel');
             $this->TransactionModel->newTransaction($dataTransaction);
+
+            $dataTotal = [
+                'total_sampah' => $jumlah_botol + $jumlah_kaleng + $jumlah_kardus,
+            ];
+
+            $this->db->where('id_member', $id_member);
+            $this->db->update('user', $dataTotal);
+
+            $this->db->set('total_sampah', 'total_sampah + ' . (int) $dataTotal, FALSE);
+            $this->db->where('id_member', $id_member);
+            $this->db->update('user');
+
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Transaksi pengguna telah berhasil ditambahkan!</div>');
             redirect('transaction');
         }

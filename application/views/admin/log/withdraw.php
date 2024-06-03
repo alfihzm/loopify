@@ -1,3 +1,25 @@
+<style>
+    .filter-group {
+        margin-bottom: 20px;
+    }
+
+    select,
+    input[type="date"] {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-right: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    select:focus,
+    input[type="date"]:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);
+        outline: none;
+    }
+</style>
 <div class="main-panel" style="font-family: quicksand;">
     <div class="content">
         <div class="page-inner">
@@ -24,7 +46,25 @@
                 </ul>
             </div>
             <div class="containers">
-                <table class="table">
+                <button id="printPdfButton" class="btn btn-light mb-3">
+                    <b>
+                        <div class="printicon">
+                            <i class="fa-solid fa-print"></i>
+                            Cetak PDF
+                        </div>
+                    </b>
+                </button>
+                <div class="filter-group" style="display: flex; gap: 10px;">
+                    <div class="filter-item" style="display: flex; flex-direction: column;">
+                        <label for="searchName">Cari berdasarkan User</label>
+                        <input type="text" id="searchName" class="form-control" style="height: 38px; padding: 6px;" placeholder="Cari berdasarkan user">
+                    </div>
+                    <div class="filter-item" style="display: flex; flex-direction: column;">
+                        <label for="dateSearch">Cari berdasarkan Tanggal:</label>
+                        <input type="date" id="dateSearch" class="form-control" style="height: 38px; padding: 5px;">
+                    </div>
+                </div>
+                <table class="table" id="dataTable">
                     <thead>
                         <tr>
                             <th scope="col">Kode Member</th>
@@ -55,3 +95,55 @@
                     </tbody>
                 </table>
             </div>
+            <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+            <script>
+                document.addEventListener('DOMContentLoaded', (event) => {
+                    const searchNameInput = document.getElementById('searchName');
+                    const dateSearchInput = document.getElementById('dateSearch');
+                    const dataTable = document.getElementById('dataTable').getElementsByTagName('tbody')[0];
+                    const rows = dataTable.getElementsByTagName('tr');
+                    const printPdfButton = document.getElementById('printPdfButton');
+
+                    searchNameInput.addEventListener('input', filterTable);
+                    dateSearchInput.addEventListener('input', filterTable);
+
+                    printPdfButton.addEventListener('click', function() {
+                        const searchNameValue = searchNameInput.value.toLowerCase();
+                        const dateSearchValue = dateSearchInput.value;
+                        let url = "pdf_withdraw?";
+                        if (dateSearchValue) {
+                            url += "date=" + dateSearchValue;
+                        }
+                        if (searchNameValue) {
+                            if (dateSearchValue) {
+                                url += "&";
+                            }
+                            url += "user=" + searchNameValue;
+                        }
+                        window.location.href = url;
+                    });
+
+                    function filterTable() {
+                        const searchNameValue = searchNameInput.value.toLowerCase();
+                        const dateSearchValue = dateSearchInput.value;
+
+                        for (let i = 0; i < rows.length; i++) {
+                            const cells = rows[i].getElementsByTagName('td');
+                            const userName = cells[1].textContent.toLowerCase();
+                            const date = cells[2].textContent;
+
+                            let nameMatch = !searchNameValue || userName.includes(searchNameValue);
+                            let dateMatch = !dateSearchValue || date === dateSearchValue;
+
+                            if (nameMatch && dateMatch) {
+                                rows[i].style.display = '';
+                            } else {
+                                rows[i].style.display = 'none';
+                            }
+                        }
+                    }
+                });
+            </script>
+        </div>
+    </div>
+</div>
