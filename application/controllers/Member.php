@@ -69,6 +69,88 @@ class Member extends CI_Controller
         $this->load->view('templates/member/footer');
     }
 
+    public function ubahProfil()
+    {
+        if (!$this->session->userdata('username')) {
+            redirect('auth');
+        }
+
+        $this->form_validation->set_rules('nama', 'Nama', 'required', [
+            'required' => 'Masukkan nama lengkap anda dengan benar.'
+        ]);
+
+        $user = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+
+        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email', [
+            'required' => 'Masukkan email dengan benar.',
+            'valid_email' => 'Masukkan format email dengan benar'
+        ]);
+
+        if ($this->input->post('email') != $user['email']) {
+            $this->form_validation->set_rules('email', 'Email', 'is_unique[user.email]', [
+                'is_unique' => 'Email sudah dipakai, mohon gunakan email yang lain.'
+            ]);
+        }
+
+        $this->form_validation->set_rules('notelp', 'No. Telp', 'required|trim|integer', [
+            'required' => 'Masukkan no. telp anda dengan benar.',
+            'integer' => 'Nomor telepon hanya berisi angka'
+        ]);
+
+        $this->form_validation->set_rules('alamat', 'Alamat', 'required', [
+            'required' => 'Masukkan alamat anda dengan benar.'
+        ]);
+
+        if ($this->form_validation->run() == false) {
+            $data = [
+                'judul' => 'Profil Saya',
+                'user' => $user,
+            ];
+
+            $this->load->view('templates/member/header', $data);
+            $this->load->view('templates/member/sidebar', $data);
+            $this->load->view('member/profil/ubahProfil', $data);
+            $this->load->view('templates/member/footer');
+        } else {
+            $dataMember = [
+                'nama' => $this->input->post('nama'),
+                'email' => $this->input->post('email'),
+                'no_telp' => $this->input->post('notelp'),
+                'alamat' => $this->input->post('alamat')
+            ];
+
+            $uploadImage = $_FILES['photo']['name'];
+            if ($uploadImage) {
+                $config['allowed_types'] = 'jpg|png|jpeg';
+                $config['max_size'] = '4096';
+                $config['max_width'] = '3084';
+                $config['max_height'] = '3084';
+                $config['upload_path'] = './assets/images/user/profile/';
+                $config['file_name'] = 'user_' . $user['username'];
+
+                $this->load->library('upload', $config);
+
+                if ($this->upload->do_upload('photo')) {
+                    $gambarLama = $user['photo'];
+                    if ($gambarLama != 'default.png') {
+                        unlink(FCPATH . 'assets/images/user/profile/' . $gambarLama);
+                    }
+
+                    $gambarBaru = $this->upload->data('file_name');
+                    $this->db->set('photo', $gambarBaru);
+                } else {
+                    echo $this->upload->display_errors();
+                }
+            }
+
+            $this->UserModel->editUser($user['id'], $dataMember);
+
+            $this->session->set_flashdata('message', '<div id="successInput" class="alert alert-success" role="alert">Berhasil menerapkan perubahan.</div>');
+            redirect('member/profil');
+        }
+    }
+
+
     public function histori()
     {
         $data = [
