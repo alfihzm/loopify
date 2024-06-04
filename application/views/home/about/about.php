@@ -296,80 +296,51 @@
                         <div class="heading-description text-white op-8">Frequently Asked Question</div>
                     </div>
                     <div class="row align-items-center">
-                        <div class="col-lg-6">
-                            <div class="card  tx-default shadow-none">
-                                <div class="card-body">
-                                    <div class="d-flex align-items-start">
-                                        <div class="me-4">
-                                            <span class="avatar text-bg-primary rounded-circle tx-20"><i class="bi bi-hdd-network"></i></span>
-                                        </div>
-                                        <div class="flex-grow-1">
-                                            <h5 class="mb-2">Apa itu Recyloop Coin ?</h5>
-                                            <p class="mb-0">Recyloop Coin merupakan reward dari setiap penukaran botol
-                                                yang dapat digunakan untuk berbagai hal seperti Donasi, Redeem
-                                                OVO/DANA/LinkAja, Transfer Bank dengan puluhan mitra kami.</p>
-                                        </div>
+                        <!-- START DI SINI -->
+                        <div class="accordion" id="accordionExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                        <strong>Apa itu Recyloop?</strong>
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <strong>Recyloop</strong> adalah sebuah proyek inovatif yang dirancang untuk
+                                        meningkatkan kesadaran dan partisipasi masyarakat dalam menjaga kebersihan lingkungan.
+                                        Proyek ini bertujuan untuk mengatasi masalah yang timbul
+                                        akibat kurangnya kesadaran warga terhadap kebersihan, seperti pembuangan sampah sembarangan
+                                        yang berdampak pada banjir, pencemaran lingkungan, dan kerusakan ekosistem.
                                     </div>
                                 </div>
                             </div>
-                            <div class="card tx-default shadow-none">
-                                <div class="card-body">
-                                    <div class="d-flex align-items-start">
-                                        <div class="me-4">
-                                            <span class="avatar text-bg-secondary rounded-circle tx-20"><i class="bi bi-hdd-network"></i></span>
-                                        </div>
-                                        <div class="flex-grow-1">
-                                            <h5 class="mb-2">Cara Mendaftar Akun Recyloop ?</h5>
-                                            <p class="mb-0">Untuk Mendaftar Akun Recyloop cukup dengan masuk ke halaman
-                                                website kemudian isi daftar data diri di form Mendaftar . Inget selalu
-                                                user dan password ya! Jangan sampai lupa ya.</p>
-                                        </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        <strong>Tujuan utama Recyloop?</strong>
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        Kami bertujuan untuk mengurangi dampak negatif sampah terhadap lingkungan dan kesehatan
+                                        masyarakat melalui sistem informasi dan insentif.
                                     </div>
                                 </div>
                             </div>
-                            <div class="card tx-default shadow-none">
-                                <div class="card-body">
-                                    <div class="d-flex align-items-start">
-                                        <div class="me-4">
-                                            <span class="avatar text-bg-success rounded-circle tx-20"><i class="bi bi-hdd-network"></i></span>
-                                        </div>
-                                        <div class="flex-grow-1">
-                                            <h5 class="mb-2">Apa itu Mini Collecting Point ?</h5>
-                                            <p class="mb-0">Mini Collecting Point (MCP) Recyloop Merupakan alat
-                                                penukaran sampah botol plastik menjadi Recyloop Coin yang terbesar di
-                                                beberapa lokasi.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="card  tx-default shadow-none">
-                                <div class="card-body">
-                                    <div class="d-flex align-items-start">
-                                        <div class="me-4">
-                                            <span class="avatar text-bg-danger rounded-circle tx-20"><i class="bi bi-hdd-network"></i></span>
-                                        </div>
-                                        <div class="flex-grow-1">
-                                            <h5 class="mb-2">Apa itu Official Collecting Tenant ?</h5>
-                                            <p class="mb-0">At vero eos et accusamus et iusto odio dignissimos ducimus
-                                                qui blanditiis praesentium voluptatum deleniti atque corrupti quos.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card tx-default shadow-none">
-                                <div class="card-body">
-                                    <div class="d-flex align-items-start">
-                                        <div class="me-4">
-                                            <span class="avatar bg-pink text-white rounded-circle tx-20"><i class="bi bi-hdd-network"></i></span>
-                                        </div>
-                                        <div class="flex-grow-1">
-                                            <h5 class="mb-2">Cara Redeem Recyloop Coin ?</h5>
-                                            <p class="mb-0">Et harum quidem rerum facilis est et expedita distinctio.
-                                                Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil.
-                                            </p>
-                                        </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        <strong>Bagaimana cara kerja sistem penukaran sampah menjadi koin di Recyloop?</strong>
+                                    </button>
+                                </h2>
+                                <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        Sistem ini memungkinkan warga menukarkan sampah botol dan bahan daur ulang lainnya. Setiap
+                                        penukaran akan diberikan koin yang bisa ditukarkan kembali sebagai insentif untuk mendorong
+                                        warga lebih aktif dalam pengelolaan sampah.
                                     </div>
                                 </div>
                             </div>
@@ -394,123 +365,31 @@
                         </div>
                         <div class="col-xl-9">
                             <div class="bg-client position-relative">
-                                <img src="assets/images/patterns/9.png" alt="img" class="patterns-11 z-index-0 filter-invert op-2">
+                                <img src="<?= base_url('assets/') ?>images/patterns/9.png" alt="img"
+                                    class="patterns-11 z-index-0 filter-invert op-2">
                                 <div class="swiper testimonialSwiper">
                                     <div class="swiper-wrapper">
+                                        <!-- START DI SINI -->
+                                        <?php foreach($review as $r) : ?>
                                         <div class="swiper-slide">
                                             <div class="card shadow-none mb-0">
-                                                <div class="card-body">
+                                                <div class="card-body" style="height: 250px">
                                                     <div class="d-flex align-items-center">
-                                                        <img src="assets/images/profile/1.jpg" alt="img" class="avatar avatar-lg rounded-circle me-2">
+                                                        <img src="<?= base_url('assets/images/user/profile/') . $r['photo']; ?>"
+                                                            alt="img" class="avatar avatar-lg rounded-circle me-2">
                                                         <div class="flex-grow-1">
-                                                            <h6 class="mb-0 text-white">Dhaval Patel</h6>
+                                                            <h6 class="mb-0 text-white"><?= $r['nama']; ?></h6>
                                                             <span class="tx-11">12 Aug, 2022</span>
                                                         </div>
                                                         <i class="bi bi-quote review-quote"></i>
                                                     </div>
                                                     <p class="mt-2 mb-0 tx-14">
-                                                        Efficiently innovate customized growth strategies whereas
-                                                        error-free paradigms. Monotonectally enhance stand-alone data
-                                                        with prospective innovation.
+                                                        <?= $r['review']; ?>
                                                     </p>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="swiper-slide">
-                                            <div class="card shadow-none mb-0">
-                                                <div class="card-body">
-                                                    <div class="d-flex align-items-center">
-                                                        <img src="assets/images/profile/3.jpg" alt="img" class="avatar avatar-lg rounded-circle me-2">
-                                                        <div class="flex-grow-1">
-                                                            <h6 class="mb-0 text-white">Navin Telsko</h6>
-                                                            <span class="tx-11">11 Nov, 2022</span>
-                                                        </div>
-                                                        <i class="bi bi-quote review-quote"></i>
-                                                    </div>
-                                                    <p class="mt-2 mb-0 tx-14">
-                                                        Consetetur diam voluptua justo eirmod sed dolor. Ipsum amet
-                                                        clita ut nonumy justo, dolore et dolor dolor clita dolor justo
-                                                        Lorem sanctus ipsum sea sit.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="card shadow-none mb-0">
-                                                <div class="card-body">
-                                                    <div class="d-flex align-items-center">
-                                                        <img src="assets/images/profile/2.jpg" alt="img" class="avatar avatar-lg rounded-circle me-2">
-                                                        <div class="flex-grow-1">
-                                                            <h6 class="mb-0 text-white">Mosh</h6>
-                                                            <span class="tx-11">16 Apr, 2022</span>
-                                                        </div>
-                                                        <i class="bi bi-quote review-quote"></i>
-                                                    </div>
-                                                    <p class="mt-2 mb-0 tx-14">
-                                                        Tempor diam sed vero sed nonumy sed lorem gubergren amet. No no
-                                                        consetetur at duo duo sed et lorem dolor. Sea kasd gubergren
-                                                        voluptua lorem.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="card shadow-none mb-0">
-                                                <div class="card-body">
-                                                    <div class="d-flex align-items-center">
-                                                        <img src="assets/images/profile/1.jpg" alt="img" class="avatar avatar-lg rounded-circle me-2">
-                                                        <div class="flex-grow-1">
-                                                            <h6 class="mb-0 text-white">Dhaval Patel</h6>
-                                                            <span class="tx-11">12 Aug, 2022</span>
-                                                        </div>
-                                                        <i class="bi bi-quote review-quote"></i>
-                                                    </div>
-                                                    <p class="mt-2 tx-14 mb-0">
-                                                        Efficiently innovate customized growth strategies whereas
-                                                        error-free paradigms. Monotonectally enhance stand-alone data
-                                                        with prospective innovation.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="card shadow-none mb-0">
-                                                <div class="card-body">
-                                                    <div class="d-flex align-items-center">
-                                                        <img src="assets/images/profile/1.jpg" alt="img" class="avatar avatar-lg rounded-circle me-2">
-                                                        <div class="flex-grow-1">
-                                                            <h6 class="mb-0 text-white">Dhaval Patel</h6>
-                                                            <span class="tx-11">12 Aug, 2022</span>
-                                                        </div>
-                                                        <i class="bi bi-quote review-quote"></i>
-                                                    </div>
-                                                    <p class="mt-2 tx-14 mb-0">
-                                                        Efficiently innovate customized growth strategies whereas
-                                                        error-free paradigms. Monotonectally enhance stand-alone data
-                                                        with prospective innovation.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="card shadow-none mb-0">
-                                                <div class="card-body">
-                                                    <div class="d-flex align-items-center">
-                                                        <img src="assets/images/profile/1.jpg" alt="img" class="avatar avatar-lg rounded-circle me-2">
-                                                        <div class="flex-grow-1">
-                                                            <h6 class="mb-0 text-white">Dhaval Patel</h6>
-                                                            <span class="tx-11">12 Aug, 2022</span>
-                                                        </div>
-                                                        <i class="bi bi-quote review-quote"></i>
-                                                    </div>
-                                                    <p class="mt-2 tx-14 mb-0">
-                                                        Efficiently innovate customized growth strategies whereas
-                                                        error-free paradigms. Monotonectally enhance stand-alone data
-                                                        with prospective innovation.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <?php endforeach ?>
                                     </div>
                                 </div>
                             </div>
