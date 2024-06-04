@@ -22,7 +22,7 @@
                      </li>
                  </ul>
              </div>
-           <div class="row">
+             <div class="row">
                  <div class="col-lg-6">
                      <?= $this->session->flashdata('message') ?>
                  </div>
@@ -44,7 +44,7 @@
                                             $value = $user['id_member'];
                                         }
                                         ?>
-                                     <input type="text" class="form-control" id="id_account" name="id_account" value="<?= $value ?>" placeholder="Masukkan Nama Lengkap" style="color: #1A2035; font-weight: bold;" readonly>
+                                     <input type="text" class="form-control" id="id_account" name="id_account" value="<?= $value ?>" placeholder="Masukkan Nama Lengkap" style="color: #1A2035; font-weight: bold; background: #fff !important;" readonly>
                                  </div>
                              </div>
                              <div class="form-group row">

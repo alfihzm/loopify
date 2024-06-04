@@ -630,6 +630,8 @@ class Admin extends CI_Controller
                 'icon'         => 'waste.png',
                 'jenis_sampah' => $this->input->post('jenis_sampah'),
                 'nilai_tukar'  => $this->input->post('nilai_tukar'),
+                'kode'  => $this->input->post('kode'),
+                'total_sampah'  => $this->input->post('total_sampah'),
             ];
 
             $this->load->model('SampahModel');
@@ -667,6 +669,8 @@ class Admin extends CI_Controller
         } else {
             $sampahData = [
                 'jenis_sampah' => htmlspecialchars($this->input->post('jenis_sampah')),
+                'nilai_tukar'  => htmlspecialchars($this->input->post('nilai_tukar')),
+                'kode'  => htmlspecialchars($this->input->post('kode')),
                 'nilai_tukar'  => htmlspecialchars($this->input->post('nilai_tukar'))
             ];
 

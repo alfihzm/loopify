@@ -58,13 +58,13 @@
                     <div class="form-group row">
                         <label for="idstaff" class="col-sm-10 col-form-label">Total Pengumpulan Sampah</label>
                         <div class="col-sm-12">
-                            <input style="color: #000;" type="text" class="form-control" id="idstaff" name="idstaff" readonly value="<?= $user['total_sampah']; ?>">
+                            <span class="input-group-text border-secondary text-grey" style="background-color:#eaecf4; width: 100%; height: 40px; color: #1A2035; font-weight: bold;"><?= isset($user['total_sampah']) ? $user['total_sampah'] : 'Data member tidak ditemukan'; ?></span>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="username" class="col-sm-10 col-form-label">Total Koin</label>
                         <div class="col-sm-12">
-                            <input style="color: #000;" type="text" class="form-control" id="username" name="username" readonly value="<?= $user['koin']; ?>">
+                            <span class="input-group-text border-secondary text-grey" style="background-color:#eaecf4; width: 100%; height: 40px; color: #1A2035; font-weight: bold;"><?= isset($user['koin']) ? $user['koin'] : 'Data member tidak ditemukan'; ?></span>
                         </div>
                     </div>
                 </div>
@@ -81,37 +81,37 @@
                             <div class="form-group row">
                                 <label for="idstaff" class="col-sm-10 col-form-label">ID Member</label>
                                 <div class="col-sm-12">
-                                    <input style="color: #000;" type="text" class="form-control" id="idmember" name="idmember" readonly value="<?= $user['id_member']; ?>">
+                                    <span class="input-group-text border-secondary text-grey" style="background-color:#eaecf4; width: 100%; height: 40px; color: #1A2035; font-weight: bold;"><?= isset($user['id_member']) ? $user['id_member'] : 'Data member tidak ditemukan'; ?></span>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="username" class="col-sm-10 col-form-label">Username</label>
                                 <div class="col-sm-12">
-                                    <input style="color: #000;" type="text" class="form-control" id="username" name="username" readonly value="<?= $user['username']; ?>">
+                                    <span class="input-group-text border-secondary text-grey" style="background-color:#eaecf4; width: 100%; height: 40px; color: #1A2035; font-weight: bold;"><?= isset($user['username']) ? $user['username'] : 'Data member tidak ditemukan'; ?></span>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="email" class="col-sm-10 col-form-label">Email</label>
                                 <div class="col-sm-12">
-                                    <input style="color: #000;" readonly type="text" class="form-control" id="email" name="email" value="<?= $user['email']; ?>">
+                                    <span class="input-group-text border-secondary text-grey" style="background-color:#eaecf4; width: 100%; height: 40px; color: #1A2035; font-weight: bold;"><?= isset($user['email']) ? $user['email'] : 'Data member tidak ditemukan'; ?></span>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="alamat" class="col-sm-10 col-form-label">Alamat</label>
                                 <div class="col-sm-12">
-                                    <input style="color: #000;" readonly type="text" class="form-control" id="alamat" name="alamat" value="<?= $user['alamat']; ?>">
+                                    <span class="input-group-text border-secondary text-grey" style="background-color:#eaecf4; width: 100%; height: 40px; color: #1A2035; font-weight: bold;"><?= isset($user['alamat']) ? $user['alamat'] : 'Data member tidak ditemukan'; ?></span>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="name" class="col-sm-10 col-form-label">No. Telp</label>
                                 <div class="col-sm-12">
-                                    <input style="color: #000;" readonly type="text" class="form-control" id="notelp" name="notelp" value="<?= $user['no_telp']; ?>">
+                                    <span class="input-group-text border-secondary text-grey" style="background-color:#eaecf4; width: 100%; height: 40px; color: #1A2035; font-weight: bold;"><?= isset($user['no_telp']) ? $user['no_telp'] : 'Data member tidak ditemukan'; ?></span>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="name" class="col-sm-10 col-form-label">Aktif Sejak</label>
                                 <div class="col-sm-12">
-                                    <input style="color: #000;" readonly type="text" class="form-control" id="aktif" name="aktif" value="<?= date('d F Y', $user['date_created']); ?>">
+                                    <span class="input-group-text border-secondary text-grey" style="background-color:#eaecf4; width: 100%; height: 40px; color: #1A2035; font-weight: bold;"><?= date('d F Y', $user['date_created']); ?></span>
                                 </div>
                             </div>
                         </div>

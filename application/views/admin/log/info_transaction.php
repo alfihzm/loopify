@@ -22,46 +22,45 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="idstaff">ID Member</label>
-                                        <input type="text" class="form-control" id="jenis_sampah" name="jenis_sampah" autocomplete="off" value="<?= $transaction['id_member']; ?>" readonly style="color: black; font-weight:bold;">
-                                        <!-- <?= form_error('jenis_sampah', '<small class="text-danger">', '</small>'); ?> -->
+                                        <span class="input-group-text border-secondary text-grey" style="background-color:#eaecf4; width: 100%; height: 40px; color: #1A2035; font-weight: bold;"><?= $transaction['id_member'] ?></span>
                                     </div>
                                     <div class="form-group">
                                         <label for="idstaff">Username</label>
-                                        <input type="text" class="form-control" id="jenis_sampah" name="jenis_sampah" autocomplete="off" value="<?= $transaction['username']; ?>" readonly style="color: black; font-weight: bold;">
+                                        <span class="input-group-text border-secondary text-grey" style="background-color:#eaecf4; width: 100%; height: 40px; color: #1A2035; font-weight: bold;"><?= $transaction['username'] ?></span>
                                     </div>
                                     <div class="form-group">
                                         <label for="idstaff">Tanggal</label>
-                                        <input type="text" class="form-control" id="tanggal" name="tanggal" autocomplete="off" value="<?= $transaction['tanggal']; ?>" readonly style="color: black; font-weight: bold;">
+                                        <span class="input-group-text border-secondary text-grey" style="background-color:#eaecf4; width: 100%; height: 40px; color: #1A2035; font-weight: bold;"><?= $transaction['tanggal'] ?></span>
                                     </div>
                                     <div class="form-group">
                                         <label for="idstaff">Lokasi</label>
-                                        <input type="text" class="form-control" id="lokasi" name="lokasi" autocomplete="off" value="<?= $transaction['lokasi']; ?>" readonly style="color: black; font-weight: bold;">
+                                        <span class="input-group-text border-secondary text-grey" style="background-color:#eaecf4; width: 100%; height: 40px; color: #1A2035; font-weight: bold;"><?= $transaction['lokasi'] ?></span>
                                     </div>
                                     <div class="form-group">
                                         <label for="idstaff">Catatan</label>
-                                        <input type="text" class="form-control" id="catatan" name="catatan" autocomplete="off" value="<?= $transaction['catatan']; ?>" readonly style="color: black; font-weight: bold;">
+                                        <span class="input-group-text border-secondary text-grey" style="background-color:#eaecf4; width: 100%; height: 40px; color: #1A2035; font-weight: bold;"><?= $transaction['catatan'] ?></span>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="idstaff">Jumlah Botol</label>
-                                        <input type="text" class="form-control" id="jumlah_botol" name="jumlah_botol" autocomplete="off" value="<?= $transaction['jumlah_botol']; ?>" readonly style="color: black; font-weight: bold;">
+                                        <span class="input-group-text border-secondary text-grey" style="background-color:#eaecf4; width: 100%; height: 40px; color: #1A2035; font-weight: bold;"><?= $transaction['jumlah_botol'] ?></span>
                                     </div>
                                     <div class="form-group">
                                         <label for="idstaff">Jumlah Kaleng</label>
-                                        <input type="text" class="form-control" id="jumlah_kaleng" name="jumlah_kaleng" autocomplete="off" value="<?= $transaction['jumlah_kaleng']; ?>" readonly style="color: black; font-weight: bold;">
+                                        <span class="input-group-text border-secondary text-grey" style="background-color:#eaecf4; width: 100%; height: 40px; color: #1A2035; font-weight: bold;"><?= $transaction['jumlah_kaleng'] ?></span>
                                     </div>
                                     <div class="form-group">
                                         <label for="idstaff">Jumlah Kardus</label>
-                                        <input type="text" class="form-control" id="jumlah_kardus" name="jumlah_kardus" autocomplete="off" value="<?= $transaction['jumlah_kardus']; ?>" readonly style="color: black; font-weight: bold;">
+                                        <span class="input-group-text border-secondary text-grey" style="background-color:#eaecf4; width: 100%; height: 40px; color: #1A2035; font-weight: bold;"><?= $transaction['jumlah_kardus'] ?></span>
                                     </div>
                                     <div class="form-group">
                                         <label for="idstaff">Jumlah Limbah (Satuan)</label>
-                                        <input type="text" class="form-control" id="total" name="total" autocomplete="off" value="<?= $transaction['total']; ?>" readonly style="color: black; font-weight: bold;">
+                                        <span class="input-group-text border-secondary text-grey" style="background-color:#eaecf4; width: 100%; height: 40px; color: #1A2035; font-weight: bold;"><?= $transaction['total'] ?></span>
                                     </div>
                                     <div class="form-group">
                                         <label for="idstaff">Jumlah Saldo Koin yang dapat ditukar</label>
-                                        <input type="text" class="form-control" id="totalkoin" name="totalkoin" autocomplete="off" value="Rp <?= number_format($transaction['totalkoin'], 0, ',', '.') ?>" readonly style="color: black; font-weight: bold;">
+                                        <span class="input-group-text border-secondary text-grey" style="background-color:#eaecf4; width: 100%; height: 40px; color: #1A2035; font-weight: bold;">Rp <?= number_format($transaction['totalkoin'], 0, ',', '.') ?></span>
                                     </div>
                                 </div>
                                 <div class="col-sm-12" style="display: flex; justify-content: space-evenly; align-items: center; margin-top: 10px">

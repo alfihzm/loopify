@@ -67,6 +67,18 @@
                                         <?= form_error('nilai_tukar', '<small class="text-danger">', '</small>'); ?>
                                     </div>
                                 </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="nama">Kode</label>
+                                        <input type="text" class="form-control" id="kode" name="kode" autocomplete="off" value="<?= $sampah['kode']; ?>">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="nama">Total Sampah</label>
+                                        <input type="number" class="form-control" id="total_sampah" name="total_sampah" autocomplete="off" value="<?= $sampah['total_sampah']; ?>">
+                                    </div>
+                                </div>
                                 <div class="col-sm-12" style="display: flex; justify-content: space-evenly; align-items: center; margin-top: 10px">
                                     <button type="submit" class="btn btn-danger">Simpan</button>
                                     <a style="width: 100px;" href="<?= base_url('admin/sampah'); ?>" class="btn btn-warning">

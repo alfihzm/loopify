@@ -23,7 +23,6 @@
                     </li>
                 </ul>
             </div>
-            <a href=" <?= base_url('admin/tambah_sampah'); ?>" class="btn btn-secondary mb-3"> Tambah Jenis Sampah</a>
             <div class="row align-content-center justify-content-center">
                 <div class="col-lg-3 counter">
                     <div class="card border border-dark weather-card" style="background-color: #fff;">
@@ -47,7 +46,7 @@
                 <div class="col-lg-3">
                     <div class="card border border-dark weather-card" style="background-color: #fff;">
                         <div class="card-header">
-                             <div class="card-header" style="background-color: #fff; color: black; text-align: center; border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                            <div class="card-header" style="background-color: #fff; color: black; text-align: center; border-top-left-radius: 10px; border-top-right-radius: 10px;">
                                 <b>Kapasitas Gudang Kaleng</b>
                             </div>
                             <h4 style="text-align: center; font-size: 1.5em; color: red;">
@@ -83,6 +82,9 @@
                     </div>
                 </div>
             </div>
+            <div class="text-center">
+                <a href="<?= base_url('admin/tambah_sampah'); ?>" class="btn btn-light col-lg-3 mb-3" style="display: inline-block; max-width: 200px; text-align: center; margin-top: -15px;"><b>Tambah Jenis Sampah</b></a>
+            </div>
             <div class="row">
                 <div class="col-lg-6">
                     <?= $this->session->flashdata('message') ?>
@@ -96,8 +98,10 @@
                         <tr>
                             <th scope="col" style="width: 50px;">No.</th>
                             <th scope="col" style="width: 50px;">Ikon</th>
+                            <th scope="col" style="width: 50px;">KD</th>
                             <th scope="col" style="width: 100px;">Jenis Sampah</th>
                             <th scope="col" style="width: 100px;">Nilai Tukar</th>
+                            <th scope="col" style="width: 50px;">Total Sampah</th>
                             <th scope="col" style="width: 100px;">Aksi</th>
                         </tr>
                     </thead>
@@ -109,8 +113,10 @@
                                 <td>
                                     <img class="img-thumbnail border-0" style="width: 45px; height: auto;" src="<?= base_url('assets/images/svg/member-section2/' . $s['icon']); ?>" alt="Gambar" width="85" height="85">
                                 </td>
+                                <td><?= $s['kode']; ?></td>
                                 <td><?= $s['jenis_sampah']; ?></td>
                                 <td>Rp<?= $s['nilai_tukar']; ?>/kg</td>
+                                <td><?= $s['total_sampah']; ?> buah</td>
                                 <td>
                                     <a href="<?= base_url('admin/ubah_sampah/'   . $s['id']); ?>" class="btn btn-success btn-sm"><i style="color: #000;" class="fa-solid fa-pencil"></i></a>
                                     <a href="<?= base_url('admin/hapus_sampah/' . $s['id']); ?>" class="btn btn-danger btn-sm"><i style="color: #000;" class="fa-solid fa-trash"></i></a>
