@@ -79,6 +79,6 @@ class Secure extends CI_Controller
         } else {
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Kamera tidak ditemukan!</div>');
         }
-        redirect('announcement');
+        redirect('secure');
     }
 }
