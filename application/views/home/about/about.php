@@ -11,7 +11,6 @@
         <div class="head_menu_container">
 
             <!-- HEADER -->
-
             <header class="main-header" id="stickyHeader">
                 <!-- Start::main-brand-header -->
                 <div class="main-brand-header">
@@ -61,7 +60,6 @@
             </header> <!-- END HEADER -->
 
             <!-- SIDEBAR -->
-
             <div class="sticky">
                 <!-- Start::app-sidebar -->
                 <aside class="app-sidebar" id="sidebar">

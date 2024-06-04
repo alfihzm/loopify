@@ -50,7 +50,20 @@
                         </li> -->
 
                 <!-- Photo Profile User -->
-
+ <div style="display: flex; justify-content: center; margin-right: 20px;">
+                            <span class="badge rounded-pill bg-secondary text-light">
+                                <?php
+                                if ($user['role_id'] == 1) {
+                                    echo 'ADMIN';
+                                } else if ($user['role_id'] == 2) {
+                                    echo 'STAFF';
+                                } else {
+                                    echo 'MEMBER';
+                                }
+                                ?>
+                            </span>
+                        </div>
+                        
                 <li class="nav-item dropdown hidden-caret">
                     <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
                         <div class="avatar-sm">
