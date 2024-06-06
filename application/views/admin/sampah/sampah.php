@@ -140,7 +140,8 @@
                 <thead>
                     <tr>
                         <th scope="col" style="width: 50px;">No.</th>
-                        <th scope="col" style="width: 50px;">Pengepul</th>
+                        <th scope="col" style="width: 50px; text-align: center;">Pengepul</th>
+                        <th scope="col" style="width: 15%; text-align: center;">Tanggal</th>
                         <th scope="col" style="width: 50px;">BP</th>
                         <th scope="col" style="width: 50px;">KA</th>
                         <th scope="col" style="width: 50px;">KK</th>
@@ -159,15 +160,16 @@
                         foreach ($distribution as $d) : ?>
                             <tr>
                                 <td><?= $i++; ?></td>
-                                <td><?= $d['pengepul']; ?></td>
+                                <td style="text-align: center;"><?= $d['pengepul']; ?></td>
+                                <td style="text-align: center;"><?= $d['tanggal']; ?></td>
                                 <td><?= $d['bp']; ?></td>
                                 <td><?= $d['ka']; ?></td>
                                 <td><?= $d['kk']; ?></td>
                                 <td><?= $d['nilai_tukar']; ?></td>
                                 <td><?= $d['driver']; ?></td>
                                 <td>
-                                    <!-- <a href="<?= base_url('admin/ubah_sampah/'   . $s['id']); ?>" class="btn btn-success btn-sm"><i style="color: #000;" class="fa-solid fa-pencil"></i></a> -->
-                                    <!-- <a href="<?= base_url('admin/hapus_sampah/' . $s['id']); ?>" class="btn btn-danger btn-sm"><i style="color: #000;" class="fa-solid fa-trash"></i></a> -->
+                                    <a href="<?= base_url('admin/ubah_distribusi/'   . $d['id']); ?>" class="btn btn-success btn-sm"><i style="color: #000;" class="fa-solid fa-pencil"></i></a>
+                                    <!-- <a href="<?= base_url('admin/hapus_distribusi/' . $d['id']); ?>" class="btn btn-danger btn-sm"><i style="color: #000;" class="fa-solid fa-trash"></i></a> -->
                                 </td>
                             </tr>
                         <?php endforeach; ?>

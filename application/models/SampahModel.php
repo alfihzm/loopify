@@ -35,4 +35,16 @@ class SampahModel extends CI_Model
     {
         return $this->db->insert('distribution', $data);
     }
+
+    public function getDistributionById($id)
+    {
+        $query = $this->db->get_where('distribution', ['id' => $id]);
+        return $query->row_array();
+    }
+
+    public function editDistribution($id, $data)
+    {
+        $this->db->where('id', $id);
+        return $this->db->update('distribution', $data);
+    }
 }

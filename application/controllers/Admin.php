@@ -760,6 +760,7 @@ class Admin extends CI_Controller
 
             $dataDistribution = [
                 'pengepul' => $this->input->post('pengepul'),
+                'tanggal' => date('Y-m-d'),
                 'bp' => $bp,
                 'ka' => $ka,
                 'kk' => $kk,
@@ -775,6 +776,41 @@ class Admin extends CI_Controller
             redirect('admin/sampah');
         }
     }
+
+    public function ubah_distribusi($id)
+    {
+        $data['distribution'] = $this->SampahModel->getDistributionById($id);
+
+        $data = array_merge($data, [
+            'user'  => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
+            'judul' => 'Ubah Pengiriman Sampah'
+        ]);
+
+        $this->form_validation->set_rules('driver', 'Driver', 'required', 'is_unique', [
+            'required' => 'Lah ya kalo ga dirubah ngapain klik submit bre',
+            'is_unique' => 'Lay ya kalo ga dirubah ngapain klik submit bre'
+        ]);
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view("templates/admin/header", $data);
+            $this->load->view("templates/admin/sidebar", $data);
+            $this->load->view("templates/admin/topbar", $data);
+            $this->load->view('admin/sampah/ubah_distribution', $data);
+            $this->load->view("templates/admin/footer");
+        } else {
+            $dataDistribution = [
+                'pengepul' => $this->input->post('pengepul'),
+                'tanggal' =>  $this->input->post('tanggal'),
+                'driver'  => $this->input->post('driver'),
+            ];
+
+            $this->SampahModel->editDistribution($id, $dataDistribution);
+
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Informasi pengiriman telah diubah</div>');
+            redirect('admin/sampah');
+        }
+    }
+
 
 
 
