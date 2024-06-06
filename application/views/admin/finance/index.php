@@ -73,7 +73,7 @@
                 <div class="col-lg-6">
                     <div class="card border border-light" style="border-radius: 10px; overflow: hidden;">
                         <div class="card-header" style="background-color: #fff; color: #1A2035; text-align: center; font-size: 24px; padding: 5px 0;">
-                            <b>Modal Awal</b>
+                            <b>Modal Kas</b>
                         </div>
                         <div class="card-body" style="padding-bottom: 1px; background-color: #1A2035;">
                             <div style="text-align: center; font-family: Montserrat; padding-bottom: 15px;">
@@ -119,6 +119,7 @@
                         <tr>
                             <th>ID Finance</th>
                             <th>Metode</th>
+                            <th>Jumlah</th>
                             <th>Tanggal</th>
                             <th>Sumber</th>
                             <th>Gambar</th>
@@ -141,6 +142,9 @@
                                     </td>
                                     <td>
                                         <?= $m['metode'] ?>
+                                    </td>
+                                    <td>
+                                        <b><?= $m['jumlah'] ?></b>
                                     </td>
                                     <td>
                                         <?= $m['tanggal'] ?>
@@ -321,6 +325,7 @@
                             <option value="" disabled selected>Pilih sumber</option>
                             <option value="Donatur">Donatur</option>
                             <option value="Sponsor">Sponsor</option>
+                            <option value="Modal Kas">Modal Kas</option>
                             <?= form_error('sumber', '<small class="text-danger">', '</small>') ?>
                         </select>
                     </div>

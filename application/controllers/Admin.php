@@ -596,6 +596,15 @@ class Admin extends CI_Controller
 
         ];
 
+        $pengepuls = ['TLP', 'KSA', 'DPR'];
+        foreach ($pengepuls as $pengepul) {
+            $total_sampah = $this->db->select_sum('total')
+                ->where('pengepul', $pengepul)
+                ->get('distribution')
+                ->row()->total;
+            $this->session->set_userdata('total_sampah_' . strtolower($pengepul), $total_sampah);
+        }
+
         $this->load->view("templates/admin/header", $data);
         $this->load->view("templates/admin/sidebar", $data);
         $this->load->view("templates/admin/topbar", $data);
@@ -756,7 +765,10 @@ class Admin extends CI_Controller
             $kk = $this->input->post('kk');
 
             $nilai_tukar = ($bp * (float)$harga_bp) + ($ka * (float)$harga_ka) + ($kk * (float)$harga_kk);
-            $this->db->query("UPDATE finance SET saldo = saldo + $nilai_tukar WHERE id = 1");
+            $this->db->query("UPDATE finance SET saldo = saldo + $nilai_tukar WHERE id = 2");
+            $this->db->query("UPDATE sampah SET total_sampah = total_sampah - $bp WHERE id = 1");
+            $this->db->query("UPDATE sampah SET total_sampah = total_sampah - $ka WHERE id = 2");
+            $this->db->query("UPDATE sampah SET total_sampah = total_sampah - $kk WHERE id = 3");
 
             $dataDistribution = [
                 'pengepul' => $this->input->post('pengepul'),

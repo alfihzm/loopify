@@ -1,16 +1,3 @@
-<style>
-    input[type=number]::-webkit-inner-spin-button,
-    input[type=number]::-webkit-outer-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-    }
-
-    input[type=number] {
-        -moz-appearance: textfield;
-        /* Untuk Firefox */
-    }
-</style>
-
 <div class="main-panel" style="font-family: quicksand;">
     <div class="content">
         <div class="page-inner">
@@ -23,9 +10,7 @@
                     <?= $this->session->flashdata('message') ?>
                 </div>
             </div>
-
             <div class="container-fluid col-md-8">
-
                 <div class="card border border-secondary">
                     <div class="card-body">
                         <h5 style="text-align: center;" class="card-title mt-1"><?= $judul; ?></h5>
@@ -87,24 +72,6 @@
                         </form>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
-
-    <script>
-        document.getElementById('togglePassword').addEventListener('click', function() {
-            var passwordInput = document.getElementById('password');
-            var icon = document.getElementById('togglePassword');
-
-            if (passwordInput.getAttribute('type') === 'password') {
-                passwordInput.setAttribute('type', 'text');
-                icon.classList.remove('fa-eye-slash');
-                icon.classList.add('fa-eye');
-            } else {
-                passwordInput.setAttribute('type', 'password');
-                icon.classList.remove('fa-eye');
-                icon.classList.add('fa-eye-slash');
-            }
-        });
-    </script>

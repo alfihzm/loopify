@@ -26,4 +26,21 @@ class FinanceModel extends CI_Model
         $this->db->where('id', $id);
         return $this->db->update('finance');
     }
+
+    public function transferSaldo($idFrom, $idTo, $jumlah)
+    {
+        $this->db->trans_start();
+
+        $this->db->set('saldo', 'saldo - ' . (int)$jumlah, FALSE);
+        $this->db->where('id', $idFrom);
+        $this->db->update('finance');
+
+        $this->db->set('saldo', 'saldo + ' . (int)$jumlah, FALSE);
+        $this->db->where('id', $idTo);
+        $this->db->update('finance');
+
+        $this->db->trans_complete();
+
+        return $this->db->trans_status();
+    }
 }

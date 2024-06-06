@@ -1,3 +1,18 @@
+<style>
+    .alert-content {
+        display: flex;
+    }
+
+    .alert-text {
+        flex: 1;
+        text-align: center;
+        padding: 0 10px;
+    }
+
+    .alert-text:not(:last-child) {
+        border-right: 1px dashed #1A2035;
+    }
+</style>
 <div class="main-panel" style="font-family: quicksand;">
     <div class="content">
         <div class="page-inner">
@@ -124,14 +139,20 @@
                     </tbody>
                 </table>
             </div>
-            <div class="row align-content-center justify-content-center">
-                <div class="col-lg-3" style="text-align: center;">
-                    <div class="alert alert-info" role="alert" style="margin-top: 15px; background: white; color: #1A2035; border-radius: 5px;">
-                        <b>
-                            Distribusi ke PT. BCA
-                        </b>
+            <div class="alert alert-info" role="alert" style="margin-top: 15px; background: white; color: #1A2035; border-radius: 5px;">
+                <b>
+                    <div class="alert-content">
+                        <div class="alert-text">
+                            <b>Total sampah ke PT. TLP:</b> <?= $this->session->userdata('total_sampah_tlp') ?? 0; ?>
+                        </div>
+                        <div class="alert-text">
+                            <b>Total sampah ke PT. KSA:</b> <?= $this->session->userdata('total_sampah_ksa') ?? 0; ?>
+                        </div>
+                        <div class="alert-text">
+                            <b>Total sampah ke PT. DPR:</b> <?= $this->session->userdata('total_sampah_dpr') ?? 0; ?>
+                        </div>
                     </div>
-                </div>
+                </b>
             </div>
             <div class="text-center" style="margin-top: 20px;">
                 <a href="<?= base_url('admin/tambah_distribusi'); ?>" class="btn btn-light col-lg-3 mb-3" style="display: inline-block; max-width: 200px; text-align: center; margin-top: -15px;"><b>Tambah Pengiriman</b></a>

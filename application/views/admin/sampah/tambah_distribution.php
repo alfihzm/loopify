@@ -1,19 +1,8 @@
-<style>
-    input[type=number]::-webkit-inner-spin-button,
-    input[type=number]::-webkit-outer-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-    }
-
-    input[type=number] {
-        -moz-appearance: textfield;
-        /* Untuk Firefox */
-    }
-
-    .hidden {
-        display: none;
-    }
-</style>
+ <style>
+        .hidden {
+            display: none;
+        }
+    </style>
 <div class="main-panel" style="font-family: quicksand;">
     <div class="content">
         <div class="page-inner">
@@ -75,22 +64,6 @@
     </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script>
-    document.getElementById('togglePassword').addEventListener('click', function() {
-        var passwordInput = document.getElementById('password');
-        var icon = document.getElementById('togglePassword');
-
-        if (passwordInput.getAttribute('type') === 'password') {
-            passwordInput.setAttribute('type', 'text');
-            icon.classList.remove('fa-eye-slash');
-            icon.classList.add('fa-eye');
-        } else {
-            passwordInput.setAttribute('type', 'password');
-            icon.classList.remove('fa-eye');
-            icon.classList.add('fa-eye-slash');
-        }
-    });
-</script>
 <script>
     $(document).ready(function() {
         $('#pengepul').change(function() {

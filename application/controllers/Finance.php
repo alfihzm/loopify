@@ -103,10 +103,18 @@ class Finance extends CI_Controller
             rename($config['upload_path'] . '/' . $original_name, $config['upload_path'] . '/' . $new_file_name);
             $this->db->insert('deposit', $dataDeposit);
 
-            if ($this->FinanceModel->tambahSaldo($id, $jumlah)) {
-                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Saldo berhasil ditambahkan!</div>');
+            if ($sumber == "Modal Kas") {
+                if ($this->FinanceModel->transferSaldo(1, 2, $jumlah)) {
+                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Saldo berhasil dipindahkan dari Modal Kas ke arus kas!</div>');
+                } else {
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Gagal memindahkan saldo!</div>');
+                }
             } else {
-                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Gagal menambahkan saldo!</div>');
+                if ($this->FinanceModel->tambahSaldo($id, $jumlah)) {
+                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Saldo berhasil ditambahkan!</div>');
+                } else {
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Gagal menambahkan saldo!</div>');
+                }
             }
         } else {
             $error = $this->upload->display_errors();
