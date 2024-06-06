@@ -1,4 +1,4 @@
-<section class="section bg-pattern-1">
+<section class="section bg-pattern-1" style="margin-top: -50px;">
     <img src="<?= base_url('assets/') ?>images/patterns/7.png" alt="img" class="patterns-7">
     <img src="<?= base_url('assets/') ?>images/patterns/2.png" alt="img" class="patterns-1 op-1">
     <img src="<?= base_url('assets/') ?>images/patterns/9.png" alt="img"
@@ -26,7 +26,7 @@
                         <p class="mb-1 tx-muted">Harga</p>
                         <h2 class="mb-3">Rp<?= number_format($l['nilai_tukar'], 0, ',', '.'); ?>
                             <span class="tx-14 op-7 tx-muted">
-                                /<?= $l['jenis_sampah']; ?>
+                                /kilogram <?= $l['jenis_sampah']; ?>
                             </span>
                         </h2>
                         <p class="mb-4">Menerima berbagai jenis <?= strtolower($l['jenis_sampah']); ?> yang anda miliki.

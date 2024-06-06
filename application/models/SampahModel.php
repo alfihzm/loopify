@@ -24,4 +24,15 @@ class SampahModel extends CI_Model
         $query = $this->db->get_where('sampah', ['id' => $id]);
         return $query->row_array();
     }
+
+    public function getDistribution()
+    {
+        $query = $this->db->get('distribution');
+        return $query->result_array();
+    }
+
+    public function tambahDistribution($data)
+    {
+        return $this->db->insert('distribution', $data);
+    }
 }

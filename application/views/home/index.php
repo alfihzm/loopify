@@ -26,7 +26,7 @@
                             <!-- End::header-link -->
                         </div>
                         <!-- End::header-element -->
-                        <a href="index.php" class="brand-main">
+                        <a href="home" class="brand-main">
                             <img src="assets/images/brand/branding-logo.png" alt="img" class="desktop-logo logo-dark">
                         </a>
 

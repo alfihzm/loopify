@@ -20,7 +20,7 @@
                                 </div>
                                 <div class="heading-title mb-4">
                                     <span class="tx-primary">
-                                        Pemberian Limbah Anda
+                                        Penyerahan Limbah Anda
                                     </span>
                                 </div>
                                 <a href="<?= base_url('member/histori'); ?>" class="btn btn-secondary">Pemberian</a>
@@ -71,7 +71,6 @@
                     </div>
                 </div>
             </div>
-
             <!-- Modal -->
             <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="detailModalLabel"
                 aria-hidden="true">

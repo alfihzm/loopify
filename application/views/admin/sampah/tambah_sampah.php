@@ -25,7 +25,6 @@
             </div>
 
             <div class="container-fluid col-md-8">
-
                 <div class="card border border-secondary">
                     <div class="card-body">
                         <h5 style="text-align: center;" class="card-title mt-1"><?= $judul; ?></h5>

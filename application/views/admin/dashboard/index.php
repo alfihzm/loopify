@@ -326,8 +326,8 @@
          labels: barLabels,
          datasets: [{
              label: 'Total Sampah',
-             backgroundColor: 'rgba(54, 162, 235, 0.2)',
-             borderColor: 'rgba(54, 162, 235, 1)',
+             backgroundColor: 'rgba(255, 255, 255)', 
+             borderColor: 'rgba(255, 255, 255, 1)', 
              borderWidth: 1,
              data: <?= $total_sampah ?>
          }]

@@ -24,7 +24,7 @@
                     </div>
                     <div class="col-lg-5">
                         <div class="text-lg-end text-center mt-4 mt-lg-0">
-                            <img src="<?= base_url('assets/') ?>images/png/1.png" class="img-fluid" alt="img">
+                            <img src="<?= base_url('assets/') ?>images/png/1.png" class="img-fluid" alt="img" style="margin-top: -80px;">
                         </div>
                     </div>
                 </div>

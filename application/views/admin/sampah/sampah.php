@@ -90,9 +90,7 @@
                     <?= $this->session->flashdata('message') ?>
                 </div>
             </div>
-
             <div class="containers">
-
                 <table class="table">
                     <thead>
                         <tr>
@@ -125,15 +123,65 @@
                         <?php endforeach; ?>
                     </tbody>
                 </table>
-
             </div>
+            <div class="row align-content-center justify-content-center">
+                <div class="col-lg-3" style="text-align: center;">
+                    <div class="alert alert-info" role="alert" style="margin-top: 15px; background: white; color: #1A2035; border-radius: 5px;">
+                        <b>
+                            Distribusi ke PT. BCA
+                        </b>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center" style="margin-top: 20px;">
+                <a href="<?= base_url('admin/tambah_distribusi'); ?>" class="btn btn-light col-lg-3 mb-3" style="display: inline-block; max-width: 200px; text-align: center; margin-top: -15px;"><b>Tambah Pengiriman</b></a>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col" style="width: 50px;">No.</th>
+                        <th scope="col" style="width: 50px;">Pengepul</th>
+                        <th scope="col" style="width: 50px;">BP</th>
+                        <th scope="col" style="width: 50px;">KA</th>
+                        <th scope="col" style="width: 50px;">KK</th>
+                        <th scope="col" style="width: 50px;">Kas Masuk</th>
+                        <th scope="col" style="width: 50px;">Driver</th>
+                        <th scope="col" style="width: 100px;">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php if (empty($distribution)) : ?>
+                        <tr>
+                            <td colspan="8" style="text-align: center;">Belum ada pengambilan sampah dari gudang</td>
+                        </tr>
+                    <?php else : ?>
+                        <?php $i = 1;
+                        foreach ($distribution as $d) : ?>
+                            <tr>
+                                <td><?= $i++; ?></td>
+                                <td><?= $d['pengepul']; ?></td>
+                                <td><?= $d['bp']; ?></td>
+                                <td><?= $d['ka']; ?></td>
+                                <td><?= $d['kk']; ?></td>
+                                <td><?= $d['nilai_tukar']; ?></td>
+                                <td><?= $d['driver']; ?></td>
+                                <td>
+                                    <!-- <a href="<?= base_url('admin/ubah_sampah/'   . $s['id']); ?>" class="btn btn-success btn-sm"><i style="color: #000;" class="fa-solid fa-pencil"></i></a> -->
+                                    <!-- <a href="<?= base_url('admin/hapus_sampah/' . $s['id']); ?>" class="btn btn-danger btn-sm"><i style="color: #000;" class="fa-solid fa-trash"></i></a> -->
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                </tbody>
+            </table>
         </div>
     </div>
+</div>
 
-    <script type="text/javascript">
-        window.setTimeout(function() {
-            $(".col-lg-6").fadeTo(500, 0).slideUp(500, function() {
-                $(this).remove();
-            });
-        }, 2000);
-    </script>
+<script type="text/javascript">
+    window.setTimeout(function() {
+        $(".col-lg-6").fadeTo(500, 0).slideUp(500, function() {
+            $(this).remove();
+        });
+    }, 2000);
+</script>
