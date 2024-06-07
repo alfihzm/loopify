@@ -69,9 +69,9 @@
                                         <td><?= $t['id_member']; ?></td>
                                         <td><?= $t['username']; ?></td>
                                         <td><?= $t['tanggal']; ?></td>
-                                        <td><?= $t['jumlah_botol']; ?></td>
-                                        <td><?= $t['jumlah_kaleng']; ?></td>
-                                        <td><?= $t['jumlah_kardus']; ?></td>
+                                        <td style="color: white;"><?= $t['jumlah_botol']; ?></td>
+                                        <td style="color: white;"><?= $t['jumlah_kaleng']; ?></td>
+                                        <td style="color: white;"><?= $t['jumlah_kardus']; ?></td>
                                         <td><?= $t['lokasi']; ?></td>
                                         <td><?= $t['status']; ?></td>
                                         <td>

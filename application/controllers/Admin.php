@@ -340,7 +340,7 @@ class Admin extends CI_Controller
     // INFORMASI TABEL MEMBER
     public function member()
     {
-        $config['base_url'] = 'http://localhost/recyloop/admin/member/member';
+        $config['base_url'] = site_url('admin/log/accounting');
         $config['total_rows'] = $this->UserModel->countAllMember(3);
         $config['per_page'] = 5;
         $start = $this->uri->segment(4);
@@ -765,7 +765,7 @@ class Admin extends CI_Controller
             $kk = $this->input->post('kk');
 
             $nilai_tukar = ($bp * (float)$harga_bp) + ($ka * (float)$harga_ka) + ($kk * (float)$harga_kk);
-            $this->db->query("UPDATE finance SET saldo = saldo + $nilai_tukar WHERE id = 2");
+            $this->db->query("UPDATE finance SET saldo = saldo + $nilai_tukar WHERE id = 1");
             $this->db->query("UPDATE sampah SET total_sampah = total_sampah - $bp WHERE id = 1");
             $this->db->query("UPDATE sampah SET total_sampah = total_sampah - $ka WHERE id = 2");
             $this->db->query("UPDATE sampah SET total_sampah = total_sampah - $kk WHERE id = 3");

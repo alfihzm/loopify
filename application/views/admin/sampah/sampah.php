@@ -166,7 +166,7 @@
                         <th scope="col" style="width: 50px;">BP</th>
                         <th scope="col" style="width: 50px;">KA</th>
                         <th scope="col" style="width: 50px;">KK</th>
-                        <th scope="col" style="width: 50px;">Kas Masuk</th>
+                        <th scope="col" style="width: 15%;">Kas Masuk</th>
                         <th scope="col" style="width: 50px;">Driver</th>
                         <th scope="col" style="width: 100px;">Aksi</th>
                     </tr>
@@ -186,7 +186,7 @@
                                 <td><?= $d['bp']; ?></td>
                                 <td><?= $d['ka']; ?></td>
                                 <td><?= $d['kk']; ?></td>
-                                <td><?= $d['nilai_tukar']; ?></td>
+                                <td style="color: lightgreen;"><i class="fa-solid fa-up-long"></i>&nbsp;&nbsp;Rp <b><?= number_format($d['nilai_tukar'], 0, ',', '.'); ?></b></td>
                                 <td><?= $d['driver']; ?></td>
                                 <td>
                                     <a href="<?= base_url('admin/ubah_distribusi/'   . $d['id']); ?>" class="btn btn-success btn-sm"><i style="color: #000;" class="fa-solid fa-pencil"></i></a>

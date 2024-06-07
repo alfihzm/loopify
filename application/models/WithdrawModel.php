@@ -8,6 +8,13 @@ class WithdrawModel extends CI_Model
         return $query->result_array();
     }
 
+    public function getWithdraw_Log()
+    {
+        $this->db->select('tanggal, nominal');
+        $query = $this->db->get('withdraw');
+        return $query->result_array();
+    }
+
     public function newWithdraw($data)
     {
         return $this->db->insert('withdraw', $data);

@@ -57,6 +57,16 @@ class Transaction extends CI_Controller
             $jumlah_kaleng = $this->input->post('jumlah_kaleng');
             $jumlah_kardus = $this->input->post('jumlah_kardus');
 
+            $this->db->where('id', 1);
+            $this->db->set('total_sampah', 'total_sampah+' . $jumlah_botol, FALSE);
+            $this->db->update('sampah');
+            $this->db->where('id', 2);
+            $this->db->set('total_sampah', 'total_sampah+' . $jumlah_kaleng, FALSE);
+            $this->db->update('sampah');
+            $this->db->where('id', 3);
+            $this->db->set('total_sampah', 'total_sampah+' . $jumlah_kardus, FALSE);
+            $this->db->update('sampah');
+
             // Ambil kapasitas penyimpanan dari database
             $kapasitas_botol = $this->db->get_where('sampah', ['id' => 1])->row()->kapasitas;
             $kapasitas_kaleng = $this->db->get_where('sampah', ['id' => 2])->row()->kapasitas;

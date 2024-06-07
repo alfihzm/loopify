@@ -31,6 +31,13 @@ class SampahModel extends CI_Model
         return $query->result_array();
     }
 
+    public function getDistribution_Log()
+    {
+        $this->db->select('tanggal, nilai_tukar');
+        $query = $this->db->get('distribution');
+        return $query->result_array();
+    }
+
     public function tambahDistribution($data)
     {
         return $this->db->insert('distribution', $data);

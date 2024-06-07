@@ -77,7 +77,7 @@ class Finance extends CI_Controller
         $sumber = $this->input->post('sumber');
         $tanggal = $this->input->post('tanggal');
         // $tanggal_formatted = date('Y-m-d', strtotime(str_replace('-', '/', $tanggal)));
-        $config['upload_path']   = 'assets/finance';
+        $config['upload_path'] = './assets/finance';  // Menggunakan relative path
         $config['allowed_types'] = 'jpg|png|pdf|doc|docx';
         $config['max_size'] = 2048; // 2MB
         $file_count = count(glob($config['upload_path'] . '/*'));
@@ -103,11 +103,18 @@ class Finance extends CI_Controller
             rename($config['upload_path'] . '/' . $original_name, $config['upload_path'] . '/' . $new_file_name);
             $this->db->insert('deposit', $dataDeposit);
 
+            $saldoKas = $this->FinanceModel->getSaldo(1);
             if ($sumber == "Modal Kas") {
-                if ($this->FinanceModel->transferSaldo(1, 2, $jumlah)) {
-                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Saldo berhasil dipindahkan dari Modal Kas ke arus kas!</div>');
+                // Memeriksa apakah jumlah yang dimasukkan oleh pengguna tidak melebihi saldo kas
+                if ($jumlah > $saldoKas) {
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Jumlah yang dimasukkan melebihi saldo Modal Kas yang tersedia!</div>');
+                    redirect('finance');
                 } else {
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Gagal memindahkan saldo!</div>');
+                    if ($this->FinanceModel->transferSaldo(1, 2, $jumlah)) {
+                        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Saldo berhasil dipindahkan dari Modal Kas ke arus kas!</div>');
+                    } else {
+                        $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Gagal memindahkan saldo!</div>');
+                    }
                 }
             } else {
                 if ($this->FinanceModel->tambahSaldo($id, $jumlah)) {

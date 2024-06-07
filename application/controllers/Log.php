@@ -210,4 +210,88 @@ class Log extends CI_Controller
         $dompdf->render();
         $dompdf->stream("transaction-annual-report.pdf", array('Attachment' => 0));
     }
+
+    public function accounting()
+    {
+        $withdraw = $this->WithdrawModel->getWithdraw_Log();
+        $sampah = $this->SampahModel->getDistribution_Log();
+        $deposit = $this->FinanceModel->getDeposit_Log();
+
+        // Menggabungkan data ke dalam satu array
+        $mergedData = array_merge($withdraw, $sampah, $deposit);
+
+        // Mengurutkan data berdasarkan kolom 'tanggal'
+        usort($mergedData, function ($a, $b) {
+            return strtotime($a['tanggal']) - strtotime($b['tanggal']);
+        });
+
+        $data = [
+            'judul' => "Log Transaksi Penyerahan Sampah",
+            'transactions' => $mergedData,
+            'user'  => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array()
+        ];
+
+        $this->load->view("templates/admin/header", $data);
+        $this->load->view("templates/admin/sidebar", $data);
+        $this->load->view("templates/admin/topbar", $data);
+        $this->load->view("admin/log/accounting", $data);
+        $this->load->view("templates/admin/footer", $data);
+    }
+
+    public function exportToExcel()
+    {
+        $withdraw = $this->WithdrawModel->getWithdraw_Log();
+        $sampah = $this->SampahModel->getDistribution_Log();
+        $deposit = $this->FinanceModel->getDeposit_Log();
+
+        // Menggabungkan data ke dalam satu array
+        $mergedData = array_merge($withdraw, $sampah, $deposit);
+
+        // Mengurutkan data berdasarkan kolom 'tanggal'
+        usort($mergedData, function ($a, $b) {
+            return strtotime($a['tanggal']) - strtotime($b['tanggal']);
+        });
+
+        $data = [
+            'transactions' => $mergedData,
+        ];
+
+        $this->load->view("admin/log/export_excel", $data);
+    }
+
+    public function pdf_accounting()
+    {
+        $withdraw = $this->WithdrawModel->getWithdraw_Log();
+        $sampah = $this->SampahModel->getDistribution_Log();
+        $deposit = $this->FinanceModel->getDeposit_Log();
+
+        $mergedData = array_merge($withdraw, $sampah, $deposit);
+
+        usort($mergedData, function ($a, $b) {
+            return strtotime($a['tanggal']) - strtotime($b['tanggal']);
+        });
+
+        $data = [
+            'transactions' => $mergedData,
+        ];
+
+        $sroot = $_SERVER['DOCUMENT_ROOT'];
+        include $sroot . "/recyloop/application/third_party/dompdf/autoload.inc.php";
+        $dompdf = new Dompdf\Dompdf();
+
+        $html = $this->load->view("admin/log/pdf_accounting", $data, TRUE);
+
+        $options = $dompdf->getOptions();
+        $options->set('isHtml5ParserEnabled', true);
+        $options->set('isRemoteEnabled', true);
+        $dompdf->setOptions($options);
+
+        $paper_size = 'A4';
+        $orientation = 'landscape';
+
+        $dompdf->set_paper($paper_size, $orientation);
+        $dompdf->load_html($html);
+        $dompdf->render();
+        $dompdf->stream("transaction-accountant.pdf", array('Attachment' => 0));
+    }
 }

@@ -53,29 +53,27 @@
                                 <th scope="col">Kode Member</th>
                                 <th scope="col">User</th>
                                 <th scope="col">Tanggal</th>
-                                <th scope="col">Nominal</th>
+                                <th scope="col" style="width: 15%;">Nominal</th>
                                 <th scope="col">Metode</th>
                                 <th scope="col">Status</th>
-                                <th scope="col">Aksi</th>
+                                <th scope="col" style="width: 20%;">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php foreach ($withdraw as $w) : ?>
-                                <?php if ($w['status'] === 'Belum diproses') : ?>
                                     <tr>
                                         <td><?= $w['id_member']; ?></td>
                                         <td><?= $w['username']; ?></td>
                                         <td><?= $w['tanggal']; ?></td>
-                                        <td>Rp. <?= number_format($w['nominal'], 0, ',', '.') ?></td>
+                                        <td style="color: red;"><i class="fa-solid fa-down-long"></i>&nbsp;&nbsp;Rp <b><?= number_format($w['nominal'], 0, ',', '.'); ?></b></td>
                                         <td><?= $w['metode']; ?></td>
                                         <td><?= $w['status']; ?></td>
                                         <td>
-                                                <a href="<?= base_url('withdraw/delete_withdraw/' . $w['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-trash"></i></a>
-                                                <a href="<?= base_url('withdraw/receipt/' . $w['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-file-pdf"></i></a>
-                                                <a href="<?= base_url('withdraw/info_withdraw/' . $w['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-info"></i></a>
+                                            <a href="<?= base_url('withdraw/delete_withdraw/' . $w['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-trash"></i></a>
+                                            <a href="<?= base_url('withdraw/receipt/' . $w['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-file-pdf"></i></a>
+                                            <a href="<?= base_url('withdraw/info_withdraw/' . $w['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-info"></i></a>
                                         </td>
                                     </tr>
-                                <?php endif; ?>
                             <?php endforeach; ?>
                         </tbody>
                     </table>

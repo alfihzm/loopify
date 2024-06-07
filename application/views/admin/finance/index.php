@@ -144,7 +144,7 @@
                                         <?= $m['metode'] ?>
                                     </td>
                                     <td>
-                                        <b><?= $m['jumlah'] ?></b>
+                                    <td style="color: lightgreen;"><i class="fa-solid fa-up-long"></i>&nbsp;&nbsp;Rp <b><?= number_format($m['jumlah'], 0, ',', '.'); ?></b></td>
                                     </td>
                                     <td>
                                         <?= $m['tanggal'] ?>
