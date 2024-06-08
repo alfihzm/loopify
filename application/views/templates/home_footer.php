@@ -48,7 +48,7 @@
                     </ul>
                 </div>
 
-                <div class="col-lg-3 col-sm-6 mb-4 mb-lg-0">
+                <!-- <div class="col-lg-3 col-sm-6 mb-4 mb-lg-0">
                     <h4 class="text-white">Support</h4>
                     <ul class="list-unstyled footer-icon">
                         <li class="list-item mb-2"><a href="blog.html" class="footer-link">Our Blog</a></li>
@@ -61,7 +61,7 @@
                         <li class="list-item"><a href="payment-options.html" class="footer-link">Payment Options</a>
                         </li>
                     </ul>
-                </div>
+                </div> -->
             </div>
 
         </div>

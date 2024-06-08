@@ -101,7 +101,7 @@
                     </ul>
                 </div>
 
-                <div class="col-lg-3 col-sm-6 mb-4 mb-lg-0">
+                <!-- <div class="col-lg-3 col-sm-6 mb-4 mb-lg-0">
                     <h4 class="text-white">Support</h4>
                     <ul class="list-unstyled footer-icon">
                         <li class="list-item mb-2"><a href="blog.html" class="footer-link">Our Blog</a></li>
@@ -114,7 +114,7 @@
                         <li class="list-item"><a href="payment-options.html" class="footer-link">Payment Options</a>
                         </li>
                     </ul>
-                </div>
+                </div> -->
             </div>
 
         </div>
@@ -124,7 +124,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-7">
                     <div class="d-md-flex align-items-center">
-                        <p class="mb-0 me-3 text-white">Payments We Accept :</p>
+                        <p class="mb-0 me-3 text-white">Penukaran dapat menggunakan :</p>
                         <div class="mt-3 mt-md-0">
                             <svg xmlns="http://www.w3.org/2000/svg" class="me-2 mb-2 mb-sm-0 payment-cards" width="80"
                                 height="50" enable-background="new 0 0 48 48" viewBox="0 0 48 48">
@@ -161,11 +161,11 @@
                 </div>
                 <div class="col-lg-5">
                     <ul class="list-unstyled d-sm-flex mb-0 justify-content-lg-end mt-3 mt-lg-0 ">
-                        <li class="list-item"><a href="terms-of-service.html"
-                                class="footer-link px-3 border-end border-white-2 op-8">Terms of Service</a></li>
-                        <li class="list-item"><a href="privacy-policy.html"
-                                class="footer-link px-3 border-end border-white-2 op-8">Privacy Policy</a></li>
-                        <li class="list-item"><a href="legal.html" class="footer-link px-3 op-8">Legal</a></li>
+                        <li class="list-item"><a href="#"
+                                class="footer-link px-3 border-end border-white-2 op-8">@hadianto.raihan</a></li>
+                        <li class="list-item"><a href="#"
+                                class="footer-link px-3 border-end border-white-2 op-8">@duckysss</a></li>
+                        <li class="list-item"><a href="#" class="footer-link px-3 op-8">@alfihzm</a></li>
                     </ul>
                 </div>
             </div>

@@ -136,6 +136,17 @@
 
                         <!-- Start::slide -->
                         <li class="slide has-sub">
+                            <a href="<?= base_url('member/coupon'); ?>" class="side-menu__item">
+                                <span class="side-menu__label">Kupon</span>
+                                <i class="fe fe-chevron-down side-menu__angle"></i>
+                            </a>
+                            <ul>
+                            </ul>
+                        </li>
+                        <!-- End::slide -->
+
+                        <!-- Start::slide -->
+                        <li class="slide has-sub">
                             <a href="<?= base_url('member/histori'); ?>" class="side-menu__item">
                                 <span class="side-menu__label">Histori</span>
                                 <i class="fe fe-chevron-down side-menu__angle"></i>

@@ -78,7 +78,7 @@
                          <td style="background: #FFF7DF; border: 1px solid black; font-size: 14px;">Rp. <?= number_format($w['nominal'], 0, ',', '.') ?></td>
                          <td style="background: #FFF7DF; border: 1px solid black; font-size: 14px;"><?= $w['metode']; ?></td>
                      </tr>
-                 <?php endif; ?>
+                <?php endif; ?>
              <?php endforeach; ?>
          </tbody>
          <div style="text-align: center;"><br>Data ini dimuat secara otomatis pada <b><?php echo strftime('%d %B %Y'); ?></b></div>
