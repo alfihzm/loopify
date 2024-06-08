@@ -216,11 +216,15 @@ class Member extends CI_Controller
         $cinderamata = $this->db->get_where('cinderamata', ['id' => 1])->row_array();
         $cinderamata2 = $this->db->get_where('cinderamata', ['id' => 2])->row_array();
         $user = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-        $koin = $user['koin'] >= 0;
-        $koin2 = $user['koin'] >= 0;
+
+        $koin = $user['koin'] >= 5000;
+        $koin2 = $user['koin'] >= 50000;
         $stok = $cinderamata['stok'];
         $stok2 = $cinderamata2['stok'];
 
+        // Ambil nilai kupon1 dan kupon2 dari tabel user
+        $kupon1_taken = $user['kupon1'] == 1;
+        $kupon2_taken = $user['kupon2'] == 1;
 
         $data = [
             'judul' => 'Kupon Cinderamata',
@@ -229,7 +233,9 @@ class Member extends CI_Controller
             'kupon1' => $koin,
             'kupon2' => $koin2,
             'stok' => $stok,
-            'stok2' => $stok2
+            'stok2' => $stok2,
+            'kupon1_taken' => $kupon1_taken,
+            'kupon2_taken' => $kupon2_taken
         ];
 
         $this->load->view('templates/member/header', $data);

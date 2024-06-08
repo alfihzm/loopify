@@ -46,34 +46,52 @@
         </div>
         <div class="row">
             <div class="justify-content-center d-flex">
-                <?php if ($kupon1) : ?>
-                    <div class="text-center mx-3">
-                        <img style="width: 300px;" src="<?= base_url('assets/images/cinderamata/5000.png') ?>">
+                <?php if (!$kupon1 && !$kupon2) : ?>
+                    <div class="text-center mx-3" style="margin-top: -30px;">
+                        <img style="width: 100px;" src="<?= base_url('assets/images/logo/sad-face.png') ?>">
                         <br>
-                        <small>Kode Unik: KUP5000-<?= $user['username'] ?> </small><br>
-                        Status:
-                        <?php if ($stok > 0) : ?>
-                            <span style="color: green;">Stok tersedia</span>
-                        <?php else : ?>
-                            <span style="color: red;">Stok tidak tersedia</span>
-                        <?php endif; ?>
+                        <small>Maaf, Anda belum memiliki koleksi kupon.</small>
                     </div>
-                <?php endif; ?>
-                <?php if ($kupon2) : ?>
-                    <div class="separator"></div>
-                    <div class="text-center mx-3">
-                        <img style="width: 300px;" src="<?= base_url('assets/images/cinderamata/50000.png') ?>">
-                        <br>
-                        <small>Kode Unik: KUP50000-<?= $user['username'] ?> </small><br>
-                        Status:
-                        <?php if ($stok2 > 0) : ?>
-                            <span style="color: green;">Stok tersedia</span>
-                        <?php else : ?>
-                            <span style="color: red;">Stok tidak tersedia</span>
-                        <?php endif; ?>
-                    </div>
-                <?php endif; ?>
+                <?php else : ?>
+                    <?php if ($kupon1) : ?>
+                        <div class="text-center mx-3">
+                            <img style="width: 300px;" src="<?= base_url('assets/images/cinderamata/5000.png') ?>">
+                            <br>
+                            <small>Kode Unik: KUP5000-<?= $user['username'] ?> </small><br>
+                            Status:
+                            <?php if ($kupon1_taken) : ?>
+                                <span style="color: blue;">Anda sudah mengambil cinderamata</span>
+                            <?php else : ?>
+                                <?php if ($stok > 0) : ?>
+                                    <span style="color: green;">Stok tersedia</span>
+                                <?php else : ?>
+                                    <span style="color: red;">Stok tidak tersedia</span>
+                                <?php endif; ?>
+                            <?php endif; ?>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if ($kupon2) : ?>
+                        <div class="separator"></div>
+                        <div class="text-center mx-3">
+                            <img style="width: 300px;" src="<?= base_url('assets/images/cinderamata/50000.png') ?>">
+                            <br>
+                            <small>Kode Unik: KUP50000-<?= $user['username'] ?> </small><br>
+                            Status:
+                            <?php if ($kupon2_taken) : ?>
+                                <span style="color: red;"><b>Anda sudah mengambil cinderamata</b></span>
+                            <?php else : ?>
+                                <?php if ($stok2 > 0) : ?>
+                                    <span style="color: green;">Stok tersedia</span>
+                                <?php else : ?>
+                                    <span style="color: red;">Stok tidak tersedia</span>
+                                <?php endif; ?>
+                            <?php endif; ?>
+                        </div>
+                    <?php endif; ?>
+
             </div>
+        <?php endif; ?>
         </div>
     </div>
 </section>

@@ -828,18 +828,73 @@ class Admin extends CI_Controller
 
     public function cinderamata()
     {
+        // Memuat data awal
         $data = [
             'judul' => 'Manajemen Cinderamata',
             'cinderamata' => $this->GiftModel->getGift(),
             'user'  => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
         ];
 
+        // Memeriksa apakah form telah disubmit
+        if ($this->input->server('REQUEST_METHOD') === 'POST') {
+            $id_member = $this->input->post('id_member');
+            $id_gift = $this->input->post('id_gift'); // Pastikan form mengirimkan id_gift
+
+            // Validasi ID Member
+            $member = $this->db->get_where('user', ['id_member' => $id_member])->row_array();
+            if (!$member) {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">ID Member tidak valid</div>');
+                redirect('admin/cinderamata');
+            }
+
+            // Validasi Stok Cinderamata
+            $gift = $this->db->get_where('cinderamata', ['id' => $id_gift])->row_array();
+            if (!$gift || $gift['stok'] <= 0) {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Cinderamata tidak tersedia atau stok habis</div>');
+                redirect('admin/cinderamata');
+            }
+
+            // Mengurangi stok cinderamata
+            $this->db->set('stok', 'stok-1', FALSE);
+            $this->db->where('id', $id_gift);
+            $this->db->update('cinderamata');
+
+            // Mengupdate kolom kupon pada tabel user
+            if ($id_gift == 1) {
+                $this->db->set('kupon1', 1);
+            } elseif ($id_gift == 2) {
+                $this->db->set('kupon2', 1);
+            }
+            $this->db->where('id_member', $id_member);
+            $this->db->update('user');
+
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Pengambilan kupon berhasil</div>');
+            redirect('admin/cinderamata');
+        }
+
+        // Memuat view
         $this->load->view("templates/admin/header", $data);
         $this->load->view("templates/admin/sidebar", $data);
         $this->load->view("templates/admin/topbar", $data);
         $this->load->view('admin/cinderamata/cinderamata', $data);
         $this->load->view("templates/admin/footer");
     }
+
+
+    public function give_gift($id)
+    {
+        $cinderamata = $this->db->get_where('cinderamata', ['id' => $id])->row_array();
+        if ($cinderamata && $cinderamata['stok'] > 0) {
+            $this->db->set('stok', 'stok-1', FALSE);
+            $this->db->where('id', $id);
+            $this->db->update('cinderamata');
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Stok cinderamata berhasil dikurangi!</div>');
+        } else {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Stok cinderamata tidak mencukupi!</div>');
+        }
+        redirect('admin/cinderamata');
+    }
+
 
     public function tambah_gift()
     {
