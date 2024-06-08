@@ -69,7 +69,7 @@
                  <h4 class="page-title"><?= $judul; ?></h4>
                  <ul class="breadcrumbs">
                      <li class="nav-home">
-                         <a href="#">
+                         <a href="member">
                              <i class="flaticon-home"></i>
                          </a>
                      </li>

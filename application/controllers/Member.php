@@ -210,4 +210,31 @@ class Member extends CI_Controller
             redirect('member/about#rev');
         }
     }
+
+    public function coupon()
+    {
+        $cinderamata = $this->db->get_where('cinderamata', ['id' => 1])->row_array();
+        $cinderamata2 = $this->db->get_where('cinderamata', ['id' => 2])->row_array();
+        $user = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+        $koin = $user['koin'] >= 0;
+        $koin2 = $user['koin'] >= 0;
+        $stok = $cinderamata['stok'];
+        $stok2 = $cinderamata2['stok'];
+
+
+        $data = [
+            'judul' => 'Kupon Cinderamata',
+            'user'  => $user,
+            'gift' => $this->GiftModel->getGift(),
+            'kupon1' => $koin,
+            'kupon2' => $koin2,
+            'stok' => $stok,
+            'stok2' => $stok2
+        ];
+
+        $this->load->view('templates/member/header', $data);
+        $this->load->view('templates/member/sidebar', $data);
+        $this->load->view('member/coupon/coupon', $data);
+        $this->load->view('templates/member/footer');
+    }
 }
