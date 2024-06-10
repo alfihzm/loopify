@@ -144,15 +144,20 @@
                         <div class="row align-items-center">
                             <div class="col-lg-7">
                                 <div class="">
-                                    <p class="mb-3 content-1 h5 text-white">Kenali <span class="tx-info-dark position-relative">Tentang Kami<span class="br-bottom-before"></span></span></p>
-                                    <p class="mb-4 content-2">Kami Berjuang dengan Penuh Semangat untuk Mendapatkan
-                                        Klien Kami Setiap Saat Mereka Layak. Kami Senang dan Bersyukur Anda ada di
-                                        sini... </p>
+                                    <span class="mb-3 content-1 h5 text-white" style="font-weight: bold;">Kenali
+                                        <span class="tx-info-dark position-relative">Recyloop<span class="br-bottom-before"></span></span>
+                                    </span>
+                                    <p class="mb-4 content-1"><span class="tx-info-dark position-relative"><b>R</b></span>ecycle <span class="tx-info-dark position-relative"><b>I</b></span>n <span class="tx-info-dark position-relative"><b>N</b></span>ature <span class="tx-info-dark position-relative"><b>O</b></span>ut </p>
+                                    <ul class="list-unstyled mb-0">
+                                        <li class="list-item mb-2"><a href="" class="footer-link text-white"><i class="bi bi-telephone me-3 tx-18 text-white"></i>0858 9272 6913</a></li>
+                                        <li class="list-item mb-2"><a href="" class="footer-link text-white"><i class="bi bi-envelope-plus me-3 tx-18 text-white"></i>recyloop@company.com</a></li>
+                                        <li class="list-item"><a href="" class="footer-link text-white"><i class="bi bi-geo-alt me-3 tx-18 text-white"></i>Tangerang Selatan, Banten </a></li>
+                                    </ul>
                                 </div>
                             </div>
                             <div class="col-lg-5">
                                 <div class="banner-bg about-image mt-5 mt-lg-0">
-                                    <img src="assets/images/png/26.png" class="reseller-img img-fluid" alt="img">
+                                    <img width="75%" src="<?= base_url('assets/') ?>images/logo/main-logo.png" class="reseller-img img-fluid" alt="img">
                                 </div>
                             </div>
                         </div>
@@ -161,7 +166,8 @@
             </section>
 
             <section class="section bg-pattern-1 bg-gray-100 overflow-hidden" id="about">
-                <img src="assets/images/patterns/9.png" alt="img" class="patterns-8 sub-pattern-1 filter-invert sub-pattern-1 op-1">
+                <img src="<?= base_url('assets/') ?>images/patterns/9.png" alt="img"
+                    class="patterns-8 sub-pattern-1 filter-invert sub-pattern-1 op-1">
                 <div class="container">
                     <div class="heading-section">
                         <div class="heading-subtitle"><span class="tx-primary tx-16 fw-semibold">Tentang</span></div>
@@ -170,29 +176,26 @@
                     </div>
                     <div class="row align-items-center">
                         <div class="col-lg-6 feature-client-bg">
-                            <h4 class="mb-3">
-                                <span>Apa Recana Kami ?</span>
+                            <?php foreach($company as $c) : ?>
+                            <h4 class="mb-2">
+                                <span><?= $c['judul']; ?></span>
                             </h4>
-                            <p class="mb-4">Kami bangga dengan sejarah kami, namun yang terpenting, kami bangga dengan
-                                kepuasan pelanggan kami. Setiap hari kami meningkatkan posisi situs pelanggan kami
-                                semakin tinggi.</p>
-                            <h4 class="mb-3">
-                                <span>Mengapa Memilih Kami ?</span>
-                            </h4>
-                            <p class="mb-4">Kami bangga dengan sejarah kami, namun yang terpenting, kami bangga dengan
-                                kepuasan pelanggan kami. Setiap hari kami meningkatkan posisi situs pelanggan kami
-                                semakin tinggi.</p>
+                            <p class="mb-3">
+                                <?= $c['deskripsi']; ?>
+                            </p>
+                            <?php endforeach ?>
                         </div>
                         <div class="col-lg-6 text-center">
-                            <img src="assets/images/png/63.png" class="img-fluid" alt="img" width="450">
+                            <img src="<?= base_url('assets/') ?>images/png/63.png" class="img-fluid" alt="img" width="450">
                         </div>
                     </div>
+                </div>
                 </div>
             </section>
 
             <section id="tech" class="section blob-bg-sec banner-pd-3">
-                <img src="assets/images/patterns/18.png" alt="img" class="patterns-5 transform-rotate-180 height-inherit bottom-0 op-1">
-                <img src="assets/images/patterns/18.png" alt="img" class="patterns-7 height-inherit bottom-0">
+                <img src="<?= base_url('assets/') ?>images/patterns/18.png" alt="img" class="patterns-5 transform-rotate-180 height-inherit bottom-0 op-1">
+                <img src="<?= base_url('assets/') ?>images/patterns/18.png" alt="img" class="patterns-7 height-inherit bottom-0">
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-lg-7">
@@ -207,7 +210,7 @@
                         </div>
                         <div class="col-lg-5">
                             <div class="text-center mt-5 mt-lg-0">
-                                <img src="assets/images/png/57.png" alt="img" class="img-fluid">
+                                <img src="<?= base_url('assets/') ?>images/png/57.png" alt="img" class="img-fluid">
                             </div>
                         </div>
                     </div>

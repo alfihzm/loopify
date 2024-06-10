@@ -340,7 +340,7 @@ class Admin extends CI_Controller
     // INFORMASI TABEL MEMBER
     public function member()
     {
-        $config['base_url'] = site_url('admin/log/accounting');
+        $config['base_url'] = site_url('admin/member/');
         $config['total_rows'] = $this->UserModel->countAllMember(3);
         $config['per_page'] = 5;
         $start = $this->uri->segment(4);
@@ -1017,6 +1017,39 @@ class Admin extends CI_Controller
             redirect('admin/cinderamata');
         } else {
             $this->session->set_flashdata('message', '<div style="color: #FFF; background: #1f283E;" class="alert alert-danger" role="alert">Cinderamata gagal dihapus!</div>');
+        }
+    }
+
+    public function tambah_stok($id)
+    {
+        $this->form_validation->set_rules('jumlah', 'Jumlah', 'required|integer', [
+            'required' => 'Masukkan jumlah dengan benar.',
+            'integer' => 'Jumlah harus dengan format integer'
+        ]);
+
+        if ($this->form_validation->run() == false) {
+            $data = [
+                'judul' => 'Tambah Stok',
+                'user'  => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
+                'cinderamata' => $this->GiftModel->getGiftById($id)
+            ];
+
+            $this->load->view("templates/admin/header", $data);
+            $this->load->view("templates/admin/sidebar", $data);
+            $this->load->view("templates/admin/topbar", $data);
+            $this->load->view('admin/cinderamata/tambah_stok', $data);
+            $this->load->view("templates/admin/footer");
+        } else {
+            $jumlahTambah = $this->input->post('jumlah');
+            $cinderamata = $this->GiftModel->getGiftById($id);
+            $jumlahBaru = $cinderamata['stok'] + $jumlahTambah;
+            $dataStock = [
+                'stok' => $jumlahBaru
+            ];
+            $this->GiftModel->editGift($id, $dataStock);
+
+            $this->session->set_flashdata('message', '<div style="color: #FFF; background: #1f283E;" class="alert alert-success" role="alert">Stok cinderamata berhasil ditambah.</div>');
+            redirect('admin/cinderamata');
         }
     }
 }
