@@ -27,7 +27,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="nama">Jumlah yang ingin ditambah</label>
-                                        <input type="number" class="form-control" id="jumlah" name="jumlah"
+                                        <input type="number" class="form-control" id="jumlah" name="jumlah" min="0"
                                             autocomplete="off">
                                         <?= form_error('jumlah', '<small class="text-danger">', '</small>'); ?>
                                     </div>

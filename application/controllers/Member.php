@@ -37,11 +37,24 @@ class Member extends CI_Controller
 
     public function about()
     {
+        $reviews = $this->MemberModel->getReview();
+        $formatted_reviews = [];
+
+        foreach ($reviews as $review) {
+            if (isset($review['tanggal'])) {
+                $date = new DateTime($review['tanggal']);
+                $review['formatted_date'] = $date->format('d M, Y');
+            } else {
+                $review['formatted_date'] = 'Date not available';
+            }
+            $formatted_reviews[] = $review;
+        }
+
         $data = [
             'judul' => 'Recyloop - Penukaran Limbah Daur Ulang',
             'user' => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
             'company' => $this->db->get('company')->result_array(),
-            'review' => $this->MemberModel->getReview()
+            'review' => $formatted_reviews,
         ];
 
         $this->load->view('templates/member/header', $data);
@@ -55,6 +68,7 @@ class Member extends CI_Controller
         $this->load->view('member/about/about-footer');
         $this->load->view('templates/member/footer');
     }
+
 
     public function profil()
     {
