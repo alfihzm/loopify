@@ -769,7 +769,101 @@ class Admin extends CI_Controller
             $ka = $this->input->post('ka');
             $kk = $this->input->post('kk');
 
-            if ($bp || $ka || $kk < 0) {
+            $total_bp = $this->db->get_where('sampah', ['id' => 1])->row()->total_sampah;
+            $total_ka = $this->db->get_where('sampah', ['id' => 2])->row()->total_sampah;
+            $total_kk = $this->db->get_where('sampah', ['id' => 3])->row()->total_sampah;
+
+            if ($bp > $total_bp || $ka > $total_ka || $kk > $total_kk) {
+                $this->session->set_flashdata('message', '<div style="color: #FFF; background: #1f283E;" class="alert alert-danger" role="alert">Sampah tidak dapat dikirim</div>');
+                redirect('admin/sampah/tambah_distribusi');
+            } else {
+                $harga_bp = $this->db->get_where('sampah', ['id' => 1])->row()->nilai_satuan;
+                $harga_ka = $this->db->get_where('sampah', ['id' => 2])->row()->nilai_satuan;
+                $harga_kk = $this->db->get_where('sampah', ['id' => 3])->row()->nilai_satuan;
+
+                $bp = $this->input->post('bp');
+                $ka = $this->input->post('ka');
+                $kk = $this->input->post('kk');
+
+                if ($bp || $ka || $kk < 0) {
+                    $nilai_tukar = ($bp * (float)$harga_bp) + ($ka * (float)$harga_ka) + ($kk * (float)$harga_kk);
+                    $this->db->query("UPDATE finance SET saldo = saldo + $nilai_tukar WHERE id = 1");
+                    $this->db->query("UPDATE sampah SET total_sampah = total_sampah - $bp WHERE id = 1");
+                    $this->db->query("UPDATE sampah SET total_sampah = total_sampah - $ka WHERE id = 2");
+                    $this->db->query("UPDATE sampah SET total_sampah = total_sampah - $kk WHERE id = 3");
+
+                    $dataDistribution = [
+                        'pengepul' => $this->input->post('pengepul'),
+                        'tanggal' => date('Y-m-d'),
+                        'bp' => $bp,
+                        'ka' => $ka,
+                        'kk' => $kk,
+                        'nilai_tukar' => ($bp * $harga_bp) + ($ka * $harga_ka) + ($kk * $harga_kk),
+                        'driver'  => $this->input->post('driver'),
+                        'total' => $bp + $ka + $kk,
+                    ];
+
+                    $this->load->model('SampahModel');
+                    $this->SampahModel->tambahDistribution($dataDistribution);
+
+                    $this->session->set_flashdata('message', '<div style="color: #FFF; background: #1f283E;" class="alert alert-success" role="alert">Pengiriman sampah telah terdata</div>');
+                    redirect('admin/sampah');
+                } else {
+                    $this->session->set_flashdata('message', '<div style="color: #FFF; background: #1f283E;" class="alert alert-success" role="alert">Penambahan sampah gagal.</div>');
+                    redirect('admin/sampah');
+                }
+            }
+        }
+    }
+
+
+    public function tambah_distribusi()
+    {
+        $this->form_validation->set_rules('pengepul', 'Pengepul', 'required', [
+            'required' => 'Nama pengepul wajib diisi!',
+        ]);
+        $this->form_validation->set_rules('driver', 'Driver', 'required', [
+            'required' => 'Nama pengendara wajib diisi!',
+        ]);
+
+        if ($this->form_validation->run() == false) {
+            $errors = validation_errors('<div style="color: #FFF; background: #1f283E;" class="alert alert-danger" role="alert">', '</div>');
+            $this->session->set_flashdata('message', $errors);
+
+            $harga_bp = $this->db->get_where('sampah', ['id' => 1])->row()->nilai_satuan;
+            $harga_ka = $this->db->get_where('sampah', ['id' => 2])->row()->nilai_satuan;
+            $harga_kk = $this->db->get_where('sampah', ['id' => 3])->row()->nilai_satuan;
+
+            $data = [
+                'judul' => 'Tambah Pengiriman',
+                'user'  => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
+                'harga_bp' => $harga_bp,
+                'harga_ka' => $harga_ka,
+                'harga_kk' => $harga_kk
+            ];
+
+            $this->load->view("templates/admin/header", $data);
+            $this->load->view("templates/admin/sidebar", $data);
+            $this->load->view("templates/admin/topbar", $data);
+            $this->load->view('admin/sampah/tambah_distribution', $data);
+            $this->load->view("templates/admin/footer");
+        } else {
+            $harga_bp = $this->db->get_where('sampah', ['id' => 1])->row()->nilai_satuan;
+            $harga_ka = $this->db->get_where('sampah', ['id' => 2])->row()->nilai_satuan;
+            $harga_kk = $this->db->get_where('sampah', ['id' => 3])->row()->nilai_satuan;
+
+            $bp = $this->input->post('bp');
+            $ka = $this->input->post('ka');
+            $kk = $this->input->post('kk');
+
+            $total_bp = $this->db->get_where('sampah', ['id' => 1])->row()->total_sampah;
+            $total_ka = $this->db->get_where('sampah', ['id' => 2])->row()->total_sampah;
+            $total_kk = $this->db->get_where('sampah', ['id' => 3])->row()->total_sampah;
+
+            if ($bp > $total_bp || $ka > $total_ka || $kk > $total_kk) {
+                $this->session->set_flashdata('message', '<div style="color: #FFF; background: #1f283E;" class="alert alert-danger" role="alert">Sampah tidak dapat dikirim</div>');
+                redirect('admin/sampah/tambah_distribusi');
+            } else {
                 $nilai_tukar = ($bp * (float)$harga_bp) + ($ka * (float)$harga_ka) + ($kk * (float)$harga_kk);
                 $this->db->query("UPDATE finance SET saldo = saldo + $nilai_tukar WHERE id = 1");
                 $this->db->query("UPDATE sampah SET total_sampah = total_sampah - $bp WHERE id = 1");
@@ -782,7 +876,7 @@ class Admin extends CI_Controller
                     'bp' => $bp,
                     'ka' => $ka,
                     'kk' => $kk,
-                    'nilai_tukar' => ($bp * $harga_bp) + ($ka * $harga_ka) + ($kk * $harga_kk),
+                    'nilai_tukar' => $nilai_tukar,
                     'driver'  => $this->input->post('driver'),
                     'total' => $bp + $ka + $kk,
                 ];
@@ -792,49 +886,9 @@ class Admin extends CI_Controller
 
                 $this->session->set_flashdata('message', '<div style="color: #FFF; background: #1f283E;" class="alert alert-success" role="alert">Pengiriman sampah telah terdata</div>');
                 redirect('admin/sampah');
-            } else {
-                $this->session->set_flashdata('message', '<div style="color: #FFF; background: #1f283E;" class="alert alert-success" role="alert">Penambahan sampah gagal.</div>');
-                redirect('admin/sampah');
             }
         }
     }
-
-    public function ubah_distribusi($id)
-    {
-        $data['distribution'] = $this->SampahModel->getDistributionById($id);
-
-        $data = array_merge($data, [
-            'user'  => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
-            'judul' => 'Ubah Pengiriman Sampah'
-        ]);
-
-        $this->form_validation->set_rules('driver', 'Driver', 'required', 'is_unique', [
-            'required' => 'Lah ya kalo ga dirubah ngapain klik submit bre',
-            'is_unique' => 'Lay ya kalo ga dirubah ngapain klik submit bre'
-        ]);
-
-        if ($this->form_validation->run() == false) {
-            $this->load->view("templates/admin/header", $data);
-            $this->load->view("templates/admin/sidebar", $data);
-            $this->load->view("templates/admin/topbar", $data);
-            $this->load->view('admin/sampah/ubah_distribution', $data);
-            $this->load->view("templates/admin/footer");
-        } else {
-            $dataDistribution = [
-                'pengepul' => $this->input->post('pengepul'),
-                'tanggal' =>  $this->input->post('tanggal'),
-                'driver'  => $this->input->post('driver'),
-            ];
-
-            $this->SampahModel->editDistribution($id, $dataDistribution);
-
-            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Informasi pengiriman telah diubah</div>');
-            redirect('admin/sampah');
-        }
-    }
-
-
-
 
     public function cinderamata()
     {
