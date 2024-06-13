@@ -2,12 +2,6 @@
 
 class UserModel extends CI_Model
 {
-    public function getMember()
-    {
-        $query = $this->db->get('member');
-        return $query->num_rows();
-    }
-
     public function getUserByRole($role_id)
     {
         $query = $this->db->get_where('user', ['role_id' => $role_id]);
@@ -24,6 +18,12 @@ class UserModel extends CI_Model
     public function getUser()
     {
         return $this->db->get('user')->result_array();
+    }
+
+    public function getUserById($id)
+    {
+        $query = $this->db->get_where(['user', ['id' => $id]]);
+        return $query->row_array();
     }
 
     public function getSomeUser($role_id, $limit, $start)
@@ -44,7 +44,7 @@ class UserModel extends CI_Model
         $this->db->where('role_id', $role_id);
         return $this->db->get('user')->num_rows();
     }
-    
+
     public function tambahUser($data)
     {
         return $this->db->insert('user', $data);

@@ -9,6 +9,7 @@ class Member extends CI_Controller
         $this->load->model('LimbahModel');
         $this->load->model('MemberModel');
         $this->load->model('ReviewModel');
+        $this->load->model('UserModel');
     }
 
     public function index()
@@ -33,6 +34,62 @@ class Member extends CI_Controller
         $this->load->view('member/index/member-section5', $data);
         $this->load->view('member/index/member-section6', $data);
         $this->load->view('templates/member/footer');
+    }
+    public function listMember()
+    {
+        $config['base_url'] = site_url('member/listMember/');
+        $config['total_rows'] = $this->UserModel->countAllMember(3);
+        $config['per_page'] = 5;
+        $start = $this->uri->segment(3);
+
+        $config['full_tag_open']  = '<nav><ul class="pagination">';
+        $config['full_tag_close'] = '</ul></nav>';
+
+        $config['first_link'] = 'First';
+        $config['first_tag_open'] = '<li class="page-item">';
+        $config['first_tag_close'] = '</li>';
+
+        $config['last_link'] = 'Last';
+        $config['last_tag_open'] = '<li class="page-item">';
+        $config['last_tag_close'] = '</li>';
+
+        $config['next_link'] = '&raquo;';
+        $config['next_tag_open'] = '<li class="page-item">';
+        $config['next_tag_close'] = '</li>';
+
+        $config['prev_link'] = '&laquo;';
+        $config['prev_tag_open'] = '<li class="page-item">';
+        $config['prev_tag_close'] = '</li>';
+
+        $config['cur_tag_open'] = '<li class="page-item active"><a class="page-link" href="#">';
+        $config['cur_tag_close'] = '</a></li>';
+
+        $config['num_tag_open'] = '<li class="page-item">';
+        $config['num_tag_close'] = '</li>';
+
+        $config['attributes'] = array('class' => 'page-link');
+
+        $data = [
+            'judul' => 'Informasi Member',
+            'user' => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
+            'members' => $this->UserModel->getSomeUser(3, $config['per_page'], $start),
+        ];
+
+        $userCheck = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+        if ($userCheck) {
+            if ($userCheck['role_id'] == 3) {
+                redirect('member');
+                return;
+            }
+        }
+
+        $this->pagination->initialize($config);
+
+        $this->load->view("templates/admin/header", $data);
+        $this->load->view("templates/admin/sidebar", $data);
+        $this->load->view("templates/admin/topbar", $data);
+        $this->load->view("member/informasi_member/index", $data);
+        $this->load->view("templates/admin/footer");
     }
 
     public function about()
