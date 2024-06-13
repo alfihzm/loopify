@@ -348,7 +348,7 @@ class Admin extends CI_Controller
         $config['base_url'] = site_url('admin/member/');
         $config['total_rows'] = $this->UserModel->countAllMember(3);
         $config['per_page'] = 5;
-        $start = $this->uri->segment(4);
+        $start = $this->uri->segment(3);
 
         $data = [
             'judul' => 'Manajemen Member',
