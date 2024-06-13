@@ -139,30 +139,35 @@ class Admin extends CI_Controller
         //     'integer'     => 'ID Staff hanya berisi angka'
         // ]);
         // Nama
-        $this->form_validation->set_rules('nama', 'Nama', 'required', [
-            'required'    => 'Masukkan Nama Lengkap dengan Benar',
+        $this->form_validation->set_rules('nama', 'Nama', 'required|alpha', [
+            'required'    => 'Masukkan nama lengkap dengan benar',
+            'alpha'       => 'Nama hanya berisikan huruf abjad.'
         ]);
         // Tanggal Lahir
         $this->form_validation->set_rules('lahir', 'Tanggal Lahir', 'required', [
-            'required'    => 'Masukkan Tanggal Lahir dengan Benar'
+            'required'    => 'Masukkan tanggal lahir dengan benar'
         ]);
         // Email
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email', [
-            'required'    => 'Masukkan Email dengan Benar!',
-            'valid_email' => 'Masukkan Email dengan Sesuai'
+            'required'    => 'Masukkan email dengan benar',
+            'valid_email' => 'Masukkan email sesuai dengan format email'
         ]);
         // Username
         $this->form_validation->set_rules('username', 'Username', 'required', [
-            'required'    => 'Masukkan Username Staff dengan Benar'
+            'required'    => 'Masukkan username staff dengan benar'
+        ]);
+        // password
+        $this->form_validation->set_rules('password', 'Password', 'required', [
+            'required'    => 'Masukkan password staff dengan benar'
         ]);
         // No_telp
         $this->form_validation->set_rules('no_telp', 'No. Telp', 'required|integer', [
-            'required'    => 'Masukkan No. Telp Staff dengan Benar',
-            'integer'     => 'Nomor Telepon hanya berisi angka'
+            'required'    => 'Masukkan no. telp staff dengan benar',
+            'integer'     => 'Nomor telepon hanya berisi angka'
         ]);
         // Alamat
         $this->form_validation->set_rules('alamat', 'Alamat', 'required', [
-            'required'    => 'Masukkan Alamat Staff dengan Benar',
+            'required'    => 'Masukkan alamat staff dengan benar',
         ]);
 
         if ($this->form_validation->run() == false) {
@@ -764,28 +769,33 @@ class Admin extends CI_Controller
             $ka = $this->input->post('ka');
             $kk = $this->input->post('kk');
 
-            $nilai_tukar = ($bp * (float)$harga_bp) + ($ka * (float)$harga_ka) + ($kk * (float)$harga_kk);
-            $this->db->query("UPDATE finance SET saldo = saldo + $nilai_tukar WHERE id = 1");
-            $this->db->query("UPDATE sampah SET total_sampah = total_sampah - $bp WHERE id = 1");
-            $this->db->query("UPDATE sampah SET total_sampah = total_sampah - $ka WHERE id = 2");
-            $this->db->query("UPDATE sampah SET total_sampah = total_sampah - $kk WHERE id = 3");
+            if ($bp || $ka || $kk < 0) {
+                $nilai_tukar = ($bp * (float)$harga_bp) + ($ka * (float)$harga_ka) + ($kk * (float)$harga_kk);
+                $this->db->query("UPDATE finance SET saldo = saldo + $nilai_tukar WHERE id = 1");
+                $this->db->query("UPDATE sampah SET total_sampah = total_sampah - $bp WHERE id = 1");
+                $this->db->query("UPDATE sampah SET total_sampah = total_sampah - $ka WHERE id = 2");
+                $this->db->query("UPDATE sampah SET total_sampah = total_sampah - $kk WHERE id = 3");
 
-            $dataDistribution = [
-                'pengepul' => $this->input->post('pengepul'),
-                'tanggal' => date('Y-m-d'),
-                'bp' => $bp,
-                'ka' => $ka,
-                'kk' => $kk,
-                'nilai_tukar' => ($bp * $harga_bp) + ($ka * $harga_ka) + ($kk * $harga_kk),
-                'driver'  => $this->input->post('driver'),
-                'total' => $bp + $ka + $kk,
-            ];
+                $dataDistribution = [
+                    'pengepul' => $this->input->post('pengepul'),
+                    'tanggal' => date('Y-m-d'),
+                    'bp' => $bp,
+                    'ka' => $ka,
+                    'kk' => $kk,
+                    'nilai_tukar' => ($bp * $harga_bp) + ($ka * $harga_ka) + ($kk * $harga_kk),
+                    'driver'  => $this->input->post('driver'),
+                    'total' => $bp + $ka + $kk,
+                ];
 
-            $this->load->model('SampahModel');
-            $this->SampahModel->tambahDistribution($dataDistribution);
+                $this->load->model('SampahModel');
+                $this->SampahModel->tambahDistribution($dataDistribution);
 
-            $this->session->set_flashdata('message', '<div style="color: #FFF; background: #1f283E;" class="alert alert-success" role="alert">Pengiriman sampah telah terdata</div>');
-            redirect('admin/sampah');
+                $this->session->set_flashdata('message', '<div style="color: #FFF; background: #1f283E;" class="alert alert-success" role="alert">Pengiriman sampah telah terdata</div>');
+                redirect('admin/sampah');
+            } else {
+                $this->session->set_flashdata('message', '<div style="color: #FFF; background: #1f283E;" class="alert alert-success" role="alert">Penambahan sampah gagal.</div>');
+                redirect('admin/sampah');
+            }
         }
     }
 
@@ -818,7 +828,7 @@ class Admin extends CI_Controller
 
             $this->SampahModel->editDistribution($id, $dataDistribution);
 
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Informasi pengiriman telah diubah</div>');
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Informasi pengiriman telah diubah</div>');
             redirect('admin/sampah');
         }
     }

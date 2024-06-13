@@ -79,26 +79,38 @@ class Auth extends CI_Controller
     public function register()
     {
         $this->form_validation->set_rules('nama', 'Nama', 'required', [
-            'required' => 'Masukkan nama dengan benar.'
+            'required' => 'Masukkan nama dengan benar.',
+            'alpha'    => 'Nama hanya berisikan huruf abjad'
         ]);
+
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[user.email]', [
             'required' => 'Masukkan email dengan benar.',
             'valid_email' => 'Masukkan format email dengan benar',
             'is_unique' => 'Email sudah dipakai, mohon gunakan email yang lain.'
         ]);
-        $this->form_validation->set_rules('username', 'Username', 'required|trim', [
+
+        $this->form_validation->set_rules('username', 'Username', 'required|trim|is_unique[user.username]', [
             'required' => 'Masukkan username dengan benar.',
+            'is_unique' => 'Username sudah dipakai, mohon gunakan username yang lain.'
         ]);
+
         $this->form_validation->set_rules('password', 'Password', 'required|trim|min_length[3]', [
             'required' => 'Masukkan password dengan benar.',
             'min_length' => 'Password terlalu pendek.'
         ]);
+
         $this->form_validation->set_rules('lahir', 'Tanggal Lahir', 'required|trim', [
-            'required'    => 'Masukkan Tanggal Lahir Member dengan Benar'
+            'required'    => 'Masukkan tanggal lahir anda dengan benar'
         ]);
-        $this->form_validation->set_rules('notelp', 'No. Telp', 'required|trim|integer', [
+
+        $this->form_validation->set_rules('notelp', 'No. Telp', 'required|trim|integer|is_unique[user.no_telp]', [
             'required'    => 'Masukkan No. Telp Member dengan Benar',
-            'integer'     => 'Nomor Telepon hanya berisi angka'
+            'integer'     => 'Nomor Telepon hanya berisi angka',
+            'is_unique'   => 'No. telp sudah dipakai, mohon gunakan no. telp yang lain.'
+        ]);
+
+        $this->form_validation->set_rules('alamat', 'Alamat', 'required', [
+            'required' => 'Masukkan alamat dengan benar.'
         ]);
 
         if ($this->form_validation->run() == FALSE) {
