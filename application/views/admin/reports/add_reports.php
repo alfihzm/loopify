@@ -31,7 +31,7 @@
                  <div class="row">
                      <div class="col">
                          <?= $this->session->flashdata('message') ?>
-                         <form action="<?= base_url('reports/add_reports') ?>" method="POST">
+                         <form action="<?= base_url('reports') ?>" method="POST">
                              <div class="form-group row">
                                  <label for="name" class="col-sm-3 col-form-label">ID Akun</label>
                                  <div class="col-sm-12">

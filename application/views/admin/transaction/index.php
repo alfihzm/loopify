@@ -140,7 +140,6 @@
                                 <select class="form-control" id="lokasi" name="lokasi" style="background: #01E7f4; color: #1A2035;">
                                     <option value="" disabled selected>Pilih lokasi</option>
                                     <option value="Tenant Serpong">Tenant Serpong</option>
-                                    <option value="Tenant Serang">Tenant Serang</option>
                                 </select>
                             </div>
                             <div class="form-group">
