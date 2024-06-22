@@ -265,7 +265,9 @@ class Admin extends CI_Controller
         } else {
             $userData = [
                 'nama' => htmlspecialchars($this->input->post('nama')),
-                'email' => htmlspecialchars($this->input->post('email'))
+                'email' => htmlspecialchars($this->input->post('email')),
+                'no_telp' => htmlspecialchars($this->input->post('no_telp')),
+                'alamat' => htmlspecialchars($this->input->post('alamat')),
             ];
 
             $this->UserModel->editUser($id, $userData);
@@ -506,7 +508,9 @@ class Admin extends CI_Controller
         } else {
             $userData = [
                 'nama' => htmlspecialchars($this->input->post('nama')),
-                'email' => htmlspecialchars($this->input->post('email'))
+                'email' => htmlspecialchars($this->input->post('email')),
+                'no_telp' => htmlspecialchars($this->input->post('no_telp')),
+                'alamat' => htmlspecialchars($this->input->post('alamat')),
             ];
 
             $this->UserModel->editUser($id, $userData);

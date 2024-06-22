@@ -1,3 +1,15 @@
+<style>
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+</style>
+
 <div class="main-panel" style="font-family: quicksand;">
     <div class="content">
         <div class="page-inner">
@@ -68,7 +80,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="no_telp">No. Telepon</label>
-                                        <input type="text" class="form-control" id="no_telp" name="no_telp"
+                                        <input type="number" class="form-control" id="no_telp" name="no_telp"
                                             value="<?= $user['no_telp'] ?>" autocomplete="off">
                                         <?= form_error('no_telp', '<small class="text-danger">', '</small>'); ?>
                                     </div>
