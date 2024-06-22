@@ -10,7 +10,12 @@
                             <div class="row">
                                 <div class="col-sm-12 mb-2">
                                     <div class="form-floating">
-                                        <textarea class="form-control" id="alasan" name="alasan" style="color: #FFF; height: 200px !important; resize: none;"></textarea>
+                                        <label for="alasan">Alasan</label>
+                                        <select class="form-control" id="alasan" name="alasan" style="color: #FFF; padding: 10px;">
+                                            <option value="Akun tidak aktif">Akun tidak aktif</option>
+                                            <option value="Akun terdeteksi spam">Akun terdeteksi spam</option>
+                                            <option value="Akun dalam aktivitas mencurigakan">Akun dalam aktivitas mencurigakan</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>

@@ -127,12 +127,12 @@
              <h3 style="font-weight: bold;">Statistik Keanggotaan</h3>
              <div class="row">
                  <div class="col-lg-3">
-                     <div class="card border border-dark" style="height: 250px; margin-bottom: 20px;">
+                     <div class="card border border-dark" style="height: 250px; margin-bottom: 20px; color: aquamarine;">
                          <div class="card-header"
                              style="background-color: #fff; color: black; text-align: center; border-top-left-radius: 10px; border-top-right-radius: 10px;">
                              Jumlah Member
                          </div>
-                         <i class="fas fa-solid fa-user"
+                         <i class="fas fa-solid fa-users"
                              style="margin-top: 50px; text-align: center; font-size: 2.5em;"></i>
                          <h4 style="margin-top: 20px; text-align: center; font-size: 1.5em;">
                              <?= $jumlah_partisipan ?> Partisipan
@@ -140,12 +140,12 @@
                      </div>
                  </div>
                  <div class="col-lg-3">
-                     <div class=" card border border-dark" style=" height: 250px; margin-bottom: 20px;">
+                     <div class=" card border border-dark" style=" height: 250px; margin-bottom: 20px; color: springgreen;">
                          <div class="card-header"
                              style="background-color: #fff; color: black; text-align: center; border-top-left-radius: 10px; border-top-right-radius: 10px;">
                              Jumlah Staff
                          </div>
-                         <i class="fas fa-solid fa-user"
+                         <i class="fas fa-solid fa-users"
                              style="margin-top: 50px; text-align: center; font-size: 2.5em;"></i>
                          <h4 style="margin-top: 20px; text-align: center; font-size: 1.5em;">
                              <?= $jumlah_pegawai ?> Sukarelawan
@@ -153,12 +153,12 @@
                      </div>
                  </div>
                  <div class="col-lg-3">
-                     <div class=" card border border-dark" style=" height: 250px; margin-bottom: 20px;">
+                     <div class=" card border border-dark" style=" height: 250px; margin-bottom: 20px; color:springgreen;">
                          <div class="card-header"
                              style="background-color: #fff; color: black; text-align: center; border-top-left-radius: 10px; border-top-right-radius: 10px;">
                              Jumlah Admin
                          </div>
-                         <i class="fas fa-solid fa-user"
+                         <i class="fas fa-solid fa-users"
                              style="margin-top: 50px; text-align: center; font-size: 2.5em;"></i>
                          <h4 style="margin-top: 20px; text-align: center; font-size: 1.5em;">
                              <?= $jumlah_admin ?> Administrator
@@ -166,12 +166,12 @@
                      </div>
                  </div>
                  <div class="col-lg-3">
-                     <div class=" card border border-dark" style=" height: 250px; margin-bottom: 20px;">
+                     <div class=" card border border-dark" style=" height: 250px; margin-bottom: 20px; color: crimson;">
                          <div class="card-header"
                              style="background-color: #fff; color: black; text-align: center; border-top-left-radius: 10px; border-top-right-radius: 10px;">
                              Jumlah Akun terblokir
                          </div>
-                         <i class="fas fa-solid fa-user"
+                         <i class="fas fa-solid fa-users"
                              style="margin-top: 50px; text-align: center; font-size: 2.5em;"></i>
                          <h4 style="margin-top: 20px; text-align: center; font-size: 1.5em;">
                              <?= $jumlah_terblokir ?> Akun

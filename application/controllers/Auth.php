@@ -43,6 +43,7 @@ class Auth extends CI_Controller
         $username = $this->input->post('username');
         $password = $this->input->post('password');
 
+        // Tambahkan kolom 'alasan_ban' dalam query
         $user = $this->db->get_where('user', ['username' => $username])->row_array();
 
         if ($user) {
@@ -67,7 +68,9 @@ class Auth extends CI_Controller
                     redirect('auth');
                 }
             } else {
-                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Akun anda terkena blokir.</div>');
+                // Ambil nilai alasan_ban
+                $alasan_ban = $user['alasan_ban'];
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Akun anda terkena blokir dengan alasan: <b>' . $alasan_ban . '.</b><br> Silakan hubungi Staff kami!</div>');
                 redirect('auth');
             }
         } else {
@@ -75,6 +78,7 @@ class Auth extends CI_Controller
             redirect('auth');
         }
     }
+
 
     public function register()
     {

@@ -44,10 +44,10 @@
                                         <input style="background: #01E7f4; color: #1A2035; font-weight: 600;" type="number" class="form-control" id="jumlah_kardus" name="jumlah_kardus" placeholder="Ketik jumlah kaleng yang ditukar" min="0" value="<?= $transaction['jumlah_kardus']; ?>">
                                     </div>
                                     <hr style="border-color: #fff;">
-                                    <div class="form-group">
+                                    <!-- <div class="form-group">
                                         <label for="idstaff">Total Koin</label>
                                         <input type="text" class="form-control" id="totalkoin" name="totalkoin" autocomplete="off" value="<?= $transaction['totalkoin'] ?>">
-                                    </div>
+                                    </div> -->
                                     <div class="form-group">
                                         <label for="lokasi">Lokasi</label>
                                         <select class="form-control" id="lokasi" name="lokasi">

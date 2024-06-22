@@ -82,7 +82,7 @@
                                         <td style="color: white;"><?= $t['jumlah_kardus']; ?></td>
                                         <td><?= $t['lokasi']; ?></td>
                                         <td><?= $t['status']; ?></td>
-                                        <td>
+                                        <td style="width: 100%;">
                                             <div style="display: inline-block; text-align: center; margin-bottom: 2px;">
                                                 <a href="<?= base_url('transaction/edit_transaction/'   . $t['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-pencil"></i></a>
                                                 <a href="<?= base_url('transaction/delete_transaksi/' . $t['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-trash"></i></a>

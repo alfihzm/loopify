@@ -76,7 +76,7 @@
                                     <td><?= $w['metode']; ?></td>
                                     <td><?= $w['status']; ?></td>
                                     <td>
-                                        <a href="<?= base_url('withdraw/delete_withdraw/' . $w['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-trash"></i></a>
+                                        <!-- <a href="<?= base_url('withdraw/delete_withdraw/' . $w['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-trash"></i></a> -->
                                         <a href="<?= base_url('withdraw/receipt/' . $w['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-file-pdf"></i></a>
                                         <a href="<?= base_url('withdraw/info_withdraw/' . $w['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-info"></i></a>
                                     </td>
@@ -123,7 +123,6 @@
                                 <select class="form-control" id="metode" name="metode" style="background: #01E7f4; color: #1A2035;">
                                     <option value="" disabled selected>Pilih Metode</option>
                                     <option value="Tunai">Tunai</option>
-                                    <option value="Transfer Bank">Transfer Bank</option>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -131,7 +130,6 @@
                                 <select class="form-control" id="lokasi" name="lokasi" style="background: #01E7f4; color: #1A2035;">
                                     <option value="" disabled selected>Pilih lokasi</option>
                                     <option value="Tenant Serpong">Tenant Serpong</option>
-                                    <option value="Tenant Serang">Tenant Serang</option>
                                 </select>
                             </div>
                             <div class="form-group">

@@ -5,7 +5,15 @@
                 <h4 class="page-title"><?= $judul; ?></h4>
                 <ul class="breadcrumbs">
                     <li class="nav-home">
-                        <a href="#">
+                        <a href="member">
+                            <i class="fas fa-solid fa-home"></i>
+                        </a>
+                    </li>
+                    <li class="separator">
+                        <i class="flaticon-right-arrow"></i>
+                    </li>
+                    <li class="nav-home">
+                        <a href="perusahaan">
                             <i class="fa-solid fa-id-badge"></i>
                         </a>
                     </li>
@@ -44,19 +52,15 @@
                         <?php
                         $i = 1;
                         foreach ($infoPerusahaan as $ip) : ?>
-                        <tr>
-                            <th scope="row"><?= $i++; ?></th>
-                            <td><?= $ip['judul']; ?></td>
-                            <td><?= $ip['deskripsi']; ?></td>
-                            <td>
-                                <a href="<?= base_url('perusahaan/ubahInformasi/' . $ip['id']); ?>"
-                                    class="btn btn-success btn-sm"><i style="color: #000;"
-                                        class="fa-solid fa-pencil"></i></a>
-                                <a href="<?= base_url('perusahaan/hapusInformasi/' . $ip['id']); ?>"
-                                    class="btn btn-danger btn-sm"><i style="color: #000;"
-                                        class="fa-solid fa-trash"></i></a>
-                            </td>
-                        </tr>
+                            <tr>
+                                <th scope="row"><?= $i++; ?></th>
+                                <td><?= $ip['judul']; ?></td>
+                                <td><?= $ip['deskripsi']; ?></td>
+                                <td>
+                                    <a href="<?= base_url('perusahaan/ubahInformasi/' . $ip['id']); ?>" class="btn btn-success btn-sm"><i style="color: #000;" class="fa-solid fa-pencil"></i></a>
+                                    <a href="<?= base_url('perusahaan/hapusInformasi/' . $ip['id']); ?>" class="btn btn-danger btn-sm"><i style="color: #000;" class="fa-solid fa-trash"></i></a>
+                                </td>
+                            </tr>
                         <?php endforeach; ?>
                     </tbody>
                 </table>
@@ -65,31 +69,31 @@
     </div>
 
     <script type="text/javascript">
-    window.setTimeout(function() {
-        $(".col-lg-6").fadeTo(500, 0).slideUp(500, function() {
-            $(this).remove();
-        });
-    }, 2000);
+        window.setTimeout(function() {
+            $(".col-lg-6").fadeTo(500, 0).slideUp(500, function() {
+                $(this).remove();
+            });
+        }, 2000);
     </script>
     <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        let searchInput = document.getElementById("searchInput");
-        searchInput.addEventListener("input", function() {
-            let filter = searchInput.value.toLowerCase();
+        document.addEventListener("DOMContentLoaded", function() {
+            let searchInput = document.getElementById("searchInput");
+            searchInput.addEventListener("input", function() {
+                let filter = searchInput.value.toLowerCase();
 
-            let rows = document.querySelectorAll("tbody tr");
+                let rows = document.querySelectorAll("tbody tr");
 
-            rows.forEach(function(row) {
-                let nameColumn = row.querySelector(
-                    "td:nth-child(2)");
-                let name = nameColumn.textContent.toLowerCase();
+                rows.forEach(function(row) {
+                    let nameColumn = row.querySelector(
+                        "td:nth-child(2)");
+                    let name = nameColumn.textContent.toLowerCase();
 
-                if (name.includes(filter)) {
-                    row.style.display = "";
-                } else {
-                    row.style.display = "none";
-                }
+                    if (name.includes(filter)) {
+                        row.style.display = "";
+                    } else {
+                        row.style.display = "none";
+                    }
+                });
             });
         });
-    });
     </script>

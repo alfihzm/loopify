@@ -35,7 +35,7 @@
                             <div class="text-center" style="margin-bottom: -20px; margin-top: 5px;">
                                 <h1 style="color: #FFF;" class="h4 mb-4"> <?= $judul; ?> </h1>
                             </div>
-                            <div class="flash_data">
+                            <div class="flash_data" style="margin-top: 30px;">
                                 <?= $this->session->flashdata('message'); ?>
                             </div>
                             <form class="user" method="post" action="<?= base_url('auth'); ?>" autocomplete="off">

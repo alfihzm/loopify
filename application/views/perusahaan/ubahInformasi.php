@@ -5,14 +5,23 @@
                 <h4 class="page-title"><?= $judul; ?></h4>
                 <ul class="breadcrumbs">
                     <li class="nav-home">
-                        <a href="#">
-                            <i class="fa-solid fa-paste"></i> </a>
+                        <a href="/recyloop/member">
+                            <i class="fas fa-solid fa-home"></i>
+                        </a>
+                    </li>
+                    <li class="separator">
+                        <i class="flaticon-right-arrow"></i>
+                    </li>
+                    <li class="nav-home">
+                        <a href="/recyloop/perusahaan">
+                            <i class="fa-solid fa-id-badge"></i>
+                        </a>
                     </li>
                     <li class="separator">
                         <i class="flaticon-right-arrow"></i>
                     </li>
                     <li class="nav-item">
-                        <a href="#">Ubah Informasi Perusahaan</a>
+                        <a href="#">Informasi Perusahaan</a>
                     </li>
                     <li class="separator">
                         <i class="flaticon-right-arrow"></i>
@@ -35,16 +44,14 @@
                             <div class="form-group row">
                                 <label for="judul" class="col-sm-3 col-form-label"><b>Judul</b></label>
                                 <div class="col-sm-12">
-                                    <input type="text" class="form-control" id="judul" name="judul"
-                                        value="<?= $perusahaan['judul']; ?>">
+                                    <input type="text" class="form-control" id="judul" name="judul" value="<?= $perusahaan['judul']; ?>">
                                     <?= form_error('judul', '<small class="text-danger">', '</small'); ?>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="myTextarea" class="col-sm-3 col-form-label"><b>Keterangan</b></label>
                                 <div class="col-sm-12">
-                                    <textarea class="form-control" id="myTextarea"
-                                        name="deskripsi"><?= $perusahaan['deskripsi']; ?></textarea>
+                                    <textarea class="form-control" id="myTextarea" name="deskripsi"><?= $perusahaan['deskripsi']; ?></textarea>
                                     <?= form_error('deskripsi', '<small class="text-danger">', '</small'); ?>
                                 </div>
                             </div>
