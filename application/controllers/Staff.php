@@ -14,6 +14,32 @@ class Staff extends CI_Controller
             'user' => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
         ];
 
+        $data['menu'] = $this->db->get('announcement')->result_array();
+        $data['stat'] = $this->db->get('user')->result_array();
+        $data['withdraw'] = $this->db->get('withdraw')->result_array();
+        $data['sampah'] = $this->db->get('sampah')->result_array();
+        $this->db->where('id_member IS NOT NULL', null, false);
+        $data['jumlah_partisipan'] = $this->db->count_all_results('user');
+        $this->db->where('id_staff IS NOT NULL', null, false);
+        $data['jumlah_pegawai'] = $this->db->count_all_results('user');
+        $this->db->where('id_admin IS NOT NULL', null, false);
+        $data['jumlah_admin'] = $this->db->count_all_results('user');
+        $this->db->where('is_active', 0);
+        $data['jumlah_terblokir'] = $this->db->count_all_results('user');
+        $data['finance'] = $this->db->select('id, rekening, saldo')->where_in('id', [1, 2])->get('finance')->result_array();
+
+        $sampah_data = $this->db->get('sampah')->result_array();
+        $jenis_sampah = [];
+        $total_sampah = [];
+
+        foreach ($sampah_data as $sampah) {
+            $jenis_sampah[] = $sampah['jenis_sampah'];
+            $total_sampah[] = $sampah['total_sampah'];
+        }
+
+        $data['jenis_sampah'] = json_encode($jenis_sampah);
+        $data['total_sampah'] = json_encode($total_sampah);
+
 
         $this->load->view("templates/admin/header", $data);
         $this->load->view("templates/admin/sidebar", $data);
