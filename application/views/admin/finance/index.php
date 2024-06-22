@@ -278,73 +278,74 @@
                             <option value="" disabled selected>Pilih sumber</option>
                             <option value="Donatur">Donatur</option>
                             <option value="Sponsor">Sponsor</option>
-                            <?= form_error('sumber', '<small class="text-danger">', '</small>') ?>
                         </select>
+                        <?= form_error('sumber', '<small class="text-danger">', '</small>') ?>
                     </div>
                 </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Tambah</button>
+                </div>
+            </form>
         </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Tambah</button>
-        </div>
-        </form>
     </div>
+</div>
 
-
-    <!-- Tambah arus kas berdasarkan nominal input 2 -->
-    <div class="modal fade" id="tambahSaldoArusKas" tabindex="-1" aria-labelledby="tambahSaldoArusKasLabel" aria-hidden="true">
-        <div class="modal-dialog" style="background-color: #1A2035; border-radius: 10px;">
-            <div class="modal-content" style="background-color: #1A2035;">
-                <div class="modal-header">
-                    <h2 class="modal-title text-white" id="tambahSaldoArusKasLabel"><b>Tambah Saldo</b></h2>
-                    <button type="button" class="btn btn-close btn-small btn-cross" data-dismiss="modal" aria-label="Close">
-                        X
-                    </button>
-                </div>
-                <form action="<?= base_url('finance/tambahSaldo') ?>" method="post" enctype="multipart/form-data">
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label style="color: #01E7f4 !important;" for="jumlah">Jumlah Saldo Tambahan</label>
-                            <input type="hidden" name="id" value="2">
-                            <input style="background: #01E7f4; color: #1A2035; font-weight: 600;" type="number" class="form-control" id="jumlah" name="jumlah" placeholder="Masukkan jumlah saldo tambahan">
-                            <?= form_error('jumlah', '<small class="text-danger">', '</small>') ?>
-                        </div>
-                        <div class="form-group">
-                            <label style="color: #01E7f4 !important;" for="image">Upload Bukti Deposit</label>
-                            <input type="file" class="form-control" id="image" name="image" style="background: #01E7f4; color: #1a2035;">
-                        </div>
-                        <div class="form-group">
-                            <label style="color: #01E7f4 !important;" for="tanggal">Tanggal Deposit</label>
-                            <input type="date" class="form-control" id="tanggal" name="tanggal" style="background: #01E7f4; color: #1a2035;">
-                        </div>
-                        <div class="form-group">
-                            <label style="color: #01E7f4 !important;" for="image">Pilih Metode Deposit</label>
-                            <select class="form-control" id="metode" name="metode" style="background: #01E7f4; color: #1A2035;">
-                                <option value="" disabled selected>Pilih metode</option>
-                                <option value="Tunai">Tunai</option>
-                                <option value="Transfer Bank">Transfer Bank</option>
-                            </select>
-                            <?= form_error('metode', '<small class="text-danger">', '</small>') ?>
-                        </div>
-                        <div class="form-group">
-                            <label style="color: #01E7f4 !important;" for="image">Pilih Sumber Deposit</label>
-                            <select class="form-control" id="sumber" name="sumber" style="background: #01E7f4; color: #1A2035;">
-                                <option value="" disabled selected>Pilih sumber</option>
-                                <option value="Donatur">Donatur</option>
-                                <option value="Sponsor">Sponsor</option>
-                                <option value="Modal Kas">Modal Kas</option>
-                                <?= form_error('sumber', '<small class="text-danger">', '</small>') ?>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Tambah</button>
-                    </div>
-                </form>
+<!-- Tambah arus kas berdasarkan nominal input 2 -->
+<div class="modal fade" id="tambahSaldoArusKas" tabindex="-1" aria-labelledby="tambahSaldoArusKasLabel" aria-hidden="true">
+    <div class="modal-dialog" style="background-color: #1A2035; border-radius: 10px;">
+        <div class="modal-content" style="background-color: #1A2035;">
+            <div class="modal-header">
+                <h2 class="modal-title text-white" id="tambahSaldoArusKasLabel"><b>Tambah Saldo</b></h2>
+                <button type="button" class="btn btn-close btn-small btn-cross" data-dismiss="modal" aria-label="Close">
+                    X
+                </button>
             </div>
+            <form action="<?= base_url('finance/tambahSaldo') ?>" method="post" enctype="multipart/form-data">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label style="color: #01E7f4 !important;" for="jumlah">Jumlah Saldo Tambahan</label>
+                        <input type="hidden" name="id" value="2">
+                        <input style="background: #01E7f4; color: #1A2035; font-weight: 600;" type="number" class="form-control" id="jumlah" name="jumlah" placeholder="Masukkan jumlah saldo tambahan">
+                        <?= form_error('jumlah', '<small class="text-danger">', '</small>') ?>
+                    </div>
+                    <div class="form-group">
+                        <label style="color: #01E7f4 !important;" for="image">Upload Bukti Deposit</label>
+                        <input type="file" class="form-control" id="image" name="image" style="background: #01E7f4; color: #1a2035;">
+                    </div>
+                    <div class="form-group">
+                        <label style="color: #01E7f4 !important;" for="tanggal">Tanggal Deposit</label>
+                        <input type="date" class="form-control" id="tanggal" name="tanggal" style="background: #01E7f4; color: #1a2035;">
+                    </div>
+                    <div class="form-group">
+                        <label style="color: #01E7f4 !important;" for="image">Pilih Metode Deposit</label>
+                        <select class="form-control" id="metode" name="metode" style="background: #01E7f4; color: #1A2035;">
+                            <option value="" disabled selected>Pilih metode</option>
+                            <option value="Tunai">Tunai</option>
+                            <option value="Transfer Bank">Transfer Bank</option>
+                        </select>
+                        <?= form_error('metode', '<small class="text-danger">', '</small>') ?>
+                    </div>
+                    <div class="form-group">
+                        <label style="color: #01E7f4 !important;" for="image">Pilih Sumber Deposit</label>
+                        <select class="form-control" id="sumber" name="sumber" style="background: #01E7f4; color: #1A2035;">
+                            <option value="" disabled selected>Pilih sumber</option>
+                            <option value="Donatur">Donatur</option>
+                            <option value="Sponsor">Sponsor</option>
+                            <option value="Modal Kas">Modal Kas</option>
+                        </select>
+                        <?= form_error('sumber', '<small class="text-danger">', '</small>') ?>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Tambah</button>
+                </div>
+            </form>
         </div>
     </div>
+</div>
+
 
     <script type="text/javascript">
         window.setTimeout(function() {
