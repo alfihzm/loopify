@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 04, 2024 at 04:10 AM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- Generation Time: Jun 22, 2024 at 10:38 AM
+-- Server version: 10.4.10-MariaDB
+-- PHP Version: 7.1.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -32,7 +33,7 @@ CREATE TABLE `announcement` (
   `judul` varchar(128) NOT NULL,
   `deskripsi` varchar(512) NOT NULL,
   `tanggal` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `announcement`
@@ -52,16 +53,17 @@ CREATE TABLE `cinderamata` (
   `nama_gift` varchar(64) NOT NULL,
   `harga` int(64) NOT NULL,
   `photo` varchar(128) DEFAULT NULL,
-  `deskripsi` varchar(128) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  `deskripsi` varchar(128) NOT NULL,
+  `stok` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `cinderamata`
 --
 
-INSERT INTO `cinderamata` (`id`, `nama_gift`, `harga`, `photo`, `deskripsi`) VALUES
-(1, 'Tote Bag', 500, 'ToteBag_Ramah_Lingkungan.jpg', 'Tote Bag serbaguna ramah lingkungan, membawa perlengkapan anda saat bepergian. Tersedia dengan berbagai ukuran.'),
-(6, 'Gantungan Kunci', 150, 'Ganci_Ramah_Lingkungan.jpg', 'Gantungan Kunci ramah lingkungan, cocok dibawa ke mana pun anda pergi.');
+INSERT INTO `cinderamata` (`id`, `nama_gift`, `harga`, `photo`, `deskripsi`, `stok`) VALUES
+(1, 'Tote Bag', 500, 'ToteBag_Ramah_Lingkungan.jpg', 'Tote Bag serbaguna ramah lingkungan, membawa perlengkapan anda saat bepergian. ', 13),
+(2, 'Gantungan Kunci', 150, 'Ganci_Ramah_Lingkungan.jpg', 'Gantungan Kunci ramah lingkungan, cocok dibawa ke mana pun anda pergi.', 75);
 
 -- --------------------------------------------------------
 
@@ -77,7 +79,7 @@ CREATE TABLE `company` (
   `lokasi` varchar(256) NOT NULL,
   `judul` varchar(128) NOT NULL,
   `deskripsi` varchar(512) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `company`
@@ -97,21 +99,55 @@ CREATE TABLE `deposit` (
   `id` int(11) NOT NULL,
   `id_finance` int(11) NOT NULL,
   `metode` varchar(11) NOT NULL,
+  `jumlah` int(64) NOT NULL,
   `tanggal` date DEFAULT NULL,
   `sumber` varchar(32) NOT NULL,
   `image` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `deposit`
 --
 
-INSERT INTO `deposit` (`id`, `id_finance`, `metode`, `tanggal`, `sumber`, `image`) VALUES
-(1, 2, 'Tunai', '2024-05-30', 'Sponsor', 'logdeposit_001_Log.png'),
-(2, 2, 'Tunai', '2024-05-30', 'Donatur', 'logdeposit_002_Log.png'),
-(3, 2, 'BCA', '2024-05-31', 'Donatur', 'logdeposit_003_Log.png'),
-(4, 2, 'Tunai', '2024-05-31', 'Donatur', 'logdeposit_004_Log.png'),
-(5, 1, 'Tunai', '2024-05-31', 'Sponsor', 'logdeposit_005_Log.png');
+INSERT INTO `deposit` (`id`, `id_finance`, `metode`, `jumlah`, `tanggal`, `sumber`, `image`) VALUES
+(1, 2, 'Transfer Ba', 200000, '2024-06-03', 'Sponsor', 'logdeposit_001_BCA.jpg'),
+(2, 2, 'Tunai', 40000, '2024-06-04', 'Donatur', 'logdeposit_002_Mandiri.JPG'),
+(3, 2, 'Transfer Ba', 50000, '2024-06-06', 'Donatur', 'logdeposit_003_BCA.jpg'),
+(4, 2, 'Transfer Ba', 175000, '2024-06-07', 'Donatur', 'logdeposit_004_BCA.jpg'),
+(5, 2, 'Tunai', 90000, '2024-06-07', 'Sponsor', 'logdeposit_005_BCA.jpg'),
+(7, 2, 'Transfer Ba', 190000, '2024-06-07', 'Modal Kas', 'logdeposit_007_BCA.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `distribution`
+--
+
+CREATE TABLE `distribution` (
+  `id` int(11) NOT NULL,
+  `pengepul` varchar(64) NOT NULL,
+  `tanggal` date DEFAULT NULL,
+  `bp` int(11) DEFAULT NULL,
+  `ka` int(11) DEFAULT NULL,
+  `kk` int(11) DEFAULT NULL,
+  `nilai_tukar` int(64) NOT NULL,
+  `driver` varchar(64) NOT NULL,
+  `total` int(16) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `distribution`
+--
+
+INSERT INTO `distribution` (`id`, `pengepul`, `tanggal`, `bp`, `ka`, `kk`, `nilai_tukar`, `driver`, `total`) VALUES
+(1, 'TLP', '2024-06-06', 15, 0, 0, 2325, 'Pak Toto', 15),
+(2, 'KSA', '2024-06-06', 0, 50, 0, 10000, 'Pak Dimas', 50),
+(3, 'DPR', '2024-06-06', 0, 0, 100, 50000, 'Pak Jimmy', 100),
+(4, 'TLP', '2024-06-07', 30, 0, 0, 4650, 'Pak Rama', 30),
+(5, 'TLP', '2024-06-10', 5, 0, 0, 775, 'Pak Jono', 5),
+(6, 'KSA', '2024-06-10', 0, 50, 0, 10000, 'Pak Tatang', 50),
+(7, 'TLP', '2024-06-13', 5, 0, 0, 775, 'Pak Toto', 5),
+(8, 'TLP', '2024-06-13', 5, 0, 0, 775, 'Pak Haji', 5);
 
 -- --------------------------------------------------------
 
@@ -126,15 +162,15 @@ CREATE TABLE `finance` (
   `tgl_update` date NOT NULL,
   `jam_update` varchar(11) NOT NULL,
   `username` varchar(128) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `finance`
 --
 
 INSERT INTO `finance` (`id`, `rekening`, `saldo`, `tgl_update`, `jam_update`, `username`) VALUES
-(1, 'modal', 150000, '2024-06-01', '20:02:09', 'alfihzm'),
-(2, 'aruskas', 800000, '2024-06-01', '20:02:47', 'alfihzm');
+(1, 'modal', 5001550, '2024-06-12', '01:48:52', 'alfihzm'),
+(2, 'aruskas', 100000, '2024-06-12', '01:49:40', 'alfihzm');
 
 -- --------------------------------------------------------
 
@@ -147,7 +183,7 @@ CREATE TABLE `kelompok_1` (
   `nama` varchar(64) NOT NULL,
   `pekerjaan` varchar(32) NOT NULL,
   `deskripsi` varchar(128) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `kelompok_1`
@@ -172,7 +208,7 @@ CREATE TABLE `member` (
   `level` int(1) NOT NULL,
   `is_active` int(1) NOT NULL,
   `role` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -184,7 +220,7 @@ CREATE TABLE `poin` (
   `id` int(11) NOT NULL,
   `nama` varchar(128) NOT NULL,
   `total` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -199,14 +235,7 @@ CREATE TABLE `reports` (
   `judul` varchar(128) NOT NULL,
   `tanggal` date NOT NULL,
   `deskripsi` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `reports`
---
-
-INSERT INTO `reports` (`id`, `id_account`, `nama`, `judul`, `tanggal`, `deskripsi`) VALUES
-(1, '19220821', 'alfihzm', 'Kerja sama dengan PT. Kakatua Steel Alumunium', '2024-05-31', '&lt;p&gt;z&lt;/p&gt;');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -221,7 +250,7 @@ CREATE TABLE `review` (
   `photo` varchar(128) NOT NULL,
   `tanggal` date NOT NULL,
   `review` varchar(512) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `review`
@@ -229,7 +258,7 @@ CREATE TABLE `review` (
 
 INSERT INTO `review` (`id`, `id_member`, `nama`, `photo`, `tanggal`, `review`) VALUES
 (1, 89922433, 'Vania Cassandra', 'default.jpg', '2024-05-25', 'Ide penukaran sampah dengan koin adalah inovatif dan efektif dalam meningkatkan partisipasi masyarakat dalam menjaga kebersihan lingkungan. Proyek ini jelas berpotensi membawa dampak positif yang besar.'),
-(2, 10480001, 'Betara', 'user_alfihzm.jpg', '2024-05-28', 'Proyek ini menunjukkan bagaimana inovasi bisa memecahkan masalah lingkungan dengan cara yang praktis dan bermanfaat. Sistem insentifnya pasti akan mendorong lebih banyak orang untuk terlibat dalam upaya menjaga kebersihan. Semoga Recyloop terus membawa perubahan positif!'),
+(2, 10480001, 'Betara', 'user_betara.jpg', '0000-00-00', 'Proyek ini menunjukkan bagaimana inovasi bisa memecahkan masalah lingkungan dengan cara yang praktis dan bermanfaat. Sistem insentifnya pasti akan mendorong lebih banyak orang untuk terlibat dalam upaya menjaga kebersihan. Semoga Recyloop terus membawa perubahan positif!'),
 (3, 33104308, 'Tanya Degurechaff', 'default.jpg', '2024-06-02', 'Kami bangga dengan sejarah kami, namun yang terpenting, kami bangga dengan kepuasan pelanggan kami. Setiap hari kami meningkatkan posisi situs pelanggan kami semakin tinggi.');
 
 -- --------------------------------------------------------
@@ -247,16 +276,16 @@ CREATE TABLE `sampah` (
   `nilai_satuan` int(11) NOT NULL,
   `total_sampah` int(11) NOT NULL,
   `kapasitas` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `sampah`
 --
 
 INSERT INTO `sampah` (`id`, `icon`, `jenis_sampah`, `kode`, `nilai_tukar`, `nilai_satuan`, `total_sampah`, `kapasitas`) VALUES
-(1, 'plastic-bottle.png', 'Botol Plastik', 'BP', 1500, 55, 6, 200),
-(2, 'tin-can.png', 'Kaleng', 'KA', 13300, 200, 16, 200),
-(3, 'book.png', 'Kardus', 'KK', 2500, 500, 3, 200);
+(1, 'plastic-bottle.png', 'Botol Plastik', 'BP', 1500, 155, 0, 200),
+(2, 'tin-can.png', 'Kaleng', 'KA', 13300, 200, 0, 200),
+(3, 'book.png', 'Kardus', 'KK', 2500, 500, 15, 200);
 
 -- --------------------------------------------------------
 
@@ -269,7 +298,7 @@ CREATE TABLE `secure` (
   `tittle` varchar(64) NOT NULL,
   `address` varchar(256) NOT NULL,
   `is_active` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `secure`
@@ -278,12 +307,16 @@ CREATE TABLE `secure` (
 INSERT INTO `secure` (`id`, `tittle`, `address`, `is_active`) VALUES
 (1, 'Pintu Masuk', 'https://cctv.balitower.co.id/Karet-Tengsin-005-700086_3/embed.html', 1),
 (2, 'Pintu Masuk 1B', 'https://cctv.balitower.co.id/Karet-Tengsin-003-700084_2/embed.html', 0),
-(3, 'Monumen Pintu Keluar', 'https://cctv.balitower.co.id/Menteng-001-700123_5/embed.html', 0),
+(3, 'Pintu Keluar 1C', 'https://cctv.balitower.co.id/Cikoko-006-705651_4/embed.html', 0),
 (4, 'Monumen Arah Utara', 'https://cctv.balitower.co.id/Menteng-001-700123_7/embed.html', 0),
 (5, 'Pospol Depan Kantor', 'https://cctv.balitower.co.id/Pospol-Merdeka-Utara-506818_1/embed.html', 0),
 (6, 'Taman Khusus Staff', 'https://cctv.balitower.co.id/Tebet-Barat-008-705558_2/embed.html', 0),
 (7, 'Pintu Keluar Utara', 'https://cctv.balitower.co.id/Gelora-005-700048_6/embed.html', 0),
-(9, 'Gudang Sampah', 'https://cctv.balitower.co.id/Monas-Barat-004_a/embed.html', 0);
+(8, 'Gudang Sampah', 'https://cctv.balitower.co.id/Monas-Barat-004_a/embed.html', 0),
+(11, 'Kamera Salah Pasang', 'https://cctv.balitower.co.id/Tugu-Selatan-003-701272_1/embed.html', 0),
+(12, 'Parkir Non Resmi', 'https://cctv.balitower.co.id/Kapuk-027-702692_1/embed.html', 0),
+(13, 'Gedung Belakang Gudang', 'https://cctv.balitower.co.id/Gondangdia-001-700051_6/embed.html', 0),
+(14, 'Pintu Perlintasan Kereta', 'https://cctv.balitower.co.id/Menteng-Tenggulun-P01-507302_1/embed.html', 0);
 
 -- --------------------------------------------------------
 
@@ -301,7 +334,7 @@ CREATE TABLE `staff` (
   `photo` varchar(128) NOT NULL,
   `role_id` int(1) NOT NULL,
   `is_active` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `staff`
@@ -334,7 +367,7 @@ INSERT INTO `staff` (`id_staff`, `nama`, `email`, `username`, `alamat`, `no_telp
 
 CREATE TABLE `surat_jalan` (
   `id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -357,19 +390,23 @@ CREATE TABLE `transaction` (
   `catatan` varchar(128) DEFAULT NULL,
   `status` varchar(32) NOT NULL,
   `tgl_validasi` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `transaction`
 --
 
 INSERT INTO `transaction` (`id`, `id_member`, `username`, `tanggal`, `jumlah_botol`, `jumlah_kaleng`, `jumlah_kardus`, `total`, `totalkoin`, `totalkonversi`, `lokasi`, `catatan`, `status`, `tgl_validasi`) VALUES
-(4, 123455, '', '2024-05-20', 1, 0, 1, 0, 0, 0, 'Tenant Official', NULL, 'Sudah dikonfirmasi', '0000-00-00'),
-(8, 12345689, '', '2024-05-20', 2, 1, 2, 0, 0, 0, 'Tenant Official', NULL, 'Sudah dikonfirmasi', '0000-00-00'),
-(15, 10480001, 'betara', '2024-05-20', 1, 1, 0, 2, 14400, 0, 'Tenant Official', '', 'Sudah dikonfirmasi', '2024-05-24'),
-(16, 10480001, 'betara', '2024-05-27', 3, 6, 1, 10, 86800, 0, 'Tenant Official', 'Tidak ada xixixi\r\n', 'Sudah dikonfirmasi', '2024-05-27'),
-(19, 10480001, 'betara', '2024-05-28', 1, 5, 0, 6, 68000, 0, 'Tenant Serpong', 'Tidak ada komentar', 'Belum dikonfirmasi', '2024-05-28'),
-(20, 33104308, 'tanya', '2024-06-02', 12, 1, 0, 13, 31300, 0, 'Tenant Serang', 'Tidak ada komentar..', 'Sudah dikonfirmasi', '2024-06-02');
+(1, 10480001, 'betara', '2024-05-25', 10, 10, 0, 20, 148000, 0, 'Tenant Serpong', 'Sampah dalam kondisi bagus', 'Belum dikonfirmasi', '0000-00-00'),
+(2, 10480001, 'betara', '2024-06-28', 15, 20, 0, 35, 288500, 0, 'Tenant Serpong', '', 'Belum dikonfirmasi', '0000-00-00'),
+(3, 10480002, 'supriyadi', '2024-05-30', 5, 0, 0, 5, 7500, 0, 'Tenant Serpong', '', 'Belum dikonfirmasi', '0000-00-00'),
+(4, 89922433, 'vaniacas', '2024-05-31', 20, 0, 5, 25, 42500, 0, 'Tenant Serpong', '', 'Belum dikonfirmasi', '0000-00-00'),
+(5, 89922433, 'vaniacas', '2024-06-01', 0, 10, 0, 10, 133000, 0, 'Tenant Serpong', 'Kaleng sangat berkualitas', 'Belum dikonfirmasi', '0000-00-00'),
+(6, 10480001, 'betara', '2024-06-02', 5, 0, 0, 5, 7500, 0, 'Tenant Serpong', '', 'Belum dikonfirmasi', '0000-00-00'),
+(7, 10480002, 'supriyadi', '2024-06-03', 5, 15, 10, 30, 232000, 0, 'Tenant Serpong', 'Tiga kantung plastik', 'Belum dikonfirmasi', '0000-00-00'),
+(8, 89922433, 'vaniacas', '2024-06-05', 0, 0, 100, 100, 250000, 0, 'Tenant Serpong', 'Satu box', 'Belum dikonfirmasi', '0000-00-00'),
+(9, 10480001, 'betara', '2024-06-09', 0, 45, 0, 45, 598500, 0, 'Tenant Serpong', 'Tidak ada', 'Belum dikonfirmasi', '0000-00-00'),
+(10, 10480001, 'betara', '2024-06-21', 0, 0, 0, 0, 0, 0, 'Tenant Serpong', 'Tidak ada', 'Belum dikonfirmasi', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -395,31 +432,34 @@ CREATE TABLE `user` (
   `total_koin` int(32) NOT NULL,
   `koin` int(11) NOT NULL,
   `alasan_ban` varchar(256) DEFAULT NULL,
+  `kupon1` int(11) NOT NULL DEFAULT 0,
+  `kupon2` int(11) NOT NULL DEFAULT 0,
   `date_created` int(11) NOT NULL,
   `is_active` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `id_admin`, `id_staff`, `id_member`, `nama`, `lahir`, `email`, `username`, `password`, `role_id`, `photo`, `no_telp`, `alamat`, `total_sampah`, `total_koin`, `koin`, `alasan_ban`, `date_created`, `is_active`) VALUES
-(1, NULL, NULL, 10480001, 'Betara', '1999-01-01', 'betara@gmail.com', 'betara', '$2y$10$FLuzN7X92R2TQFttbmiQDOacjuIKMV8NnqPrjLrGdU.ow1DNxVEhu', 3, 'user_alfihzm.jpg', '082161872392', 'Jakarta Selatan', 0, 0, 999989, NULL, 1712325370, 1),
-(2, 19220821, NULL, NULL, 'Mohammad Alfi Hamzami', '1999-11-29', 'alfihzm@gmail.com', 'alfihzm', '$2y$10$D5MOyBMj5CDPCrew38NFT.8yOiEygBprrxhQs009pHmlBCnLyQ55O', 1, 'user_alfihzm.jpg', '082161872392', 'Kabupaten Tangerang', NULL, 0, 0, NULL, 1712465510, 1),
-(6, NULL, 10240001, NULL, 'Derby Hendrawan', '2005-05-11', 'derby@gmail.com', 'derby', '$2y$10$o1uWEO7QFLgEyQ3wqSbCAu1kAwjxfYa9/RJ3MJosDtN5NrZmCEX6C', 2, 'default.jpg', '082173958206', 'Bandung', NULL, 0, 0, NULL, 1714830415, 1),
-(7, NULL, 10240004, NULL, 'Dendi Rahmat', '2006-11-04', 'dendi@gmail.com', 'dendi', '$2y$10$lQlCdblquou221pGTm3MDudqMSSENy17VBjUvcr7MTgrDFqCDUeUu', 2, 'default.jpg', '082175927592', 'Lebak', NULL, 0, 0, NULL, 1714840913, 1),
-(8, NULL, 10240005, NULL, 'Adam Warlock', '2004-04-04', 'adam@gmail.com', 'adam', '$2y$10$PsSx5kVJY/otqt2CNtqiCeV.cyEJSbzGVzDo2OQF0vJLjHe9VAHLq', 2, 'default.jpg', '082174927592', 'Manchester', NULL, 0, 0, NULL, 1714841969, 1),
-(9, NULL, 10240006, NULL, 'Agus Sumanto', '2004-04-24', 'agus@gmail.com', 'agus', '$2y$10$tgW2yVQhnKz9scSIv1QcC..v0UZa7nQvgCPmXzJtnckuqbm0uKbdG', 2, 'default.jpg', '082173952058', 'Pandeglang', NULL, 0, 0, NULL, 1714842198, 1),
-(12, NULL, NULL, 10480002, 'Supriyadi', '1982-02-03', 'supri@gmail.com', 'supriyadi', '$2y$10$LIWTv1QQF6/gxHAB8lE.h.wD/eNkra5CMojoYePCPGfC8c1wAXJ7K', 3, 'default.jpg', '082174937285', 'Tangerang', 0, 0, 0, NULL, 1715286102, 1),
-(13, NULL, 10240012, NULL, 'Mohammad Hamzah', '1999-11-29', 'mohamzah@gmail.com', 'hamzah', '$2y$10$/PlvahgZlEILDRSvuGQc1eL0OsDMSpyT/N4Gaz0mylskekcdgay2u', 2, 'user_Mohammad_Hamzah.jpg', '082161872392', 'Kabupaten Tangerang', NULL, 0, 0, NULL, 1715412654, 1),
-(14, NULL, 56002616, NULL, 'Maaruf', '2024-05-19', 'RI2@gmail.com', 'RI2', '$2y$10$6SyqSbx68Rw97TI4eiCMCexPW2sA3hA0ZhmMyTyF2aV9bP4vRm/vC', 2, 'default.jpg', '0858585858', 'BSD', NULL, 0, 0, NULL, 1716102567, 1),
-(20, NULL, 83541679, NULL, 'Lumia Ferdinand', '2001-11-11', 'lumia@gmail.com', 'lumia', '$2y$10$MDdGhWQvsJEDpok7z8mgJOEz93HYA2TZaMLUWrPNrH0ANKDRZGlpm', 2, 'default.jpg', '082174582373', 'Bekasi', NULL, 0, 0, NULL, 1716345882, 1),
-(21, NULL, NULL, 89922433, 'Vania Cassandra', '2005-03-11', 'vania@gmail.com', 'vaniacas', '$2y$10$kCBGdjju6rypvMNQJhNUJ.QdTOFHhCVZHh2tQNGWlDBbi2j/y/T/G', 3, 'default.jpg', '087839173927', 'Depok', NULL, 0, 0, NULL, 1716385605, 1),
-(22, NULL, NULL, 33104308, 'Tanya Degurechaff', '1999-11-29', 'tanya@gmail.com', 'tanya', '$2y$10$Q9Gfiaw5tIMX40SgWBis0O7ZMCl4.wXu.liygUbsC3fLKFRZSluJi', 3, 'default.jpg', '082161872392', 'Uni Soviet', 2.51, 0, 11300, NULL, 1716385883, 1),
-(23, NULL, NULL, 36769235, 'Izumi Sagiri', '2007-12-10', 'sagiri@gmail.com', 'sagiri', '$2y$10$gkkRBANQBv5V.5m7YiYtUObwP.wjeiGRhZvUCQL8432/XdR2dczgm', 3, 'default.jpg', '082161872392', 'Japan', 0, 0, 0, NULL, 1716387567, 1),
-(24, NULL, NULL, 22786747, 'Danu Setiawan', '2001-11-29', 'danu@gmail.com', 'danuset', '$2y$10$xhVw902BGWYMGTGoQOoQRekf0PIBib8arphkpCbbq99NOR3CbuZau', 3, 'default.jpg', '087827491133', 'Bekasi', 0, 0, 0, NULL, 1716561279, 1),
-(25, NULL, NULL, 49464707, 'Brian Griffin', '2004-01-15', 'mlaku@gmail.com', 'briang', '$2y$10$zDki3yCJ/KRSL9sVLWVfi.4b9TVam53x80TebjoVD0r1QhQ6/Dr6u', 3, 'default.jpg', '085858589999', 'BSD', 0, 0, 0, NULL, 1716869123, 1),
-(26, NULL, NULL, 14099047, 'Boya Bayu', '2024-05-29', 'bayu@gmail.com', 'boyal', '$2y$10$yY96bTS8fKH/e60s4c2yD.Cfm5YnjflQJOnPesu3FYrsOcPqC3sbG', 3, 'default.jpg', '081212001200', 'BSD', 0, 0, 0, NULL, 1716981005, 1);
+INSERT INTO `user` (`id`, `id_admin`, `id_staff`, `id_member`, `nama`, `lahir`, `email`, `username`, `password`, `role_id`, `photo`, `no_telp`, `alamat`, `total_sampah`, `total_koin`, `koin`, `alasan_ban`, `kupon1`, `kupon2`, `date_created`, `is_active`) VALUES
+(1, NULL, NULL, 10480001, 'Betara Adi Karya', '1999-01-01', 'betara@gmail.com', 'betara', '$2y$10$FLuzN7X92R2TQFttbmiQDOacjuIKMV8NnqPrjLrGdU.ow1DNxVEhu', 3, 'user_betara.jpg', '087884634101', 'Jakarta Utara', 1, 0, 1907489, NULL, 0, 1, 1712325370, 1),
+(2, 19220821, NULL, NULL, 'Mohammad Mohammad', '1999-11-29', 'alfihzm@gmail.com', 'alfihzm', '$2y$10$D5MOyBMj5CDPCrew38NFT.8yOiEygBprrxhQs009pHmlBCnLyQ55O', 1, 'user_alfihzm.png', '082161872392', 'Kabupaten Tangerang', NULL, 0, 0, NULL, 0, 0, 1712465510, 1),
+(6, NULL, 10240001, NULL, 'Derby Pamungkas', '2005-05-11', 'derby@gmail.com', 'derby', '$2y$10$o1uWEO7QFLgEyQ3wqSbCAu1kAwjxfYa9/RJ3MJosDtN5NrZmCEX6C', 2, 'default.jpg', '082173958206', 'Legok', NULL, 0, 0, NULL, 0, 0, 1714830415, 1),
+(7, NULL, 10240004, NULL, 'Dendi Rahmat', '2006-11-04', 'dendi@gmail.com', 'dendi', '$2y$10$lQlCdblquou221pGTm3MDudqMSSENy17VBjUvcr7MTgrDFqCDUeUu', 2, 'default.jpg', '082175927592', 'Lebak', NULL, 0, 0, NULL, 0, 0, 1714840913, 1),
+(8, NULL, 10240005, NULL, 'Adam Warlock', '2004-04-04', 'adam@gmail.com', 'adam', '$2y$10$PsSx5kVJY/otqt2CNtqiCeV.cyEJSbzGVzDo2OQF0vJLjHe9VAHLq', 2, 'default.jpg', '082174927592', 'Manchester', NULL, 0, 0, NULL, 0, 0, 1714841969, 1),
+(9, NULL, 10240006, NULL, 'Agus Sumanto', '2004-04-24', 'agus@gmail.com', 'agus', '$2y$10$tgW2yVQhnKz9scSIv1QcC..v0UZa7nQvgCPmXzJtnckuqbm0uKbdG', 2, 'default.jpg', '082173952058', 'Pandeglang', NULL, 0, 0, 'Kanibal', 0, 0, 1714842198, 0),
+(12, NULL, NULL, 10480002, 'Supriyadi', '1982-02-03', 'supri@gmail.com', 'supriyadi', '$2y$10$LIWTv1QQF6/gxHAB8lE.h.wD/eNkra5CMojoYePCPGfC8c1wAXJ7K', 3, 'default.jpg', '082174937285', 'Tangerang', 31, 0, 239500, NULL, 0, 1, 1715286102, 1),
+(13, NULL, 10240012, NULL, 'Mohammad Hamzah', '1999-11-29', 'mohamzah@gmail.com', 'hamzah', '$2y$10$/PlvahgZlEILDRSvuGQc1eL0OsDMSpyT/N4Gaz0mylskekcdgay2u', 2, 'user_Mohammad_Hamzah.jpg', '082161872392', 'Kabupaten Tangerang', NULL, 0, 0, NULL, 0, 0, 1715412654, 1),
+(14, NULL, 56002616, NULL, 'Maaruf', '2024-05-19', 'RI2@gmail.com', 'RI2', '$2y$10$6SyqSbx68Rw97TI4eiCMCexPW2sA3hA0ZhmMyTyF2aV9bP4vRm/vC', 2, 'default.jpg', '0858585858', 'BSD', NULL, 0, 0, NULL, 0, 0, 1716102567, 1),
+(20, NULL, 83541679, NULL, 'Lumia Ferdinand', '2001-11-11', 'lumia@gmail.com', 'lumia', '$2y$10$MDdGhWQvsJEDpok7z8mgJOEz93HYA2TZaMLUWrPNrH0ANKDRZGlpm', 2, 'default.jpg', '082174582373', 'Bekasi', NULL, 0, 0, NULL, 0, 0, 1716345882, 1),
+(21, NULL, NULL, 89922433, 'Vania Cassandra', '2005-03-11', 'vania@gmail.com', 'vaniacas', '$2y$10$kCBGdjju6rypvMNQJhNUJ.QdTOFHhCVZHh2tQNGWlDBbi2j/y/T/G', 3, 'default.jpg', '087839173927', 'Depok', 101, 0, 400500, NULL, 0, 0, 1716385605, 1),
+(22, NULL, NULL, 33104308, 'Tanya Degurechaff', '1999-11-29', 'tanya@gmail.com', 'tanya', '$2y$10$Q9Gfiaw5tIMX40SgWBis0O7ZMCl4.wXu.liygUbsC3fLKFRZSluJi', 3, 'default.jpg', '082161872392', 'Uni Soviet', 2.51, 0, 11300, NULL, 0, 0, 1716385883, 1),
+(23, NULL, NULL, 36769235, 'Izumi Sagiri', '2007-12-10', 'sagiri@gmail.com', 'sagiri', '$2y$10$gkkRBANQBv5V.5m7YiYtUObwP.wjeiGRhZvUCQL8432/XdR2dczgm', 3, 'default.jpg', '082161872392', 'Japan', 0, 0, 0, NULL, 0, 0, 1716387567, 1),
+(24, NULL, NULL, 22786747, 'Danu Setiawan', '2001-11-29', 'danu@gmail.com', 'danuset', '$2y$10$xhVw902BGWYMGTGoQOoQRekf0PIBib8arphkpCbbq99NOR3CbuZau', 3, 'default.jpg', '087827491133', 'Bekasi', 0, 0, 0, NULL, 0, 0, 1716561279, 1),
+(25, NULL, NULL, 49464707, 'Brian Griffin', '2004-01-15', 'mlaku@gmail.com', 'briang', '$2y$10$zDki3yCJ/KRSL9sVLWVfi.4b9TVam53x80TebjoVD0r1QhQ6/Dr6u', 3, 'default.jpg', '085858589999', 'BSD', 0, 0, 0, NULL, 0, 0, 1716869123, 1),
+(26, NULL, NULL, 14099047, 'Boya Bayu', '2024-05-29', 'bayu@gmail.com', 'boyal', '$2y$10$yY96bTS8fKH/e60s4c2yD.Cfm5YnjflQJOnPesu3FYrsOcPqC3sbG', 3, 'default.jpg', '081212001200', 'BSD', 0, 0, 0, NULL, 0, 0, 1716981005, 1),
+(27, NULL, NULL, 18419783, 'Dendy Atmaja', '1998-08-07', 'dendymaja@gmai.com', 'dendy', '$2y$10$ePQUMi.b.AYvwFmWQnnY0uSajKV3sNbFXCTSnCoD1Pkzfqf8E1cEy', 3, 'default.jpg', '082161872392', 'Tangerang Selatan', 0, 0, 0, NULL, 0, 0, 1718260352, 1);
 
 -- --------------------------------------------------------
 
@@ -431,7 +471,7 @@ CREATE TABLE `user_access_menu` (
   `id` int(11) NOT NULL,
   `role_id` int(11) NOT NULL,
   `menu_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user_access_menu`
@@ -459,7 +499,7 @@ INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
 CREATE TABLE `user_menu` (
   `id` int(11) NOT NULL,
   `menu` varchar(128) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user_menu`
@@ -486,7 +526,7 @@ INSERT INTO `user_menu` (`id`, `menu`) VALUES
 CREATE TABLE `user_role` (
   `id` int(11) NOT NULL,
   `role` varchar(128) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user_role`
@@ -510,7 +550,7 @@ CREATE TABLE `user_sub_menu` (
   `url` varchar(128) NOT NULL,
   `icon` varchar(128) NOT NULL,
   `is_active` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user_sub_menu`
@@ -526,7 +566,7 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active
 (7, 4, 'Manajemen Member', 'admin/member', 'fas fa-fw fa-users', 1),
 (8, 6, 'Manajemen Sampah', 'admin/sampah', 'fas fa-fw fa-trash-can', 1),
 (9, 6, 'Manajemen Cinderamata', 'admin/cinderamata', '	\r\nfas fa-fw fa-gift', 1),
-(10, 5, 'Informasi Member', 'staff/member', 'fas fa-fw fa-users', 1),
+(10, 5, 'Informasi Member', 'member/listMember', 'fas fa-fw fa-users', 1),
 (12, 8, 'Manajemen Transaksi', 'transaction', 'fa-solid fa-money-bill-transfer', 1),
 (13, 8, 'Manajemen Keuangan', 'finance', 'fa-solid fa-money-bill\r\n', 1),
 (14, 8, 'Manajemen Tarik Tunai', 'withdraw', 'fa-solid fa-money-bill-1', 1),
@@ -536,7 +576,8 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active
 (18, 10, 'Log Tarik Tunai', 'log/withdraw', 'fa-solid fa-file-invoice-dollar', 1),
 (19, 10, 'Log Laporan Masalah', 'log/reports', 'fa-solid fa-file-prescription', 1),
 (20, 6, 'Informasi Perusahaan', 'perusahaan', 'fas fa-fw fa-circle-info', 1),
-(21, 9, 'Manajemen Keamanan', 'secure', 'fa-solid fa-building-lock', 1);
+(21, 9, 'Manajemen Keamanan', 'secure', 'fa-solid fa-building-lock', 1),
+(22, 10, 'Log Keuangan', 'log/accounting', 'fa-solid fa-file-code', 1);
 
 -- --------------------------------------------------------
 
@@ -558,16 +599,17 @@ CREATE TABLE `withdraw` (
   `status` varchar(32) NOT NULL,
   `koin1` int(16) NOT NULL,
   `koin2` int(16) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `withdraw`
 --
 
 INSERT INTO `withdraw` (`id`, `id_member`, `username`, `nominal`, `tanggal`, `jam`, `lokasi`, `metode`, `norek`, `catatan`, `status`, `koin1`, `koin2`) VALUES
-(1, 10480001, 'betara', 1, '2024-05-27', '17:33:59', 'Tenant Serang', 'Tunai', '', 'AA', '0', 0, 0),
-(2, 10480001, 'betara', 9, '2024-05-27', '18:28:45', 'Tenant Serpong', 'Tunai', '', 'A', 'Belum diproses', 999999, 999990),
-(4, 33104308, 'tanya', 20000, '2024-06-02', '00:59:36', 'Tenant Serang', 'Tunai', '', 'Tidak ada catatan..', 'Belum diproses', 31300, 11300);
+(1, 10480001, 'betara', 50000, '2024-05-28', '23:17:10', 'Tenant Serpong', 'Tunai', '', '', 'Diberikan tunai', 1443989, 1393989),
+(2, 89922433, 'vaniacas', 25000, '2024-06-06', '23:22:32', 'Tenant Serpong', 'Tunai', '', '', 'Diberikan tunai', 175500, 150500),
+(3, 10480001, 'betara', 15000, '2024-06-06', '23:25:27', 'Tenant Serpong', 'Transfer Bank', '', 'OVO Payment', 'Sudah ditransfer', 1393989, 1378989),
+(4, 10480001, 'betara', 50000, '2024-06-06', '23:34:50', 'Tenant Serpong', 'Transfer Bank', '', 'OVO Payment', 'Sudah ditransfer', 1378989, 1328989);
 
 --
 -- Indexes for dumped tables
@@ -595,6 +637,12 @@ ALTER TABLE `company`
 -- Indexes for table `deposit`
 --
 ALTER TABLE `deposit`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `distribution`
+--
+ALTER TABLE `distribution`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -725,7 +773,13 @@ ALTER TABLE `company`
 -- AUTO_INCREMENT for table `deposit`
 --
 ALTER TABLE `deposit`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `distribution`
+--
+ALTER TABLE `distribution`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `finance`
@@ -755,7 +809,7 @@ ALTER TABLE `poin`
 -- AUTO_INCREMENT for table `reports`
 --
 ALTER TABLE `reports`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `review`
@@ -773,7 +827,7 @@ ALTER TABLE `sampah`
 -- AUTO_INCREMENT for table `secure`
 --
 ALTER TABLE `secure`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `surat_jalan`
@@ -785,13 +839,13 @@ ALTER TABLE `surat_jalan`
 -- AUTO_INCREMENT for table `transaction`
 --
 ALTER TABLE `transaction`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `user_access_menu`
@@ -815,13 +869,13 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT for table `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `withdraw`
 --
 ALTER TABLE `withdraw`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
