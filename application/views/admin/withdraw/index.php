@@ -16,7 +16,15 @@
                     <h4 class="page-title"><?= $judul; ?></h4>
                     <ul class="breadcrumbs">
                         <li class="nav-home">
-                            <a href="#">
+                            <a href="/recyloop/member">
+                                <i class="fas fa-solid fa-home"></i>
+                            </a>
+                        </li>
+                        <li class="separator">
+                            <i class="flaticon-right-arrow"></i>
+                        </li>
+                        <li class="nav-home">
+                            <a href="/recyloop/withdraw">
                                 <i class="fa-solid fa-money-bill-1"></i>
                             </a>
                         </li>
@@ -45,7 +53,6 @@
                         <?= $this->session->flashdata('message') ?>
                     </div>
                 </div>
-
                 <div class="containers">
                     <table class="table">
                         <thead>
@@ -61,19 +68,19 @@
                         </thead>
                         <tbody>
                             <?php foreach ($withdraw as $w) : ?>
-                                    <tr>
-                                        <td><?= $w['id_member']; ?></td>
-                                        <td><?= $w['username']; ?></td>
-                                        <td><?= $w['tanggal']; ?></td>
-                                        <td style="color: red;"><i class="fa-solid fa-down-long"></i>&nbsp;&nbsp;Rp <b><?= number_format($w['nominal'], 0, ',', '.'); ?></b></td>
-                                        <td><?= $w['metode']; ?></td>
-                                        <td><?= $w['status']; ?></td>
-                                        <td>
-                                            <a href="<?= base_url('withdraw/delete_withdraw/' . $w['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-trash"></i></a>
-                                            <a href="<?= base_url('withdraw/receipt/' . $w['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-file-pdf"></i></a>
-                                            <a href="<?= base_url('withdraw/info_withdraw/' . $w['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-info"></i></a>
-                                        </td>
-                                    </tr>
+                                <tr>
+                                    <td><?= $w['id_member']; ?></td>
+                                    <td><?= $w['username']; ?></td>
+                                    <td><?= $w['tanggal']; ?></td>
+                                    <td style="color: red;"><i class="fa-solid fa-down-long"></i>&nbsp;&nbsp;Rp <b><?= number_format($w['nominal'], 0, ',', '.'); ?></b></td>
+                                    <td><?= $w['metode']; ?></td>
+                                    <td><?= $w['status']; ?></td>
+                                    <td>
+                                        <a href="<?= base_url('withdraw/delete_withdraw/' . $w['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-trash"></i></a>
+                                        <a href="<?= base_url('withdraw/receipt/' . $w['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-file-pdf"></i></a>
+                                        <a href="<?= base_url('withdraw/info_withdraw/' . $w['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-info"></i></a>
+                                    </td>
+                                </tr>
                             <?php endforeach; ?>
                         </tbody>
                     </table>

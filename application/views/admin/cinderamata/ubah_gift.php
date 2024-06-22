@@ -14,15 +14,12 @@
 <div class="main-panel" style="font-family: quicksand;">
     <div class="content">
         <div class="page-inner">
-
             <div class="row">
                 <div class="col-lg-6">
                     <?= $this->session->flashdata('message') ?>
                 </div>
             </div>
-
             <div class="container-fluid col-md-8">
-
                 <div class="card border border-secondary">
                     <div class="card-body">
                         <h5 style="text-align: center;" class="card-title mt-1"><?= $judul; ?></h5>

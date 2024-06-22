@@ -19,8 +19,16 @@
                 <h4 class="page-title"><?= $judul; ?></h4>
                 <ul class="breadcrumbs">
                     <li class="nav-home">
-                        <a href="#">
-                            <i class="fa-solid fa-paste"></i>
+                        <a href="/recyloop/member">
+                            <i class="fas fa-solid fa-home"></i>
+                        </a>
+                    </li>
+                    <li class="separator">
+                        <i class="flaticon-right-arrow"></i>
+                    </li>
+                    <li class="nav-home">
+                        <a href="/recyloop/secure">
+                            <i class="fa-solid fa-building-lock"></i>
                         </a>
                     </li>
                     <li class="separator">
@@ -111,7 +119,6 @@
                     });
                 }, 2000);
             </script>
-
             <script>
                 window.onload = function() {
                     var youtubeFrame = document.getElementById('youtubeFrame');
@@ -133,4 +140,4 @@
                     }
                 }
             </script>
-</div>
+        </div>

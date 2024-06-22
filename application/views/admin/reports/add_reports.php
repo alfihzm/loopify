@@ -5,7 +5,15 @@
                  <h4 class="page-title"><?= $judul; ?></h4>
                  <ul class="breadcrumbs">
                      <li class="nav-home">
-                         <a href="#">
+                         <a href="/recyloop/member">
+                             <i class="fas fa-solid fa-home"></i>
+                         </a>
+                     </li>
+                     <li class="separator">
+                         <i class="flaticon-right-arrow"></i>
+                     </li>
+                     <li class="nav-home">
+                         <a href="reports">
                              <i class="fa-solid fa-paste"></i> </a>
                      </li>
                      <li class="separator">

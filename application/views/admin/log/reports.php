@@ -27,7 +27,15 @@
                  <h4 class="page-title"><?= $judul; ?></h4>
                  <ul class="breadcrumbs">
                      <li class="nav-home">
-                         <a href="#">
+                         <a href="/recyloop/member">
+                             <i class="fas fa-solid fa-home"></i>
+                         </a>
+                     </li>
+                     <li class="separator">
+                         <i class="flaticon-right-arrow"></i>
+                     </li>
+                     <li class="nav-home">
+                         <a href="/recyloop/log/reports">
                              <i class="fa-solid fa-paste"></i>
                          </a>
                      </li>
@@ -101,39 +109,39 @@
                  }, 2000);
              </script>
              <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-            <script>
-    document.addEventListener('DOMContentLoaded', (event) => {
-        const searchNameInput = document.getElementById('searchName');
-        const searchJudulInput = document.getElementById('searchJudul');
-        const dateSearchInput = document.getElementById('dateSearch');
-        const dataTable = document.getElementById('dataTable').getElementsByTagName('tbody')[0];
-        const rows = dataTable.getElementsByTagName('tr');
+             <script>
+                 document.addEventListener('DOMContentLoaded', (event) => {
+                     const searchNameInput = document.getElementById('searchName');
+                     const searchJudulInput = document.getElementById('searchJudul');
+                     const dateSearchInput = document.getElementById('dateSearch');
+                     const dataTable = document.getElementById('dataTable').getElementsByTagName('tbody')[0];
+                     const rows = dataTable.getElementsByTagName('tr');
 
-        searchNameInput.addEventListener('input', filterTable);
-        searchJudulInput.addEventListener('input', filterTable);
-        dateSearchInput.addEventListener('input', filterTable);
+                     searchNameInput.addEventListener('input', filterTable);
+                     searchJudulInput.addEventListener('input', filterTable);
+                     dateSearchInput.addEventListener('input', filterTable);
 
-        function filterTable() {
-            const searchNameValue = searchNameInput.value.toLowerCase();
-            const searchJudulValue = searchJudulInput.value.toLowerCase();
-            const dateSearchValue = dateSearchInput.value;
+                     function filterTable() {
+                         const searchNameValue = searchNameInput.value.toLowerCase();
+                         const searchJudulValue = searchJudulInput.value.toLowerCase();
+                         const dateSearchValue = dateSearchInput.value;
 
-            for (let i = 0; i < rows.length; i++) {
-                const cells = rows[i].getElementsByTagName('td');
-                const userName = cells[0].textContent.toLowerCase();
-                const judul = cells[1].textContent.toLowerCase(); // Change variable name to lowercase
-                const date = cells[2].textContent;
+                         for (let i = 0; i < rows.length; i++) {
+                             const cells = rows[i].getElementsByTagName('td');
+                             const userName = cells[0].textContent.toLowerCase();
+                             const judul = cells[1].textContent.toLowerCase(); // Change variable name to lowercase
+                             const date = cells[2].textContent;
 
-                let nameMatch = !searchNameValue || userName.includes(searchNameValue);
-                let judulMatch = !searchJudulValue || judul.includes(searchJudulValue); // Check for title match
-                let dateMatch = !dateSearchValue || date === dateSearchValue;
+                             let nameMatch = !searchNameValue || userName.includes(searchNameValue);
+                             let judulMatch = !searchJudulValue || judul.includes(searchJudulValue); // Check for title match
+                             let dateMatch = !dateSearchValue || date === dateSearchValue;
 
-                if (nameMatch && judulMatch && dateMatch) { // Adjust condition
-                    rows[i].style.display = '';
-                } else {
-                    rows[i].style.display = 'none';
-                }
-            }
-        }
-    });
-</script>
+                             if (nameMatch && judulMatch && dateMatch) { // Adjust condition
+                                 rows[i].style.display = '';
+                             } else {
+                                 rows[i].style.display = 'none';
+                             }
+                         }
+                     }
+                 });
+             </script>

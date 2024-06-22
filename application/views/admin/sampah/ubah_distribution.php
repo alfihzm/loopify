@@ -28,7 +28,6 @@
                                         <label for="ka">Kaleng Alumunium</label>
                                         <span class="form-control"><?= $distribution['ka']; ?></span>
                                     </div>
-
                                     <div class="form-group hidden" id="form-kk">
                                         <label for="kk">Kertas Kardus</label>
                                         <span class="form-control"><?= $distribution['kk']; ?></span>

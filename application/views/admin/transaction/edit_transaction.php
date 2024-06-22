@@ -5,13 +5,11 @@
             <div class="page-header">
                 <h4 class="page-title"><?= $judul; ?></h4>
             </div>
-
             <div class="row">
                 <div class="col-lg-6">
                     <?= $this->session->flashdata('message') ?>
                 </div>
             </div>
-
             <div class="container-fluid col-md-8">
                 <div class="card border border-secondary">
                     <div class="card-body">

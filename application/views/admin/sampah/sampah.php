@@ -20,7 +20,15 @@
                 <h4 class="page-title"><?= $judul; ?></h4>
                 <ul class="breadcrumbs">
                     <li class="nav-home">
-                        <a href="#">
+                        <a href="/recyloop/member">
+                            <i class="fas fa-solid fa-home"></i>
+                        </a>
+                    </li>
+                    <li class="separator">
+                        <i class="flaticon-right-arrow"></i>
+                    </li>
+                    <li class="nav-home">
+                        <a href="sampah">
                             <i class="fa-solid fa-trash-can"></i>
                         </a>
                     </li>
@@ -50,7 +58,7 @@
                                 <?= $botol['total_sampah'] ?>/<b><?= $botol['kapasitas']; ?></b>
                             </h4>
                             <div style="text-align: center;">
-                                <span style="margin-top: 20px; text-align: center; color: black;">Tingkat Kepenuhan: </span>
+                                <span style="margin-top: 20px; text-align: center; color: black;">Kapasitas Tersisa: </span>
                             </div>
                             <h4 style="margin-top: 2px; text-align: center; font-size: 1.5em; color: blue; font-weight: bold;">
                                 <?= number_format($persentase_kepenuhan, 2); ?>%
@@ -69,7 +77,7 @@
                                 <?= $kaleng['total_sampah'] ?>/<b><?= $kaleng['kapasitas']; ?></b>
                             </h4>
                             <div style="text-align: center;">
-                                <span style="margin-top: 20px; text-align: center; color: black;">Tingkat Kepenuhan: </span>
+                                <span style="margin-top: 20px; text-align: center; color: black;">Kapasitas Tersisa: </span>
                             </div>
                             <h4 style="margin-top: 2px; text-align: center; font-size: 1.5em; color: red; font-weight: bold;">
                                 <?= number_format($persentase_kepenuhan, 2); ?>%
@@ -88,7 +96,7 @@
                                 <?= $kardus['total_sampah'] ?>/<b><?= $kardus['kapasitas']; ?></b>
                             </h4>
                             <div style="text-align: center;">
-                                <span style="margin-top: 20px; text-align: center; color: black;">Tingkat Kepenuhan: </span>
+                                <span style="margin-top: 20px; text-align: center; color: black;">Kapasitas Tersisa: </span>
                             </div>
                             <h4 style="margin-top: 2px; text-align: center; font-size: 1.5em; color: green; font-weight: bold;">
                                 <?= number_format($persentase_kepenuhan, 2); ?>%

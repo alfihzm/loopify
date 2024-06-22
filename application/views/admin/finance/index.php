@@ -46,6 +46,14 @@
                 <h4 class="page-title"><?= $judul; ?></h4>
                 <ul class="breadcrumbs">
                     <li class="nav-home">
+                        <a href="member">
+                            <i class="fas fa-solid fa-home"></i>
+                        </a>
+                    </li>
+                    <li class="separator">
+                        <i class="flaticon-right-arrow"></i>
+                    </li>
+                    <li class="nav-home">
                         <a href="#">
                             <i class="fa-solid fa-wallet"></i>
                         </a>

@@ -4,13 +4,11 @@
             <div class="page-header">
                 <h4 class="page-title"><?= $judul; ?></h4>
             </div>
-
             <div class="row">
                 <div class="col-lg-6">
                     <?= $this->session->flashdata('message') ?>
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-12 col-sm-9 col-md-4 mb-2">
                     <div class="card mb-3 p-3 border border-secondary" style="display: flex; flex-direction: column; align-items: center;">

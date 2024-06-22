@@ -4,20 +4,15 @@
             <div class="page-header">
                 <h4 class="page-title"><?= $judul; ?></h4>
             </div>
-
             <div class="row">
                 <div class="col-lg-6">
                     <?= $this->session->flashdata('message') ?>
                 </div>
             </div>
-
             <div class="container-fluid">
-
                 <div class="row">
                     <div class="col-lg-4">
-
                         <?= $this->session->flashdata('message'); ?>
-
                         <form action="<?= base_url('admin/ubah_password'); ?>" method="post">
                             <div class="form-group">
                                 <label for="current_password">Password Saat Ini</label>
@@ -62,12 +57,9 @@
                                 <button type="submit" class="btn btn-primary">Ubah Password</button>
                             </div>
                         </form>
-
                     </div>
                 </div>
-
             </div>
-
         </div>
     </div>
 </div>

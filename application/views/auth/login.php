@@ -32,7 +32,7 @@
                                     <img src="assets/images/brand/branding-logo.png" alt="img" class="desktop-logo logo-dark">
                                 </a>
                             </div>
-                            <div class="text-center" style="margin-bottom: -15px;">
+                            <div class="text-center" style="margin-bottom: -20px; margin-top: 5px;">
                                 <h1 style="color: #FFF;" class="h4 mb-4"> <?= $judul; ?> </h1>
                             </div>
                             <div class="flash_data">
@@ -44,14 +44,13 @@
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group" style="width: 50px; display: flex; justify-content: center; align-items: center; background: #2d3a67; border-radius: 6px 0px 0px 6px">
-                                                <i class="fas fa-solid fa-signature" style="font-size: 18px;"></i>
+                                                <i class="fas fa-solid fa-user" style="font-size: 18px;"></i>
                                             </span>
                                         </div>
                                         <input style="border-radius: 0px 5px 5px 0px; border: 0px; background: #262E49; color: #23C78D;" type="text" class="form-control form-control-user" id="username" name="username" placeholder="Masukkan Username" value="<?= set_value('username') ?>">
                                     </div>
                                     <?= form_error('username', '<small class="text-danger">', '</small'); ?>
                                 </div>
-
                                 <div class="form-group">
                                     <p> Password </p>
                                     <div class="input-group">
@@ -64,7 +63,6 @@
                                     </div>
                                     <?= form_error('password', '<small class="text-danger">', '</small'); ?>
                                 </div>
-
                                 <button type="submit" class="btn btn-success btn-user mt-5 btn-block">
                                     Masuk
                                 </button>

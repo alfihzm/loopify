@@ -5,7 +5,15 @@
                 <h4 class="page-title"><?= $judul; ?></h4>
                 <ul class="breadcrumbs">
                     <li class="nav-home">
-                        <a href="#">
+                        <a href="/recyloop/member">
+                            <i class="fas fa-solid fa-home"></i>
+                        </a>
+                    </li>
+                    <li class="separator">
+                        <i class="flaticon-right-arrow"></i>
+                    </li>
+                    <li class="nav-home">
+                        <a href="/recyloop/admin/member">
                             <i class="fa-solid fa-users"></i>
                         </a>
                     </li>
@@ -23,16 +31,12 @@
                     </li>
                 </ul>
             </div>
-
-            <a href=" <?= base_url('admin/add_member'); ?>" class="btn btn-secondary mb-3"> Tambah Member
-            </a>
-
+            <a href=" <?= base_url('admin/add_member'); ?>" class="btn btn-secondary mb-3"> Tambah Member</a>
             <div class="row">
                 <div class="col-lg-6">
                     <?= $this->session->flashdata('message') ?>
                 </div>
             </div>
-
             <div class="containers">
                 <input type="text" id="searchInput" class="form-control mb-3 col-sm-4" placeholder="Cari nama anggota">
                 <table class="table">

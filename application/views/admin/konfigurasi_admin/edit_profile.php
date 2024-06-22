@@ -4,7 +4,6 @@
             <div class="page-header">
                 <h4 class="page-title"><?= $judul; ?></h4>
             </div>
-
             <div class="row">
                 <div class="col-lg-8">
                     <?= form_open_multipart('admin/edit_profile'); ?>
