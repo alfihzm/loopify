@@ -1,65 +1,65 @@
  <style>
-.indicator-box {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    margin-left: 10px;
-}
+     .indicator-box {
+         display: inline-block;
+         width: 20px;
+         height: 20px;
+         margin-left: 10px;
+     }
 
-.legend {
-    display: flex;
-    align-items: center;
-    margin-top: 10px;
-}
+     .legend {
+         display: flex;
+         align-items: center;
+         margin-top: 10px;
+     }
 
-.legend div {
-    display: flex;
-    align-items: center;
-    margin-right: 20px;
-}
+     .legend div {
+         display: flex;
+         align-items: center;
+         margin-right: 20px;
+     }
 
-.legend .box {
-    width: 20px;
-    height: 20px;
-    margin-right: 5px;
-}
+     .legend .box {
+         width: 20px;
+         height: 20px;
+         margin-right: 5px;
+     }
 
-.legend .green {
-    background-color: green;
-}
+     .legend .green {
+         background-color: green;
+     }
 
-.legend .yellow {
-    background-color: yellow;
-}
+     .legend .yellow {
+         background-color: yellow;
+     }
 
-.legend .red {
-    background-color: red;
-}
+     .legend .red {
+         background-color: red;
+     }
 
-.table-bordered {
-    border-collapse: separate;
-    border-spacing: 0;
-    border-radius: 10px;
+     .table-bordered {
+         border-collapse: separate;
+         border-spacing: 0;
+         border-radius: 10px;
 
-}
+     }
 
-.thead-light {
-    border-radius: 10px;
-}
+     .thead-light {
+         border-radius: 10px;
+     }
 
-.weather-container {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
+     .weather-container {
+         background-color: #fff;
+         padding: 20px;
+         border-radius: 8px;
+         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+         text-align: center;
+     }
 
-#weather-info div {
-    border: 1px solid white;
-    padding: 10px;
-    border-radius: 10px;
-}
+     #weather-info div {
+         border: 1px solid white;
+         padding: 10px;
+         border-radius: 10px;
+     }
  </style>
 
  <div class="main-panel">
@@ -106,20 +106,20 @@
                      </thead>
                      <tbody>
                          <?php if (empty($menu)) : ?>
-                         <tr>
-                             <td colspan="4">Tidak ada pengumuman hari ini</td>
-                         </tr>
+                             <tr>
+                                 <td colspan="4">Tidak ada pengumuman hari ini</td>
+                             </tr>
                          <?php else : ?>
-                         <?php $i = 1; ?>
-                         <?php foreach ($menu as $m) : ?>
-                         <tr>
-                             <th scope="row"><?= $i; ?></th>
-                             <td><?= $m['judul']; ?></td>
-                             <td><?= $m['tanggal']; ?></td>
-                             <td><?= $m['deskripsi']; ?></td>
-                         </tr>
-                         <?php $i++; ?>
-                         <?php endforeach; ?>
+                             <?php $i = 1; ?>
+                             <?php foreach ($menu as $m) : ?>
+                                 <tr>
+                                     <th scope="row"><?= $i; ?></th>
+                                     <td><?= $m['judul']; ?></td>
+                                     <td><?= $m['tanggal']; ?></td>
+                                     <td><?= $m['deskripsi']; ?></td>
+                                 </tr>
+                                 <?php $i++; ?>
+                             <?php endforeach; ?>
                          <?php endif; ?>
                      </tbody>
                  </table>
@@ -128,54 +128,58 @@
              <div class="row">
                  <div class="col-lg-3">
                      <div class="card border border-dark" style="height: 250px; margin-bottom: 20px; color: aquamarine;">
-                         <div class="card-header"
-                             style="background-color: #fff; color: black; text-align: center; border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                         <div class="card-header" style="background-color: #fff; color: black; text-align: center; border-top-left-radius: 10px; border-top-right-radius: 10px;">
                              Jumlah Member
                          </div>
-                         <i class="fas fa-solid fa-users"
-                             style="margin-top: 50px; text-align: center; font-size: 2.5em;"></i>
-                         <h4 style="margin-top: 20px; text-align: center; font-size: 1.5em;">
-                             <?= $jumlah_partisipan ?> Partisipan
-                         </h4>
+                         <i class="fas fa-solid fa-users" style="margin-top: 50px; text-align: center; font-size: 2.5em;"></i>
+                         <div>
+                             <h4 class="counter" style="margin-top: 20px; text-align: center; font-size: 1.5em;">
+                                 <?= $jumlah_partisipan ?>
+                             </h4>
+                             <h4 style="text-align: center; font-size: 1.5em;">Partisipan</h4>
+                         </div>
                      </div>
                  </div>
                  <div class="col-lg-3">
                      <div class=" card border border-dark" style=" height: 250px; margin-bottom: 20px; color: springgreen;">
-                         <div class="card-header"
-                             style="background-color: #fff; color: black; text-align: center; border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                         <div class="card-header" style="background-color: #fff; color: black; text-align: center; border-top-left-radius: 10px; border-top-right-radius: 10px;">
                              Jumlah Staff
                          </div>
-                         <i class="fas fa-solid fa-users"
-                             style="margin-top: 50px; text-align: center; font-size: 2.5em;"></i>
-                         <h4 style="margin-top: 20px; text-align: center; font-size: 1.5em;">
-                             <?= $jumlah_pegawai ?> Sukarelawan
-                         </h4>
+                         <i class="fas fa-solid fa-users" style="margin-top: 50px; text-align: center; font-size: 2.5em;"></i>
+                         <div>
+                             <h4 class="counter" style="margin-top: 20px; text-align: center; font-size: 1.5em;">
+                                 <?= $jumlah_pegawai ?>
+                             </h4>
+                             <h4 style="text-align: center; font-size: 1.5em;">Relawan</h4>
+                         </div>
                      </div>
                  </div>
                  <div class="col-lg-3">
                      <div class=" card border border-dark" style=" height: 250px; margin-bottom: 20px; color:springgreen;">
-                         <div class="card-header"
-                             style="background-color: #fff; color: black; text-align: center; border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                         <div class="card-header" style="background-color: #fff; color: black; text-align: center; border-top-left-radius: 10px; border-top-right-radius: 10px;">
                              Jumlah Admin
                          </div>
-                         <i class="fas fa-solid fa-users"
-                             style="margin-top: 50px; text-align: center; font-size: 2.5em;"></i>
-                         <h4 style="margin-top: 20px; text-align: center; font-size: 1.5em;">
-                             <?= $jumlah_admin ?> Administrator
-                         </h4>
+                         <i class="fas fa-solid fa-users" style="margin-top: 50px; text-align: center; font-size: 2.5em;"></i>
+                         <div>
+                             <h4 class="counter" style="margin-top: 20px; text-align: center; font-size: 1.5em;">
+                                 <?= $jumlah_admin ?>
+                             </h4>
+                             <h4 style="text-align: center; font-size: 1.5em;">Administrator</h4>
+                         </div>
                      </div>
                  </div>
                  <div class="col-lg-3">
                      <div class=" card border border-dark" style=" height: 250px; margin-bottom: 20px; color: crimson;">
-                         <div class="card-header"
-                             style="background-color: #fff; color: black; text-align: center; border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                         <div class="card-header" style="background-color: #fff; color: black; text-align: center; border-top-left-radius: 10px; border-top-right-radius: 10px;">
                              Jumlah Akun terblokir
                          </div>
-                         <i class="fas fa-solid fa-users"
-                             style="margin-top: 50px; text-align: center; font-size: 2.5em;"></i>
-                         <h4 style="margin-top: 20px; text-align: center; font-size: 1.5em;">
-                             <?= $jumlah_terblokir ?> Akun
-                         </h4>
+                         <i class="fas fa-solid fa-users" style="margin-top: 50px; text-align: center; font-size: 2.5em;"></i>
+                         <div>
+                             <h4 class="counter" style="margin-top: 20px; text-align: center; font-size: 1.5em;">
+                                 <?= $jumlah_terblokir ?>
+                             </h4>
+                             <h4 style="text-align: center; font-size: 1.5em;">Akun</h4>
+                         </div>
                      </div>
                  </div>
              </div>
@@ -194,11 +198,11 @@
                          </thead>
                          <tbody>
                              <?php foreach ($finance as $row) : ?>
-                             <tr>
-                                 <td><?= $row['id'] ?></td>
-                                 <td>
-                                     <?= "Rp " . number_format($row['saldo'], 0, ',', '.') ?>
-                                     <?php
+                                 <tr>
+                                     <td><?= $row['id'] ?></td>
+                                     <td>
+                                         <?= "Rp " . number_format($row['saldo'], 0, ',', '.') ?>
+                                         <?php
                                             if ($row['saldo'] > 100000) {
                                                 $color = "green";
                                             } elseif ($row['saldo'] > 0) {
@@ -207,9 +211,9 @@
                                                 $color = "red";
                                             }
                                             ?>
-                                     <div class="indicator-box" style="background-color: <?= $color ?>;"></div>
-                                 </td>
-                             </tr>
+                                         <div class="indicator-box" style="background-color: <?= $color ?>;"></div>
+                                     </td>
+                                 </tr>
                              <?php endforeach; ?>
                          </tbody>
                      </table>
@@ -251,13 +255,13 @@
                      </thead>
                      <tbody>
                          <?php foreach (array_slice($withdraw, -3) as $w) : ?>
-                         <tr>
-                             <td><?= $w['username']; ?></td>
-                             <td><?= $w['tanggal']; ?></td>
-                             <td><?= "Rp " . number_format($w['nominal'], 0, ',', '.'); ?></td>
-                             <td><?= $w['metode']; ?></td>
-                             <td><?= $w['lokasi']; ?></td>
-                         </tr>
+                             <tr>
+                                 <td><?= $w['username']; ?></td>
+                                 <td><?= $w['tanggal']; ?></td>
+                                 <td><?= "Rp " . number_format($w['nominal'], 0, ',', '.'); ?></td>
+                                 <td><?= $w['metode']; ?></td>
+                                 <td><?= $w['lokasi']; ?></td>
+                             </tr>
                          <?php endforeach; ?>
                      </tbody>
                  </table>
@@ -265,8 +269,7 @@
              <h3 style="font-weight: bold; margin-top: 30px;">Proses bisnis</h3>
              <div class="col-lg-12" style="text-align: center;">
                  <div style="border: 1px solid white;">
-                     <img src="assets/images/png/ProsesBisnis.png" alt="img" class="desktop-logo logo-dark"
-                         style="width: 850px;">
+                     <img src="assets/images/png/ProsesBisnis.png" alt="img" class="desktop-logo logo-dark" style="width: 850px;">
                  </div>
              </div>
          </div>
@@ -284,158 +287,158 @@
  </div>
  </div>
  <script>
-// Jangan diapa-apain dulu ini buat diagram
-const data = {
-    labels: [
-        'Akun Modal',
-        'Akun Arus Kas'
-    ],
-    datasets: [{
-        data: [
-            <?= $finance[0]['saldo'] ?>,
-            <?= $finance[1]['saldo'] ?>
-        ],
-        backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)'
-        ],
-        borderColor: [
-            'rgba(255, 99, 132, 1)',
-            'rgba(54, 162, 235, 1)'
-        ],
-        borderWidth: 2
-    }]
-};
+     // Jangan diapa-apain dulu ini buat diagram
+     const data = {
+         labels: [
+             'Akun Modal',
+             'Akun Arus Kas'
+         ],
+         datasets: [{
+             data: [
+                 <?= $finance[0]['saldo'] ?>,
+                 <?= $finance[1]['saldo'] ?>
+             ],
+             backgroundColor: [
+                 'rgba(255, 99, 132, 0.2)',
+                 'rgba(54, 162, 235, 0.2)'
+             ],
+             borderColor: [
+                 'rgba(255, 99, 132, 1)',
+                 'rgba(54, 162, 235, 1)'
+             ],
+             borderWidth: 2
+         }]
+     };
 
-const config = {
-    type: 'pie',
-    data: data,
-    options: {
-        responsive: true,
-        plugins: {
-            legend: {
-                position: 'top',
-            },
-            title: {
-                display: true,
-                text: 'Perbandingan Saldo Akun'
-            }
-        }
-    },
-};
+     const config = {
+         type: 'pie',
+         data: data,
+         options: {
+             responsive: true,
+             plugins: {
+                 legend: {
+                     position: 'top',
+                 },
+                 title: {
+                     display: true,
+                     text: 'Perbandingan Saldo Akun'
+                 }
+             }
+         },
+     };
 
-const myPieChart = new Chart(
-    document.getElementById('myPieChart'),
-    config
-);
+     const myPieChart = new Chart(
+         document.getElementById('myPieChart'),
+         config
+     );
  </script>
  <script>
-const barLabels = <?= $jenis_sampah ?>;
-const barData = {
-    labels: barLabels,
-    datasets: [{
-        label: 'Total Sampah',
-        backgroundColor: 'rgba(255, 255, 255)',
-        borderColor: 'rgba(255, 255, 255, 1)',
-        borderWidth: 1,
-        data: <?= $total_sampah ?>
-    }]
-};
+     const barLabels = <?= $jenis_sampah ?>;
+     const barData = {
+         labels: barLabels,
+         datasets: [{
+             label: 'Total Sampah',
+             backgroundColor: 'rgba(255, 255, 255)',
+             borderColor: 'rgba(255, 255, 255, 1)',
+             borderWidth: 1,
+             data: <?= $total_sampah ?>
+         }]
+     };
 
-const barConfig = {
-    type: 'bar',
-    data: barData,
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        }
-    },
-};
+     const barConfig = {
+         type: 'bar',
+         data: barData,
+         options: {
+             scales: {
+                 y: {
+                     beginAtZero: true
+                 }
+             }
+         },
+     };
 
-const myBarChart = new Chart(
-    document.getElementById('myBarChart'),
-    barConfig
-);
+     const myBarChart = new Chart(
+         document.getElementById('myBarChart'),
+         barConfig
+     );
  </script>
  <script>
-//  function updateTime() {
-//      const now = new Date();
-//      const timeString = now.toLocaleTimeString();
-//      const dateString = now.toLocaleDateString();
-//      const fullDateTimeString = `${dateString} ${timeString}`;
+     //  function updateTime() {
+     //      const now = new Date();
+     //      const timeString = now.toLocaleTimeString();
+     //      const dateString = now.toLocaleDateString();
+     //      const fullDateTimeString = `${dateString} ${timeString}`;
 
-//      document.getElementById('waktusekarang').textContent = fullDateTimeString;
-//  }
-function updateTime() {
-    const now = new Date();
-    const days = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
-    const months = [
-        "Januari", "Februari", "Maret", "April", "Mei", "Juni",
-        "Juli", "Agustus", "September", "Oktober", "November", "Desember"
-    ];
+     //      document.getElementById('waktusekarang').textContent = fullDateTimeString;
+     //  }
+     function updateTime() {
+         const now = new Date();
+         const days = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
+         const months = [
+             "Januari", "Februari", "Maret", "April", "Mei", "Juni",
+             "Juli", "Agustus", "September", "Oktober", "November", "Desember"
+         ];
 
-    const dayName = days[now.getDay()];
-    const monthName = months[now.getMonth()];
-    const day = now.getDate();
-    const year = now.getFullYear();
-    const timeString = now.toLocaleTimeString();
+         const dayName = days[now.getDay()];
+         const monthName = months[now.getMonth()];
+         const day = now.getDate();
+         const year = now.getFullYear();
+         const timeString = now.toLocaleTimeString();
 
-    const fullDateTimeString = `${dayName}, ${day} ${monthName} ${year} ${timeString}`;
+         const fullDateTimeString = `${dayName}, ${day} ${monthName} ${year} ${timeString}`;
 
-    let waktuSekarang = new Date();
-    let jam = waktuSekarang.getHours();
+         let waktuSekarang = new Date();
+         let jam = waktuSekarang.getHours();
 
-    let pesanSelamat = '';
+         let pesanSelamat = '';
 
-    if (jam >= 5 && jam < 10.59) {
-        pesanSelamat = 'Selamat Pagi!';
-    } else if (jam >= 11 && jam < 14.59) {
-        pesanSelamat = 'Selamat Siang!';
-    } else if (jam >= 14.59 && jam < 18) {
-        pesanSelamat = 'Selamat Sore!';
-    } else {
-        pesanSelamat = 'Selamat Malam!';
-    }
+         if (jam >= 5 && jam < 10.59) {
+             pesanSelamat = 'Selamat Pagi!';
+         } else if (jam >= 11 && jam < 14.59) {
+             pesanSelamat = 'Selamat Siang!';
+         } else if (jam >= 14.59 && jam < 18) {
+             pesanSelamat = 'Selamat Sore!';
+         } else {
+             pesanSelamat = 'Selamat Malam!';
+         }
 
-    let pesanSelamatElement = document.getElementById("pesanSelamat");
-    if (pesanSelamatElement) {
-        pesanSelamatElement.textContent = pesanSelamat;
-    }
+         let pesanSelamatElement = document.getElementById("pesanSelamat");
+         if (pesanSelamatElement) {
+             pesanSelamatElement.textContent = pesanSelamat;
+         }
 
-    document.getElementById('waktusekarang').textContent = fullDateTimeString;
-}
-setInterval(updateTime, 1000); // Update every second
+         document.getElementById('waktusekarang').textContent = fullDateTimeString;
+     }
+     setInterval(updateTime, 1000); // Update every second
  </script>
  <script>
-fetch('https://api.openweathermap.org/data/2.5/weather?q=Jakarta&appid=71aeca16726bc04ff24b206ff2b2e688&units=metric')
-    .then(response => response.json())
-    .then(data => {
-        const weatherDiv = document.getElementById('weather-info');
-        let weatherDescription = data.weather[0].description;
-        const weatherTranslations = {
-            'clear sky': 'langit cerah',
-            'few clouds': 'sedikit awan',
-            'scattered clouds': 'awan tersebar',
-            'broken clouds': 'awan terputus',
-            'shower rain': 'hujan ringan',
-            'rain': 'hujan',
-            'thunderstorm': 'badai petir',
-            'snow': 'salju',
-            'mist': 'kabut',
-            'haze': 'kabut asap',
-            'overcast clouds': 'awan mendung'
-        };
+     fetch('https://api.openweathermap.org/data/2.5/weather?q=Jakarta&appid=71aeca16726bc04ff24b206ff2b2e688&units=metric')
+         .then(response => response.json())
+         .then(data => {
+             const weatherDiv = document.getElementById('weather-info');
+             let weatherDescription = data.weather[0].description;
+             const weatherTranslations = {
+                 'clear sky': 'langit cerah',
+                 'few clouds': 'sedikit awan',
+                 'scattered clouds': 'awan tersebar',
+                 'broken clouds': 'awan terputus',
+                 'shower rain': 'hujan ringan',
+                 'rain': 'hujan',
+                 'thunderstorm': 'badai petir',
+                 'snow': 'salju',
+                 'mist': 'kabut',
+                 'haze': 'kabut asap',
+                 'overcast clouds': 'awan mendung'
+             };
 
-        function ucfirst(str) {
-            return str.charAt(0).toUpperCase() + str.slice(1);
-        }
+             function ucfirst(str) {
+                 return str.charAt(0).toUpperCase() + str.slice(1);
+             }
 
-        weatherDescription = weatherTranslations[weatherDescription] || weatherDescription;
-        weatherDescription = ucfirst(weatherDescription);
-        const temperature = data.main.temp;
-        weatherDiv.innerHTML = `
+             weatherDescription = weatherTranslations[weatherDescription] || weatherDescription;
+             weatherDescription = ucfirst(weatherDescription);
+             const temperature = data.main.temp;
+             weatherDiv.innerHTML = `
              <div class="card border border-dark weather-card" style="background-color: #fff;">
                 <div class="card-header">
                     <h1 id="pesanSelamat" style="margin-bottom: -30px;"></h1><br>
@@ -461,12 +464,34 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Jakarta&appid=71aeca167
                 <div class="weather-icon">
                 </div>
             </div>`;
-    })
-    .catch(error => {
-        console.error('Error fetching weather:', error);
-        const weatherDiv = document.getElementById('weather-info');
-        weatherDiv.innerHTML = 'Failed to fetch weather data.';
-    });
+         })
+         .catch(error => {
+             console.error('Error fetching weather:', error);
+             const weatherDiv = document.getElementById('weather-info');
+             weatherDiv.innerHTML = 'Failed to fetch weather data.';
+         });
+ </script>
+ <script>
+     let counter = document.querySelectorAll(".counter");
+     let arr = Array.from(counter);
+
+     arr.map((item) => {
+         let count = item.innerHTML;
+         item.innerHTML = 0;
+         let counterValue = 1;
+
+         function counterUP() {
+             item.innerHTML = counterValue++;
+
+             if (counterValue > count) {
+                 clearInterval(counting);
+             }
+         }
+
+         let counting = setInterval(() => {
+             counterUP();
+         }, item.dataset.speed / count);
+     });
  </script>
 
  <!-- <script>
