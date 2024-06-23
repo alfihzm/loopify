@@ -166,8 +166,7 @@
             </section>
 
             <section class="section bg-pattern-1 bg-gray-100 overflow-hidden" id="about">
-                <img src="<?= base_url('assets/') ?>images/patterns/9.png" alt="img"
-                    class="patterns-8 sub-pattern-1 filter-invert sub-pattern-1 op-1">
+                <img src="<?= base_url('assets/') ?>images/patterns/9.png" alt="img" class="patterns-8 sub-pattern-1 filter-invert sub-pattern-1 op-1">
                 <div class="container">
                     <div class="heading-section">
                         <div class="heading-subtitle"><span class="tx-primary tx-16 fw-semibold">Tentang</span></div>
@@ -176,13 +175,13 @@
                     </div>
                     <div class="row align-items-center">
                         <div class="col-lg-6 feature-client-bg">
-                            <?php foreach($company as $c) : ?>
-                            <h4 class="mb-2">
-                                <span><?= $c['judul']; ?></span>
-                            </h4>
-                            <p class="mb-3">
-                                <?= $c['deskripsi']; ?>
-                            </p>
+                            <?php foreach ($company as $c) : ?>
+                                <h4 class="mb-2">
+                                    <span><?= $c['judul']; ?></span>
+                                </h4>
+                                <p class="mb-3">
+                                    <?= $c['deskripsi']; ?>
+                                </p>
                             <?php endforeach ?>
                         </div>
                         <div class="col-lg-6 text-center">
@@ -190,196 +189,191 @@
                         </div>
                     </div>
                 </div>
-                </div>
-            </section>
+        </div>
+        </section>
 
-            <section id="tech" class="section blob-bg-sec banner-pd-3">
-                <img src="<?= base_url('assets/') ?>images/patterns/18.png" alt="img" class="patterns-5 transform-rotate-180 height-inherit bottom-0 op-1">
-                <img src="<?= base_url('assets/') ?>images/patterns/18.png" alt="img" class="patterns-7 height-inherit bottom-0">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-lg-7">
-                            <div class="heading-section text-start mb-4">
-                                <div class="heading-title text-white">Technical Support 24/7</div>
-                                <div class="heading-description text-white op-8">Guide & Support</div>
-                            </div>
-                            <p class="mb-3 op-8">Jika anda memiliki masalah atau kendala yang tidak anda pahami, anda
-                                dapat menghubungi kami.</p>
-                            <p class="tx-20 fw-500">Hubungi kami : <a href="tel:123-789-7854" class="text-white me-1">0813-2800-0052</a> (Atau) <a href="contact-us.html" class="text-white ms-1">Chat Now</a></p>
-                            <a href="contact-us.html" class="btn btn-lg btn-secondary">Hubungi Sekarang</a>
+        <section id="tech" class="section blob-bg-sec banner-pd-3">
+            <img src="<?= base_url('assets/') ?>images/patterns/18.png" alt="img" class="patterns-5 transform-rotate-180 height-inherit bottom-0 op-1">
+            <img src="<?= base_url('assets/') ?>images/patterns/18.png" alt="img" class="patterns-7 height-inherit bottom-0">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-7">
+                        <div class="heading-section text-start mb-4">
+                            <div class="heading-title text-white">Dukungan Teknis 24 Jam</div>
+                            <div class="heading-description text-white op-8">Kirim pesan kepada kami</div>
                         </div>
-                        <div class="col-lg-5">
-                            <div class="text-center mt-5 mt-lg-0">
-                                <img src="<?= base_url('assets/') ?>images/png/57.png" alt="img" class="img-fluid">
-                            </div>
+                        <p class="mb-3 op-8">Jika Anda memiliki pertanyaan, masalah, atau kendala terkait Recyloop, Anda
+                            dapat menghubungi kami.</p>
+                        <p class="tx-20 fw-500">Hubungi kami : <a href="https://wa.me/6285692726913?text=Halo%20Recyloop%" class="text-white me-1">0813-2800-0052</a> atau <a href="https://wa.me/6285692726913?text=Halo%20Recyloop%" class="text-white ms-1">0813-2800-0010</a></p>
+                        <a href="https://wa.me/6285692726913?text=Halo%20Recyloop%" class="btn btn-lg btn-secondary">Hubungi Sekarang</a>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="text-center mt-5 mt-lg-0">
+                            <img src="<?= base_url('assets/') ?>images/png/57.png" alt="img" class="img-fluid">
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <section id="team" class="section bg-section-1">
-                <div class="container">
-                    <div class="row justify-content-between mb-5 ">
-                        <div class="heading-section">
-                            <div class="heading-subtitle"><span class="tx-primary tx-16 fw-semibold">Tim Kami</span>
-                            </div>
-                            <div class="heading-title">Anggota Tim <span class="tx-primary">Eksekutif Kami</span></div>
-                            <div class="heading-description">Our Specialists</div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-3 col-sm-6">
-                            <div class="card mb-lg-0">
-                                <div class="card-body">
-                                    <div class="d-flex align-items-center mb-4">
-                                        <img src="assets/images/profile/8.jpg" class="avatar avatar-lg rounded-circle me-3" alt="...">
-                                        <div>
-                                            <h5 class="mb-1">Andrian Fakih</h5>
-                                            <p class="tx-14 mb-0">Web designer</p>
-                                        </div>
-                                    </div>
-                                    <p>Greet customers and make them feel warm welcome by creating a supportive and
-                                        friendly environment</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-sm-6">
-                            <div class="card mb-lg-0">
-                                <div class="card-body">
-                                    <div class="d-flex align-items-center mb-4">
-                                        <img src="assets/images/profile/4.jpg" class="avatar avatar-lg rounded-circle me-3" alt="...">
-                                        <div>
-                                            <h5 class="mb-1">Muhammad Alfi Hamzami</h5>
-                                            <p class="tx-14 mb-0">Java Developer</p>
-                                        </div>
-                                    </div>
-                                    <p>Communicate with the customers and make them feel comfortable and knowing their
-                                        needs to manage.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-sm-6">
-                            <div class="card mb-lg-0">
-                                <div class="card-body">
-                                    <div class="d-flex align-items-center mb-4">
-                                        <img src="assets/images/profile/3.jpg" class="avatar avatar-lg rounded-circle me-3" alt="...">
-                                        <div>
-                                            <h5 class="mb-1">Muhammad Raihan Hadianto</h5>
-                                            <p class="tx-14 mb-0">Angular Developer</p>
-                                        </div>
-                                    </div>
-                                    <p>Deliver products pricing accurately with high reliable performance without any
-                                        risks and technical issues.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-sm-6">
-                            <div class="card mb-lg-0">
-                                <div class="card-body">
-                                    <div class="d-flex align-items-center mb-4">
-                                        <img src="assets/images/profile/1.jpg" class="avatar avatar-lg rounded-circle me-3" alt="...">
-                                        <div>
-                                            <h5 class="mb-1">Dwi Salzabila</h5>
-                                            <p class="tx-14 mb-0">React Developer</p>
-                                        </div>
-                                    </div>
-                                    <p>Maintains all the necessary documents that are needed for products pricing with
-                                        more privacy.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="faq" class="section section-2 text-white">
-                <div class="container">
+        <section id="team" class="section bg-section-1">
+            <div class="container">
+                <div class="row justify-content-between mb-5 ">
                     <div class="heading-section">
-                        <div class="heading-title text-white">FAQ</div>
-                        <div class="heading-description text-white op-8">Frequently Asked Question</div>
+                        <div class="heading-subtitle"><span class="tx-primary tx-16 fw-semibold">Tim Kami</span>
+                        </div>
+                        <div class="heading-title">Anggota Tim <span class="tx-primary">Eksekutif Kami</span></div>
+                        <div class="heading-description">Our Specialists</div>
                     </div>
-                    <div class="row align-items-center">
-                        <!-- START DI SINI -->
-                        <div class="accordion" id="accordionExample">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                        <strong>Apa itu Recyloop?</strong>
-                                    </button>
-                                </h2>
-                                <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                        <strong>Recyloop</strong> adalah sebuah proyek inovatif yang dirancang untuk
-                                        meningkatkan kesadaran dan partisipasi masyarakat dalam menjaga kebersihan lingkungan.
-                                        Proyek ini bertujuan untuk mengatasi masalah yang timbul
-                                        akibat kurangnya kesadaran warga terhadap kebersihan, seperti pembuangan sampah sembarangan
-                                        yang berdampak pada banjir, pencemaran lingkungan, dan kerusakan ekosistem.
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card mb-lg-0">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-4">
+                                    <img src="assets/images/profile/8.jpg" class="avatar avatar-lg rounded-circle me-3" alt="...">
+                                    <div>
+                                        <h5 class="mb-1">Andrian Fakih</h5>
+                                        <p class="tx-14 mb-0">Web designer</p>
                                     </div>
                                 </div>
+                                <p>Greet customers and make them feel warm welcome by creating a supportive and
+                                    friendly environment</p>
                             </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        <strong>Tujuan utama Recyloop?</strong>
-                                    </button>
-                                </h2>
-                                <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                        Kami bertujuan untuk mengurangi dampak negatif sampah terhadap lingkungan dan kesehatan
-                                        masyarakat melalui sistem informasi dan insentif.
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card mb-lg-0">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-4">
+                                    <img src="assets/images/profile/4.jpg" class="avatar avatar-lg rounded-circle me-3" alt="...">
+                                    <div>
+                                        <h5 class="mb-1">Muhammad Alfi Hamzami</h5>
+                                        <p class="tx-14 mb-0">Java Developer</p>
                                     </div>
                                 </div>
+                                <p>Communicate with the customers and make them feel comfortable and knowing their
+                                    needs to manage.</p>
                             </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                        <strong>Bagaimana cara kerja sistem penukaran sampah menjadi koin di Recyloop?</strong>
-                                    </button>
-                                </h2>
-                                <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                        Sistem ini memungkinkan warga menukarkan sampah botol dan bahan daur ulang lainnya. Setiap
-                                        penukaran akan diberikan koin yang bisa ditukarkan kembali sebagai insentif untuk mendorong
-                                        warga lebih aktif dalam pengelolaan sampah.
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card mb-lg-0">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-4">
+                                    <img src="assets/images/profile/3.jpg" class="avatar avatar-lg rounded-circle me-3" alt="...">
+                                    <div>
+                                        <h5 class="mb-1">Muhammad Raihan Hadianto</h5>
+                                        <p class="tx-14 mb-0">Angular Developer</p>
                                     </div>
+                                </div>
+                                <p>Deliver products pricing accurately with high reliable performance without any
+                                    risks and technical issues.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card mb-lg-0">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-4">
+                                    <img src="assets/images/profile/1.jpg" class="avatar avatar-lg rounded-circle me-3" alt="...">
+                                    <div>
+                                        <h5 class="mb-1">Dwi Salzabila</h5>
+                                        <p class="tx-14 mb-0">React Developer</p>
+                                    </div>
+                                </div>
+                                <p>Maintains all the necessary documents that are needed for products pricing with
+                                    more privacy.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq" class="section section-2 text-white">
+            <div class="container">
+                <div class="heading-section">
+                    <div class="heading-title text-white">FAQ</div>
+                    <div class="heading-description text-white op-8">Frequently Asked Question</div>
+                </div>
+                <div class="row align-items-center">
+                    <!-- START DI SINI -->
+                    <div class="accordion" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                    <strong>Apa itu Recyloop?</strong>
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <strong>Recyloop</strong> adalah sebuah proyek inovatif yang dirancang untuk
+                                    meningkatkan kesadaran dan partisipasi masyarakat dalam menjaga kebersihan lingkungan.
+                                    Proyek ini bertujuan untuk mengatasi masalah yang timbul
+                                    akibat kurangnya kesadaran warga terhadap kebersihan, seperti pembuangan sampah sembarangan
+                                    yang berdampak pada banjir, pencemaran lingkungan, dan kerusakan ekosistem.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    <strong>Tujuan utama Recyloop?</strong>
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    Kami bertujuan untuk mengurangi dampak negatif sampah terhadap lingkungan dan kesehatan
+                                    masyarakat melalui sistem informasi dan insentif.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    <strong>Bagaimana cara kerja sistem penukaran sampah menjadi koin di Recyloop?</strong>
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    Sistem ini memungkinkan warga menukarkan sampah botol dan bahan daur ulang lainnya. Setiap
+                                    penukaran akan diberikan koin yang bisa ditukarkan kembali sebagai insentif untuk mendorong
+                                    warga lebih aktif dalam pengelolaan sampah.
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <section id="rev" class="section overflow-hidden">
-                <div class="container">
-                    <div class="heading-section">
-                        <div class="heading-subtitle"><span class="tx-primary tx-16 fw-semibold">Reviews</span></div>
-                        <div class="heading-title">Apa Yang Orang Bicarakan <span class="tx-primary">Tentang Kami</span>
-                        </div>
-                        <div class="heading-description">Client Reviews</div>
+        <section id="rev" class="section overflow-hidden">
+            <div class="container">
+                <div class="heading-section">
+                    <div class="heading-subtitle"><span class="tx-primary tx-16 fw-semibold">Reviews</span></div>
+                    <div class="heading-title">Apa Yang Orang Bicarakan <span class="tx-primary">Tentang Kami</span>
                     </div>
-                    <div class="row align-items-center">
-                        <div class="col-xl-3 text-center text-lg-start feature-client-bg">
-                            <span><i class="bi bi-quote tx-secondary tx-50"></i></span>
-                            <p class="h3 mb-5">Kata Client Tentang Kami</p>
-                            <div class="swiper-pagination"></div>
-                        </div>
-                        <div class="col-xl-9">
-                            <div class="bg-client position-relative">
-                                <img src="<?= base_url('assets/') ?>images/patterns/9.png" alt="img"
-                                    class="patterns-11 z-index-0 filter-invert op-2">
-                                <div class="swiper testimonialSwiper">
-                                    <div class="swiper-wrapper">
-                                        <!-- START DI SINI -->
-                                        <?php foreach($review as $r) : ?>
+                    <div class="heading-description">Client Reviews</div>
+                </div>
+                <div class="row align-items-center">
+                    <div class="col-xl-3 text-center text-lg-start feature-client-bg">
+                        <span><i class="bi bi-quote tx-secondary tx-50"></i></span>
+                        <p class="h3 mb-5">Kata Client Tentang Kami</p>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                    <div class="col-xl-9">
+                        <div class="bg-client position-relative">
+                            <img src="<?= base_url('assets/') ?>images/patterns/9.png" alt="img" class="patterns-11 z-index-0 filter-invert op-2">
+                            <div class="swiper testimonialSwiper">
+                                <div class="swiper-wrapper">
+                                    <!-- START DI SINI -->
+                                    <?php foreach ($review as $r) : ?>
                                         <div class="swiper-slide">
                                             <div class="card shadow-none mb-0">
                                                 <div class="card-body" style="height: 250px">
                                                     <div class="d-flex align-items-center">
-                                                        <img src="<?= base_url('assets/images/user/profile/') . $r['photo']; ?>"
-                                                            alt="img" class="avatar avatar-lg rounded-circle me-2">
+                                                        <img src="<?= base_url('assets/images/user/profile/') . $r['photo']; ?>" alt="img" class="avatar avatar-lg rounded-circle me-2">
                                                         <div class="flex-grow-1">
                                                             <h6 class="mb-0 text-white"><?= $r['nama']; ?></h6>
                                                             <span class="tx-11">12 Aug, 2022</span>
@@ -392,17 +386,17 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <?php endforeach ?>
-                                    </div>
+                                    <?php endforeach ?>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
-        </div>
+            </div>
+        </section>
+    </div>
 
-        <!-- END MAIN-CONTENT -->
+    <!-- END MAIN-CONTENT -->
     </div>
     <!-- END PAGE -->
 

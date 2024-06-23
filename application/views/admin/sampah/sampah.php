@@ -168,22 +168,22 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col" style="width: 50px;">No.</th>
-                        <th scope="col" style="width: 50px; text-align: center;">Pengepul</th>
-                        <th scope="col" style="width: 15%; text-align: center;">Tanggal</th>
-                        <th scope="col" style="width: 50px;">BP</th>
-                        <th scope="col" style="width: 50px;">KA</th>
-                        <th scope="col" style="width: 50px;">KK</th>
-                        <th scope="col" style="width: 15%;">Kas Masuk</th>
-                        <th scope="col" style="width: 50px;">Driver</th>
-                        <th scope="col" style="width: 50px;">Petugas</th>
-                        <th scope="col" style="width: 100px;">Aksi</th>
+                        <th scope="col" style="width: 5%;">No.</th>
+                        <th scope="col" style="width: 10%; text-align: center;">Pengepul</th>
+                        <th scope="col" style="width: 10%; text-align: center;">Tanggal</th>
+                        <th scope="col" style="width: 5%;">BP</th>
+                        <th scope="col" style="width: 5%;">KA</th>
+                        <th scope="col" style="width: 5%;">KK</th>
+                        <th scope="col" style="width: 100%;">Kas Masuk</th>
+                        <th scope="col" style="width: 10%;">Driver</th>
+                        <th scope="col" style="width: 10%;">Petugas</th>
+                        <th scope="col" style="width: 5%;">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php if (empty($distribution)) : ?>
                         <tr>
-                            <td colspan="8" style="text-align: center;">Belum ada pengambilan sampah dari gudang</td>
+                            <td colspan="9" style="text-align: center;">Belum ada pengambilan sampah dari gudang</td>
                         </tr>
                     <?php else : ?>
                         <?php $i = 1;
@@ -199,7 +199,7 @@
                                 <td><?= $d['driver']; ?></td>
                                 <td><?= $d['petugas']; ?></td>
                                 <td>
-                                    <a href="<?= base_url('admin/ubah_distribusi/'   . $d['id']); ?>" class="btn btn-success btn-sm"><i style="color: #000;" class="fa-solid fa-pencil"></i></a>
+                                    <a href="<?= base_url('admin/ubah_distribusi/' . $d['id']); ?>" class="btn btn-success btn-sm"><i style="color: #000;" class="fa-solid fa-pencil"></i></a>
                                     <!-- <a href="<?= base_url('admin/hapus_distribusi/' . $d['id']); ?>" class="btn btn-danger btn-sm"><i style="color: #000;" class="fa-solid fa-trash"></i></a> -->
                                 </td>
                             </tr>
@@ -207,6 +207,7 @@
                     <?php endif; ?>
                 </tbody>
             </table>
+            <?= $this->pagination->create_links(); ?>
         </div>
     </div>
 </div>

@@ -590,6 +590,12 @@ class Admin extends CI_Controller
     // INFORMASI TABEL MEMBER
     public function sampah()
     {
+        $config['base_url'] = site_url('admin/sampah/');
+        $config['total_rows'] = $this->SampahModel->countAllDistribution(3);
+        $config['per_page'] = 5;
+        $start = $this->uri->segment(3);
+        
+
         $botol = $this->SampahModel->getSampahById(1);
         $kaleng = $this->SampahModel->getSampahById(2);
         $kardus = $this->SampahModel->getSampahById(3);
@@ -597,13 +603,43 @@ class Admin extends CI_Controller
         $data = [
             'judul' => 'Manajemen Sampah',
             'sampah' => $this->SampahModel->getSampah(),
-            'distribution' => $this->SampahModel->getDistribution(),
+            'distribution' => $this->SampahModel->getSomeDistribution(3, $config['per_page'], $start),
+            // 'distribution' => $this->SampahModel->getDistribution(),
             'user'  => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
             'botol' => $botol,
             'kaleng' => $kaleng,
             'kardus' => $kardus
 
         ];
+
+        $config['full_tag_open']  = '<nav><ul class="pagination">';
+        $config['full_tag_close'] = '</ul></nav>';
+
+        $config['first_link'] = 'First';
+        $config['first_tag_open'] = '<li class="page-item">';
+        $config['first_tag_close'] = '</li>';
+
+        $config['last_link'] = 'Last';
+        $config['last_tag_open'] = '<li class="page-item">';
+        $config['last_tag_close'] = '</li>';
+
+        $config['next_link'] = '&raquo;';
+        $config['next_tag_open'] = '<li class="page-item">';
+        $config['next_tag_close'] = '</li>';
+
+        $config['prev_link'] = '&laquo;';
+        $config['prev_tag_open'] = '<li class="page-item">';
+        $config['prev_tag_close'] = '</li>';
+
+        $config['cur_tag_open'] = '<li class="page-item active"><a class="page-link" href="#">';
+        $config['cur_tag_close'] = '</a></li>';
+
+        $config['num_tag_open'] = '<li class="page-item">';
+        $config['num_tag_close'] = '</li>';
+
+        $config['attributes'] = array('class' => 'page-link');
+
+        $this->pagination->initialize($config);
 
         $pengepuls = ['TLP', 'KSA', 'DPR'];
         foreach ($pengepuls as $pengepul) {
@@ -768,7 +804,7 @@ class Admin extends CI_Controller
             $data = [
                 'user'  => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
             ];
-            
+
             $harga_bp = $this->db->get_where('sampah', ['id' => 1])->row()->nilai_satuan;
             $harga_ka = $this->db->get_where('sampah', ['id' => 2])->row()->nilai_satuan;
             $harga_kk = $this->db->get_where('sampah', ['id' => 3])->row()->nilai_satuan;

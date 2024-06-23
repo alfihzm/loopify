@@ -63,6 +63,10 @@
                                         <span class="input-group-text border-secondary text-grey" style="background-color:#eaecf4; width: 100%; height: 40px; color: #1A2035;">Rp <?= number_format($withdraw['nominal'], 0, ',', '.') ?></span>
                                     </div>
                                 </div>
+                                <div class="form-group col-sm-12">
+                                    <label for="idstaff">Komentar Petugas</label>
+                                    <span class="input-group-text border-secondary text-grey" style="background-color:#eaecf4; width: 100%; height: 40px; color: #1A2035;"><?= $withdraw['catatan'] ?></span>
+                                </div>
                                 <div class="col-sm-12" style="display: flex; justify-content: space-evenly; align-items: center; margin-top: 10px">
                                     <a style="width: 100px;" href="<?= base_url('log/transaction'); ?>" class="btn btn-warning">Kembali</a>
                                 </div>
