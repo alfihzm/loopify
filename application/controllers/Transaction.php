@@ -100,6 +100,7 @@ class Transaction extends CI_Controller
                 'totalkoin' => $totalkoin,
                 'lokasi' => $this->input->post('lokasi'),
                 'catatan' => $this->input->post('catatan'),
+                'petugas' => $data['user']['username'],
                 'status' => 'Belum dikonfirmasi',
             ];
 

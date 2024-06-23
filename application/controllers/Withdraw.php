@@ -98,6 +98,7 @@ class Withdraw extends CI_Controller
                 'metode'  => $metode,
                 'lokasi'  => $this->input->post('lokasi'),
                 'catatan'  => $this->input->post('catatan'),
+                'petugas' => $data['user']['username'],
                 'status' => $status
             ];
 

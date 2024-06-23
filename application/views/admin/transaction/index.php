@@ -138,6 +138,7 @@
                             <input type="hidden" id="total" name="total">
                             <input type="hidden" id="totalkoin" name="totalkoin">
                             <input type="hidden" id="totalkonversi" name="totalkonversi">
+                            <input type="hidden" id="petugas" name="petugas">
                             <div class="form-group">
                                 <label style="color: #01E7f4 !important;" for="formGroupExampleInput2">Tanggal Penukaran</label>
                                 <input style="background: #01E7f4; color: #1A2035; font-weight: 600;" type="date" class="form-control" id="tanggal" name="tanggal">
@@ -163,8 +164,6 @@
                 </div>
             </div>
         </div>
-
-
         <script type="text/javascript">
             window.setTimeout(function() {
                 $(".col-lg-6").fadeTo(500, 0).slideUp(500, function() {

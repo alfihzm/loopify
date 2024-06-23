@@ -77,10 +77,11 @@
                         <tr>
                             <th scope="col">Kode Member</th>
                             <th scope="col">User</th>
-                            <th scope="col">Tanggal</th>
+                            <th scope="col" style="width: 100%;">Tanggal</th>
                             <th scope="col">Nominal</th>
                             <th scope="col">Metode</th>
                             <th scope="col">Status</th>
+                            <th scope="col">Petugas</th>
                             <th scope="col">Aksi</th>
                         </tr>
                     </thead>
@@ -94,6 +95,7 @@
                                 <td><?= $w['nominal']; ?></td>
                                 <td><?= $w['metode']; ?></td>
                                 <td><?= $w['status']; ?></td>
+                                <td><?= $w['petugas']; ?></td>
                                 <td>
                                     <a href="<?= base_url('log/info_withdraw/' . $w['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-info"></i></a>
                                 </td>

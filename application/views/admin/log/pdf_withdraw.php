@@ -65,6 +65,7 @@
                  <th scope="col" style="background: yellow; border: 1px solid black;">Tanggal</th>
                  <th scope="col" style="background: yellow; border: 1px solid black;">Nominal</th>
                  <th scope="col" style="background: yellow; border: 1px solid black;">Metode</th>
+                 <th scope="col" style="background: yellow; border: 1px solid black;">Petugas</th>
              </tr>
          </thead>
          <tbody>
@@ -77,6 +78,7 @@
                      <td style="background: #FFF7DF; border: 1px solid black; font-size: 14px; justify-content: center;"><?= $w['jam'] ?>, <?= $w['tanggal']; ?></td>
                      <td style="background: #FFF7DF; border: 1px solid black; font-size: 14px;">Rp. <?= number_format($w['nominal'], 0, ',', '.') ?></td>
                      <td style="background: #FFF7DF; border: 1px solid black; font-size: 14px;"><?= $w['metode']; ?></td>
+                     <td style="background: #FFF7DF; border: 1px solid black; font-size: 14px;"><?= $w['petugas']; ?></td>
                  </tr>
                  //endif;
              <?php endforeach; ?>

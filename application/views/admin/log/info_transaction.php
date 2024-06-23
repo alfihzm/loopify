@@ -17,7 +17,7 @@
                         <h5 style="text-align: center;" class="card-title mt-1"><?= $judul; ?></h5>
                         <hr>
                         <form action="<?= base_url('transaction/edit_transaction/') . $transaction['id']; ?>" method="POST">
-                            <p style="font-weight: bold;">Transaksi penyerahan ini berstatus <?= $transaction['status']; ?></p>
+                            <p style="font-weight: bold;">Transaksi penyerahan ini dilakukan oleh <?= $transaction['petugas'];?> dengan status <?= $transaction['status']; ?></p>
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">

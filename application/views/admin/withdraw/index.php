@@ -140,6 +140,7 @@
                                 <label style="color: #01E7f4 !important;" for="formGroupExampleInput">Catatan</label>
                                 <textarea style="background: #01E7f4; color: #1A2035; font-weight: 600;" class="form-control" id="catatan" name="catatan" placeholder="Tulis komentar di sini"></textarea>
                             </div>
+                            <input type="hidden" id="petugas" name="petugas">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>

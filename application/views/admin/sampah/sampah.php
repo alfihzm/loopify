@@ -176,6 +176,7 @@
                         <th scope="col" style="width: 50px;">KK</th>
                         <th scope="col" style="width: 15%;">Kas Masuk</th>
                         <th scope="col" style="width: 50px;">Driver</th>
+                        <th scope="col" style="width: 50px;">Petugas</th>
                         <th scope="col" style="width: 100px;">Aksi</th>
                     </tr>
                 </thead>
@@ -196,6 +197,7 @@
                                 <td><?= $d['kk']; ?></td>
                                 <td style="color: lightgreen;"><i class="fa-solid fa-up-long"></i>&nbsp;&nbsp;Rp <b><?= number_format($d['nilai_tukar'], 0, ',', '.'); ?></b></td>
                                 <td><?= $d['driver']; ?></td>
+                                <td><?= $d['petugas']; ?></td>
                                 <td>
                                     <a href="<?= base_url('admin/ubah_distribusi/'   . $d['id']); ?>" class="btn btn-success btn-sm"><i style="color: #000;" class="fa-solid fa-pencil"></i></a>
                                     <!-- <a href="<?= base_url('admin/hapus_distribusi/' . $d['id']); ?>" class="btn btn-danger btn-sm"><i style="color: #000;" class="fa-solid fa-trash"></i></a> -->

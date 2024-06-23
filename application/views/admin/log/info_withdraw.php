@@ -16,7 +16,7 @@
                         <h5 style="text-align: center;" class="card-title mt-1"><?= $judul; ?></h5>
                         <hr>
                         <form action="<?= base_url('transaction/edit_withdraw/') . $withdraw['id']; ?>" method="POST">
-                            <p style="font-weight: bold;">Transaksi penyerahan ini berstatus <?= $withdraw['status']; ?></p>
+                            <p style="font-weight: bold;">Transaksi tarik tunai ini berstatus <?= $withdraw['status']; ?> oleh petugas <?= $withdraw['petugas'] ?></p>
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">

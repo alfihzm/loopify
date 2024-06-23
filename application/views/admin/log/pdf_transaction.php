@@ -68,21 +68,23 @@
                  <th scope="col" style="background: yellow; border: 1px solid black;">KK</th>
                  <th scope="col" style="background: yellow; border: 1px solid black;">Nominal</th>
                  <th scope="col" style="background: yellow; border: 1px solid black;">Status</th>
+                 <th scope="col" style="background: yellow; border: 1px solid black;">Petugas</th>
              </tr>
          </thead>
          <tbody>
              <?php foreach ($transaction as $t) : ?>
-                     ?>
-                     <tr>
-                         <td style="background: #D2FFFF; border: 1px solid black; font-size: 14px; text-align:center; justify-content:center;"><?= $t['id_member']; ?></td>
-                         <td style="background: #FFF7DF; border: 1px solid black; font-size: 14px;"><?= $t['username']; ?></td>
-                         <td style="background: #FFF7DF; border: 1px solid black; font-size: 14px; justify-content: center;"><?= $t['tanggal']; ?></td>
-                         <td style="background: #FFF7DF; border: 1px solid black; font-size: 14px; justify-content: center;"><?= $t['jumlah_botol']; ?></td>
-                         <td style="background: #FFF7DF; border: 1px solid black; font-size: 14px; justify-content: center;"><?= $t['jumlah_kaleng']; ?></td>
-                         <td style="background: #FFF7DF; border: 1px solid black; font-size: 14px; justify-content: center;"><?= $t['jumlah_kardus']; ?></td>
-                         <td style="background: #FFF7DF; border: 1px solid black; font-size: 14px;">Rp. <?= number_format($t['totalkoin'], 0, ',', '.') ?></td>
-                         <td style="background: #FFF7DF; border: 1px solid black; font-size: 14px;"><?= $t['status']; ?></td>
-                     </tr>
+                 ?>
+                 <tr>
+                     <td style="background: #D2FFFF; border: 1px solid black; font-size: 14px; text-align:center; justify-content:center;"><?= $t['id_member']; ?></td>
+                     <td style="background: #FFF7DF; border: 1px solid black; font-size: 14px;"><?= $t['username']; ?></td>
+                     <td style="background: #FFF7DF; border: 1px solid black; font-size: 14px; justify-content: center;"><?= $t['tanggal']; ?></td>
+                     <td style="background: #FFF7DF; border: 1px solid black; font-size: 14px; justify-content: center;"><?= $t['jumlah_botol']; ?></td>
+                     <td style="background: #FFF7DF; border: 1px solid black; font-size: 14px; justify-content: center;"><?= $t['jumlah_kaleng']; ?></td>
+                     <td style="background: #FFF7DF; border: 1px solid black; font-size: 14px; justify-content: center;"><?= $t['jumlah_kardus']; ?></td>
+                     <td style="background: #FFF7DF; border: 1px solid black; font-size: 14px;">Rp. <?= number_format($t['totalkoin'], 0, ',', '.') ?></td>
+                     <td style="background: #FFF7DF; border: 1px solid black; font-size: 14px;"><?= $t['status']; ?></td>
+                     <td style="background: #FFF7DF; border: 1px solid black; font-size: 14px;"><?= $t['petugas']; ?></td>
+                 </tr>
              <?php endforeach; ?>
          </tbody>
          <div style="text-align: center;"><br>Data ini dimuat secara otomatis pada <b><?php echo strftime('%d %B %Y'); ?></b></div>

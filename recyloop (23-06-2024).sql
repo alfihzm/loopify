@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 07, 2024 at 11:28 AM
+-- Generation Time: Jun 23, 2024 at 05:11 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -52,16 +52,17 @@ CREATE TABLE `cinderamata` (
   `nama_gift` varchar(64) NOT NULL,
   `harga` int(64) NOT NULL,
   `photo` varchar(128) DEFAULT NULL,
-  `deskripsi` varchar(128) NOT NULL
+  `deskripsi` varchar(128) NOT NULL,
+  `stok` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `cinderamata`
 --
 
-INSERT INTO `cinderamata` (`id`, `nama_gift`, `harga`, `photo`, `deskripsi`) VALUES
-(1, 'Tote Bag', 500, 'ToteBag_Ramah_Lingkungan.jpg', 'Tote Bag serbaguna ramah lingkungan, membawa perlengkapan anda saat bepergian. Tersedia dengan berbagai ukuran.'),
-(6, 'Gantungan Kunci', 150, 'Ganci_Ramah_Lingkungan.jpg', 'Gantungan Kunci ramah lingkungan, cocok dibawa ke mana pun anda pergi.');
+INSERT INTO `cinderamata` (`id`, `nama_gift`, `harga`, `photo`, `deskripsi`, `stok`) VALUES
+(1, 'Tote Bag', 50000, 'ToteBag_Ramah_Lingkungan.jpg', 'Tote Bag serbaguna ramah lingkungan, membawa perlengkapan anda saat bepergian. ', 0),
+(2, 'Gantungan Kunci', 5000, 'Ganci_Ramah_Lingkungan.jpg', 'Gantungan Kunci ramah lingkungan, cocok dibawa ke mana pun anda pergi.', 64);
 
 -- --------------------------------------------------------
 
@@ -113,7 +114,11 @@ INSERT INTO `deposit` (`id`, `id_finance`, `metode`, `jumlah`, `tanggal`, `sumbe
 (3, 2, 'Transfer Ba', 50000, '2024-06-06', 'Donatur', 'logdeposit_003_BCA.jpg'),
 (4, 2, 'Transfer Ba', 175000, '2024-06-07', 'Donatur', 'logdeposit_004_BCA.jpg'),
 (5, 2, 'Tunai', 90000, '2024-06-07', 'Sponsor', 'logdeposit_005_BCA.jpg'),
-(7, 2, 'Transfer Ba', 190000, '2024-06-07', 'Modal Kas', 'logdeposit_007_BCA.jpg');
+(7, 2, 'Transfer Ba', 190000, '2024-06-07', 'Modal Kas', 'logdeposit_007_BCA.jpg'),
+(8, 1, 'Tunai', 10, '2024-06-22', 'Donatur', 'logdeposit_008_Mandiri.JPG'),
+(9, 2, 'Tunai', 100, '2024-06-22', 'Donatur', 'logdeposit_009_WhatsApp_Image_2024-06-21_at_15_58_50_219d62b8.jpg'),
+(10, 1, 'Tunai', 110, '2024-06-22', 'Donatur', 'logdeposit_010_WhatsApp_Image_2024-06-21_at_15_58_50_219d62b8.jpg'),
+(11, 1, 'Tunai', 114, '2024-06-22', 'Donatur', 'logdeposit_011_Mandiri.JPG');
 
 -- --------------------------------------------------------
 
@@ -129,6 +134,7 @@ CREATE TABLE `distribution` (
   `ka` int(11) DEFAULT NULL,
   `kk` int(11) DEFAULT NULL,
   `nilai_tukar` int(64) NOT NULL,
+  `petugas` varchar(32) NOT NULL,
   `driver` varchar(64) NOT NULL,
   `total` int(16) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -137,11 +143,16 @@ CREATE TABLE `distribution` (
 -- Dumping data for table `distribution`
 --
 
-INSERT INTO `distribution` (`id`, `pengepul`, `tanggal`, `bp`, `ka`, `kk`, `nilai_tukar`, `driver`, `total`) VALUES
-(1, 'TLP', '2024-06-06', 15, 0, 0, 2325, 'Pak Toto', 15),
-(2, 'KSA', '2024-06-06', 0, 50, 0, 10000, 'Pak Dimas', 50),
-(3, 'DPR', '2024-06-06', 0, 0, 100, 50000, 'Pak Jimmy', 100),
-(4, 'TLP', '2024-06-07', 30, 0, 0, 4650, 'Pak Rama', 30);
+INSERT INTO `distribution` (`id`, `pengepul`, `tanggal`, `bp`, `ka`, `kk`, `nilai_tukar`, `petugas`, `driver`, `total`) VALUES
+(1, 'TLP', '2024-06-06', 15, 0, 0, 2325, '', 'Pak Toto', 15),
+(2, 'KSA', '2024-06-06', 0, 50, 0, 10000, '', 'Pak Dimas', 50),
+(3, 'DPR', '2024-06-06', 0, 0, 100, 50000, '', 'Pak Jimmy', 100),
+(4, 'TLP', '2024-06-07', 30, 0, 0, 4650, '', 'Pak Rama', 30),
+(5, 'DPR', '2024-06-10', 5, 5, 5, 4275, '', 'Pak Roto', 15),
+(6, 'KSA', '2024-06-10', 0, 5, 0, 1000, '', 'Pak Preled', 5),
+(7, 'DPR', '2024-06-21', 1, 1, 1, 855, '', 'pak Iyep', 3),
+(8, 'DPR', '2024-06-21', 1, 0, 1, 655, '', 'pak Yeyen', 2),
+(9, 'TLP', '2024-06-23', 10, 0, 0, 1550, 'alfihzm', 'pak Toto', 10);
 
 -- --------------------------------------------------------
 
@@ -163,8 +174,8 @@ CREATE TABLE `finance` (
 --
 
 INSERT INTO `finance` (`id`, `rekening`, `saldo`, `tgl_update`, `jam_update`, `username`) VALUES
-(1, 'modal', 100000, '2024-06-07', '08:59:55', 'alfihzm'),
-(2, 'aruskas', 100561974, '2024-06-06', '17:56:40', 'alfihzm');
+(1, 'modal', 101550, '2024-06-22', '11:48:02', 'derby'),
+(2, 'aruskas', 50000, '2024-06-22', '11:48:08', 'derby');
 
 -- --------------------------------------------------------
 
@@ -231,6 +242,13 @@ CREATE TABLE `reports` (
   `deskripsi` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `reports`
+--
+
+INSERT INTO `reports` (`id`, `id_account`, `nama`, `judul`, `tanggal`, `deskripsi`) VALUES
+(1, '19220821', 'alfihzm', 'AC Mati', '2024-06-21', '&lt;p&gt;AC Mati sebagian, sekitar pukul 14.00&lt;/p&gt;');
+
 -- --------------------------------------------------------
 
 --
@@ -277,9 +295,9 @@ CREATE TABLE `sampah` (
 --
 
 INSERT INTO `sampah` (`id`, `icon`, `jenis_sampah`, `kode`, `nilai_tukar`, `nilai_satuan`, `total_sampah`, `kapasitas`) VALUES
-(1, 'plastic-bottle.png', 'Botol Plastik', 'BP', 1500, 155, 15, 200),
-(2, 'tin-can.png', 'Kaleng', 'KA', 13300, 200, 5, 200),
-(3, 'book.png', 'Kardus', 'KK', 2500, 500, 15, 200);
+(1, 'plastic-bottle.png', 'Botol Plastik', 'BP', 1500, 155, 8, 200),
+(2, 'tin-can.png', 'Kaleng', 'KA', 13300, 200, 128, 200),
+(3, 'book.png', 'Kardus', 'KK', 2500, 500, 13, 200);
 
 -- --------------------------------------------------------
 
@@ -382,6 +400,7 @@ CREATE TABLE `transaction` (
   `totalkonversi` int(16) NOT NULL,
   `lokasi` varchar(128) NOT NULL,
   `catatan` varchar(128) DEFAULT NULL,
+  `petugas` varchar(32) NOT NULL,
   `status` varchar(32) NOT NULL,
   `tgl_validasi` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -390,15 +409,18 @@ CREATE TABLE `transaction` (
 -- Dumping data for table `transaction`
 --
 
-INSERT INTO `transaction` (`id`, `id_member`, `username`, `tanggal`, `jumlah_botol`, `jumlah_kaleng`, `jumlah_kardus`, `total`, `totalkoin`, `totalkonversi`, `lokasi`, `catatan`, `status`, `tgl_validasi`) VALUES
-(1, 10480001, 'betara', '2024-05-25', 10, 10, 0, 20, 148000, 0, 'Tenant Serpong', 'Sampah dalam kondisi bagus', 'Belum dikonfirmasi', '0000-00-00'),
-(2, 10480001, 'betara', '2024-06-28', 15, 20, 0, 35, 288500, 0, 'Tenant Serpong', '', 'Belum dikonfirmasi', '0000-00-00'),
-(3, 10480002, 'supriyadi', '2024-05-30', 5, 0, 0, 5, 7500, 0, 'Tenant Serpong', '', 'Belum dikonfirmasi', '0000-00-00'),
-(4, 89922433, 'vaniacas', '2024-05-31', 20, 0, 5, 25, 42500, 0, 'Tenant Serpong', '', 'Belum dikonfirmasi', '0000-00-00'),
-(5, 89922433, 'vaniacas', '2024-06-01', 0, 10, 0, 10, 133000, 0, 'Tenant Serpong', 'Kaleng sangat berkualitas', 'Belum dikonfirmasi', '0000-00-00'),
-(6, 10480001, 'betara', '2024-06-02', 5, 0, 0, 5, 7500, 0, 'Tenant Serpong', '', 'Belum dikonfirmasi', '0000-00-00'),
-(7, 10480002, 'supriyadi', '2024-06-03', 5, 15, 10, 30, 232000, 0, 'Tenant Serpong', 'Tiga kantung plastik', 'Belum dikonfirmasi', '0000-00-00'),
-(8, 89922433, 'vaniacas', '2024-06-05', 0, 0, 100, 100, 250000, 0, 'Tenant Serpong', 'Satu box', 'Belum dikonfirmasi', '0000-00-00');
+INSERT INTO `transaction` (`id`, `id_member`, `username`, `tanggal`, `jumlah_botol`, `jumlah_kaleng`, `jumlah_kardus`, `total`, `totalkoin`, `totalkonversi`, `lokasi`, `catatan`, `petugas`, `status`, `tgl_validasi`) VALUES
+(1, 10480001, 'betara', '2024-05-25', 10, 10, 0, 20, 148000, 0, 'Tenant Serpong', 'Sampah dalam kondisi bagus', '', 'Belum dikonfirmasi', '0000-00-00'),
+(2, 10480001, 'betara', '2024-06-28', 15, 20, 0, 35, 288500, 0, 'Tenant Serpong', '', '', 'Belum dikonfirmasi', '0000-00-00'),
+(3, 10480002, 'supriyadi', '2024-05-30', 5, 0, 0, 5, 7500, 0, 'Tenant Serpong', '', '', 'Belum dikonfirmasi', '0000-00-00'),
+(4, 89922433, 'vaniacas', '2024-05-31', 20, 0, 5, 25, 42500, 0, 'Tenant Serpong', '', '', 'Sudah dikonfirmasi', '2024-06-23'),
+(5, 89922433, 'vaniacas', '2024-06-01', 0, 10, 0, 10, 133000, 0, 'Tenant Serpong', 'Kaleng sangat berkualitas', '', 'Sudah dikonfirmasi', '2024-06-22'),
+(6, 10480001, 'betara', '2024-06-02', 5, 0, 0, 5, 7500, 0, 'Tenant Serpong', '', '', 'Belum dikonfirmasi', '0000-00-00'),
+(7, 10480002, 'supriyadi', '2024-06-03', 5, 15, 10, 30, 232000, 0, 'Tenant Serpong', 'Tiga kantung plastik', '', 'Sudah dikonfirmasi', '2024-06-23'),
+(8, 89922433, 'vaniacas', '2024-06-05', 0, 0, 100, 100, 250000, 0, 'Tenant Serpong', 'Satu box', '', 'Belum dikonfirmasi', '0000-00-00'),
+(9, 10480001, 'betara', '2024-06-21', 0, 19, 0, 19, 252700, 0, 'Tenant Serpong', '', '', 'Belum dikonfirmasi', '0000-00-00'),
+(10, 10480001, 'betara', '2024-06-21', 5, 100, 0, 105, 1337500, 0, 'Tenant Serpong', 'komen\r\n', '', 'Sudah dikonfirmasi', '2024-06-23'),
+(11, 10480001, 'betara', '2024-06-23', 5, 15, 5, 25, 219500, 0, 'Tenant Serpong', '', 'derby', 'Belum dikonfirmasi', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -424,6 +446,8 @@ CREATE TABLE `user` (
   `total_koin` int(32) NOT NULL,
   `koin` int(11) NOT NULL,
   `alasan_ban` varchar(256) DEFAULT NULL,
+  `kupon1` int(11) NOT NULL DEFAULT 0,
+  `kupon2` int(11) NOT NULL DEFAULT 0,
   `date_created` int(11) NOT NULL,
   `is_active` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
@@ -432,23 +456,23 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `id_admin`, `id_staff`, `id_member`, `nama`, `lahir`, `email`, `username`, `password`, `role_id`, `photo`, `no_telp`, `alamat`, `total_sampah`, `total_koin`, `koin`, `alasan_ban`, `date_created`, `is_active`) VALUES
-(1, NULL, NULL, 10480001, 'Betara Adi Karya', '1999-01-01', 'betara@gmail.com', 'betara', '$2y$10$FLuzN7X92R2TQFttbmiQDOacjuIKMV8NnqPrjLrGdU.ow1DNxVEhu', 3, 'user_betara.png', '082161872392', 'Jakarta Selatan', 6, 0, 1308989, NULL, 1712325370, 1),
-(2, 19220821, NULL, NULL, 'Mohammad Alfi Hamzami', '1999-11-29', 'alfihzm@gmail.com', 'alfihzm', '$2y$10$D5MOyBMj5CDPCrew38NFT.8yOiEygBprrxhQs009pHmlBCnLyQ55O', 1, 'user_alfihzm.png', '082161872392', 'Kabupaten Tangerang', NULL, 0, 0, NULL, 1712465510, 1),
-(6, NULL, 10240001, NULL, 'Derby Hendrawan', '2005-05-11', 'derby@gmail.com', 'derby', '$2y$10$o1uWEO7QFLgEyQ3wqSbCAu1kAwjxfYa9/RJ3MJosDtN5NrZmCEX6C', 2, 'default.jpg', '082173958206', 'Bandung', NULL, 0, 0, NULL, 1714830415, 1),
-(7, NULL, 10240004, NULL, 'Dendi Rahmat', '2006-11-04', 'dendi@gmail.com', 'dendi', '$2y$10$lQlCdblquou221pGTm3MDudqMSSENy17VBjUvcr7MTgrDFqCDUeUu', 2, 'default.jpg', '082175927592', 'Lebak', NULL, 0, 0, NULL, 1714840913, 1),
-(8, NULL, 10240005, NULL, 'Adam Warlock', '2004-04-04', 'adam@gmail.com', 'adam', '$2y$10$PsSx5kVJY/otqt2CNtqiCeV.cyEJSbzGVzDo2OQF0vJLjHe9VAHLq', 2, 'default.jpg', '082174927592', 'Manchester', NULL, 0, 0, NULL, 1714841969, 1),
-(9, NULL, 10240006, NULL, 'Agus Sumanto', '2004-04-24', 'agus@gmail.com', 'agus', '$2y$10$tgW2yVQhnKz9scSIv1QcC..v0UZa7nQvgCPmXzJtnckuqbm0uKbdG', 2, 'default.jpg', '082173952058', 'Pandeglang', NULL, 0, 0, 'Kanibal', 1714842198, 0),
-(12, NULL, NULL, 10480002, 'Supriyadi', '1982-02-03', 'supri@gmail.com', 'supriyadi', '$2y$10$LIWTv1QQF6/gxHAB8lE.h.wD/eNkra5CMojoYePCPGfC8c1wAXJ7K', 3, 'default.jpg', '082174937285', 'Tangerang', 31, 0, 239500, NULL, 1715286102, 1),
-(13, NULL, 10240012, NULL, 'Mohammad Hamzah', '1999-11-29', 'mohamzah@gmail.com', 'hamzah', '$2y$10$/PlvahgZlEILDRSvuGQc1eL0OsDMSpyT/N4Gaz0mylskekcdgay2u', 2, 'user_Mohammad_Hamzah.jpg', '082161872392', 'Kabupaten Tangerang', NULL, 0, 0, NULL, 1715412654, 1),
-(14, NULL, 56002616, NULL, 'Maaruf', '2024-05-19', 'RI2@gmail.com', 'RI2', '$2y$10$6SyqSbx68Rw97TI4eiCMCexPW2sA3hA0ZhmMyTyF2aV9bP4vRm/vC', 2, 'default.jpg', '0858585858', 'BSD', NULL, 0, 0, NULL, 1716102567, 1),
-(20, NULL, 83541679, NULL, 'Lumia Ferdinand', '2001-11-11', 'lumia@gmail.com', 'lumia', '$2y$10$MDdGhWQvsJEDpok7z8mgJOEz93HYA2TZaMLUWrPNrH0ANKDRZGlpm', 2, 'default.jpg', '082174582373', 'Bekasi', NULL, 0, 0, NULL, 1716345882, 1),
-(21, NULL, NULL, 89922433, 'Vania Cassandra', '2005-03-11', 'vania@gmail.com', 'vaniacas', '$2y$10$kCBGdjju6rypvMNQJhNUJ.QdTOFHhCVZHh2tQNGWlDBbi2j/y/T/G', 3, 'default.jpg', '087839173927', 'Depok', 101, 0, 400500, NULL, 1716385605, 1),
-(22, NULL, NULL, 33104308, 'Tanya Degurechaff', '1999-11-29', 'tanya@gmail.com', 'tanya', '$2y$10$Q9Gfiaw5tIMX40SgWBis0O7ZMCl4.wXu.liygUbsC3fLKFRZSluJi', 3, 'default.jpg', '082161872392', 'Uni Soviet', 2.51, 0, 11300, NULL, 1716385883, 1),
-(23, NULL, NULL, 36769235, 'Izumi Sagiri', '2007-12-10', 'sagiri@gmail.com', 'sagiri', '$2y$10$gkkRBANQBv5V.5m7YiYtUObwP.wjeiGRhZvUCQL8432/XdR2dczgm', 3, 'default.jpg', '082161872392', 'Japan', 0, 0, 0, NULL, 1716387567, 1),
-(24, NULL, NULL, 22786747, 'Danu Setiawan', '2001-11-29', 'danu@gmail.com', 'danuset', '$2y$10$xhVw902BGWYMGTGoQOoQRekf0PIBib8arphkpCbbq99NOR3CbuZau', 3, 'default.jpg', '087827491133', 'Bekasi', 0, 0, 0, NULL, 1716561279, 1),
-(25, NULL, NULL, 49464707, 'Brian Griffin', '2004-01-15', 'mlaku@gmail.com', 'briang', '$2y$10$zDki3yCJ/KRSL9sVLWVfi.4b9TVam53x80TebjoVD0r1QhQ6/Dr6u', 3, 'default.jpg', '085858589999', 'BSD', 0, 0, 0, NULL, 1716869123, 1),
-(26, NULL, NULL, 14099047, 'Boya Bayu', '2024-05-29', 'bayu@gmail.com', 'boyal', '$2y$10$yY96bTS8fKH/e60s4c2yD.Cfm5YnjflQJOnPesu3FYrsOcPqC3sbG', 3, 'default.jpg', '081212001200', 'BSD', 0, 0, 0, NULL, 1716981005, 1);
+INSERT INTO `user` (`id`, `id_admin`, `id_staff`, `id_member`, `nama`, `lahir`, `email`, `username`, `password`, `role_id`, `photo`, `no_telp`, `alamat`, `total_sampah`, `total_koin`, `koin`, `alasan_ban`, `kupon1`, `kupon2`, `date_created`, `is_active`) VALUES
+(1, NULL, NULL, 10480001, 'Betara Waskita Karya', '1999-01-01', 'betara@gmail.com', 'betara', '$2y$10$FLuzN7X92R2TQFttbmiQDOacjuIKMV8NnqPrjLrGdU.ow1DNxVEhu', 3, 'user_betara1.png', '082161872392', 'Jakarta Selataan', 26, 0, 3068689, NULL, 0, 1, 1712325370, 1),
+(2, 19220821, NULL, NULL, 'Mohammad Alfi Hamzamis', '1999-11-29', 'alfihzm@gmail.com', 'alfihzm', '$2y$10$D5MOyBMj5CDPCrew38NFT.8yOiEygBprrxhQs009pHmlBCnLyQ55O', 1, 'user_alfihzm.png', '082161872392', 'Kabupaten Tangerang', NULL, 0, 0, NULL, 0, 0, 1712465510, 1),
+(6, NULL, 10240001, NULL, 'Derby Hendrawan', '2005-05-11', 'derby@gmail.com', 'derby', '$2y$10$o1uWEO7QFLgEyQ3wqSbCAu1kAwjxfYa9/RJ3MJosDtN5NrZmCEX6C', 2, 'default.jpg', '082173958206', 'Bandung', NULL, 0, 0, NULL, 0, 0, 1714830415, 1),
+(7, NULL, 10240004, NULL, 'Dendi Rahmat', '2006-11-04', 'dendi@gmail.com', 'dendi', '$2y$10$lQlCdblquou221pGTm3MDudqMSSENy17VBjUvcr7MTgrDFqCDUeUu', 2, 'default.jpg', '082175927592', 'Lebak', NULL, 0, 0, NULL, 0, 0, 1714840913, 1),
+(8, NULL, 10240005, NULL, 'Adam Warlock', '2004-04-04', 'adam@gmail.com', 'adam', '$2y$10$PsSx5kVJY/otqt2CNtqiCeV.cyEJSbzGVzDo2OQF0vJLjHe9VAHLq', 2, 'default.jpg', '082174927592', 'Manchester', NULL, 0, 0, NULL, 0, 0, 1714841969, 1),
+(9, NULL, 10240006, NULL, 'Agus Sumanto', '2004-04-24', 'agus@gmail.com', 'agus', '$2y$10$tgW2yVQhnKz9scSIv1QcC..v0UZa7nQvgCPmXzJtnckuqbm0uKbdG', 2, 'default.jpg', '082173952058', 'Pandeglang', NULL, 0, 0, 'Kanibal', 0, 0, 1714842198, 0),
+(12, NULL, NULL, 10480002, 'Supriyadi', '1982-02-03', 'supri@gmail.com', 'supriyadi', '$2y$10$LIWTv1QQF6/gxHAB8lE.h.wD/eNkra5CMojoYePCPGfC8c1wAXJ7K', 3, 'default.jpg', '082174937285', 'Tangerang', 31, 0, 239500, NULL, 0, 1, 1715286102, 1),
+(13, NULL, 10240012, NULL, 'Mohammad Hamzah', '1999-11-29', 'mohamzah@gmail.com', 'hamzah', '$2y$10$/PlvahgZlEILDRSvuGQc1eL0OsDMSpyT/N4Gaz0mylskekcdgay2u', 2, 'user_Mohammad_Hamzah.jpg', '082161872392', 'Kabupaten Tangerang', NULL, 0, 0, NULL, 0, 0, 1715412654, 1),
+(14, NULL, 56002616, NULL, 'Maaruf', '2024-05-19', 'RI2@gmail.com', 'RI2', '$2y$10$6SyqSbx68Rw97TI4eiCMCexPW2sA3hA0ZhmMyTyF2aV9bP4vRm/vC', 2, 'default.jpg', '0858585858', 'BSD', NULL, 0, 0, NULL, 0, 0, 1716102567, 1),
+(20, NULL, 83541679, NULL, 'Lumia Ferdinand', '2001-11-11', 'lumia@gmail.com', 'lumia', '$2y$10$MDdGhWQvsJEDpok7z8mgJOEz93HYA2TZaMLUWrPNrH0ANKDRZGlpm', 2, 'default.jpg', '082174582373', 'Bekasi', NULL, 0, 0, NULL, 0, 0, 1716345882, 1),
+(21, NULL, NULL, 89922433, 'Vania Cassandra', '2005-03-11', 'vania@gmail.com', 'vaniacas', '$2y$10$kCBGdjju6rypvMNQJhNUJ.QdTOFHhCVZHh2tQNGWlDBbi2j/y/T/G', 3, 'default.jpg', '087839173927', 'Depok', 101, 0, 400500, NULL, 0, 0, 1716385605, 1),
+(22, NULL, NULL, 33104308, 'Tanya Degurechaff', '1999-11-29', 'tanya@gmail.com', 'tanya', '$2y$10$Q9Gfiaw5tIMX40SgWBis0O7ZMCl4.wXu.liygUbsC3fLKFRZSluJi', 3, 'default.jpg', '082161872392', 'Uni Soviet', 2.51, 0, 11300, NULL, 0, 0, 1716385883, 1),
+(23, NULL, NULL, 36769235, 'Izumi Sagiri', '2007-12-10', 'sagiri@gmail.com', 'sagiri', '$2y$10$gkkRBANQBv5V.5m7YiYtUObwP.wjeiGRhZvUCQL8432/XdR2dczgm', 3, 'default.jpg', '082161872392', 'Japan', 0, 0, 0, 'Akun tidak aktif', 0, 0, 1716387567, 0),
+(24, NULL, NULL, 22786747, 'Danu Setiawan', '2001-11-29', 'danu@gmail.com', 'danuset', '$2y$10$xhVw902BGWYMGTGoQOoQRekf0PIBib8arphkpCbbq99NOR3CbuZau', 3, 'default.jpg', '087827491133', 'Bekasi', 0, 0, 0, NULL, 0, 0, 1716561279, 1),
+(25, NULL, NULL, 49464707, 'Brian Griffin', '2004-01-15', 'mlaku@gmail.com', 'briang', '$2y$10$zDki3yCJ/KRSL9sVLWVfi.4b9TVam53x80TebjoVD0r1QhQ6/Dr6u', 3, 'default.jpg', '085858589999', 'BSD', 0, 0, 0, NULL, 0, 0, 1716869123, 1),
+(26, NULL, NULL, 14099047, 'Boya Bayu', '2024-05-29', 'bayu@gmail.com', 'boyal', '$2y$10$yY96bTS8fKH/e60s4c2yD.Cfm5YnjflQJOnPesu3FYrsOcPqC3sbG', 3, 'default.jpg', '081212001200', 'BSD', 0, 0, 0, NULL, 0, 0, 1716981005, 1);
 
 -- --------------------------------------------------------
 
@@ -555,7 +579,7 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active
 (7, 4, 'Manajemen Member', 'admin/member', 'fas fa-fw fa-users', 1),
 (8, 6, 'Manajemen Sampah', 'admin/sampah', 'fas fa-fw fa-trash-can', 1),
 (9, 6, 'Manajemen Cinderamata', 'admin/cinderamata', '	\r\nfas fa-fw fa-gift', 1),
-(10, 5, 'Informasi Member', 'staff/member', 'fas fa-fw fa-users', 1),
+(10, 5, 'Informasi Member', 'member/listMember', 'fas fa-fw fa-users', 1),
 (12, 8, 'Manajemen Transaksi', 'transaction', 'fa-solid fa-money-bill-transfer', 1),
 (13, 8, 'Manajemen Keuangan', 'finance', 'fa-solid fa-money-bill\r\n', 1),
 (14, 8, 'Manajemen Tarik Tunai', 'withdraw', 'fa-solid fa-money-bill-1', 1),
@@ -585,6 +609,7 @@ CREATE TABLE `withdraw` (
   `metode` varchar(128) NOT NULL,
   `norek` varchar(128) NOT NULL,
   `catatan` varchar(128) NOT NULL,
+  `petugas` varchar(32) NOT NULL,
   `status` varchar(32) NOT NULL,
   `koin1` int(16) NOT NULL,
   `koin2` int(16) NOT NULL
@@ -594,12 +619,12 @@ CREATE TABLE `withdraw` (
 -- Dumping data for table `withdraw`
 --
 
-INSERT INTO `withdraw` (`id`, `id_member`, `username`, `nominal`, `tanggal`, `jam`, `lokasi`, `metode`, `norek`, `catatan`, `status`, `koin1`, `koin2`) VALUES
-(1, 10480001, 'betara', 50000, '2024-05-28', '23:17:10', 'Tenant Serpong', 'Tunai', '', '', 'Diberikan tunai', 1443989, 1393989),
-(2, 89922433, 'vaniacas', 25000, '2024-06-06', '23:22:32', 'Tenant Serpong', 'Tunai', '', '', 'Diberikan tunai', 175500, 150500),
-(3, 10480001, 'betara', 15000, '2024-06-06', '23:25:27', 'Tenant Serpong', 'Transfer Bank', '', 'OVO Payment', 'Sudah ditransfer', 1393989, 1378989),
-(4, 10480001, 'betara', 50000, '2024-06-06', '23:34:50', 'Tenant Serpong', 'Transfer Bank', '', 'OVO Payment', 'Sudah ditransfer', 1378989, 1328989),
-(5, 10480001, 'betara', 20000, '2024-06-06', '23:43:31', 'Tenant Serang', 'Tunai', '', '', 'Diberikan tunai', 1328989, 1308989);
+INSERT INTO `withdraw` (`id`, `id_member`, `username`, `nominal`, `tanggal`, `jam`, `lokasi`, `metode`, `norek`, `catatan`, `petugas`, `status`, `koin1`, `koin2`) VALUES
+(1, 10480001, 'betara', 50000, '2024-05-28', '23:17:10', 'Tenant Serpong', 'Tunai', '', '', '', 'Diberikan tunai', 1443989, 1393989),
+(2, 89922433, 'vaniacas', 25000, '2024-06-06', '23:22:32', 'Tenant Serpong', 'Tunai', '', '', '', 'Diberikan tunai', 175500, 150500),
+(3, 10480001, 'betara', 15000, '2024-06-06', '23:25:27', 'Tenant Serpong', 'Transfer Bank', '', 'OVO Payment', '', 'Sudah ditransfer', 1393989, 1378989),
+(4, 10480001, 'betara', 50000, '2024-06-06', '23:34:50', 'Tenant Serpong', 'Transfer Bank', '', 'OVO Payment', '', 'Sudah ditransfer', 1378989, 1328989),
+(6, 10480001, 'betara', 50000, '2024-06-23', '09:36:52', 'Tenant Serpong', 'Tunai', '', '', 'derby', 'Diberikan tunai', 3118689, 3068689);
 
 --
 -- Indexes for dumped tables
@@ -763,13 +788,13 @@ ALTER TABLE `company`
 -- AUTO_INCREMENT for table `deposit`
 --
 ALTER TABLE `deposit`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `distribution`
 --
 ALTER TABLE `distribution`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `finance`
@@ -799,7 +824,7 @@ ALTER TABLE `poin`
 -- AUTO_INCREMENT for table `reports`
 --
 ALTER TABLE `reports`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `review`
@@ -829,13 +854,13 @@ ALTER TABLE `surat_jalan`
 -- AUTO_INCREMENT for table `transaction`
 --
 ALTER TABLE `transaction`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `user_access_menu`
@@ -865,7 +890,7 @@ ALTER TABLE `user_sub_menu`
 -- AUTO_INCREMENT for table `withdraw`
 --
 ALTER TABLE `withdraw`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

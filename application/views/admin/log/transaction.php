@@ -55,11 +55,12 @@
                         <tr>
                             <th scope="col">Kode Member</th>
                             <th scope="col">User</th>
-                            <th scope="col">Tanggal</th>
+                            <th scope="col" style="width: 100%;">Tanggal</th>
                             <th scope="col">BP</th>
                             <th scope="col">KA</th>
                             <th scope="col">KK</th>
                             <th scope="col">Lokasi</th>
+                            <th scope="col">Petugas</th>
                             <th scope="col">Aksi</th>
                         </tr>
                     </thead>
@@ -73,6 +74,7 @@
                                 <td><?= $t['jumlah_kaleng']; ?></td>
                                 <td><?= $t['jumlah_kardus']; ?></td>
                                 <td><?= $t['lokasi']; ?></td>
+                                <td><?= $t['petugas']; ?></td>
                                 <td>
                                     <div style="text-align: center;">
                                         <a href="<?= base_url('log/info_transaction/' . $t['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-info"></i></a>

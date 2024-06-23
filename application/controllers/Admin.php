@@ -765,6 +765,10 @@ class Admin extends CI_Controller
             $this->load->view('admin/sampah/tambah_distribution', $data);
             $this->load->view("templates/admin/footer");
         } else {
+            $data = [
+                'user'  => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
+            ];
+            
             $harga_bp = $this->db->get_where('sampah', ['id' => 1])->row()->nilai_satuan;
             $harga_ka = $this->db->get_where('sampah', ['id' => 2])->row()->nilai_satuan;
             $harga_kk = $this->db->get_where('sampah', ['id' => 3])->row()->nilai_satuan;
@@ -804,6 +808,7 @@ class Admin extends CI_Controller
                         'kk' => $kk,
                         'nilai_tukar' => ($bp * $harga_bp) + ($ka * $harga_ka) + ($kk * $harga_kk),
                         'driver'  => $this->input->post('driver'),
+                        'petugas' => $data['user']['username'],
                         'total' => $bp + $ka + $kk,
                     ];
 
