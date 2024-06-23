@@ -37,4 +37,15 @@ class WithdrawModel extends CI_Model
         $query = $this->db->get_where('withdraw', ['id' => $id]);
         return $query->row_array();
     }
+
+    public function getSomeWithdraw($limit, $start)
+    {
+        $this->db->limit($limit, $start);
+        return $this->db->get('withdraw')->result_array();
+    }
+
+    public function countAllWithdraw()
+    {
+        return $this->db->get('withdraw')->num_rows();
+    }
 }

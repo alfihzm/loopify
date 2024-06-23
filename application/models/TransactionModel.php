@@ -23,7 +23,6 @@ class TransactionModel extends CI_Model
         $this->db->update('transaction', $data);
     }
 
-
     public function delete_transaction($id)
     {
         $transaction = $this->db->get_where('transaction', ['id' => $id])->row_array();
@@ -35,7 +34,6 @@ class TransactionModel extends CI_Model
             return false;
         }
     }
-
 
     public function editTransaction($id, $data)
     {

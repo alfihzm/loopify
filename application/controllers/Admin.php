@@ -235,9 +235,22 @@ class Admin extends CI_Controller
 
     public function staff_info($id)
     {
+        $user = $this->db->get_where('user', ['id_staff' => $id])->row_array();
+        $username = $user['username'];
+
+        $this->db->where('petugas', $username);
+        $this->db->from('transaction');
+        $totalTransaksi = $this->db->count_all_results();
+
+        $this->db->where('petugas', $username);
+        $this->db->from('withdraw');
+        $totalTarikTunai = $this->db->count_all_results();
+
         $data = [
             'judul' => 'Informasi Staff',
-            'user' => $this->db->get_where('user', ['id_staff' => $id])->row_array()
+            'user' => $user,
+            'totalTransaksi' => $totalTransaksi,
+            'totalTarikTunai' => $totalTarikTunai
         ];
 
         $this->load->view("templates/admin/header", $data);
@@ -246,6 +259,8 @@ class Admin extends CI_Controller
         $this->load->view('admin/staff/staff_info', $data);
         $this->load->view("templates/admin/footer");
     }
+
+
     public function staff_edit($id)
     {
         $data['user'] = $this->UserModel->getStaffById($id);
@@ -593,9 +608,9 @@ class Admin extends CI_Controller
         $config['base_url'] = site_url('admin/sampah/');
         $config['total_rows'] = $this->SampahModel->countAllDistribution();
         $config['per_page'] = 5;
-        $config['uri_segment'] = 3;  
+        $config['uri_segment'] = 3;
 
-        $start = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0; 
+        $start = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 
         $botol = $this->SampahModel->getSampahById(1);
         $kaleng = $this->SampahModel->getSampahById(2);
@@ -604,7 +619,7 @@ class Admin extends CI_Controller
         $data = [
             'judul' => 'Manajemen Sampah',
             'sampah' => $this->SampahModel->getSampah(),
-            'distribution' => $this->SampahModel->getSomeDistribution($config['per_page'], $start),  
+            'distribution' => $this->SampahModel->getSomeDistribution($config['per_page'], $start),
             'user'  => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
             'botol' => $botol,
             'kaleng' => $kaleng,

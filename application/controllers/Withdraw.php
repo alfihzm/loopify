@@ -12,14 +12,48 @@ class Withdraw extends CI_Controller
         date_default_timezone_set('Asia/Jakarta');
     }
 
-    public function index()
+    public function index($start = 0)
     {
+        $config['base_url'] = site_url('withdraw/index');
+        $config['total_rows'] = $this->WithdrawModel->countAllWithdraw();
+        $config['per_page'] = 5;
+        $config['uri_segment'] = 3;
+
         $data = [
             'judul' => "Data Transaksi Penarikan Tunai",
-            'withdraw' => $this->WithdrawModel->getWithdraw(),
+            'withdraw' => $this->WithdrawModel->getSomeWithdraw($config['per_page'], $start),
             'finance' => $this->FinanceModel->getFinance(),
             'user'  => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
         ];
+
+        $config['full_tag_open']  = '<nav><ul class="pagination">';
+        $config['full_tag_close'] = '</ul></nav>';
+
+        $config['first_link'] = 'First';
+        $config['first_tag_open'] = '<li class="page-item">';
+        $config['first_tag_close'] = '</li>';
+
+        $config['last_link'] = 'Last';
+        $config['last_tag_open'] = '<li class="page-item">';
+        $config['last_tag_close'] = '</li>';
+
+        $config['next_link'] = '&raquo;';
+        $config['next_tag_open'] = '<li class="page-item">';
+        $config['next_tag_close'] = '</li>';
+
+        $config['prev_link'] = '&laquo;';
+        $config['prev_tag_open'] = '<li class="page-item">';
+        $config['prev_tag_close'] = '</li>';
+
+        $config['cur_tag_open'] = '<li class="page-item active"><a class="page-link" href="#">';
+        $config['cur_tag_close'] = '</a></li>';
+
+        $config['num_tag_open'] = '<li class="page-item">';
+        $config['num_tag_close'] = '</li>';
+
+        $config['attributes'] = array('class' => 'page-link');
+
+        $this->pagination->initialize($config);
 
         $this->form_validation->set_rules('id_member', 'ID Member', 'required', [
             'required' => 'ID Member wajib diisi!',

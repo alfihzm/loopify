@@ -47,7 +47,7 @@
                         <li>Catatan: BP Botol Plastik | KA Kaleng Alumunium | KK Kertas Kardus</li>
                     </b>
                 </div>
-                <a href="" data-toggle="modal" data-target="#newTransactionModal" class="btn btn-info mb-3" style="color:white;"><b>Tambah
+                <a href="" data-toggle="modal" data-target="#newTransactionModal" class="btn btn-secondary mb-3" style="color:white;"><b>Tambah
                         Transaksi</b></a>
                 <div class="row">
                     <div class="col-lg-6">
@@ -96,7 +96,6 @@
                                 <?php endif; ?>
                             <?php endforeach; ?>
                         </tbody>
-
                     </table>
                 </div>
             </div>

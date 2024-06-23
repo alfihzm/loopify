@@ -268,7 +268,7 @@
                         <select class="form-control" id="metode" name="metode" style="background: #01E7f4; color: #1A2035;">
                             <option value="" disabled selected>Pilih metode</option>
                             <option value="Tunai">Tunai</option>
-                            <option value="Transfer Bank">Transfer Bank</option>
+                            <!-- <option value="Transfer Bank">Transfer Bank</option> -->
                         </select>
                         <?= form_error('metode', '<small class="text-danger">', '</small>') ?>
                     </div>
@@ -317,7 +317,7 @@
                         <label style="color: #01E7f4 !important;" for="tanggal">Tanggal Deposit</label>
                         <input type="date" class="form-control" id="tanggal" name="tanggal" style="background: #01E7f4; color: #1a2035;">
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label style="color: #01E7f4 !important;" for="image">Pilih Metode Deposit</label>
                         <select class="form-control" id="metode" name="metode" style="background: #01E7f4; color: #1A2035;">
                             <option value="" disabled selected>Pilih metode</option>
@@ -325,13 +325,14 @@
                             <option value="Transfer Bank">Transfer Bank</option>
                         </select>
                         <?= form_error('metode', '<small class="text-danger">', '</small>') ?>
-                    </div>
+                    </div> -->
+                    <input type="hidden" name="metode" id="metode" value="Dana Internal">
                     <div class="form-group">
                         <label style="color: #01E7f4 !important;" for="image">Pilih Sumber Deposit</label>
                         <select class="form-control" id="sumber" name="sumber" style="background: #01E7f4; color: #1A2035;">
                             <option value="" disabled selected>Pilih sumber</option>
-                            <option value="Donatur">Donatur</option>
-                            <option value="Sponsor">Sponsor</option>
+                            <!-- <option value="Donatur">Donatur</option>
+                            <option value="Sponsor">Sponsor</option> -->
                             <option value="Modal Kas">Modal Kas</option>
                         </select>
                         <?= form_error('sumber', '<small class="text-danger">', '</small>') ?>
@@ -347,55 +348,55 @@
 </div>
 
 
-    <script type="text/javascript">
-        window.setTimeout(function() {
-            $(".alert").fadeTo(500, 0).slideUp(500, function() {
-                $(this).remove();
-            });
-        }, 2000);
-    </script>
-    <script>
-        function toggleZoom(img) {
-            img.classList.toggle('zoomed');
-        }
-    </script>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('#searchSelect').change(function() {
-                var selectedValue = $(this).val().toLowerCase();
-                filterTable();
-            });
-
-            $('#dateSearch').on('input', function() {
-                filterTable();
-            });
-
-            function filterTable() {
-                var selectedValue = $('#searchSelect').val().toLowerCase();
-                var selectedDate = $('#dateSearch').val();
-
-                $('#dataTable tbody tr').each(function() {
-                    var idFinance = $(this).find('td:first').text().trim().toLowerCase();
-                    var date = $(this).find('td').eq(2).text().trim();
-
-                    var showRow = true;
-
-                    if (selectedValue !== "" && idFinance !== selectedValue) {
-                        showRow = false;
-                    }
-
-                    if (selectedDate !== "" && date !== selectedDate) {
-                        showRow = false;
-                    }
-
-                    if (showRow) {
-                        $(this).show();
-                    } else {
-                        $(this).hide();
-                    }
-                });
-            }
+<script type="text/javascript">
+    window.setTimeout(function() {
+        $(".alert").fadeTo(500, 0).slideUp(500, function() {
+            $(this).remove();
         });
-    </script>
+    }, 2000);
+</script>
+<script>
+    function toggleZoom(img) {
+        img.classList.toggle('zoomed');
+    }
+</script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#searchSelect').change(function() {
+            var selectedValue = $(this).val().toLowerCase();
+            filterTable();
+        });
+
+        $('#dateSearch').on('input', function() {
+            filterTable();
+        });
+
+        function filterTable() {
+            var selectedValue = $('#searchSelect').val().toLowerCase();
+            var selectedDate = $('#dateSearch').val();
+
+            $('#dataTable tbody tr').each(function() {
+                var idFinance = $(this).find('td:first').text().trim().toLowerCase();
+                var date = $(this).find('td').eq(2).text().trim();
+
+                var showRow = true;
+
+                if (selectedValue !== "" && idFinance !== selectedValue) {
+                    showRow = false;
+                }
+
+                if (selectedDate !== "" && date !== selectedDate) {
+                    showRow = false;
+                }
+
+                if (showRow) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            });
+        }
+    });
+</script>

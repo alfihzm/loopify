@@ -52,7 +52,7 @@
             </div>
             <div class="container">
                 <div class="text-center">
-                    <a href="" data-toggle="modal" data-target="#newCameraModal" class="btn btn-light mb-3"><i class="fa-solid fa-folder-plus"></i> Kamera Baru</a>
+                    <a href="" data-toggle="modal" data-target="#newCameraModal" class="btn btn-secondary mb-3"><i class="fa-solid fa-folder-plus"></i> Kamera Baru</a>
                 </div>
                 <div class="row justify-content-center">
                     <?php foreach ($menu as $m) : ?>

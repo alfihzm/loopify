@@ -47,7 +47,7 @@
                         <li>Minta bantuan personel Administrator apabila penarikan tunai bermasalah pada saldo perusahaan!</li>
                     </b>
                 </div>
-                <a href="" data-toggle="modal" data-target="#newWithdrawModal" class="btn btn-info mb-3" style="color:white;"><b>Tambah Tarik Tunai</b></a>
+                <a href="" data-toggle="modal" data-target="#newWithdrawModal" class="btn btn-secondary mb-3" style="color:white;"><b>Tambah Tarik Tunai</b></a>
                 <div class="row">
                     <div class="col-lg-6">
                         <?= $this->session->flashdata('message') ?>
@@ -84,6 +84,7 @@
                             <?php endforeach; ?>
                         </tbody>
                     </table>
+                    <?= $this->pagination->create_links(); ?>
                 </div>
             </div>
         </div>

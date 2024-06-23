@@ -64,23 +64,22 @@
                 </div>
                 <div class="card col-sm-5 col-md-6 col-lg-6 border border-secondary p-4">
                     <div class="form-group row">
-                        <label for="idstaff" class="col-sm-10 col-form-label">Total Absen</label>
+                        <label for="transaksi" class="col-sm-10 col-form-label">Total Pelayanan Transaksi</label>
                         <div class="col-sm-12">
-                            <input style="color: #000;" type="text" class="form-control" id="idstaff" name="idstaff" readonly value="5">
+                            <input style="color: #000;" type="text" class="form-control" id="transaksi" name="transaksi" readonly value="<?= $totalTransaksi; ?>">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="username" class="col-sm-10 col-form-label">Total Service Customer</label>
+                        <label for="tariktunai" class="col-sm-10 col-form-label">Total Pelayanan Tarik Tunai</label>
                         <div class="col-sm-12">
-                            <input style="color: #000;" type="text" class="form-control" id="username" name="username" readonly value="10">
+                            <input style="color: #000;" type="text" class="form-control" id="tariktunai" name="tariktunai" readonly value="<?= $totalTarikTunai; ?>">
                         </div>
                     </div>
                 </div>
+
             </div>
 
-
             <div class="row">
-
                 <div class="col-lg-12">
                     <div class="card border border-secondary" style="display: flex; background: #202940; width: 100%; height: 100%;">
                         <div class="card-body">

@@ -106,7 +106,7 @@
                 </div>
             </div>
             <div class="text-center">
-                <a href="<?= base_url('admin/tambah_sampah'); ?>" class="btn btn-light col-lg-3 mb-3" style="display: inline-block; max-width: 200px; text-align: center; margin-top: -15px;"><b>Tambah Jenis Sampah</b></a>
+                <!-- <a href="<?= base_url('admin/tambah_sampah'); ?>" class="btn btn-light col-lg-3 mb-3" style="display: inline-block; max-width: 200px; text-align: center; margin-top: -15px;"><b>Tambah Jenis Sampah</b></a> -->
             </div>
             <div class="row">
                 <div class="col-lg-6">
