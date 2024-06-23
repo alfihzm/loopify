@@ -65,23 +65,29 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($transaction as $t) : ?>
+                        <?php if (empty($transaction)) : ?>
                             <tr>
-                                <td><?= $t['id_member']; ?></td>
-                                <td><?= $t['username']; ?></td>
-                                <td><?= $t['tanggal']; ?></td>
-                                <td><?= $t['jumlah_botol']; ?></td>
-                                <td><?= $t['jumlah_kaleng']; ?></td>
-                                <td><?= $t['jumlah_kardus']; ?></td>
-                                <td><?= $t['lokasi']; ?></td>
-                                <td><?= $t['petugas']; ?></td>
-                                <td>
-                                    <div style="text-align: center;">
-                                        <a href="<?= base_url('log/info_transaction/' . $t['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-info"></i></a>
-                                    </div>
-                                </td>
+                                <td colspan="9" style="text-align: center;">Tidak ada transaksi yang belum dikonfirmasi.</td>
                             </tr>
-                        <?php endforeach; ?>
+                        <?php else : ?>
+                            <?php foreach ($transaction as $t) : ?>
+                                <tr>
+                                    <td><?= $t['id_member']; ?></td>
+                                    <td><?= $t['username']; ?></td>
+                                    <td><?= $t['tanggal']; ?></td>
+                                    <td><?= $t['jumlah_botol']; ?></td>
+                                    <td><?= $t['jumlah_kaleng']; ?></td>
+                                    <td><?= $t['jumlah_kardus']; ?></td>
+                                    <td><?= $t['lokasi']; ?></td>
+                                    <td><?= $t['petugas']; ?></td>
+                                    <td>
+                                        <div style="text-align: center;">
+                                            <a href="<?= base_url('log/info_transaction/' . $t['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-info"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
                     </tbody>
                 </table>
             </div>

@@ -13,20 +13,25 @@ class Finance extends CI_Controller
     {
         $finance1 = $this->FinanceModel->getFinanceById(1);
         $finance2 = $this->FinanceModel->getFinanceById(2);
-        // $data['data_deposit'] = $this->FinanceModel->getDeposit();
-        $data['menu'] = $this->db->get('deposit')->result_array();
 
-        $data['judul'] = "Data Keuangan Internal";
-        $data['transaksi'] = $this->FinanceModel->getFinance();
-        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-        $data['saldoModalAwal'] = $finance1['saldo'];
-        $data['tgl_update1'] = $finance1['tgl_update'];
-        $data['jam_update1'] = $finance1['jam_update'];
-        $data['username_update1'] = $finance1['username'];
-        $data['saldoKasSaatIni'] = $finance2['saldo'];
-        $data['tgl_update2'] = $finance2['tgl_update'];
-        $data['jam_update2'] = $finance2['jam_update'];
-        $data['username_update2'] = $finance2['username'];
+        $menu = $this->db->get('deposit')->result_array();
+        $user = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+        $transaksi = $this->FinanceModel->getFinance();
+
+        $data = [
+            'menu' => $menu,
+            'user' => $user,
+            'judul' => "Data Keuangan Internal",
+            'transaksi' => $transaksi,
+            'saldoModalAwal' => $finance1['saldo'],
+            'tgl_update1' => $finance1['tgl_update'],
+            'jam_update1' => $finance1['jam_update'],
+            'username_update1' => $finance1['username'],
+            'saldoKasSaatIni' => $finance2['saldo'],
+            'tgl_update2' => $finance2['tgl_update'],
+            'jam_update2' => $finance2['jam_update'],
+            'username_update2' => $finance2['username']
+        ];
 
         $this->form_validation->set_rules('saldo', 'Saldo', 'required|trim');
 
@@ -39,7 +44,7 @@ class Finance extends CI_Controller
         } else {
             $id = $this->input->post('id');
             $dataFinance = [
-                'saldo' => $this->input->post('saldo'),
+                'saldo' => htmlspecialchars($this->input->post('saldo'), ENT_QUOTES, 'UTF-8'),
                 'tgl_update' => date('Y-m-d'),
                 'jam_update' => date('H:i:s'),
                 'username' => $this->session->userdata('username'),
@@ -54,16 +59,16 @@ class Finance extends CI_Controller
         }
     }
 
+
     public function tambahSaldo()
     {
-        $this->form_validation->set_rules('jumlah', 'Jumlah', 'required|numeric|greater_than[0]', array(
+        $this->form_validation->set_rules('jumlah', 'Jumlah', 'required|numeric|greater_than[0]', [
             'required' => 'Jumlah wajib diisi!',
             'numeric' => 'Jumlah harus berupa angka!',
             'greater_than' => 'Jumlah harus lebih dari 0!'
-        ));
-        $this->form_validation->set_rules('metode', 'Metode', 'required', array('required' => 'Metode wajib diisi!'));
-        $this->form_validation->set_rules('sumber', 'Sumber', 'required', array('required' => 'Sumber wajib diisi!'));
-        // $this->form_validation->set_message('required', 'Jumlah wajib diisi!');
+        ]);
+        $this->form_validation->set_rules('metode', 'Metode', 'required', ['required' => 'Metode wajib diisi!']);
+        $this->form_validation->set_rules('sumber', 'Sumber', 'required', ['required' => 'Sumber wajib diisi!']);
 
         if ($this->form_validation->run() == false) {
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">' . validation_errors() . '</div>');
@@ -71,65 +76,74 @@ class Finance extends CI_Controller
             return;
         }
 
-        $id = $this->input->post('id');
-        $metode =  $this->input->post('metode');
-        $jumlah = $this->input->post('jumlah');
-        $sumber = $this->input->post('sumber');
-        $tanggal = $this->input->post('tanggal');
-        // $tanggal_formatted = date('Y-m-d', strtotime(str_replace('-', '/', $tanggal)));
-        $config['upload_path'] = './assets/finance';  // Menggunakan relative path
-        $config['allowed_types'] = 'jpg|png|pdf|doc|docx';
-        $config['max_size'] = 2048; // 2MB
-        $file_count = count(glob($config['upload_path'] . '/*'));
-        $this->load->library('upload', $config);
+        $dataPost = [
+            'id' => $this->input->post('id'),
+            'metode' => $this->input->post('metode'),
+            'jumlah' => $this->input->post('jumlah'),
+            'sumber' => $this->input->post('sumber'),
+            'tanggal' => $this->input->post('tanggal')
+        ];
 
+        $config = [
+            'upload_path' => './assets/finance',
+            'allowed_types' => 'jpg|png|pdf|doc|docx',
+            'max_size' => 2048
+        ];
+        $this->load->library('upload', $config);
 
         if ($this->upload->do_upload('image')) {
             $upload_data = $this->upload->data();
             $original_name = $upload_data['file_name'];
-            $file_count++;
-            $sequence_number = sprintf("%03d", $file_count);
-            $new_file_name = 'logdeposit_' . $sequence_number . '_' . $original_name;
+            $new_file_name = $this->generateFileName($config['upload_path'], $original_name);
 
             $dataDeposit = [
-                'id_finance' => $id,
-                'metode' => $metode,
-                'tanggal' => $tanggal,
-                'jumlah' => $jumlah,
-                'sumber' => $sumber,
+                'id_finance' => $dataPost['id'],
+                'metode' => $dataPost['metode'],
+                'tanggal' => $dataPost['tanggal'],
+                'jumlah' => $dataPost['jumlah'],
+                'sumber' => $dataPost['sumber'],
                 'image' => $new_file_name
             ];
 
             rename($config['upload_path'] . '/' . $original_name, $config['upload_path'] . '/' . $new_file_name);
             $this->db->insert('deposit', $dataDeposit);
 
-            $saldoKas = $this->FinanceModel->getSaldo(1);
-            if ($sumber == "Modal Kas") {
-                // Memeriksa apakah jumlah yang dimasukkan oleh pengguna tidak melebihi saldo kas
-                if ($jumlah > $saldoKas) {
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Jumlah yang dimasukkan melebihi saldo Modal Kas yang tersedia!</div>');
-                    redirect('finance');
-                } else {
-                    if ($this->FinanceModel->transferSaldo(1, 2, $jumlah)) {
-                        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Saldo berhasil dipindahkan dari Modal Kas ke arus kas!</div>');
-                    } else {
-                        $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Gagal memindahkan saldo!</div>');
-                    }
-                }
-            } else {
-                if ($this->FinanceModel->tambahSaldo($id, $jumlah)) {
-                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Saldo berhasil ditambahkan!</div>');
-                } else {
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Gagal menambahkan saldo!</div>');
-                }
-            }
+            $this->handleSaldo($dataPost);
         } else {
-            $error = $this->upload->display_errors();
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Gagal menambah saldo! Wajib menambahkan bukti resi atau foto.</div>');
-            // $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Gagal menambah saldo! Error: ' . $error . '</div>');
         }
         redirect('finance');
     }
+
+    private function generateFileName($upload_path, $original_name)
+    {
+        $file_count = count(glob($upload_path . '/*')) + 1;
+        $sequence_number = sprintf("%03d", $file_count);
+        return 'logdeposit_' . $sequence_number . '_' . $original_name;
+    }
+
+    private function handleSaldo($dataPost)
+    {
+        $saldoKas = $this->FinanceModel->getSaldo(1);
+        if ($dataPost['sumber'] == "Modal Kas") {
+            if ($dataPost['jumlah'] > $saldoKas) {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Jumlah yang dimasukkan melebihi saldo Modal Kas yang tersedia!</div>');
+            } else {
+                if ($this->FinanceModel->transferSaldo(1, 2, $dataPost['jumlah'])) {
+                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Saldo berhasil dipindahkan dari Modal Kas ke arus kas!</div>');
+                } else {
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Gagal memindahkan saldo!</div>');
+                }
+            }
+        } else {
+            if ($this->FinanceModel->tambahSaldo($dataPost['id'], $dataPost['jumlah'])) {
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Saldo berhasil ditambahkan!</div>');
+            } else {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Gagal menambahkan saldo!</div>');
+            }
+        }
+    }
+
 
     // public function tambahSaldo()
     // {

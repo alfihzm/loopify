@@ -15,15 +15,11 @@ class Transaction extends CI_Controller
         $data = [
             'judul' => "Data Transaksi Penyerahan Sampah",
             'transaksi' => $this->TransactionModel->getTransaction(),
-            'user'  => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
+            'user' => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
         ];
 
-        $this->form_validation->set_rules('id_member', 'ID Member', 'required', [
-            'required' => 'ID Member wajib diisi!',
-        ]);
-        $this->form_validation->set_rules('tanggal', 'Tanggal Penukaran', 'required', [
-            'required' => 'Tanggal wajib diisi!',
-        ]);
+        $this->form_validation->set_rules('id_member', 'ID Member', 'required', ['required' => 'ID Member wajib diisi!']);
+        $this->form_validation->set_rules('tanggal', 'Tanggal Penukaran', 'required', ['required' => 'Tanggal wajib diisi!']);
         $this->form_validation->set_rules('jumlah_botol', 'Jumlah Botol', 'required|numeric', [
             'required' => 'Jumlah botol wajib diisi!',
             'numeric' => 'Jumlah botol harus berupa angka!',
@@ -48,81 +44,65 @@ class Transaction extends CI_Controller
             $id_member = $this->input->post('id_member');
             $userData = $this->db->get_where('user', ['id_member' => $id_member])->row_array();
             if (!$userData) {
-                // Jika ID Member tidak ditemukan, tampilkan pesan kesalahan dan redirect kembali
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">ID Member tidak ditemukan! Periksa kembali ID Member!</div>');
                 redirect('transaction');
             }
 
+            // Ambil data input dari post
             $jumlah_botol = $this->input->post('jumlah_botol');
             $jumlah_kaleng = $this->input->post('jumlah_kaleng');
             $jumlah_kardus = $this->input->post('jumlah_kardus');
+            $tanggal = $this->input->post('tanggal');
+            $lokasi = $this->input->post('lokasi');
+            $catatan = $this->input->post('catatan');
 
-            $this->db->where('id', 1);
-            $this->db->set('total_sampah', 'total_sampah+' . $jumlah_botol, FALSE);
-            $this->db->update('sampah');
-            $this->db->where('id', 2);
-            $this->db->set('total_sampah', 'total_sampah+' . $jumlah_kaleng, FALSE);
-            $this->db->update('sampah');
-            $this->db->where('id', 3);
-            $this->db->set('total_sampah', 'total_sampah+' . $jumlah_kardus, FALSE);
-            $this->db->update('sampah');
-
-            // Ambil kapasitas penyimpanan dari database
-            $kapasitas_botol = $this->db->get_where('sampah', ['id' => 1])->row()->kapasitas;
-            $kapasitas_kaleng = $this->db->get_where('sampah', ['id' => 2])->row()->kapasitas;
-            $kapasitas_kardus = $this->db->get_where('sampah', ['id' => 3])->row()->kapasitas;
+            // Ambil kapasitas penyimpanan dan nilai tukar dari database
+            $sampahData = $this->db->get('sampah')->result_array();
+            $sampah = [];
+            foreach ($sampahData as $item) {
+                $sampah[$item['id']] = $item;
+            }
 
             // Cek apakah jumlah input melebihi kapasitas
-            if ($jumlah_botol > $kapasitas_botol || $jumlah_kaleng > $kapasitas_kaleng || $jumlah_kardus > $kapasitas_kardus) {
-                // Jika melebihi kapasitas, tampilkan pesan kesalahan dan redirect kembali
+            if ($jumlah_botol > $sampah[1]['kapasitas'] || $jumlah_kaleng > $sampah[2]['kapasitas'] || $jumlah_kardus > $sampah[3]['kapasitas']) {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Gagal transaksi, jumlah melebihi kapasitas gudang!</div>');
                 redirect('transaction');
             }
 
-            $harga_botol = $this->db->get_where('sampah', ['id' => 1])->row()->nilai_tukar;
-            $harga_kaleng = $this->db->get_where('sampah', ['id' => 2])->row()->nilai_tukar;
-            $harga_kardus = $this->db->get_where('sampah', ['id' => 3])->row()->nilai_tukar;
-            $totalkoin = ($jumlah_botol * $harga_botol) + ($jumlah_kaleng * $harga_kaleng) + ($jumlah_kardus * $harga_kardus);
+            $totalkoin = ($jumlah_botol * $sampah[1]['nilai_tukar']) + ($jumlah_kaleng * $sampah[2]['nilai_tukar']) + ($jumlah_kardus * $sampah[3]['nilai_tukar']);
 
-            // Update nilai koin dalam tabel user
+            // Update nilai koin dan total sampah dalam tabel user
             $this->db->where('id_member', $id_member);
-            $this->db->set('koin', 'koin+' . $totalkoin, FALSE); // Menambahkan nilai baru ke koin
+            $this->db->set('koin', 'koin+' . $totalkoin, FALSE);
             $this->db->update('user');
 
+            // Update total sampah dalam tabel sampah
+            $this->db->set('total_sampah', 'total_sampah+' . $jumlah_botol, FALSE)->where('id', 1)->update('sampah');
+            $this->db->set('total_sampah', 'total_sampah+' . $jumlah_kaleng, FALSE)->where('id', 2)->update('sampah');
+            $this->db->set('total_sampah', 'total_sampah+' . $jumlah_kardus, FALSE)->where('id', 3)->update('sampah');
+
+            // Menyimpan transaksi baru
             $dataTransaction = [
                 'id_member' => $id_member,
-                'tanggal'  => $this->input->post('tanggal'),
-                'username' => $userData['username'], // Ambil username dari data user yang ditemukan
+                'tanggal' => $tanggal,
+                'username' => $userData['username'],
                 'jumlah_botol' => $jumlah_botol,
                 'jumlah_kaleng' => $jumlah_kaleng,
                 'jumlah_kardus' => $jumlah_kardus,
                 'total' => $jumlah_botol + $jumlah_kaleng + $jumlah_kardus,
                 'totalkoin' => $totalkoin,
-                'lokasi' => $this->input->post('lokasi'),
-                'catatan' => $this->input->post('catatan'),
+                'lokasi' => $lokasi,
+                'catatan' => $catatan,
                 'petugas' => $data['user']['username'],
                 'status' => 'Belum dikonfirmasi',
             ];
 
-            $this->load->model('TransactionModel');
             $this->TransactionModel->newTransaction($dataTransaction);
-
-            $dataTotal = [
-                'total_sampah' => $jumlah_botol + $jumlah_kaleng + $jumlah_kardus,
-            ];
-
-            $this->db->where('id_member', $id_member);
-            $this->db->update('user', $dataTotal);
-
-            $this->db->set('total_sampah', 'total_sampah + ' . (int) $dataTotal, FALSE);
-            $this->db->where('id_member', $id_member);
-            $this->db->update('user');
 
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Transaksi pengguna telah berhasil ditambahkan!</div>');
             redirect('transaction');
         }
     }
-
 
     public function getUsernameByIdMember()
     {

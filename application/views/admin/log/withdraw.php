@@ -86,22 +86,26 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($withdraw as $w) : ?>
-                            <?php /* if ($w['status'] === 'Belum diproses') : */ ?>
+                        <?php if (empty($withdraw)) : ?>
                             <tr>
-                                <td><?= $w['id_member']; ?></td>
-                                <td><?= $w['username']; ?></td>
-                                <td><?= $w['tanggal']; ?></td>
-                                <td><?= $w['nominal']; ?></td>
-                                <td><?= $w['metode']; ?></td>
-                                <td><?= $w['status']; ?></td>
-                                <td><?= $w['petugas']; ?></td>
-                                <td>
-                                    <a href="<?= base_url('log/info_withdraw/' . $w['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-info"></i></a>
-                                </td>
+                                <td colspan="9" style="text-align: center;">Belum ada log tarik tunai.</td>
                             </tr>
-                            <?php  /* endif; */ ?>
-                        <?php endforeach; ?>
+                        <?php else : ?>
+                            <?php foreach ($withdraw as $w) : ?>
+                                <tr>
+                                    <td><?= $w['id_member']; ?></td>
+                                    <td><?= $w['username']; ?></td>
+                                    <td><?= $w['tanggal']; ?></td>
+                                    <td><?= $w['nominal']; ?></td>
+                                    <td><?= $w['metode']; ?></td>
+                                    <td><?= $w['status']; ?></td>
+                                    <td><?= $w['petugas']; ?></td>
+                                    <td>
+                                        <a href="<?= base_url('log/info_withdraw/' . $w['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-info"></i></a>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
                     </tbody>
                 </table>
             </div>

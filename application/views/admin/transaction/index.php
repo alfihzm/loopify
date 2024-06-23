@@ -71,32 +71,39 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($transaksi as $t) : ?>
-                                <?php if ($t['status'] === 'Belum dikonfirmasi') : ?>
-                                    <tr>
-                                        <td><?= $t['id_member']; ?></td>
-                                        <td><?= $t['username']; ?></td>
-                                        <td><?= $t['tanggal']; ?></td>
-                                        <td style="color: white;"><?= $t['jumlah_botol']; ?></td>
-                                        <td style="color: white;"><?= $t['jumlah_kaleng']; ?></td>
-                                        <td style="color: white;"><?= $t['jumlah_kardus']; ?></td>
-                                        <td><?= $t['lokasi']; ?></td>
-                                        <td><?= $t['status']; ?></td>
-                                        <td style="width: 100%;">
-                                            <div style="display: inline-block; text-align: center; margin-bottom: 2px;">
-                                                <a href="<?= base_url('transaction/edit_transaction/'   . $t['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-pencil"></i></a>
-                                                <a href="<?= base_url('transaction/delete_transaksi/' . $t['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-trash"></i></a>
-                                            </div>
-                                            <div style="display: inline-block; text-align: center;">
-                                                <a href="<?= base_url('transaction/updatetransaction/' . $t['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-check"></i></a>
-                                                <a href="<?= base_url('transaction/info_transaction/' . $t['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-info"></i></a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                <?php endif; ?>
-                            <?php endforeach; ?>
+                            <?php if (empty($transaksi)) : ?>
+                                <tr>
+                                    <td colspan="9" style="text-align: center;">Tidak ada transaksi yang belum dikonfirmasi.</td>
+                                </tr>
+                            <?php else : ?>
+                                <?php foreach ($transaksi as $t) : ?>
+                                    <?php if ($t['status'] === 'Belum dikonfirmasi') : ?>
+                                        <tr>
+                                            <td><?= $t['id_member']; ?></td>
+                                            <td><?= $t['username']; ?></td>
+                                            <td><?= $t['tanggal']; ?></td>
+                                            <td style="color: white;"><?= $t['jumlah_botol']; ?></td>
+                                            <td style="color: white;"><?= $t['jumlah_kaleng']; ?></td>
+                                            <td style="color: white;"><?= $t['jumlah_kardus']; ?></td>
+                                            <td><?= $t['lokasi']; ?></td>
+                                            <td><?= $t['status']; ?></td>
+                                            <td style="width: 100%;">
+                                                <div style="display: inline-block; text-align: center; margin-bottom: 2px;">
+                                                    <a href="<?= base_url('transaction/edit_transaction/' . $t['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-pencil"></i></a>
+                                                    <a href="<?= base_url('transaction/delete_transaksi/' . $t['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-trash"></i></a>
+                                                </div>
+                                                <div style="display: inline-block; text-align: center;">
+                                                    <a href="<?= base_url('transaction/updatetransaction/' . $t['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-check"></i></a>
+                                                    <a href="<?= base_url('transaction/info_transaction/' . $t['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-info"></i></a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
                         </tbody>
                     </table>
+
                 </div>
             </div>
         </div>
@@ -115,12 +122,12 @@
                         <div class="modal-body">
                             <div class="form-group">
                                 <label style="color: #01E7f4 !important;" for="formGroupExampleInput">ID Member</label>
-                                <input style="background: #01E7f4; color: #1A2035; font-weight: 600;" type="text" class="form-control" id="id_member" name="id_member" placeholder="Ketik ID milik member">
+                                <input style="background: #01E7f4; color: #1A2035; font-weight: 600;" type="text" class="form-control" id="id_member" name="id_member" placeholder="Ketik ID milik member" required>
                                 <?= form_error('id_member', '<small class="text-light">', '</small>'); ?>
                             </div>
                             <div class="form-group">
                                 <label style="color: #01E7f4 !important;" for="formGroupExampleInput">User</label>
-                                <input style="background: #01E7f4; color: #1A2035; font-weight: 600;" type="text" class="form-control" id="username" name="username" placeholder="ID Member tidak ditemukan!">
+                                <input style="background: #01E7f4; color: #1A2035; font-weight: 600;" type="text" class="form-control" id="username" name="username" placeholder="ID Member tidak ditemukan!" readonly>
                             </div>
                             <div class="form-group">
                                 <label style="color: #01E7f4 !important;" for="jumlah_botol">Botol Plastik</label>
@@ -149,6 +156,7 @@
                                     <option value="" disabled selected>Pilih lokasi</option>
                                     <option value="Tenant Serpong">Tenant Serpong</option>
                                 </select>
+                                <?= form_error('lokasi', '<small class="text-light">', '</small>'); ?>
                             </div>
                             <div class="form-group">
                                 <label style="color: #01E7f4 !important;" for="formGroupExampleInput">Komentar</label>

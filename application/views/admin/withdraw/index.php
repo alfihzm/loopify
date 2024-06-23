@@ -67,21 +67,27 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($withdraw as $w) : ?>
+                            <?php if (empty($withdraw)) : ?>
                                 <tr>
-                                    <td><?= $w['id_member']; ?></td>
-                                    <td><?= $w['username']; ?></td>
-                                    <td><?= $w['tanggal']; ?></td>
-                                    <td style="color: red;"><i class="fa-solid fa-down-long"></i>&nbsp;&nbsp;Rp <b><?= number_format($w['nominal'], 0, ',', '.'); ?></b></td>
-                                    <td><?= $w['metode']; ?></td>
-                                    <td><?= $w['status']; ?></td>
-                                    <td>
-                                        <!-- <a href="<?= base_url('withdraw/delete_withdraw/' . $w['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-trash"></i></a> -->
-                                        <a href="<?= base_url('withdraw/receipt/' . $w['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-file-pdf"></i></a>
-                                        <a href="<?= base_url('withdraw/info_withdraw/' . $w['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-info"></i></a>
-                                    </td>
+                                    <td colspan="9" style="text-align: center;">Belum ada tarik tunai yang terjadi.</td>
                                 </tr>
-                            <?php endforeach; ?>
+                            <?php else : ?>
+                                <?php foreach ($withdraw as $w) : ?>
+                                    <tr>
+                                        <td><?= $w['id_member']; ?></td>
+                                        <td><?= $w['username']; ?></td>
+                                        <td><?= $w['tanggal']; ?></td>
+                                        <td style="color: red;"><i class="fa-solid fa-down-long"></i>&nbsp;&nbsp;Rp <b><?= number_format($w['nominal'], 0, ',', '.'); ?></b></td>
+                                        <td><?= $w['metode']; ?></td>
+                                        <td><?= $w['status']; ?></td>
+                                        <td>
+                                            <!-- <a href="<?= base_url('withdraw/delete_withdraw/' . $w['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-trash"></i></a> -->
+                                            <a href="<?= base_url('withdraw/receipt/' . $w['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-file-pdf"></i></a>
+                                            <a href="<?= base_url('withdraw/info_withdraw/' . $w['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-info"></i></a>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
                         </tbody>
                     </table>
                     <?= $this->pagination->create_links(); ?>
@@ -103,12 +109,12 @@
                         <div class="modal-body">
                             <div class="form-group">
                                 <label style="color: #01E7f4 !important;" for="formGroupExampleInput">ID Member</label>
-                                <input style="background: #01E7f4; color: #1A2035; font-weight: 600;" type="text" class="form-control" id="id_member" name="id_member" placeholder="Ketik ID milik member">
+                                <input style="background: #01E7f4; color: #1A2035; font-weight: 600;" type="text" class="form-control" id="id_member" name="id_member" placeholder="Ketik ID milik member" required>
                                 <?= form_error('id_member', '<small class="text-light">', '</small>'); ?>
                             </div>
                             <div class="form-group">
                                 <label style="color: #01E7f4 !important;" for="formGroupExampleInput">Username</label>
-                                <input style="background: #01E7f4; color: #1A2035; font-weight: 600;" type="text" class="form-control" id="username" name="username" placeholder="ID Member tidak ditemukan!">
+                                <input style="background: #01E7f4; color: #1A2035; font-weight: 600;" type="text" class="form-control" id="username" name="username" placeholder="ID Member tidak ditemukan!" readonly>
                             </div>
                             <div class="form-group">
                                 <label style="color: #01E7f4 !important;" for="formGroupExampleInput">Saldo Koin</label>
@@ -124,6 +130,7 @@
                                 <select class="form-control" id="metode" name="metode" style="background: #01E7f4; color: #1A2035;">
                                     <option value="" disabled selected>Pilih Metode</option>
                                     <option value="Tunai">Tunai</option>
+                                    <option value="Transfer">Transfer Bank</option>
                                 </select>
                             </div>
                             <div class="form-group">

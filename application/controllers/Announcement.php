@@ -29,8 +29,8 @@ class Announcement extends CI_Controller
             $this->load->view("templates/admin/footer");
         } else {
             $this->db->insert('announcement', [
-                'judul' => $this->input->post('judul'),
-                'deskripsi' => $this->input->post('deskripsi'),
+                'judul' => htmlspecialchars($this->input->post('judul'), ENT_QUOTES, 'UTF-8'),
+                'deskripsi' => htmlspecialchars($this->input->post('deskripsi'), ENT_QUOTES, 'UTF-8'),
                 'tanggal' => date('Y-m-d')
             ]);
 
@@ -58,10 +58,11 @@ class Announcement extends CI_Controller
             $this->load->view("templates/admin/footer");
         } else {
             $data = [
-                'judul' => $this->input->post('judul'),
-                'tanggal' => $this->input->post('tanggal'),
-                'deskripsi' => $this->input->post('deskripsi'),
+                'judul' => htmlspecialchars($this->input->post('judul'), ENT_QUOTES, 'UTF-8'),
+                'tanggal' => htmlspecialchars($this->input->post('tanggal'), ENT_QUOTES, 'UTF-8'),
+                'deskripsi' => htmlspecialchars($this->input->post('deskripsi'), ENT_QUOTES, 'UTF-8')
             ];
+
 
             $this->db->where('id', $ann_id);
             $this->db->update('announcement', $data);

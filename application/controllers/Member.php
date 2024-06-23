@@ -184,10 +184,10 @@ class Member extends CI_Controller
             $this->load->view('templates/member/footer');
         } else {
             $dataMember = [
-                'nama' => $this->input->post('nama'),
-                'email' => $this->input->post('email'),
-                'no_telp' => $this->input->post('notelp'),
-                'alamat' => $this->input->post('alamat')
+                'nama' => htmlspecialchars($this->input->post('nama'), ENT_QUOTES, 'UTF-8'),
+                'email' => htmlspecialchars($this->input->post('email'), ENT_QUOTES, 'UTF-8'),
+                'no_telp' => htmlspecialchars($this->input->post('notelp'), ENT_QUOTES, 'UTF-8'),
+                'alamat' => htmlspecialchars($this->input->post('alamat'), ENT_QUOTES, 'UTF-8')
             ];
 
             $uploadImage = $_FILES['photo']['name'];

@@ -217,10 +217,8 @@ class Log extends CI_Controller
         $sampah = $this->SampahModel->getDistribution_Log();
         $deposit = $this->FinanceModel->getDeposit_Log();
 
-        // Menggabungkan data ke dalam satu array
         $mergedData = array_merge($withdraw, $sampah, $deposit);
 
-        // Mengurutkan data berdasarkan kolom 'tanggal'
         usort($mergedData, function ($a, $b) {
             return strtotime($a['tanggal']) - strtotime($b['tanggal']);
         });
