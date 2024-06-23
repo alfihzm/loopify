@@ -189,7 +189,7 @@
                         <?php $i = 1;
                         foreach ($distribution as $d) : ?>
                             <tr>
-                                <td><?= $i++; ?></td>
+                                <td><?= $d['id']; ?></td>
                                 <td style="text-align: center;"><?= $d['pengepul']; ?></td>
                                 <td style="text-align: center;"><?= $d['tanggal']; ?></td>
                                 <td><?= $d['bp']; ?></td>

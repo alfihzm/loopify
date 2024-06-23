@@ -51,7 +51,7 @@ class SampahModel extends CI_Model
 
     public function getSomeDistribution($limit, $start)
     {
-        $this->db->limit($limit, $start);
+        $this->db->limit($limit, $start); 
         return $this->db->get('distribution')->result_array();
     }
 
@@ -59,6 +59,7 @@ class SampahModel extends CI_Model
     {
         return $this->db->get('distribution')->num_rows();
     }
+
 
     public function editDistribution($id, $data)
     {

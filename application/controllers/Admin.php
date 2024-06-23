@@ -591,10 +591,11 @@ class Admin extends CI_Controller
     public function sampah()
     {
         $config['base_url'] = site_url('admin/sampah/');
-        $config['total_rows'] = $this->SampahModel->countAllDistribution(3);
+        $config['total_rows'] = $this->SampahModel->countAllDistribution();
         $config['per_page'] = 5;
-        $start = $this->uri->segment(3);
-        
+        $config['uri_segment'] = 3;  
+
+        $start = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0; 
 
         $botol = $this->SampahModel->getSampahById(1);
         $kaleng = $this->SampahModel->getSampahById(2);
@@ -603,13 +604,11 @@ class Admin extends CI_Controller
         $data = [
             'judul' => 'Manajemen Sampah',
             'sampah' => $this->SampahModel->getSampah(),
-            'distribution' => $this->SampahModel->getSomeDistribution(3, $config['per_page'], $start),
-            // 'distribution' => $this->SampahModel->getDistribution(),
+            'distribution' => $this->SampahModel->getSomeDistribution($config['per_page'], $start),  
             'user'  => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
             'botol' => $botol,
             'kaleng' => $kaleng,
             'kardus' => $kardus
-
         ];
 
         $config['full_tag_open']  = '<nav><ul class="pagination">';
@@ -656,6 +655,7 @@ class Admin extends CI_Controller
         $this->load->view('admin/sampah/sampah', $data);
         $this->load->view("templates/admin/footer");
     }
+
 
     public function tambah_sampah()
     {
