@@ -941,6 +941,18 @@ class Admin extends CI_Controller
                 redirect('admin/cinderamata');
             }
 
+            // Pengendalian Koin untuk id_gift = 1
+            if ($id_gift == 1 && $member['koin'] <= 50000) {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Koin member tidak lebih dari 50000</div>');
+                redirect('admin/cinderamata');
+            }
+
+            // Pengendalian Koin untuk id_gift = 2
+            if ($id_gift == 2 && $member['koin'] <= 5000) {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Koin member tidak lebih dari 5000</div>');
+                redirect('admin/cinderamata');
+            }
+
             // Mengurangi stok cinderamata
             $this->db->set('stok', 'stok-1', FALSE);
             $this->db->where('id', $id_gift);
@@ -966,6 +978,7 @@ class Admin extends CI_Controller
         $this->load->view('admin/cinderamata/cinderamata', $data);
         $this->load->view("templates/admin/footer");
     }
+
 
 
     public function give_gift($id)
