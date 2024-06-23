@@ -54,7 +54,7 @@
                 <div class="card mb-lg-0">
                     <div class="card-body">
                         <div class="d-flex align-items-center mb-4">
-                            <img src="<?= base_url('assets/') ?>images/profile/1.jpg" class="avatar avatar-lg rounded-circle me-3" alt="...">
+                            <img src="<?= base_url('assets/') ?>images/profile/4.jpg" class="avatar avatar-lg rounded-circle me-3" alt="...">
                             <div>
                                 <h5 class="mb-1">Dwi <br>Salzabila</h5>
                                 <p class="tx-14 mb-0">UI/UX Developer</p>

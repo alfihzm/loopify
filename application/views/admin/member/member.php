@@ -42,7 +42,7 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope=" col" style="width: 80px;">Kode Member</th>
+                            <th scope="col" style="width: 80px;">Kode Member</th>
                             <th scope="col" style="width: 140px;">Nama</th>
                             <th scope="col" style="width: 130px;">Email</th>
                             <th scope="col" style="width: 130px;">Foto</th>

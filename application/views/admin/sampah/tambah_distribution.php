@@ -14,6 +14,9 @@
                      <div class="card-body">
                          <h5 style="text-align: center;" class="card-title mt-1"><?= $judul; ?></h5>
                          <hr>
+                         <div class="alert alert-info" role="alert" style="background: white; color: #1A2035; border-radius: 5px;">
+                             <span>Pastikan Driver telah menunjukan bukti transfer atau cek pembayaran sebelum mengangkut barang.</span>
+                         </div>
                          <form action="<?= base_url('admin/tambah_distribusi') ?>" method="POST">
                              <div class="row">
                                  <div class="col-sm-6">

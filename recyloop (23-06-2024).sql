@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 23, 2024 at 05:11 AM
+-- Generation Time: Jun 23, 2024 at 12:05 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -118,7 +118,8 @@ INSERT INTO `deposit` (`id`, `id_finance`, `metode`, `jumlah`, `tanggal`, `sumbe
 (8, 1, 'Tunai', 10, '2024-06-22', 'Donatur', 'logdeposit_008_Mandiri.JPG'),
 (9, 2, 'Tunai', 100, '2024-06-22', 'Donatur', 'logdeposit_009_WhatsApp_Image_2024-06-21_at_15_58_50_219d62b8.jpg'),
 (10, 1, 'Tunai', 110, '2024-06-22', 'Donatur', 'logdeposit_010_WhatsApp_Image_2024-06-21_at_15_58_50_219d62b8.jpg'),
-(11, 1, 'Tunai', 114, '2024-06-22', 'Donatur', 'logdeposit_011_Mandiri.JPG');
+(11, 1, 'Tunai', 114, '2024-06-22', 'Donatur', 'logdeposit_011_Mandiri.JPG'),
+(12, 2, 'Pendanaan I', 25000, '2024-06-23', 'Modal Kas', 'logdeposit_012_BCA.jpg');
 
 -- --------------------------------------------------------
 
@@ -174,8 +175,8 @@ CREATE TABLE `finance` (
 --
 
 INSERT INTO `finance` (`id`, `rekening`, `saldo`, `tgl_update`, `jam_update`, `username`) VALUES
-(1, 'modal', 101550, '2024-06-22', '11:48:02', 'derby'),
-(2, 'aruskas', 50000, '2024-06-22', '11:48:08', 'derby');
+(1, 'modal', 75000, '2024-06-23', '08:59:59', 'alfihzm'),
+(2, 'aruskas', 3956311, '2024-06-23', '05:27:35', 'alfihzm');
 
 -- --------------------------------------------------------
 
@@ -457,7 +458,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `id_admin`, `id_staff`, `id_member`, `nama`, `lahir`, `email`, `username`, `password`, `role_id`, `photo`, `no_telp`, `alamat`, `total_sampah`, `total_koin`, `koin`, `alasan_ban`, `kupon1`, `kupon2`, `date_created`, `is_active`) VALUES
-(1, NULL, NULL, 10480001, 'Betara Waskita Karya', '1999-01-01', 'betara@gmail.com', 'betara', '$2y$10$FLuzN7X92R2TQFttbmiQDOacjuIKMV8NnqPrjLrGdU.ow1DNxVEhu', 3, 'user_betara1.png', '082161872392', 'Jakarta Selataan', 26, 0, 3068689, NULL, 0, 1, 1712325370, 1),
+(1, NULL, NULL, 10480001, 'Betara Waskita Karya', '1999-01-01', 'betara@gmail.com', 'betara', '$2y$10$FLuzN7X92R2TQFttbmiQDOacjuIKMV8NnqPrjLrGdU.ow1DNxVEhu', 3, 'user_betara1.png', '082161872392', 'Jakarta Selataan', 26, 0, 2000000, NULL, 0, 1, 1712325370, 1),
 (2, 19220821, NULL, NULL, 'Mohammad Alfi Hamzamis', '1999-11-29', 'alfihzm@gmail.com', 'alfihzm', '$2y$10$D5MOyBMj5CDPCrew38NFT.8yOiEygBprrxhQs009pHmlBCnLyQ55O', 1, 'user_alfihzm.png', '082161872392', 'Kabupaten Tangerang', NULL, 0, 0, NULL, 0, 0, 1712465510, 1),
 (6, NULL, 10240001, NULL, 'Derby Hendrawan', '2005-05-11', 'derby@gmail.com', 'derby', '$2y$10$o1uWEO7QFLgEyQ3wqSbCAu1kAwjxfYa9/RJ3MJosDtN5NrZmCEX6C', 2, 'default.jpg', '082173958206', 'Bandung', NULL, 0, 0, NULL, 0, 0, 1714830415, 1),
 (7, NULL, 10240004, NULL, 'Dendi Rahmat', '2006-11-04', 'dendi@gmail.com', 'dendi', '$2y$10$lQlCdblquou221pGTm3MDudqMSSENy17VBjUvcr7MTgrDFqCDUeUu', 2, 'default.jpg', '082175927592', 'Lebak', NULL, 0, 0, NULL, 0, 0, 1714840913, 1),
@@ -584,7 +585,7 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active
 (13, 8, 'Manajemen Keuangan', 'finance', 'fa-solid fa-money-bill\r\n', 1),
 (14, 8, 'Manajemen Tarik Tunai', 'withdraw', 'fa-solid fa-money-bill-1', 1),
 (15, 9, 'Manajemen Pengumuman', 'announcement', 'fa-solid fa-paste', 1),
-(16, 6, 'Manajemen Laporan', 'reports', 'fa-solid fa-file', 1),
+(16, 8, 'Manajemen Laporan', 'reports', 'fa-solid fa-file', 1),
 (17, 10, 'Log Transaksi', 'log/transaction', 'fa-solid fa-file-lines', 1),
 (18, 10, 'Log Tarik Tunai', 'log/withdraw', 'fa-solid fa-file-invoice-dollar', 1),
 (19, 10, 'Log Laporan Masalah', 'log/reports', 'fa-solid fa-file-prescription', 1),
@@ -624,7 +625,9 @@ INSERT INTO `withdraw` (`id`, `id_member`, `username`, `nominal`, `tanggal`, `ja
 (2, 89922433, 'vaniacas', 25000, '2024-06-06', '23:22:32', 'Tenant Serpong', 'Tunai', '', '', '', 'Diberikan tunai', 175500, 150500),
 (3, 10480001, 'betara', 15000, '2024-06-06', '23:25:27', 'Tenant Serpong', 'Transfer Bank', '', 'OVO Payment', '', 'Sudah ditransfer', 1393989, 1378989),
 (4, 10480001, 'betara', 50000, '2024-06-06', '23:34:50', 'Tenant Serpong', 'Transfer Bank', '', 'OVO Payment', '', 'Sudah ditransfer', 1378989, 1328989),
-(6, 10480001, 'betara', 50000, '2024-06-23', '09:36:52', 'Tenant Serpong', 'Tunai', '', '', 'derby', 'Diberikan tunai', 3118689, 3068689);
+(6, 10480001, 'betara', 50000, '2024-06-23', '09:36:52', 'Tenant Serpong', 'Tunai', '', '', 'derby', 'Diberikan tunai', 3118689, 3068689),
+(7, 10480001, 'betara', 200000, '2024-06-23', '10:29:12', 'Tenant Serpong', 'Tunai', '', '', 'alfihzm', 'Diberikan tunai', 3068689, 2868689),
+(8, 10480001, 'betara', 868689, '2024-06-23', '10:32:09', 'Tenant Serpong', 'Tunai', '', 'AAAA', 'alfihzm', 'Diberikan tunai', 2868689, 2000000);
 
 --
 -- Indexes for dumped tables
@@ -788,7 +791,7 @@ ALTER TABLE `company`
 -- AUTO_INCREMENT for table `deposit`
 --
 ALTER TABLE `deposit`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `distribution`
@@ -890,7 +893,7 @@ ALTER TABLE `user_sub_menu`
 -- AUTO_INCREMENT for table `withdraw`
 --
 ALTER TABLE `withdraw`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
