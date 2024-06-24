@@ -200,6 +200,7 @@
                                 <td><?= $d['petugas']; ?></td>
                                 <td>
                                     <a href="<?= base_url('admin/ubah_distribusi/' . $d['id']); ?>" class="btn btn-success btn-sm"><i style="color: #000;" class="fa-solid fa-pencil"></i></a>
+                                    <!-- <a href="<?= base_url('admin/updatedistribution/' . $d['id']); ?>" class="btn btn-light btn-sm" style="color: #000;"><i style="color: #000;" class="fa-solid fa-check"></i></a> -->
                                     <!-- <a href="<?= base_url('admin/hapus_distribusi/' . $d['id']); ?>" class="btn btn-danger btn-sm"><i style="color: #000;" class="fa-solid fa-trash"></i></a> -->
                                 </td>
                             </tr>

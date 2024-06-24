@@ -127,7 +127,7 @@
                             </div>
                             <div class="form-group">
                                 <label style="color: #01E7f4 !important;" for="metode">Metode tarik tunai</label>
-                                <select class="form-control" id="metode" name="metode" style="background: #01E7f4; color: #1A2035;">
+                                <select class="form-control" id="metode" name="metode" style="background: #01E7f4; color: #1A2035;" required>
                                     <option value="" disabled selected>Pilih Metode</option>
                                     <option value="Tunai">Tunai</option>
                                     <option value="Transfer">Transfer Bank</option>
@@ -135,7 +135,7 @@
                             </div>
                             <div class="form-group">
                                 <label style="color: #01E7f4 !important;" for="lokasi">Lokasi</label>
-                                <select class="form-control" id="lokasi" name="lokasi" style="background: #01E7f4; color: #1A2035;">
+                                <select class="form-control" id="lokasi" name="lokasi" style="background: #01E7f4; color: #1A2035;" required>
                                     <option value="" disabled selected>Pilih lokasi</option>
                                     <option value="Tenant Serpong">Tenant Serpong</option>
                                 </select>

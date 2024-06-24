@@ -10,12 +10,12 @@
             <div class="col-lg-4">
                 <div class="card mb-lg-0">
                     <div class="position-relative">
-                        <a href="blog-details.html">
+                        <a href="#">
                             <img class="card-img-top" src="assets/images/blog/pulp_recyloop.jpg" alt="blog-image">
                         </a>
                     </div>
                     <div class="card-body d-flex flex-column">
-                        <h5><a href="blog-details.html" class="tx-color-default">Pulp</a></h5>
+                        <h5><a href="#" class="tx-color-default">Pulp</a></h5>
                         <div class="tx-muted">Pulp merupakan bubur serat yang didaur ulang dari kertas dan
                             kardus untuk diproduksi kembali menjadi produk kertas.</div>
                     </div>
@@ -26,12 +26,12 @@
             <div class="col-lg-4">
                 <div class="card mb-lg-0">
                     <div class="position-relative">
-                        <a href="blog-details.html">
+                        <a href="#">
                             <img class="card-img-top" src="assets/images/blog/alumunium_recyloop.jpg" alt="blog-image">
                         </a>
                     </div>
                     <div class="card-body d-flex flex-column">
-                        <h5><a href="blog-details.html" class="tx-color-default">Alumunium Oksida</a></h5>
+                        <h5><a href="#" class="tx-color-default">Alumunium Oksida</a></h5>
                         <div class="tx-muted">Alumunium Oksida merupakan lembar alumunium murni yang didaur
                             ulang dari kaleng untuk diproduksi menjadi alat dapur.</div>
                     </div>
@@ -40,12 +40,12 @@
             <div class="col-lg-4">
                 <div class="card mb-lg-0">
                     <div class="position-relative">
-                        <a href="blog-details.html">
+                        <a href="#">
                             <img class="card-img-top" src="assets/images/blog/paving_recyloop.jpg" alt="blog-image">
                         </a>
                     </div>
                     <div class="card-body d-flex flex-column">
-                        <h5><a href="blog-details.html" class="tx-color-default">Paving Blocks
+                        <h5><a href="#" class="tx-color-default">Paving Blocks
                             </a></h5>
                         <div class="tx-muted">Paving merupakan blok plastik yang didaur ulang dari botol untuk
                             diproduksi kembali menjadi bahan bangunan.</div>

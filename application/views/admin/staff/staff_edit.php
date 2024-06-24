@@ -96,8 +96,8 @@ input[type=number] {
                             </div>
                             <div class="col-sm-12"
                                 style="display: flex; justify-content: space-evenly; align-items: center; margin-top: 10px">
-                                <button type="submit" class="btn btn-danger">Simpan</button>
-                                <a style="width: 100px;" href="<?= base_url('admin/staff'); ?>" class="btn btn-warning">
+                                <button type="submit" class="btn btn-primary">Simpan</button>
+                                <a style="width: 100px;" href="<?= base_url('admin/staff'); ?>" class="btn btn-danger">
                                     Batal </a>
                             </div>
                         </form>

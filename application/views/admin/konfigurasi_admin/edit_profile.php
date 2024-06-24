@@ -7,10 +7,11 @@
             <div class="row">
                 <div class="col-lg-8">
                     <?= form_open_multipart('admin/edit_profile'); ?>
+                    <!-- <input type="text" class="form-control" id="id" name="" value="<?= $user['email']; ?>" hidden> -->
                     <div class="form-group row">
                         <label for="email" class="col-sm-3 col-form-label">Email</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="inputEmail13" name="email" value="<?= $user['email']; ?>">
+                            <input type="text" class="form-control" id="email" name="email" value="<?= $user['email']; ?>">
                         </div>
                         <?= form_error('email', '<small class="text-danger">', '</small>'); ?>
                     </div>

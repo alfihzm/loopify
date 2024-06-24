@@ -98,10 +98,11 @@
                      <h3 style="font-weight: bold;">Pengumuman terbaru!</h3>
                      <thead class="card-header thead" style="border-radius: 10px;">
                          <tr>
-                             <th scope="col" style="border-top-left-radius: 10px;">No</th>
-                             <th scope="col">Judul</th>
-                             <th scope="col">Tanggal</th>
-                             <th scope="col" style="border-top-right-radius: 10px;">Deskripsi</th>
+                             <th scope="col" style="border-top-left-radius: 10px; width: 5%;">No</th>
+                             <th scope="col" style="width: 35%;">Judul</th>
+                             <th scope="col" style="width: 20%;">Tanggal</th>
+                             <th scope="col" style="border-top-right-radius: 10px; width: 40%;">Deskripsi</th>
+
                          </tr>
                      </thead>
                      <tbody>

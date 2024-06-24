@@ -77,17 +77,20 @@ class Withdraw extends CI_Controller
                 redirect('withdraw');
             }
 
-            $saldoSekarang = $financeData['saldo'] - $nominal;
-            if ($saldoSekarang < 0) {
-                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Saldo arus kas perusahaan tidak mencukupi untuk melakukan transaksi!</div>');
-                redirect('withdraw');
-            }
-
             $this->db->where('id_member', $id_member);
             $this->db->update('user', ['koin' => $koinSekarang]);
 
-            $this->db->where('id', 2);
-            $this->db->update('finance', ['saldo' => $saldoSekarang]);
+            // Hanya kurangi saldo perusahaan jika metode bukan 'Tunai'
+            if ($this->input->post('metode') !== 'Tunai') {
+                $saldoSekarang = $financeData['saldo'] - $nominal;
+                if ($saldoSekarang < 0) {
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Saldo arus kas perusahaan tidak mencukupi untuk melakukan transaksi!</div>');
+                    redirect('withdraw');
+                }
+
+                $this->db->where('id', 2);
+                $this->db->update('finance', ['saldo' => $saldoSekarang]);
+            }
 
             $dataWithdraw = [
                 'id_member' => $id_member,
@@ -110,6 +113,7 @@ class Withdraw extends CI_Controller
             redirect('withdraw');
         }
     }
+
 
 
     public function getUserDataByIdMember()

@@ -8,9 +8,9 @@
         <div class="row align-items-center">
             <div class="col-lg-6 reveal">
                 <h2 class="mb-1 text-white">Lokasi Titik Pengumpulan Sampah</h2>
-                <p class="mb-4 op-7 tx-15">Mari tukarkan limbah daur ulang yang telah anda kumpulkan.</p>
+                <p class="mb-4 op-7 tx-15">Mari tukarkan limbah daur ulang yang telah Anda kumpulkan.</p>
                 <p class="mb-4">
-                    Kami memiliki lokasi yang strategis untuk memudahkan anda mengirimkan limbah sampah.
+                    Kami memiliki lokasi yang strategis untuk memudahkan Anda menyerahkan limbah sampah.
                 </p>
                 <a href="https://maps.app.goo.gl/aiprG5YC2fJPCZpr8" class="btn btn-lg btn-secondary">Pergi ke Lokasi</a>
             </div>

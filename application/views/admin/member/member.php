@@ -46,7 +46,7 @@
                             <th scope="col" style="width: 140px;">Nama</th>
                             <th scope="col" style="width: 130px;">Email</th>
                             <th scope="col" style="width: 130px;">Foto</th>
-                            <th scope="col" style="width: 150px;">Aksi</th>
+                            <th scope="col" style="width: 300px;">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>

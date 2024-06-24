@@ -794,13 +794,13 @@ class Admin extends CI_Controller
             'required' => 'Nama pengendara wajib diisi!',
         ]);
 
+        $harga_bp = $this->db->get_where('sampah', ['id' => 1])->row()->nilai_satuan;
+        $harga_ka = $this->db->get_where('sampah', ['id' => 2])->row()->nilai_satuan;
+        $harga_kk = $this->db->get_where('sampah', ['id' => 3])->row()->nilai_satuan;
+
         if ($this->form_validation->run() == false) {
             $errors = validation_errors('<div style="color: #FFF; background: #ff0000;" class="alert alert-danger" role="alert">', '</div>');
             $this->session->set_flashdata('message', $errors);
-
-            $harga_bp = $this->db->get_where('sampah', ['id' => 1])->row()->nilai_satuan;
-            $harga_ka = $this->db->get_where('sampah', ['id' => 2])->row()->nilai_satuan;
-            $harga_kk = $this->db->get_where('sampah', ['id' => 3])->row()->nilai_satuan;
 
             $data = [
                 'judul' => 'Tambah Pengiriman',
@@ -844,7 +844,7 @@ class Admin extends CI_Controller
                 $ka = $this->input->post('ka');
                 $kk = $this->input->post('kk');
 
-                if ($bp || $ka || $kk < 0) {
+                if ($bp >= 0 && $ka >= 0 && $kk >= 0) {
                     $nilai_tukar = ($bp * (float)$harga_bp) + ($ka * (float)$harga_ka) + ($kk * (float)$harga_kk);
                     $this->db->query("UPDATE finance SET saldo = saldo + $nilai_tukar WHERE id = 1");
                     $this->db->query("UPDATE sampah SET total_sampah = total_sampah - $bp WHERE id = 1");
@@ -869,7 +869,7 @@ class Admin extends CI_Controller
                     $this->session->set_flashdata('message', '<div style="color: #FFF; background: #1f283E;" class="alert alert-success" role="alert">Pengiriman sampah telah terdata</div>');
                     redirect('admin/sampah');
                 } else {
-                    $this->session->set_flashdata('message', '<div style="color: #FFF; background: #1f283E;" class="alert alert-success" role="alert">Penambahan sampah gagal.</div>');
+                    $this->session->set_flashdata('message', '<div style="color: #FFF; background: #1f283E;" class="alert alert-danger" role="alert">Penambahan sampah gagal.</div>');
                     redirect('admin/sampah');
                 }
             }

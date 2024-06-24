@@ -30,11 +30,6 @@
                      </li>
                  </ul>
              </div>
-             <div class="row">
-                 <div class="col-lg-6">
-                     <?= $this->session->flashdata('message') ?>
-                 </div>
-             </div>
              <div class="container">
                  <div class="row">
                      <div class="col">

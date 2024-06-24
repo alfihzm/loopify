@@ -55,6 +55,6 @@
                     <input type="text" class="form-control" id="deskripsi" name="deskripsi" value="<?= $announcement['deskripsi']; ?>" placeholder="Masukkan Isi Pengumuman">
                 </div>
                 <div style="margin-top: 20px;">
-                    <button type="submit" class="btn btn-info">Kebab</button>
+                    <button type="submit" class="btn btn-primary">Kebab</button>
                     <a href="<?= base_url('announcement'); ?>" class="btn btn-danger">Kembali</a>
                 </div>

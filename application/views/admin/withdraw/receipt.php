@@ -91,7 +91,7 @@
                     <td><?= $withdraw['norek']; ?></td>
                     <td><?= $withdraw['koin1']; ?></td>
                     <td><?= $withdraw['koin2']; ?></td>
-                    <td><?= $withdraw['nominal']; ?></td>
+                    <td>Rp. <?= $withdraw['nominal']; ?></td>
                 </tr>
             </tbody>
         </table>

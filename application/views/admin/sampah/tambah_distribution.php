@@ -21,7 +21,7 @@
                              <div class="row">
                                  <div class="col-sm-6">
                                      <div class="form-group">
-                                         <label for="pengepul">Lokasi</label>
+                                         <label for="pengepul">Pengepul</label>
                                          <select class="form-control" id="pengepul" name="pengepul">
                                              <option value="" disabled selected>Pilih pengepul</option>
                                              <option value="TLP">PT. Tangerang Lestari Pratama</option>
@@ -49,6 +49,10 @@
                                          <label for="nama">Driver</label>
                                          <input type="text" class="form-control" id="driver" name="driver" autocomplete="off">
                                          <?= form_error('driver', '<small class="text-danger">', '</small>'); ?>
+                                     </div>
+                                     <div class="form-group">
+                                         <label for="nama">Harga yang harus dibayar pengepul</label>
+                                         <input type="text" class="form-control text-dark" id="nilai_tukar" value="" readonly>
                                      </div>
                                  </div>
                                  <div class="col-sm-12" style="display: flex; justify-content: space-evenly; align-items: center; margin-top: 10px">
@@ -86,5 +90,30 @@
                  $('#form-kk').removeClass('hidden');
              }
          });
+     });
+ </script>
+ <script>
+     document.addEventListener('DOMContentLoaded', function() {
+         const harga_bp = <?= $harga_bp; ?>;
+         const harga_ka = <?= $harga_ka; ?>;
+         const harga_kk = <?= $harga_kk; ?>;
+
+         const bpInput = document.getElementById('bp');
+         const kaInput = document.getElementById('ka');
+         const kkInput = document.getElementById('kk');
+         const nilaiTukarInput = document.getElementById('nilai_tukar');
+
+         function calculateTotal() {
+             const bp = parseFloat(bpInput.value) || 0;
+             const ka = parseFloat(kaInput.value) || 0;
+             const kk = parseFloat(kkInput.value) || 0;
+
+             const total = (bp * harga_bp) + (ka * harga_ka) + (kk * harga_kk);
+             nilaiTukarInput.value = total.toFixed(2);
+         }
+
+         bpInput.addEventListener('input', calculateTotal);
+         kaInput.addEventListener('input', calculateTotal);
+         kkInput.addEventListener('input', calculateTotal);
      });
  </script>

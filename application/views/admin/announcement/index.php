@@ -59,22 +59,33 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php $i = 1; ?>
-                        <?php foreach ($menu as $m) : ?>
+                        <?php if (empty($menu)) : ?>
                             <tr>
-                                <th scope="row"><?= $i; ?></th>
-                                <td><?= $m['judul']; ?></td>
-                                <td><?= $m['tanggal']; ?></td>
-                                <td><?= $m['deskripsi']; ?></td>
-                                <td>
-                                    <a href="<?= base_url('announcement/update/' . $m['id']); ?>" class="btn btn-success"><i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></a>
-                                    <a href="<?= base_url('announcement/delete/' . $m['id']); ?>" class="btn btn-danger"><i class="fa-solid fa-trash" style="color: #ffffff;"></i></a>
-                                </td>
+                                <td colspan="5" class="text-center">Belum ada pengumuman</td>
                             </tr>
-                            <?php $i++; ?>
-                        <?php endforeach; ?>
+                        <?php else : ?>
+                            <?php $i = 1; ?>
+                            <?php foreach ($menu as $m) : ?>
+                                <tr>
+                                    <th scope="row"><?= $i; ?></th>
+                                    <td><?= $m['judul']; ?></td>
+                                    <td><?= $m['tanggal']; ?></td>
+                                    <td><?= $m['deskripsi']; ?></td>
+                                    <td>
+                                        <a href="<?= base_url('announcement/update/' . $m['id']); ?>" class="btn btn-success">
+                                            <i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i>
+                                        </a>
+                                        <a href="<?= base_url('announcement/delete/' . $m['id']); ?>" class="btn btn-danger">
+                                            <i class="fa-solid fa-trash" style="color: #ffffff;"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <?php $i++; ?>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
                     </tbody>
                 </table>
+
             </div>
         </div>
     </div>
@@ -95,15 +106,15 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="formGroupExampleInput">Judul</label>
-                        <input type="text" class="form-control" id="judul" name="judul" placeholder="Masukan Judul Ringkas">
+                        <input type="text" class="form-control" id="judul" name="judul" placeholder="Masukan Judul Ringkas" required>
                     </div>
                     <div class="form-group">
                         <label for="formGroupExampleInput2">Tanggal</label>
-                        <input type="date" class="form-control" id="tanggal" name="tanggal" placeholder="Masukan Isi Pengumuman">
+                        <input type="date" class="form-control" id="tanggal" name="tanggal" placeholder="Masukan Isi Pengumuman" required>
                     </div>
                     <div class="form-group">
                         <label for="formGroupExampleInput2">Deskripsi</label>
-                        <input type="text" class="form-control" id="deskripsi" name="deskripsi" placeholder="Masukan Isi Pengumuman">
+                        <input type="text" class="form-control" id="deskripsi" name="deskripsi" placeholder="Masukan Isi Pengumuman" required>
                     </div>
                 </div>
                 <div class="modal-footer">
