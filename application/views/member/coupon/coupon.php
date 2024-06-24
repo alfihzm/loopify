@@ -60,7 +60,7 @@
                             <small>Kode Unik: KUP5000-<?= $user['username'] ?> </small><br>
                             Status:
                             <?php if ($kupon1_taken) : ?>
-                                <span style="color: blue;">Anda sudah mengambil cinderamata</span>
+                                <span style="color: red;"><b>Anda sudah mengambil cinderamata</b></span>
                             <?php else : ?>
                                 <?php if ($stok > 0) : ?>
                                     <span style="color: green;">Stok tersedia</span>

@@ -915,14 +915,12 @@ class Admin extends CI_Controller
 
     public function cinderamata()
     {
-        // Memuat data awal
         $data = [
             'judul' => 'Manajemen Cinderamata',
             'cinderamata' => $this->GiftModel->getGift(),
             'user'  => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
         ];
 
-        // Memeriksa apakah form telah disubmit
         if ($this->input->server('REQUEST_METHOD') === 'POST') {
             $id_member = $this->input->post('id_member');
             $id_gift = $this->input->post('id_gift'); // Pastikan form mengirimkan id_gift
@@ -953,6 +951,12 @@ class Admin extends CI_Controller
                 redirect('admin/cinderamata');
             }
 
+            // Pengendalian jika kupon sudah diambil
+            if (($id_gift == 1 && $member['kupon1'] == 1) || ($id_gift == 2 && $member['kupon2'] == 1)) {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Member telah mengambil cinderamata</div>');
+                redirect('admin/cinderamata');
+            }
+
             // Mengurangi stok cinderamata
             $this->db->set('stok', 'stok-1', FALSE);
             $this->db->where('id', $id_gift);
@@ -978,6 +982,7 @@ class Admin extends CI_Controller
         $this->load->view('admin/cinderamata/cinderamata', $data);
         $this->load->view("templates/admin/footer");
     }
+
 
 
 
