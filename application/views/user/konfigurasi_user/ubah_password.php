@@ -4,15 +4,15 @@
             <div class="page-header">
                 <h4 class="page-title"><?= $judul; ?></h4>
             </div>
-            <div class="row">
-                <div class="col-lg-6">
-                    <?= $this->session->flashdata('message') ?>
-                </div>
-            </div>
+
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-4">
-                        <?= $this->session->flashdata('message'); ?>
+                        <div class="row">
+                            <div class="col-lg-12 text-dark">
+                                <?= $this->session->flashdata('message') ?>
+                            </div>
+                        </div>
                         <form action="<?= base_url('user/ubah_password'); ?>" method="post">
                             <div class="form-group">
                                 <label for="current_password">Password Saat Ini</label>
@@ -97,4 +97,12 @@ document.getElementById('toggleNewPassword').addEventListener('click', function(
 document.getElementById('toggleConfirmPassword').addEventListener('click', function() {
     togglePassword('new_password2', 'toggleConfirmPassword');
 });
+</script>
+
+<script type="text/javascript">
+window.setTimeout(function() {
+    $(".col-lg-12").fadeTo(500, 0).slideUp(500, function() {
+        $(this).remove();
+    });
+}, 1500);
 </script>

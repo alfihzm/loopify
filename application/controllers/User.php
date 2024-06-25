@@ -95,8 +95,14 @@ class User extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
 
         $this->form_validation->set_rules('current_password', 'Password Saat Ini', 'required|trim');
-        $this->form_validation->set_rules('new_password1', 'Password Baru', 'required|trim|min_length[5]|matches[new_password2]');
-        $this->form_validation->set_rules('new_password2', 'Konfirmasi Password Baru', 'required|trim|min_length[5]|matches[new_password1]');
+        $this->form_validation->set_rules('new_password1', 'Password Baru', 'required|trim|min_length[5]|matches[new_password2]', [
+            'matches' => 'Password yang anda masukkan tidak sama dengan konfirmasi password.',
+            'min_length' => 'Isi password minimal 5 karakter.'
+        ]);
+        $this->form_validation->set_rules('new_password2', 'Konfirmasi Password Baru', 'required|trim|min_length[5]|matches[new_password1]', [
+            'matches' => 'Password yang anda masukkan tidak sama dengan password baru.',
+            'min_length' => 'Isi password minimal 5 karakter.'
+        ]);
 
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/admin/header', $data);
