@@ -2,7 +2,7 @@
     <div class="content">
         <div class="page-inner">
             <div class="page-header">
-                <h4 class="page-title"><?= $judul; ?></h4>
+                <h4 class="page-title" style="font-size: 2rem;"><?= $judul; ?></h4>
             </div>
 
             <div class="row">
@@ -12,13 +12,13 @@
             </div>
 
             <div class="row">
-                <div class="col-12 col-sm-9 col-md-4 mb-2">
+                <div class="col-12 col-sm-12 col-md-6 mb-2 p-3">
                     <div class="card mb-3 p-3 border border-secondary"
                         style="display: flex; flex-direction: column; align-items: center;">
                         <img src="<?= base_url('assets/images/user/profile/') .  $user['photo']; ?>"
                             class="border border-secondary card-img-top rounded-circle" alt="..."
                             style="max-height: 40%; max-width: 40%;">
-                        <h1 style="text-align: center;" class="card-title mt-3">
+                        <h1 style="text-align: center; font-size: 1.3rem;" class="card-title mt-3">
                             <?= $user['nama']; ?>
                         </h1>
                         <p class="email">
@@ -39,22 +39,10 @@
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="row">
-                <div class="col-12 col-sm-9 col-md-4 mb-2">
+                <div class="col-12 col-sm-12 col-md-6 mb-2 p-3">
                     <div class="card mb-3 p-3 border border-secondary">
-                        <h5 style="text-align: center;" class="card-title">Tentang
-                            Saya</h5>
-                        <hr>
-                        <div class="form-group row">
-                            <label for="notelp" class="col-sm-3 col-form-label">No.
-                                Telp</label>
-                            <div class="col-sm-9">
-                                <input style="color:#000;" type="text" class="form-control" id="notelp" name="notelp"
-                                    readonly value="<?= $user['no_telp']; ?>">
-                            </div>
-                        </div>
+                        <h5 style="text-align: center;" class="card-title">Tentang Saya</h5>
+                        <hr style="background: #FFF;">
                         <div class="form-group row">
                             <label for="date_created" class="col-sm-3 col-form-label">Akun</label>
                             <div class="col-sm-9">
@@ -69,6 +57,31 @@
                                 <!-- <h1 class="style=col-sm-10">Bekerja sejak <?= $daysDifference ?> hari lalu</h1> -->
                             </div>
                         </div>
+
+                        <div class="form-group row">
+                            <label for="username" class="col-sm-3 col-form-label">Username</label>
+                            <div class="col-sm-9">
+                                <input style="color:#000;" type="text" class="form-control" id="username"
+                                    name="username" readonly value="<?= $user['username']; ?>">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="notelp" class="col-sm-3 col-form-label">No. Telp</label>
+                            <div class="col-sm-9">
+                                <input style="color:#000;" type="text" class="form-control" id="notelp" name="notelp"
+                                    readonly value="<?= $user['no_telp']; ?>">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="alamat" class="col-sm-3 col-form-label">Alamat</label>
+                            <div class="col-sm-9">
+                                <input style="color:#000;" type="text" class="form-control" id="alamat" name="alamat"
+                                    readonly value="<?= $user['alamat']; ?>">
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>

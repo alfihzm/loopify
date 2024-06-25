@@ -6,7 +6,7 @@
             </div>
 
             <div class="row">
-                <div class="col-lg-8">
+                <div class="col-8">
                     <?= form_open_multipart('user/edit_profile'); ?>
                     <div class="form-group row">
                         <label for="email" class="col-sm-3 col-form-label">Email</label>
@@ -24,12 +24,29 @@
                         <?= form_error('nama', '<small class="text-danger">', '</small>'); ?>
                     </div>
                     <div class="form-group row">
-                        <label for="photo" class="col-sm-3 col-form-label">Foto Profil</label>
+                        <label for="alamat" class="col-sm-3 col-form-label">Alamat</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="alamat" name="alamat"
+                                value="<?= $user['alamat']; ?>">
+                        </div>
+                        <?= form_error('nama', '<small class="text-danger">', '</small>'); ?>
+                    </div>
+                    <div class="form-group row">
+                        <label for="notelp" class="col-sm-3 col-form-label">No. Telp</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="notelp" name="notelp"
+                                value="<?= $user['no_telp']; ?>">
+                        </div>
+                        <?= form_error('nama', '<small class="text-danger">', '</small>'); ?>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="photo" class="col-sm-3 col-form-label" readonly>Foto Profil</label>
                         <div class="col-sm-9">
                             <div class="row">
                                 <div class="col-sm-3">
                                     <img src="<?= base_url('assets/images/user/profile/') . $user['photo']; ?>"
-                                        class="img-thumbnail border border-0">
+                                        class="img-thumbnail border border-0" id="profileImage">
                                 </div>
                                 <div class="col-sm-9">
                                     <div class="custom-file">
@@ -52,3 +69,14 @@
             </div>
         </div>
     </div>
+    <script>
+    document.getElementById('photo').onchange = function(event) {
+        const reader = new FileReader();
+        reader.onload = function() {
+            const output = document.getElementById('profileImage');
+            output.src = reader.result;
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    };
+    </script>
+</div>

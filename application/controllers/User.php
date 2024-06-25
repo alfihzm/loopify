@@ -31,6 +31,8 @@ class User extends CI_Controller
             'user' => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array()
         ];
 
+        $user = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+
         $this->form_validation->set_rules('nama', 'Nama Lengkap', 'required');
         if ($this->form_validation->run() == false) {
             $this->load->view("templates/admin/header", $data);
@@ -39,8 +41,6 @@ class User extends CI_Controller
             $this->load->view('user/konfigurasi_user/edit_profile', $data);
             $this->load->view("templates/admin/footer");
         } else {
-            $nama = $this->input->post('nama', true);
-            $email = $this->input->post('email', true);
             $uploadImage = $_FILES['photo']['name'];
 
             if ($uploadImage) {
@@ -49,7 +49,7 @@ class User extends CI_Controller
                 $config['max_width'] = '3084';
                 $config['max_height'] = '3084';
                 $config['upload_path'] = './assets/images/user/profile/';
-                $config['file_name'] = 'user_' . $data['user']['username'];  // Menggunakan username untuk nama file
+                $config['file_name'] = 'user_' . $data['user']['username'];
 
                 $this->load->library('upload', $config);
 
@@ -66,10 +66,22 @@ class User extends CI_Controller
                 }
             }
 
-            $this->db->set('nama', $nama);
-            $this->db->set('email', $email);
-            $this->db->where('id', $data['user']['id']); 
-            $this->db->update('user');
+            // $nama = $this->input->post('nama', true);
+            // $email = $this->input->post('email', true);
+
+            $userData = [
+                'nama' => $this->input->post('nama'),
+                'email' => $this->input->post('email'),
+                'alamat' => $this->input->post('alamat'),
+                'no_telp' => $this->input->post('notelp'),
+            ];
+
+            $this->UserModel->editUser($user['id'], $userData);
+
+            // $this->db->set('nama', $nama);
+            // $this->db->set('email', $email);
+            // $this->db->where('id', $data['user']['id']);
+            // $this->db->update('user');
 
             $this->session->set_flashdata('message', '<div style="color: #FFF; background: #1f283E;" id="successInput" class="alert alert-success" role="alert">Berhasil Menerapkan Perubahan</div>');
             redirect('user/my_profile');
