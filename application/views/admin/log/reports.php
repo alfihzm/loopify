@@ -85,19 +85,27 @@
                          </tr>
                      </thead>
                      <tbody>
-                         <?php $i = 1; ?>
-                         <?php foreach ($menu as $m) : ?>
+                         <?php if (empty($menu)) : ?>
                              <tr>
-                                 <th scope="row" style="width: 50px"><?= $i; ?></th>
-                                 <td style="width: 290px"><?= $m['nama']; ?></td>
-                                 <td><b><?= $m['judul']; ?></b></td>
-                                 <td><?= $m['tanggal']; ?></td>
-                                 <td style="text-align:center; vertical-align: middle;">
-                                     <a href="<?= base_url('log/info_reports?id=' . $m['id']); ?>" class="btn btn-info"> <i class="fa-solid fa-eye"></i> </a>
+                                 <td colspan="5" style="text-align: center;">
+                                     <b>Belum ada laporan masalah yang masuk</b>
                                  </td>
                              </tr>
-                             <?php $i++; ?>
-                         <?php endforeach; ?>
+                         <?php else : ?>
+                             <?php $i = 1; ?>
+                             <?php foreach ($menu as $m) : ?>
+                                 <tr>
+                                     <th scope="row" style="width: 50px"><?= $i; ?></th>
+                                     <td style="width: 290px"><?= $m['nama']; ?></td>
+                                     <td><b><?= $m['judul']; ?></b></td>
+                                     <td><?= $m['tanggal']; ?></td>
+                                     <td style="text-align:center; vertical-align: middle;">
+                                         <a href="<?= base_url('log/info_reports?id=' . $m['id']); ?>" class="btn btn-info"> <i class="fa-solid fa-eye"></i> </a>
+                                     </td>
+                                 </tr>
+                                 <?php $i++; ?>
+                             <?php endforeach; ?>
+                         <?php endif; ?>
                      </tbody>
                  </table>
              </div>

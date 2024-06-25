@@ -794,9 +794,9 @@ class Admin extends CI_Controller
             'required' => 'Nama pengendara wajib diisi!',
         ]);
 
-        $harga_bp = $this->db->get_where('sampah', ['id' => 1])->row()->nilai_satuan;
-        $harga_ka = $this->db->get_where('sampah', ['id' => 2])->row()->nilai_satuan;
-        $harga_kk = $this->db->get_where('sampah', ['id' => 3])->row()->nilai_satuan;
+        $harga_bp = $this->db->get_where('sampah', ['id' => 1])->row()->nilai_tukar;
+        $harga_ka = $this->db->get_where('sampah', ['id' => 2])->row()->nilai_tukar;
+        $harga_kk = $this->db->get_where('sampah', ['id' => 3])->row()->nilai_tukar;
 
         if ($this->form_validation->run() == false) {
             $errors = validation_errors('<div style="color: #FFF; background: #ff0000;" class="alert alert-danger" role="alert">', '</div>');
@@ -820,9 +820,9 @@ class Admin extends CI_Controller
                 'user'  => $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array(),
             ];
 
-            $harga_bp = $this->db->get_where('sampah', ['id' => 1])->row()->nilai_satuan;
-            $harga_ka = $this->db->get_where('sampah', ['id' => 2])->row()->nilai_satuan;
-            $harga_kk = $this->db->get_where('sampah', ['id' => 3])->row()->nilai_satuan;
+            $harga_bp = $this->db->get_where('sampah', ['id' => 1])->row()->nilai_tukar;
+            $harga_ka = $this->db->get_where('sampah', ['id' => 2])->row()->nilai_tukar;
+            $harga_kk = $this->db->get_where('sampah', ['id' => 3])->row()->nilai_tukar;
 
             $bp = $this->input->post('bp');
             $ka = $this->input->post('ka');
@@ -836,13 +836,18 @@ class Admin extends CI_Controller
                 $this->session->set_flashdata('message', '<div style="color: #FFF; background: #1f283E;" class="alert alert-danger" role="alert">Sampah tidak dapat dikirim</div>');
                 redirect('admin/sampah/tambah_distribusi');
             } else {
-                $harga_bp = $this->db->get_where('sampah', ['id' => 1])->row()->nilai_satuan;
-                $harga_ka = $this->db->get_where('sampah', ['id' => 2])->row()->nilai_satuan;
-                $harga_kk = $this->db->get_where('sampah', ['id' => 3])->row()->nilai_satuan;
+                $harga_bp = $this->db->get_where('sampah', ['id' => 1])->row()->nilai_tukar;
+                $harga_ka = $this->db->get_where('sampah', ['id' => 2])->row()->nilai_tukar;
+                $harga_kk = $this->db->get_where('sampah', ['id' => 3])->row()->nilai_tukar;
 
                 $bp = $this->input->post('bp');
                 $ka = $this->input->post('ka');
                 $kk = $this->input->post('kk');
+
+                if ($bp == 0 && $ka == 0 && $kk == 0) {
+                    $this->session->set_flashdata('message', '<div style="color: #FFF; background: #1f283E;" class="alert alert-danger" role="alert">Salah satu jenis sampah harus diisi lebih dari 0</div>');
+                    redirect('admin/sampah/tambah_distribusi');
+                }
 
                 if ($bp >= 0 && $ka >= 0 && $kk >= 0) {
                     $nilai_tukar = ($bp * (float)$harga_bp) + ($ka * (float)$harga_ka) + ($kk * (float)$harga_kk);

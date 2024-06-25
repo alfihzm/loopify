@@ -36,7 +36,7 @@
                         </span>
                         <div class="d-none d-md-block">
                             <a class="nav-link tx-15 p-0">Total Sampah</a>
-                            <a class="mb-0 nav-link p-0 tx-13 op-8 lh-sm"><?= $user['total_sampah']; ?> kg</a>
+                            <a class="mb-0 nav-link p-0 tx-13 op-8 lh-sm"><?= $user['total_sampah']; ?> buah</a>
                         </div>
                     </li>
                     <li class="d-flex align-items-center position-relative me-md-4 me-2">

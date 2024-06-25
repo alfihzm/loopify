@@ -64,7 +64,7 @@
 
         Telah diterima sebesar <u>Rp. <?= $withdraw['nominal']; ?> </u> pada tanggal <?= $withdraw['formatted_tanggal']; ?> dengan <u>Sdr. <?= $withdraw['username']; ?></u> dari saldo akun.
         <br>
-        Petugas <?= $user['username']; ?> menyerahkan tunai sebesar <u>Rp. <?= $withdraw['nominal']; ?></u>, saldo koin berkurang sebesar <?= $selisih ?>.
+        Petugas <?= $user['username']; ?> menyerahkan dengan <?= $withdraw['metode']; ?> sebesar <u>Rp. <?= $withdraw['nominal']; ?></u>, saldo koin berkurang sebesar <?= $selisih ?>.
         <table>
             <thead>
                 <tr>

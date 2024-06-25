@@ -2,7 +2,7 @@
     <div class="container">
         <div class="heading-section">
             <div class="heading-title text-white">Statistik</div>
-            <div class="heading-description text-white op-8">Jumlah limbah yang di kumpulkan.</div>
+            <div class="heading-description text-white op-8">Jumlah limbah yang berada di gudang.</div>
         </div>
         <div class="row align-items-center">
             <div class="col-lg-3 col-sm-6">

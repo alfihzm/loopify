@@ -136,7 +136,7 @@
                                 </td>
                                 <td><?= $s['kode']; ?></td>
                                 <td><?= $s['jenis_sampah']; ?></td>
-                                <td>Rp<?= $s['nilai_tukar']; ?>/kg</td>
+                                <td>Rp<?= $s['nilai_tukar']; ?>/buah</td>
                                 <td><?= $s['total_sampah']; ?> buah</td>
                                 <td>
                                     <a href="<?= base_url('admin/ubah_sampah/'   . $s['id']); ?>" class="btn btn-success btn-sm"><i style="color: #000;" class="fa-solid fa-pencil"></i></a>

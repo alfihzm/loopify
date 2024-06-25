@@ -114,11 +114,11 @@
                             </div>
                             <div class="form-group">
                                 <label style="color: #01E7f4 !important;" for="formGroupExampleInput">Username</label>
-                                <input style="background: #01E7f4; color: #1A2035; font-weight: 600;" type="text" class="form-control" id="username" name="username" placeholder="ID Member tidak ditemukan!" readonly>
+                                <input style="background: #01E7f4; color: #1A2035; font-weight: 600;" type="text" class="form-control text-dark" id="username" name="username" placeholder="ID Member tidak ditemukan!" readonly>
                             </div>
                             <div class="form-group">
                                 <label style="color: #01E7f4 !important;" for="formGroupExampleInput">Saldo Koin</label>
-                                <input style="background: #01E7f4; color: #1A2035; font-weight: 600;" type="text" class="form-control" id="koin" name="koin" placeholder="Koin member kosong!">
+                                <input style="background: #01E7f4; color: #1A2035; font-weight: 600;" type="text" class="form-control text-dark" id="koin" name="koin" placeholder="Koin member kosong!" readonly>
                             </div>
                             <div class="form-group">
                                 <label style="color: #01E7f4 !important;" for="jumlah_botol">Nominal</label>

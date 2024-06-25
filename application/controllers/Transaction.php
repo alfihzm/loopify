@@ -56,6 +56,11 @@ class Transaction extends CI_Controller
             $lokasi = $this->input->post('lokasi');
             $catatan = $this->input->post('catatan');
 
+            if ($jumlah_botol == 0 && $jumlah_kaleng == 0 && $jumlah_kardus == 0) {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Salah satu jenis sampah harus bernilai lebih dari 0!</div>');
+                redirect('transaction');
+            }
+
             // Ambil kapasitas penyimpanan dan nilai tukar dari database
             $sampahData = $this->db->get('sampah')->result_array();
             $sampah = [];
@@ -70,11 +75,16 @@ class Transaction extends CI_Controller
             }
 
             $totalkoin = ($jumlah_botol * $sampah[1]['nilai_tukar']) + ($jumlah_kaleng * $sampah[2]['nilai_tukar']) + ($jumlah_kardus * $sampah[3]['nilai_tukar']);
+            $totalsampah = $jumlah_botol + $jumlah_kaleng + $jumlah_kardus;
 
             // Update nilai koin dan total sampah dalam tabel user
             $this->db->where('id_member', $id_member);
             $this->db->set('koin', 'koin+' . $totalkoin, FALSE);
             $this->db->update('user');
+            $this->db->where('id_member', $id_member);
+            $this->db->set('total_sampah', 'total_sampah+'.$totalsampah, FALSE);
+            $this->db->update('user');
+
 
             // Update total sampah dalam tabel sampah
             $this->db->set('total_sampah', 'total_sampah+' . $jumlah_botol, FALSE)->where('id', 1)->update('sampah');

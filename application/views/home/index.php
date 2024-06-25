@@ -189,7 +189,7 @@
                                     <p class="mb-1 tx-muted">Harga</p>
                                     <h2 class="mb-3">Rp <?= number_format($l['nilai_tukar'], 0, ',', '.') ?>
                                         <span class="tx-14 op-7 tx-muted">
-                                            /kilogram <?= $l['jenis_sampah']; ?>
+                                            /buah <?= $l['jenis_sampah']; ?>
                                         </span>
                                     </h2>
                                     <p class="mb-4">Menerima berbagai jenis <?= strtolower($l['jenis_sampah']); ?> yang anda miliki.
@@ -288,7 +288,7 @@
             <div class="container">
                 <div class="heading-section">
                     <div class="heading-title text-white">Statistik</div>
-                    <div class="heading-description text-white op-8">Jumlah limbah yang di kumpulkan.</div>
+                    <div class="heading-description text-white op-8">Jumlah limbah yang berada di gudang.</div>
                 </div>
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-sm-6">

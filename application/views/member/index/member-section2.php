@@ -26,7 +26,7 @@
                         <p class="mb-1 tx-muted">Harga</p>
                         <h2 class="mb-3">Rp<?= number_format($l['nilai_tukar'], 0, ',', '.'); ?>
                             <span class="tx-14 op-7 tx-muted">
-                                /kilogram <?= $l['jenis_sampah']; ?>
+                                /buah <?= $l['jenis_sampah']; ?>
                             </span>
                         </h2>
                         <p class="mb-4">Menerima berbagai jenis <?= strtolower($l['jenis_sampah']); ?> yang anda miliki.

@@ -128,6 +128,7 @@ class Finance extends CI_Controller
         if ($dataPost['sumber'] == "Modal Kas") {
             if ($dataPost['jumlah'] > $saldoKas) {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Jumlah yang dimasukkan melebihi saldo Modal Kas yang tersedia!</div>');
+                return; 
             } else {
                 if ($this->FinanceModel->transferSaldo(1, 2, $dataPost['jumlah'])) {
                     $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Saldo berhasil dipindahkan dari Modal Kas ke arus kas!</div>');

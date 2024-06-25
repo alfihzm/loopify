@@ -46,6 +46,9 @@ class TransactionModel extends CI_Model
                 $updated_koin = $user['koin'] - $transaction['totalkoin'];
                 $this->db->where('id_member', $id_member);
                 $this->db->update('user', ['koin' => $updated_koin]);
+                $updated_sampah = $user['total_sampah'] - $transaction['total'];
+                $this->db->where('id_member', $id_member);
+                $this->db->update('user', ['total_sampah' => $updated_sampah]);
             }
             $this->db->where('id', $id);
             $this->db->delete('transaction');
