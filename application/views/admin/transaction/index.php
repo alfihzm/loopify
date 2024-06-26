@@ -54,7 +54,6 @@
                         <?= $this->session->flashdata('message') ?>
                     </div>
                 </div>
-
                 <div class="containers">
                     <table class="table">
                         <thead>
@@ -76,7 +75,6 @@
                                 return $t['status'] === 'Belum dikonfirmasi';
                             });
                             ?>
-
                             <?php if (empty($unconfirmedTransactions)) : ?>
                                 <tr>
                                     <td colspan="9" style="text-align: center;">Tidak ada transaksi yang belum dikonfirmasi.</td>

@@ -14,31 +14,31 @@
             </div>
             <div class="col-xl-9">
                 <div class="bg-client position-relative">
-                    <img src="<?= base_url('assets/') ?>images/patterns/9.png" alt="img"
-                        class="patterns-11 z-index-0 filter-invert op-2">
+                    <img src="<?= base_url('assets/') ?>images/patterns/9.png" alt="img" class="patterns-11 z-index-0 filter-invert op-2">
                     <div class="swiper testimonialSwiper">
                         <div class="swiper-wrapper">
-                            <!-- START DI SINI -->
                             <?php foreach ($review as $r) : ?>
-                            <div class="swiper-slide">
-                                <div class="card shadow-none mb-0">
-                                    <div class="card-body">
-                                        <div class="d-flex align-items-center">
-                                            <img src="<?= base_url('assets/images/user/profile/') . $r['photo']; ?>"
-                                                alt="img" class="avatar avatar-lg rounded-circle me-2">
-                                            <div class="flex-grow-1">
-                                                <h6 class="mb-0 text-white"><?= $r['nama']; ?></h6>
-                                                <span class="tx-11"><?= $r['formatted_date']; ?></span>
+                                <?php if ($r['is_active'] == 1) : ?>
+                                    <div class="swiper-slide">
+                                        <div class="card shadow-none mb-0">
+                                            <div class="card-body">
+                                                <div class="d-flex align-items-center">
+                                                    <img src="<?= base_url('assets/images/user/profile/') . $r['photo']; ?>" alt="img" class="avatar avatar-lg rounded-circle me-2">
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="mb-0 text-white"><?= $r['nama']; ?></h6>
+                                                        <span class="tx-11"><?= $r['formatted_date']; ?></span>
+                                                    </div>
+                                                    <i class="bi bi-quote review-quote"></i>
+                                                </div>
+                                                <p class="mt-2 mb-0 tx-14">
+                                                    <?= $r['review']; ?>
+                                                </p>
                                             </div>
-                                            <i class="bi bi-quote review-quote"></i>
                                         </div>
-                                        <p class="mt-2 mb-0 tx-14">
-                                            <?= $r['review']; ?>
-                                        </p>
                                     </div>
-                                </div>
-                            </div>
+                                <?php endif; ?>
                             <?php endforeach ?>
+
                         </div>
                     </div>
                 </div>

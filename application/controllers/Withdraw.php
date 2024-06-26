@@ -88,7 +88,6 @@ class Withdraw extends CI_Controller
             $this->db->where('id_member', $id_member);
             $this->db->update('user', ['koin' => $koinSekarang]);
 
-            // Hanya kurangi saldo perusahaan jika metode bukan 'Tunai'
             if ($metode !== 'Tunai') {
                 $saldoSekarang = $financeData['saldo'] - $nominal;
                 if ($saldoSekarang < 0) {
@@ -117,7 +116,6 @@ class Withdraw extends CI_Controller
             ];
 
             $this->WithdrawModel->newWithdraw($dataWithdraw);
-
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Transaksi tarik tunai telah berhasil ditambahkan!</div>');
             redirect('withdraw');
         }
