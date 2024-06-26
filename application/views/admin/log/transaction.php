@@ -43,7 +43,8 @@
                 <div class="filter-group" style="display: flex; gap: 10px;">
                     <div class="filter-item" style="display: flex; flex-direction: column;">
                         <label for="searchName">Cari berdasarkan User</label>
-                        <input type="text" id="searchName" class="form-control" style="height: 38px; padding: 6px;" placeholder="Cari berdasarkan user">
+                        <input type="text" id="searchName" class="form-control" style="height: 38px; padding: 6px;"
+                            placeholder="Cari berdasarkan user">
                     </div>
                     <div class="filter-item" style="display: flex; flex-direction: column;">
                         <label for="dateSearch">Cari berdasarkan Tanggal:</label>
@@ -55,7 +56,7 @@
                         <tr>
                             <th scope="col">Kode Member</th>
                             <th scope="col">User</th>
-                            <th scope="col" style="width: 100%;">Tanggal</th>
+                            <th scope="col">Tanggal</th>
                             <th scope="col">BP</th>
                             <th scope="col">KA</th>
                             <th scope="col">KK</th>
@@ -66,78 +67,81 @@
                     </thead>
                     <tbody>
                         <?php if (empty($transaction)) : ?>
-                            <tr>
-                                <td colspan="9" style="text-align: center;">Tidak ada transaksi yang belum dikonfirmasi.</td>
-                            </tr>
+                        <tr>
+                            <td colspan="9" style="text-align: center;">Tidak ada transaksi yang belum dikonfirmasi.
+                            </td>
+                        </tr>
                         <?php else : ?>
-                            <?php foreach ($transaction as $t) : ?>
-                                <tr>
-                                    <td><?= $t['id_member']; ?></td>
-                                    <td><?= $t['username']; ?></td>
-                                    <td><?= $t['tanggal']; ?></td>
-                                    <td><?= $t['jumlah_botol']; ?></td>
-                                    <td><?= $t['jumlah_kaleng']; ?></td>
-                                    <td><?= $t['jumlah_kardus']; ?></td>
-                                    <td><?= $t['lokasi']; ?></td>
-                                    <td><?= $t['petugas']; ?></td>
-                                    <td>
-                                        <div style="text-align: center;">
-                                            <a href="<?= base_url('log/info_transaction/' . $t['id']); ?>" class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i style="color: #000;" class="fa-solid fa-info"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
-                            <?php endforeach; ?>
+                        <?php foreach ($transaction as $t) : ?>
+                        <tr>
+                            <td><?= $t['id_member']; ?></td>
+                            <td><?= $t['username']; ?></td>
+                            <td><?= $t['tanggal']; ?></td>
+                            <td><?= $t['jumlah_botol']; ?></td>
+                            <td><?= $t['jumlah_kaleng']; ?></td>
+                            <td><?= $t['jumlah_kardus']; ?></td>
+                            <td><?= $t['lokasi']; ?></td>
+                            <td><?= $t['petugas']; ?></td>
+                            <td>
+                                <div style="text-align: center;">
+                                    <a href="<?= base_url('log/info_transaction/' . $t['id']); ?>"
+                                        class="btn btn-light btn-sm" style="width: 30px; height: 30px;"><i
+                                            style="color: #000;" class="fa-solid fa-info"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                        <?php endforeach; ?>
                         <?php endif; ?>
                     </tbody>
                 </table>
             </div>
             <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
             <script>
-                $(document).ready(function() {
-                    const searchNameInput = $('#searchName');
-                    const dateSearchInput = $('#dateSearch');
-                    const rows = $('#dataTable tbody tr');
-                    const printPdfButton = $('#printPdfButton');
+            $(document).ready(function() {
+                const searchNameInput = $('#searchName');
+                const dateSearchInput = $('#dateSearch');
+                const rows = $('#dataTable tbody tr');
+                const printPdfButton = $('#printPdfButton');
 
-                    searchNameInput.on('input', filterTable);
-                    dateSearchInput.on('input', filterTable);
+                searchNameInput.on('input', filterTable);
+                dateSearchInput.on('input', filterTable);
 
-                    printPdfButton.on('click', function() {
-                        const searchNameValue = searchNameInput.val().toLowerCase();
-                        const dateSearchValue = dateSearchInput.val();
-                        let url = "pdf_transaction?";
-                        if (dateSearchValue) {
-                            url += "date=" + dateSearchValue;
-                        }
-                        if (searchNameValue) {
-                            if (dateSearchValue) {
-                                url += "&";
-                            }
-                            url += "user=" + searchNameValue;
-                        }
-                        window.location.href = url;
-                    });
-
-                    function filterTable() {
-                        const searchNameValue = searchNameInput.val().toLowerCase();
-                        const dateSearchValue = dateSearchInput.val();
-
-                        rows.each(function() {
-                            const cells = $(this).find('td');
-                            const userName = cells.eq(1).text().toLowerCase();
-                            const date = cells.eq(2).text();
-
-                            const nameMatch = !searchNameValue || userName.includes(searchNameValue);
-                            const dateMatch = !dateSearchValue || date === dateSearchValue;
-
-                            if (nameMatch && dateMatch) {
-                                $(this).show();
-                            } else {
-                                $(this).hide();
-                            }
-                        });
+                printPdfButton.on('click', function() {
+                    const searchNameValue = searchNameInput.val().toLowerCase();
+                    const dateSearchValue = dateSearchInput.val();
+                    let url = "pdf_transaction?";
+                    if (dateSearchValue) {
+                        url += "date=" + dateSearchValue;
                     }
+                    if (searchNameValue) {
+                        if (dateSearchValue) {
+                            url += "&";
+                        }
+                        url += "user=" + searchNameValue;
+                    }
+                    window.location.href = url;
                 });
+
+                function filterTable() {
+                    const searchNameValue = searchNameInput.val().toLowerCase();
+                    const dateSearchValue = dateSearchInput.val();
+
+                    rows.each(function() {
+                        const cells = $(this).find('td');
+                        const userName = cells.eq(1).text().toLowerCase();
+                        const date = cells.eq(2).text();
+
+                        const nameMatch = !searchNameValue || userName.includes(searchNameValue);
+                        const dateMatch = !dateSearchValue || date === dateSearchValue;
+
+                        if (nameMatch && dateMatch) {
+                            $(this).show();
+                        } else {
+                            $(this).hide();
+                        }
+                    });
+                }
+            });
             </script>
         </div>
     </div>

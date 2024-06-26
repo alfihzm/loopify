@@ -1,17 +1,17 @@
 <style>
-    .alert-content {
-        display: flex;
-    }
+.alert-content {
+    display: flex;
+}
 
-    .alert-text {
-        flex: 1;
-        text-align: center;
-        padding: 0 10px;
-    }
+.alert-text {
+    flex: 1;
+    text-align: center;
+    padding: 0 10px;
+}
 
-    .alert-text:not(:last-child) {
-        border-right: 1px dashed #1A2035;
-    }
+.alert-text:not(:last-child) {
+    border-right: 1px dashed #1A2035;
+}
 </style>
 <div class="main-panel" style="font-family: quicksand;">
     <div class="content">
@@ -50,7 +50,8 @@
                 <div class="col-lg-3 counter">
                     <div class="card border border-dark weather-card" style="background-color: #fff;">
                         <div class="card-header">
-                            <div class="card-header" style="background-color: #fff; color: black; text-align: center; border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                            <div class="card-header"
+                                style="background-color: #fff; color: black; text-align: center; border-top-left-radius: 10px; border-top-right-radius: 10px;">
                                 <b>Kapasitas Gudang Botol</b>
                             </div>
                             <h4 style="text-align: center; font-size: 1.5em; color: blue;">
@@ -58,9 +59,11 @@
                                 <?= $botol['total_sampah'] ?>/<b><?= $botol['kapasitas']; ?></b>
                             </h4>
                             <div style="text-align: center;">
-                                <span style="margin-top: 20px; text-align: center; color: black;">Kapasitas Tersisa: </span>
+                                <span style="margin-top: 20px; text-align: center; color: black;">Kapasitas Tersisa:
+                                </span>
                             </div>
-                            <h4 style="margin-top: 2px; text-align: center; font-size: 1.5em; color: blue; font-weight: bold;">
+                            <h4
+                                style="margin-top: 2px; text-align: center; font-size: 1.5em; color: blue; font-weight: bold;">
                                 <?= number_format($persentase_kepenuhan, 2); ?>%
                             </h4>
                         </div>`;
@@ -69,7 +72,8 @@
                 <div class="col-lg-3">
                     <div class="card border border-dark weather-card" style="background-color: #fff;">
                         <div class="card-header">
-                            <div class="card-header" style="background-color: #fff; color: black; text-align: center; border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                            <div class="card-header"
+                                style="background-color: #fff; color: black; text-align: center; border-top-left-radius: 10px; border-top-right-radius: 10px;">
                                 <b>Kapasitas Gudang Kaleng</b>
                             </div>
                             <h4 style="text-align: center; font-size: 1.5em; color: red;">
@@ -77,9 +81,11 @@
                                 <?= $kaleng['total_sampah'] ?>/<b><?= $kaleng['kapasitas']; ?></b>
                             </h4>
                             <div style="text-align: center;">
-                                <span style="margin-top: 20px; text-align: center; color: black;">Kapasitas Tersisa: </span>
+                                <span style="margin-top: 20px; text-align: center; color: black;">Kapasitas Tersisa:
+                                </span>
                             </div>
-                            <h4 style="margin-top: 2px; text-align: center; font-size: 1.5em; color: red; font-weight: bold;">
+                            <h4
+                                style="margin-top: 2px; text-align: center; font-size: 1.5em; color: red; font-weight: bold;">
                                 <?= number_format($persentase_kepenuhan, 2); ?>%
                             </h4>
                         </div>`;
@@ -88,7 +94,8 @@
                 <div class="col-lg-3" style="text-align: center;">
                     <div class="card border border-dark weather-card" style="background-color: #fff;">
                         <div class="card-header">
-                            <div class="card-header" style="background-color: #fff; color: black; text-align: center; border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                            <div class="card-header"
+                                style="background-color: #fff; color: black; text-align: center; border-top-left-radius: 10px; border-top-right-radius: 10px;">
                                 <b>Kapasitas Gudang kardus</b>
                             </div>
                             <h4 style="text-align: center; font-size: 1.5em; color: green;">
@@ -96,9 +103,11 @@
                                 <?= $kardus['total_sampah'] ?>/<b><?= $kardus['kapasitas']; ?></b>
                             </h4>
                             <div style="text-align: center;">
-                                <span style="margin-top: 20px; text-align: center; color: black;">Kapasitas Tersisa: </span>
+                                <span style="margin-top: 20px; text-align: center; color: black;">Kapasitas Tersisa:
+                                </span>
                             </div>
-                            <h4 style="margin-top: 2px; text-align: center; font-size: 1.5em; color: green; font-weight: bold;">
+                            <h4
+                                style="margin-top: 2px; text-align: center; font-size: 1.5em; color: green; font-weight: bold;">
                                 <?= number_format($persentase_kepenuhan, 2); ?>%
                             </h4>
                         </div>`;
@@ -129,25 +138,32 @@
                     <tbody>
                         <?php $i = 1;
                         foreach ($sampah as $s) : ?>
-                            <tr>
-                                <td><?= $i++; ?></td>
-                                <td>
-                                    <img class="img-thumbnail border-0" style="width: 45px; height: auto;" src="<?= base_url('assets/images/svg/member-section2/' . $s['icon']); ?>" alt="Gambar" width="85" height="85">
-                                </td>
-                                <td><?= $s['kode']; ?></td>
-                                <td><?= $s['jenis_sampah']; ?></td>
-                                <td>Rp<?= $s['nilai_tukar']; ?>/buah</td>
-                                <td><?= $s['total_sampah']; ?> buah</td>
-                                <td>
-                                    <a href="<?= base_url('admin/ubah_sampah/'   . $s['id']); ?>" class="btn btn-success btn-sm"><i style="color: #000;" class="fa-solid fa-pencil"></i></a>
-                                    <a href="<?= base_url('admin/hapus_sampah/' . $s['id']); ?>" class="btn btn-danger btn-sm"><i style="color: #000;" class="fa-solid fa-trash"></i></a>
-                                </td>
-                            </tr>
+                        <tr>
+                            <td><?= $i++; ?></td>
+                            <td>
+                                <img class="img-thumbnail border-0" style="width: 45px; height: auto;"
+                                    src="<?= base_url('assets/images/svg/member-section2/' . $s['icon']); ?>"
+                                    alt="Gambar" width="85" height="85">
+                            </td>
+                            <td><?= $s['kode']; ?></td>
+                            <td><?= $s['jenis_sampah']; ?></td>
+                            <td>Rp<?= $s['nilai_tukar']; ?>/buah</td>
+                            <td><?= $s['total_sampah']; ?> buah</td>
+                            <td>
+                                <a href="<?= base_url('admin/ubah_sampah/'   . $s['id']); ?>"
+                                    class="btn btn-success btn-sm"><i style="color: #000;"
+                                        class="fa-solid fa-pencil"></i></a>
+                                <a href="<?= base_url('admin/hapus_sampah/' . $s['id']); ?>"
+                                    class="btn btn-danger btn-sm"><i style="color: #000;"
+                                        class="fa-solid fa-trash"></i></a>
+                            </td>
+                        </tr>
                         <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
-            <div class="alert alert-info" role="alert" style="margin-top: 15px; background: white; color: #1A2035; border-radius: 5px;">
+            <div class="alert alert-info" role="alert"
+                style="margin-top: 15px; background: white; color: #1A2035; border-radius: 5px;">
                 <b>
                     <div class="alert-content">
                         <div class="alert-text">
@@ -163,48 +179,53 @@
                 </b>
             </div>
             <div class="text-center" style="margin-top: 20px;">
-                <a href="<?= base_url('admin/tambah_distribusi'); ?>" class="btn btn-light col-lg-3 mb-3" style="display: inline-block; max-width: 200px; text-align: center; margin-top: -15px;"><b>Tambah Pengiriman</b></a>
+                <a href="<?= base_url('admin/tambah_distribusi'); ?>" class="btn btn-light col-lg-3 mb-3"
+                    style="display: inline-block; max-width: 200px; text-align: center; margin-top: -15px;"><b>Tambah
+                        Pengiriman</b></a>
             </div>
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col" style="width: 5%;">No.</th>
-                        <th scope="col" style="width: 10%; text-align: center;">Pengepul</th>
-                        <th scope="col" style="width: 10%; text-align: center;">Tanggal</th>
-                        <th scope="col" style="width: 5%;">BP</th>
-                        <th scope="col" style="width: 5%;">KA</th>
-                        <th scope="col" style="width: 5%;">KK</th>
-                        <th scope="col" style="width: 100%;">Kas Masuk</th>
-                        <th scope="col" style="width: 10%;">Driver</th>
-                        <th scope="col" style="width: 10%;">Petugas</th>
-                        <th scope="col" style="width: 5%;">Aksi</th>
+                        <th scope="col">No.</th>
+                        <th scope="col" style="text-align: center;">Pengepul</th>
+                        <th scope="col" style="text-align: center;">Tanggal</th>
+                        <th scope="col">BP</th>
+                        <th scope="col">KA</th>
+                        <th scope="col">KK</th>
+                        <th scope="col">Kas Masuk</th>
+                        <th scope="col">Driver</th>
+                        <th scope="col">Petugas</th>
+                        <th scope="col">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php if (empty($distribution)) : ?>
-                        <tr>
-                            <td colspan="9" style="text-align: center;">Belum ada pengambilan sampah dari gudang</td>
-                        </tr>
+                    <tr>
+                        <td colspan="9" style="text-align: center;">Belum ada pengambilan sampah dari gudang</td>
+                    </tr>
                     <?php else : ?>
-                        <?php $i = 1;
+                    <?php $i = 1;
                         foreach ($distribution as $d) : ?>
-                            <tr>
-                                <td><?= $d['id']; ?></td>
-                                <td style="text-align: center;"><?= $d['pengepul']; ?></td>
-                                <td style="text-align: center;"><?= $d['tanggal']; ?></td>
-                                <td><?= $d['bp']; ?></td>
-                                <td><?= $d['ka']; ?></td>
-                                <td><?= $d['kk']; ?></td>
-                                <td style="color: lightgreen;"><i class="fa-solid fa-up-long"></i>&nbsp;&nbsp;Rp <b><?= number_format($d['nilai_tukar'], 0, ',', '.'); ?></b></td>
-                                <td><?= $d['driver']; ?></td>
-                                <td><?= $d['petugas']; ?></td>
-                                <td>
-                                    <a href="<?= base_url('admin/ubah_distribusi/' . $d['id']); ?>" class="btn btn-success btn-sm"><i style="color: #000;" class="fa-solid fa-pencil"></i></a>
-                                    <!-- <a href="<?= base_url('admin/updatedistribution/' . $d['id']); ?>" class="btn btn-light btn-sm" style="color: #000;"><i style="color: #000;" class="fa-solid fa-check"></i></a> -->
-                                    <!-- <a href="<?= base_url('admin/hapus_distribusi/' . $d['id']); ?>" class="btn btn-danger btn-sm"><i style="color: #000;" class="fa-solid fa-trash"></i></a> -->
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
+                    <tr>
+                        <td><?= $d['id']; ?></td>
+                        <td style="text-align: center;"><?= $d['pengepul']; ?></td>
+                        <td style="text-align: center;"><?= $d['tanggal']; ?></td>
+                        <td><?= $d['bp']; ?></td>
+                        <td><?= $d['ka']; ?></td>
+                        <td><?= $d['kk']; ?></td>
+                        <td style="color: lightgreen;"><i class="fa-solid fa-up-long"></i>&nbsp;&nbsp;Rp
+                            <b><?= number_format($d['nilai_tukar'], 0, ',', '.'); ?></b></td>
+                        <td><?= $d['driver']; ?></td>
+                        <td><?= $d['petugas']; ?></td>
+                        <td>
+                            <a href="<?= base_url('admin/ubah_distribusi/' . $d['id']); ?>"
+                                class="btn btn-success btn-sm"><i style="color: #000;"
+                                    class="fa-solid fa-pencil"></i></a>
+                            <!-- <a href="<?= base_url('admin/updatedistribution/' . $d['id']); ?>" class="btn btn-light btn-sm" style="color: #000;"><i style="color: #000;" class="fa-solid fa-check"></i></a> -->
+                            <!-- <a href="<?= base_url('admin/hapus_distribusi/' . $d['id']); ?>" class="btn btn-danger btn-sm"><i style="color: #000;" class="fa-solid fa-trash"></i></a> -->
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
                     <?php endif; ?>
                 </tbody>
             </table>
@@ -214,9 +235,9 @@
 </div>
 
 <script type="text/javascript">
-    window.setTimeout(function() {
-        $(".col-lg-6").fadeTo(500, 0).slideUp(500, function() {
-            $(this).remove();
-        });
-    }, 2000);
+window.setTimeout(function() {
+    $(".col-lg-6").fadeTo(500, 0).slideUp(500, function() {
+        $(this).remove();
+    });
+}, 2000);
 </script>

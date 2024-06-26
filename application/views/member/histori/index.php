@@ -24,62 +24,52 @@
                                     </span>
                                 </div>
                                 <a href="<?= base_url('member/histori'); ?>" class="btn btn-secondary">Pemberian</a>
-                                <a href="<?= base_url('member/withdraw'); ?>" class="btn btn-success"
-                                    style="color: #000; font-weight: 600;">Tarik
+                                <a href="<?= base_url('member/withdraw'); ?>" class="btn btn-success" style="color: #000; font-weight: 600;">Tarik
                                     Tunai</a>
                             </div>
                             <?php if (empty($detailTransaksi)) : ?>
-                            <img class="mb-4" style="width: 10%;"
-                                src="<?= base_url('assets/images/logo/sad-face.png') ?>">
-                            <h3> Maaf Anda Belum Mempunyai Transaksi </h3>
+                                <img class="mb-4" style="width: 10%;" src="<?= base_url('assets/images/logo/sad-face.png') ?>">
+                                <h3> Maaf Anda Belum Mempunyai Transaksi </h3>
                             <?php else : ?>
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col" style="width: 50px">No</th>
-                                        <th scope="col" style="width: 150px">Tanggal</th>
-                                        <th scope="col" style="width: 150px">Pendapatan</th>
-                                        <th scope="col" style="width: 150px">Lokasi Transaksi</th>
-                                        <th scope="col" style="width: 150px;">Detail Transaksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php $i = 1;
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col" style="width: 50px">No</th>
+                                            <th scope="col" style="width: 150px">Tanggal</th>
+                                            <th scope="col" style="width: 150px">Pendapatan</th>
+                                            <th scope="col" style="width: 150px">Lokasi Transaksi</th>
+                                            <th scope="col" style="width: 150px;">Detail Transaksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php $i = 1;
                                         foreach ($detailTransaksi as $dt) : ?>
-                                    <tr>
-                                        <th scope="row"><?= $i++ ?></th>
-                                        <td><?= $dt['tanggal']; ?></td>
-                                        <td style="color: green;">+<?= $dt['totalkoin']; ?> koin</td>
-                                        <td><?= $dt['lokasi']; ?></td>
-                                        <td>
-                                            <button type="button" class="btn btn-primary detail-btn" data-toggle="modal"
-                                                data-target="#detailModal" data-tanggal="<?= $dt['tanggal']; ?>"
-                                                data-jumlahBotol="<?= $dt['jumlah_botol']; ?>"
-                                                data-jumlahKaleng="<?= $dt['jumlah_kaleng']; ?>"
-                                                data-jumlahKardus="<?= $dt['jumlah_kardus']; ?>"
-                                                data-totalkoin="<?= $dt['totalkoin']; ?>"
-                                                data-lokasi="<?= $dt['lokasi']; ?>">
-                                                Detail
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <?php endforeach; ?>
-                                </tbody>
-                            </table>
+                                            <tr>
+                                                <th scope="row"><?= $i++ ?></th>
+                                                <td><?= $dt['tanggal']; ?></td>
+                                                <td style="color: green;">+<?= $dt['totalkoin']; ?> koin</td>
+                                                <td><?= $dt['lokasi']; ?></td>
+                                                <td>
+                                                    <button type="button" class="btn btn-primary detail-btn" data-toggle="modal" data-target="#detailModal" data-tanggal="<?= $dt['tanggal']; ?>" data-jumlahBotol="<?= $dt['jumlah_botol']; ?>" data-jumlahKaleng="<?= $dt['jumlah_kaleng']; ?>" data-jumlahKardus="<?= $dt['jumlah_kardus']; ?>" data-totalkoin="<?= $dt['totalkoin']; ?>" data-lokasi="<?= $dt['lokasi']; ?>">
+                                                        Detail
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                </table>
                             <?php endif; ?>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- Modal -->
-            <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="detailModalLabel"
-                aria-hidden="true">
+            <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="detailModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="detailModalLabel">Detail Transaksi</h5>
-                            <button type="button" class="btn btn-close btn-small btn-cross" data-dismiss="modal"
-                                aria-label="Close">
+                            <button type="button" class="btn btn-close btn-small btn-cross" data-dismiss="modal" aria-label="Close">
                                 <i class="fas fa-regular fa-close"></i>
                             </button>
                         </div>
@@ -123,29 +113,29 @@
         </section>
 
         <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const detailButtons = document.querySelectorAll('.detail-btn');
+            document.addEventListener('DOMContentLoaded', function() {
+                const detailButtons = document.querySelectorAll('.detail-btn');
 
-            detailButtons.forEach(function(button) {
-                button.addEventListener('click', function() {
-                    const tanggal = button.getAttribute('data-tanggal');
-                    const totalkoin = button.getAttribute('data-totalkoin');
-                    const jumlahBotol = button.getAttribute('data-jumlahBotol');
-                    const jumlahKaleng = button.getAttribute('data-jumlahKaleng');
-                    const jumlahKardus = button.getAttribute('data-jumlahKardus');
-                    const lokasi = button.getAttribute('data-lokasi');
+                detailButtons.forEach(function(button) {
+                    button.addEventListener('click', function() {
+                        const tanggal = button.getAttribute('data-tanggal');
+                        const totalkoin = button.getAttribute('data-totalkoin');
+                        const jumlahBotol = button.getAttribute('data-jumlahBotol');
+                        const jumlahKaleng = button.getAttribute('data-jumlahKaleng');
+                        const jumlahKardus = button.getAttribute('data-jumlahKardus');
+                        const lokasi = button.getAttribute('data-lokasi');
 
-                    document.getElementById('modalTanggal').innerText = tanggal;
-                    document.getElementById('modalJumlahBotol').innerText = jumlahBotol;
-                    document.getElementById('modalJumlahKaleng').innerText = jumlahKaleng;
-                    document.getElementById('modalJumlahKardus').innerText = jumlahKardus;
+                        document.getElementById('modalTanggal').innerText = tanggal;
+                        document.getElementById('modalJumlahBotol').innerText = jumlahBotol;
+                        document.getElementById('modalJumlahKaleng').innerText = jumlahKaleng;
+                        document.getElementById('modalJumlahKardus').innerText = jumlahKardus;
 
-                    const modalTotalkoinElement = document.getElementById('modalTotalkoin');
-                    modalTotalkoinElement.innerText = totalkoin + " koin";
-                    modalTotalkoinElement.style.color = 'green';
+                        const modalTotalkoinElement = document.getElementById('modalTotalkoin');
+                        modalTotalkoinElement.innerText = totalkoin + " koin";
+                        modalTotalkoinElement.style.color = 'green';
 
-                    document.getElementById('modalLokasi').innerText = lokasi;
+                        document.getElementById('modalLokasi').innerText = lokasi;
+                    });
                 });
             });
-        });
         </script>

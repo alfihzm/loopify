@@ -51,6 +51,7 @@ class Withdraw extends CI_Controller
 
         $this->form_validation->set_rules('id_member', 'ID Member', 'required', ['required' => 'ID Member wajib diisi!']);
         $this->form_validation->set_rules('nominal', 'Nominal', 'required', ['required' => 'Nominal wajib diisi!']);
+        $this->form_validation->set_rules('metode', 'Metode', 'required', ['required' => 'Metode wajib diisi!']);
 
         if ($this->form_validation->run() == false) {
             $this->load->view("templates/admin/header", $data);
@@ -61,6 +62,13 @@ class Withdraw extends CI_Controller
         } else {
             $nominal = $this->input->post('nominal');
             $id_member = $this->input->post('id_member');
+            $metode = $this->input->post('metode');
+            $norek = $this->input->post('norek');
+
+            if ($metode == 'Transfer' && empty($norek)) {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger text-dark" role="alert">Jika memilih transfer maka nomor rekening wajib dimasukan!</div>');
+                redirect('withdraw');
+            }
 
             $userData = $this->db->get_where('user', ['id_member' => $id_member])->row_array();
             if (!$userData) {
@@ -81,7 +89,7 @@ class Withdraw extends CI_Controller
             $this->db->update('user', ['koin' => $koinSekarang]);
 
             // Hanya kurangi saldo perusahaan jika metode bukan 'Tunai'
-            if ($this->input->post('metode') !== 'Tunai') {
+            if ($metode !== 'Tunai') {
                 $saldoSekarang = $financeData['saldo'] - $nominal;
                 if ($saldoSekarang < 0) {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Saldo arus kas perusahaan tidak mencukupi untuk melakukan transaksi!</div>');
@@ -100,11 +108,12 @@ class Withdraw extends CI_Controller
                 'nominal' => $nominal,
                 'jam' => date('H:i:s'),
                 'tanggal' => date('Y-m-d'),
-                'metode' => $this->input->post('metode'),
+                'metode' => $metode,
                 'lokasi' => $this->input->post('lokasi'),
+                'norek' => $norek,
                 'catatan' => $this->input->post('catatan'),
                 'petugas' => $data['user']['username'],
-                'status' => $this->input->post('metode') == 'Tunai' ? 'Diberikan tunai' : 'Sudah ditransfer',
+                'status' => $metode == 'Tunai' ? 'Diberikan tunai' : 'Sudah ditransfer',
             ];
 
             $this->WithdrawModel->newWithdraw($dataWithdraw);
